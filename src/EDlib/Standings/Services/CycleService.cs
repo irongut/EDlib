@@ -45,7 +45,7 @@ namespace EDlib.Standings
         {
             // last 12 hours
             DateTime currentUTC = DateTime.UtcNow;
-            int day = (int)(currentUTC.DayOfWeek);
+            int day = (int)currentUTC.DayOfWeek;
             int hour = currentUTC.Hour;
             return (day == 3 && hour >= 19) || (day == 4 && hour < 7);
         }
@@ -54,7 +54,7 @@ namespace EDlib.Standings
         {
             // last 24 hours
             DateTime currentUTC = DateTime.UtcNow;
-            int day = (int)(currentUTC.DayOfWeek);
+            int day = (int)currentUTC.DayOfWeek;
             int hour = currentUTC.Hour;
             return (day == 3 && hour >= 7) || (day == 4 && hour < 7);
         }
@@ -62,7 +62,7 @@ namespace EDlib.Standings
         public static TimeSpan TimeTillTick()
         {
             DateTime currentUTC = DateTime.UtcNow;
-            int day = (int)(currentUTC.DayOfWeek);
+            int day = (int)currentUTC.DayOfWeek;
             TimeSpan timeDiff = TimeSpan.FromHours(7) - currentUTC.TimeOfDay;
             switch (day)
             {
