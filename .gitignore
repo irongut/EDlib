@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+[Rr]esource.designer.cs
+*cert.der
+
 # User-specific files
 *.rsuser
 *.suo
@@ -302,6 +305,10 @@ paket-files/
 # FAKE - F# Make
 .fake/
 
+# JetBrains Rider
+.idea/
+*.sln.iml
+
 # CodeRush personal settings
 .cr/personal
 
@@ -345,6 +352,7 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/builds
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
