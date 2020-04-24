@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Taranis.EDlib</AssemblyName>
+    <Version>0.1</Version>
+    <Authors>Taranis Software</Authors>
+    <Company>Taranis Software</Company>
+    <Product>EDlib</Product>
+    <Copyright>(c) 2020 Taranis Software</Copyright>
+    <Description>EDlib - a .Net library for creating companion tools for the game Elite Dangerous by Frontier Developments.</Description>
+  </PropertyGroup>
+
+</Project>
