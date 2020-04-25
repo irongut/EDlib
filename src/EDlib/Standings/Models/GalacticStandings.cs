@@ -25,7 +25,7 @@ namespace EDlib.Standings
         {
             StringBuilder text = new StringBuilder();
             text.AppendFormat("Cycle {0} Galactic Standings{1}", Cycle, Environment.NewLine);
-            foreach (PowerStanding power in Standings.OrderBy(x => x.Id))
+            foreach (PowerStanding power in Standings.OrderBy(x => x.Position))
             {
                 text.AppendLine(power.ToString());
             }
