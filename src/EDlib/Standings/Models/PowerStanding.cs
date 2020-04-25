@@ -25,7 +25,7 @@ namespace EDlib.Standings
 
         public string ShortName { get; }
 
-        public string Cycle { get; internal set; }
+        public string Cycle { get; set; }   // made set public until StandingsService included in EDlib or changed
 
         public DateTime LastUpdated { get; }
 
