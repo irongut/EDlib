@@ -13,46 +13,53 @@ namespace EDlibDemo
 
         private static async Task Main()
         {
-            // download Mahon Reddit rss
-            SetupClient();
-            string rss = await GetDataAsync().ConfigureAwait(false);
-
-            // get standings article
-            var xdoc = XDocument.Parse(rss);
-            var entries = from item in xdoc.Descendants("{http://www.w3.org/2005/Atom}entry")
-                          where item.Element("{http://www.w3.org/2005/Atom}title").Value.Contains(string.Format("Week {0} Powerplay Standings", CycleService.CurrentCycle()))
-                          select item;
-
-            if (entries?.Any() == false)
+            try
             {
-                throw new Exception("Current Cycle Standings Not Found");
-            }
-            else if (entries.Count() > 1)
-            {
-                throw new Exception("Multiple Entries Found For Current Cycle");
-            }
+                // download Mahon Reddit rss
+                SetupClient();
+                string rss = await GetDataAsync().ConfigureAwait(false);
 
-            // parse standings article
-            var article = entries.First();
-            string list = StripTags(article.Element("{http://www.w3.org/2005/Atom}content").Value, "ol");
-            DateTime updated = DateTime.Now;
-            GalacticStandings galacticStandings = new GalacticStandings(CycleService.CurrentCycle(), updated);
-            int position = 0;
-            while (list.IndexOf("</li>") > -1)
-            {
-                position++;
-                galacticStandings.Standings.Add(new PowerStanding(position, StripTags(list, "li"), CycleService.CurrentCycle(), updated));
-                list = list.Substring(list.IndexOf("</li>") + 5);
-            }
+                // get standings article
+                var xdoc = XDocument.Parse(rss);
+                var entries = from item in xdoc.Descendants("{http://www.w3.org/2005/Atom}entry")
+                              where item.Element("{http://www.w3.org/2005/Atom}title").Value.Contains(string.Format("Week {0} Powerplay Standings", CycleService.CurrentCycle()))
+                              select item;
 
-            // output standings article
-            Console.WriteLine(galacticStandings.ToString());
+                if (entries?.Any() == false)
+                {
+                    throw new Exception("Current Cycle Standings Not Found");
+                }
+                else if (entries.Count() > 1)
+                {
+                    throw new Exception("Multiple Entries Found For Current Cycle");
+                }
+
+                // parse standings article
+                var article = entries.First();
+                string list = StripTags(article.Element("{http://www.w3.org/2005/Atom}content").Value, "ol");
+                DateTime updated = DateTime.Now;
+                GalacticStandings galacticStandings = new GalacticStandings(CycleService.CurrentCycle(), updated);
+                int position = 0;
+                while (list.IndexOf("</li>") > -1)
+                {
+                    position++;
+                    galacticStandings.Standings.Add(new PowerStanding(position, StripTags(list, "li"), CycleService.CurrentCycle(), updated));
+                    list = list.Substring(list.IndexOf("</li>") + 5);
+                }
+
+                // output standings article
+                Console.WriteLine(galacticStandings.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("ERROR: {0}", ex.Message));
+            }
         }
 
         private static void SetupClient()
         {
             client = new HttpClient();
-            client.DefaultRequestHeaders.Add("X-Requested-With", "EliteALD");
+            client.DefaultRequestHeaders.Add("X-Requested-With", "EDlib");
             client.Timeout = TimeSpan.FromSeconds(40);
         }
 
