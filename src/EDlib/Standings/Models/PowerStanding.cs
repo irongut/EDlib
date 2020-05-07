@@ -11,23 +11,23 @@ namespace EDlib.Standings
 
     public class PowerStanding
     {
-        public int Id { get; }
+        public int Id { get; set; }
 
-        public string Name { get; }
+        public string Name { get; set; }
 
-        public int Position { get; }
+        public int Position { get; set; }
 
-        public StandingChange Change { get; }
+        public StandingChange Change { get; set; }
 
-        public bool Turmoil { get; }
+        public bool Turmoil { get; set; }
 
-        public string Allegiance { get; }
+        public string Allegiance { get; set; }
 
-        public string ShortName { get; }
+        public string ShortName { get; set; }
 
-        public string Cycle { get; set; }   // made set public until StandingsService included in EDlib or changed
+        public string Cycle { get; set; }
 
-        public DateTime LastUpdated { get; }
+        public DateTime LastUpdated { get; set; }
 
         public string ChangeString
         {
@@ -45,6 +45,11 @@ namespace EDlib.Standings
                         return String.Empty;
                 }
             }
+        }
+
+        public PowerStanding()
+        {
+            // required for NewtonsoftJson
         }
 
         public PowerStanding(int id, string name, int position, StandingChange change, bool turmoil, string allegiance, string shortname, DateTime updated)
