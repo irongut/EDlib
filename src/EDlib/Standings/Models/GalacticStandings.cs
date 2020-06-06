@@ -14,10 +14,10 @@ namespace EDlib.Standings
 
         public List<PowerStanding> Standings { get; }
 
-        public GalacticStandings(int cycle, DateTime updated)
+        public GalacticStandings(int cycle, DateTime lastUpdated)
         {
             Cycle = cycle;
-            LastUpdated = updated;
+            LastUpdated = lastUpdated;
             Standings = new List<PowerStanding>();
         }
 
