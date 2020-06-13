@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EDlib.Standings
+namespace EDlib.Powerplay
 {
     public enum StandingChange
     {

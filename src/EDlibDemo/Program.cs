@@ -1,4 +1,4 @@
-﻿using EDlib.Standings;
+﻿using EDlib.Powerplay;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
