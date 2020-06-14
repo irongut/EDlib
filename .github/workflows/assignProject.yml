@@ -1,0 +1,23 @@
+name: Assign to Project
+
+on:
+  issues:
+    types: [opened, labeled]
+  pull_request:
+    types: [opened, labeled]
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  assign_one_project:
+    runs-on: ubuntu-latest
+    name: Assign to One Project
+    steps:
+    - name: Assign issues + PRs with `bug` label
+      uses: srggrs/assign-one-project-github-action@1.2.0
+      if: |
+        contains(github.event.issue.labels.*.name, 'bug') ||
+        contains(github.event.pull_request.labels.*.name, 'bug')
+      with:
+        project: 'https://github.com/irongut/EDlib/projects/1'
+        column_name: 'Needs triage'
