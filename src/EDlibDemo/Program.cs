@@ -1,4 +1,4 @@
-﻿using EDlib.Standings;
+﻿using EDlib.Powerplay;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
@@ -20,17 +20,26 @@ namespace EDlibDemo
                 GalacticStandings galacticStandings = JsonConvert.DeserializeObject<GalacticStandings>(json);
 
                 Console.WriteLine(galacticStandings.ToString());
+                Console.WriteLine("");
+
+                Random rand = new Random();
+                string shortName = galacticStandings.Standings[rand.Next(10)].ShortName;
+                PowerDetailsService powerService = PowerDetailsService.Instance("EDlib Demo", null, null);
+                PowerDetails powerDetails = powerService.GetPowerDetails(shortName);
+
+                Console.WriteLine(powerDetails.ToString());
+                Console.WriteLine("");
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("ERROR: {0}", ex.Message));
+                Console.WriteLine($"ERROR: {ex.Message}");
             }
         }
 
         private static void SetupClient()
         {
             client = new HttpClient();
-            client.DefaultRequestHeaders.Add("X-Requested-With", "EDlib");
+            client.DefaultRequestHeaders.Add("X-Requested-With", "EDlib Demo");
             client.Timeout = TimeSpan.FromSeconds(40);
         }
 
@@ -40,7 +49,7 @@ namespace EDlibDemo
             HttpResponseMessage response = await client.GetAsync(uri).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
             {
-                throw new Exception(String.Format("{0} - {1}", response.StatusCode, response.ReasonPhrase));
+                throw new Exception($"{response.StatusCode} - {response.ReasonPhrase}");
             }
             else
             {
