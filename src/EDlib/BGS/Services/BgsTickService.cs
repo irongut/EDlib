@@ -65,5 +65,25 @@ namespace EDlib.BGS
                 return (new BgsTick(), lastUpdated);
             }
         }
+
+        public async Task<(List<BgsTick> ticks, DateTime updated)> GetData(int days, bool ignoreCache = false)
+        {
+            TimeSpan expiry = TimeSpan.FromHours(1);
+            if (bgsTicks == null || bgsTicks.Count < days || (lastUpdated + expiry < DateTime.Now))
+            {
+                string json;
+                string queryURL = String.Format(TickURL,
+                                         DateTime.UtcNow.Date.AddDays(0 - days).ToString("yyyy-MM-dd"),
+                                         DateTime.UtcNow.Date.ToString("yyyy-MM-dd"));
+
+                // download the json
+                DownloadService downloadService = DownloadService.Instance(agent, cache, connectivity);
+                (json, lastUpdated) = await downloadService.GetData(queryURL, dataKey, lastUpdatedKey, expiry, ignoreCache).ConfigureAwait(false);
+
+                // parse the data
+                bgsTicks = JsonConvert.DeserializeObject<List<BgsTick>>(json);
+            }
+            return (bgsTicks, lastUpdated);
+        }
     }
 }
