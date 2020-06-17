@@ -33,3 +33,30 @@ steps:
     command: test
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
+
+# copy to staging folder
+- task: CopyFiles@2
+  inputs:
+    Contents: '**\bin\**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+    OverWrite: true
+    flattenFolders: true
+    preserveTimestamp: true
+
+# package with 7z
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+    includeRootFolder: false
+    archiveType: '7z'
+    sevenZipCompression: 'normal'
+    archiveFile: '$(Build.ArtifactStagingDirectory)\$(Build.BuildId).7z'
+    replaceExistingArchive: true
+
+# publish build artifacts
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\$(Build.BuildId).7z'
+    ArtifactName: 'CI-Build'
+    publishLocation: 'Container'
