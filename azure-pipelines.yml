@@ -34,10 +34,10 @@ steps:
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
-# copy to staging folder
+# copy demo to staging folder
 - task: CopyFiles@2
   inputs:
-    Contents: '**\bin\**'
+    Contents: '**\EDlibDemo\bin\**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
     OverWrite: true
@@ -51,12 +51,12 @@ steps:
     includeRootFolder: false
     archiveType: '7z'
     sevenZipCompression: 'normal'
-    archiveFile: '$(Build.ArtifactStagingDirectory)\$(Build.BuildId).7z'
+    archiveFile: '$(Build.ArtifactStagingDirectory)\EDlib-$(Build.BuildNumber).7z'
     replaceExistingArchive: true
 
-# publish build artifacts
+# publish build artifact
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)\$(Build.BuildId).7z'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\EDlib-$(Build.BuildNumber).7z'
     ArtifactName: 'CI-Build'
     publishLocation: 'Container'
