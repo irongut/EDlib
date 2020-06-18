@@ -12,15 +12,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="GalNet\Resources\NewsBoW.json" />
+    <None Remove="GalNet\Resources\NewsFalseBoW.json" />
     <None Remove="Powerplay\Resources\PowerDetails.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="GalNet\Resources\NewsBoW.json" />
+    <EmbeddedResource Include="GalNet\Resources\NewsFalseBoW.json" />
     <EmbeddedResource Include="Powerplay\Resources\PowerDetails.json" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="GalNet\Models\" />
+    <Folder Include="GalNet\Services\" />
   </ItemGroup>
 
 </Project>
