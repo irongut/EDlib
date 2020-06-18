@@ -26,3 +26,6 @@ Network:
 
 Powerplay:
   - src/EDlib/Powerplay/**/*
+
+Tests:
+  - src/UnitTests/**/*
