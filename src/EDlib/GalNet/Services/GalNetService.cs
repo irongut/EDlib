@@ -50,7 +50,7 @@ namespace EDlib.GalNet
         /// <param name="expiryHours">The number of hours to cache the data.</param>
         /// <param name="cancelToken">A cancellation token.</param>
         /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
-        /// <returns>&lt;Task&gt;(List&lt;NewsArticle&gt;, DateTime)</returns>
+        /// <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
         public async Task<(List<NewsArticle> news, DateTime updated)> GetData(int expiryHours, CancellationTokenSource cancelToken, bool ignoreCache = false)
         {
             (List<NewsArticle> _, DateTime _) = await GetData(20, expiryHours, cancelToken, ignoreCache).ConfigureAwait(false);
@@ -62,7 +62,7 @@ namespace EDlib.GalNet
         /// <param name="expiryHours">The number of hours to cache the data.</param>
         /// <param name="cancelToken">A cancellation token.</param>
         /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
-        /// <returns>&lt;Task&gt;(List&lt;NewsArticle&gt;, DateTime)</returns>
+        /// <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
         public async Task<(List<NewsArticle> news, DateTime updated)> GetData(int articleCount, int expiryHours, CancellationTokenSource cancelToken, bool ignoreCache = false)
         {
             TimeSpan expiry = TimeSpan.FromHours(expiryHours);
