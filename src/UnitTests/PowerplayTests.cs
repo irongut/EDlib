@@ -109,7 +109,7 @@ namespace UnitTests
             GalacticStandings standings = await service.GetData(new CancellationTokenSource()).ConfigureAwait(false);
             Assert.IsTrue(standings.Cycle > 250);
             Assert.IsTrue(standings.LastUpdated > DateTime.MinValue);
-            Assert.IsTrue(standings.Standings.Count > 0);
+            Assert.IsTrue(standings.Standings.Count == 11);
             Assert.IsTrue(standings.ToString().Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
             Assert.IsTrue(standings.ToJson().Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
             Assert.IsTrue(standings.ToCSV().Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
