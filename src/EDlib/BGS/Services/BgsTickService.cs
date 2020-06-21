@@ -64,7 +64,7 @@ namespace EDlib.BGS
         /// <summary>Gets multiple recent BGS ticks.</summary>
         /// <param name="days">The required number of days worth of ticks.</param>
         /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
-        /// <returns>BgsTick</returns>
+        /// <returns>&lt;Task&gt;(List&lt;BgsTick&gt;, DateTime)></returns>
         public async Task<(List<BgsTick> ticks, DateTime updated)> GetData(int days, bool ignoreCache = false)
         {
             TimeSpan expiry = TimeSpan.FromHours(1);
