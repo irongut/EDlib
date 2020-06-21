@@ -32,17 +32,17 @@ namespace EDlib.Platform
 
         /// <summary>Checks to see if an item exists in the cache.</summary>
         /// <param name="key">Key to identify the cached item.</param>
-        /// <returns>True if the item exists, else false.</returns>
+        /// <returns><c>true</c> if the item exists, else <c>false</c>.</returns>
         bool Exists(string key);
 
         /// <summary>Gets the cached item for the key.</summary>
         /// <param name="key">Key to identify the cached item.</param>
-        /// <returns>The cached data string if it exists, else null.</returns>
+        /// <returns>The cached data string if it exists, else <c>null</c>.</returns>
         string Get(string key);
 
         /// <summary>Gets the expiration date for a cached item.</summary>
         /// <param name="key">Key to identify the cached item.</param>
-        /// <returns>The date if the cached item exists, else null.</returns>
+        /// <returns>The date if the cached item exists, else <c>null</c>.</returns>
         DateTime? GetExpiration(string key);
 
         /// <summary>Gets cached items with specified state.</summary>
@@ -52,7 +52,7 @@ namespace EDlib.Platform
 
         /// <summary>Checks if a cached item is expired.</summary>
         /// <param name="key">Key to identify the cached item.</param>
-        /// <returns>True if expired, else false.</returns>
+        /// <returns><c>true</c> if expired, else <c>false</c>.</returns>
         bool IsExpired(string key);
     }
 }
