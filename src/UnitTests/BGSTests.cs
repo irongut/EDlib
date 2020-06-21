@@ -38,10 +38,10 @@ namespace UnitTests
         public async Task MultipleTickTest()
         {
             BgsTickService bgsService = BgsTickService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
-            (List<BgsTick> ticks, DateTime lastUpdated) = await bgsService.GetData(7).ConfigureAwait(false);
+            (List<BgsTick> ticks, DateTime lastUpdated) = await bgsService.GetData(5).ConfigureAwait(false);
             Assert.IsNotNull(ticks);
             Assert.IsTrue(lastUpdated > DateTime.Now.AddMinutes(-1));
-            Assert.IsTrue(ticks.Count > 1);
+            Assert.IsTrue(ticks.Count == 5);
         }
     }
 }
