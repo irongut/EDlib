@@ -40,21 +40,7 @@ namespace EDlib.BGS
 
         public async Task<(BgsTick tick, DateTime updated)> GetData(bool ignoreCache = false)
         {
-            TimeSpan expiry = TimeSpan.FromHours(1);
-            if (bgsTicks == null || bgsTicks.Count < 7 || (lastUpdated + expiry < DateTime.Now))
-            {
-                string json;
-                string queryURL = String.Format(TickURL,
-                                         DateTime.UtcNow.Date.AddDays(-7).ToString("yyyy-MM-dd"),
-                                         DateTime.UtcNow.Date.ToString("yyyy-MM-dd"));
-
-                // download the json
-                DownloadService downloadService = DownloadService.Instance(agent, cache, connectivity);
-                (json, lastUpdated) = await downloadService.GetData(queryURL, dataKey, lastUpdatedKey, expiry, ignoreCache).ConfigureAwait(false);
-
-                // parse the data
-                bgsTicks = JsonConvert.DeserializeObject<List<BgsTick>>(json);
-            }
+            (List<BgsTick> _, DateTime _) = await GetData(7, ignoreCache).ConfigureAwait(false);
 
             if (bgsTicks?.Any() == true)
             {
@@ -73,8 +59,8 @@ namespace EDlib.BGS
             {
                 string json;
                 string queryURL = String.Format(TickURL,
-                                         DateTime.UtcNow.Date.AddDays(0 - days).ToString("yyyy-MM-dd"),
-                                         DateTime.UtcNow.Date.ToString("yyyy-MM-dd"));
+                                                DateTime.UtcNow.Date.AddDays(0 - days).ToString("yyyy-MM-dd"),
+                                                DateTime.UtcNow.Date.ToString("yyyy-MM-dd"));
 
                 // download the json
                 DownloadService downloadService = DownloadService.Instance(agent, cache, connectivity);
@@ -83,7 +69,7 @@ namespace EDlib.BGS
                 // parse the data
                 bgsTicks = JsonConvert.DeserializeObject<List<BgsTick>>(json);
             }
-            return (bgsTicks, lastUpdated);
+            return (bgsTicks.Take(days).ToList(), lastUpdated);
         }
     }
 }
