@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace EDlib.GalNet
 {
+    /// <summary>Gets the GalNet News.</summary>
     public sealed class GalNetService
     {
         private static readonly GalNetService instance = new GalNetService();
@@ -32,6 +33,11 @@ namespace EDlib.GalNet
             galnetNews = new List<NewsArticle>();
         }
 
+        /// <summary>Instances the GalNetService class singleton.</summary>
+        /// <param name="userAgent">The user agent used for downloads.</param>
+        /// <param name="cacheService">The platform specific cache for downloaded data.</param>
+        /// <param name="connectivityService">The platform specific connectivity service.</param>
+        /// <returns>GalNetService</returns>
         public static GalNetService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
         {
             agent = userAgent;
@@ -40,12 +46,23 @@ namespace EDlib.GalNet
             return instance;
         }
 
+        /// <summary>Gets the 20 most recent GalNet News articles.</summary>
+        /// <param name="expiryHours">The number of hours to cache the data.</param>
+        /// <param name="cancelToken">A cancellation token.</param>
+        /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
+        /// <returns>&lt;Task&gt;(List&lt;NewsArticle&gt;, DateTime)</returns>
         public async Task<(List<NewsArticle> news, DateTime updated)> GetData(int expiryHours, CancellationTokenSource cancelToken, bool ignoreCache = false)
         {
             (List<NewsArticle> _, DateTime _) = await GetData(20, expiryHours, cancelToken, ignoreCache).ConfigureAwait(false);
             return (galnetNews.Take(20).ToList(), lastUpdated);
         }
 
+        /// <summary>Gets the most recent GalNet News articles.</summary>
+        /// <param name="articleCount">The number of articles to return.</param>
+        /// <param name="expiryHours">The number of hours to cache the data.</param>
+        /// <param name="cancelToken">A cancellation token.</param>
+        /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
+        /// <returns>&lt;Task&gt;(List&lt;NewsArticle&gt;, DateTime)</returns>
         public async Task<(List<NewsArticle> news, DateTime updated)> GetData(int articleCount, int expiryHours, CancellationTokenSource cancelToken, bool ignoreCache = false)
         {
             TimeSpan expiry = TimeSpan.FromHours(expiryHours);

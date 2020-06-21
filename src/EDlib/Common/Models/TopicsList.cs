@@ -6,16 +6,20 @@ using System.Reflection;
 
 namespace EDlib.Common
 {
+    /// <summary>The list of topics for GalNet News articles and Community Goals.</summary>
     public class TopicsList
     {
         private readonly string BoWFilename;
 
         #region Properties
 
+        /// <summary>The list of topics.</summary>
         public List<Topic> Topics { get; set; }
 
         #endregion
 
+        /// <summary>Initializes a new instance of the <see cref="TopicsList" /> class and loads the topics from a json resource file.</summary>
+        /// <param name="filename">The filename of the json resource file.</param>
         public TopicsList(string filename)
         {
             BoWFilename = filename;

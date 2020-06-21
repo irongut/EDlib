@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace EDlib.GalNet
 {
+    /// <summary>A GalNet News article.</summary>
     public class NewsArticle
     {
         #region Properties
 
         private string _title;
+        /// <summary>The title of the News article.</summary>
         [JsonProperty(PropertyName = "title")]
         public string Title
         {
@@ -27,6 +29,7 @@ namespace EDlib.GalNet
         }
 
         private string _body;
+        /// <summary>The body of the News article.</summary>
         [JsonProperty(PropertyName = "body")]
         public string Body
         {
@@ -41,20 +44,32 @@ namespace EDlib.GalNet
         }
 
         [JsonProperty(PropertyName = "date")]
+        /// <summary>The publish date and time of the News article.</summary>
         public DateTime PublishDateTime { get; internal set; }
 
         [JsonProperty(PropertyName = "nid")]
+        /// <summary>Frontier Development's Id for the News article.</summary>
         public int Id { get; internal set; }
 
+        /// <summary>
+        ///   <para>
+        ///  A key used by Frontier Development's to specify the image displayed with a News article.
+        ///  Note: This is not an image url or filename.
+        ///   </para>
+        /// </summary>
         [JsonProperty(PropertyName = "image")]
         public string FDImageName { get; internal set; }
 
         [JsonProperty(PropertyName = "slug")]
+        /// <summary>A normalised version of the article title used as a unique identifier.</summary>
         public string Slug { get; internal set; }
 
+        /// <summary>The topic of the News article, generated using a Bag of Words technique.</summary>
         public string Topic { get; private set; }
+        /// <summary>Content tags for the News article, generated using a Bag of Words technique.</summary>
         public List<string> Tags { get; private set; }
 
+        /// <summary>The publish date and time of the News article as a string.</summary>
         public string PublishDate
         {
             get
@@ -66,6 +81,7 @@ namespace EDlib.GalNet
 
         #endregion
 
+        /// <summary>Determines the Topic and content Tags for an article by analysing it using a Bag of Words technique.</summary>
         public void ClassifyArticle()
         {
             Tags = new List<string>();
@@ -129,6 +145,7 @@ namespace EDlib.GalNet
             return sentences;
         }
 
+        /// <summary>Returns the Title and Body of an article as a string.</summary>
         public override string ToString()
         {
             return String.Format("{0}: {1}", Title, Body);
