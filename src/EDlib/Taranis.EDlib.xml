@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Taranis.EDlib</name>
+    </assembly>
+    <members>
+        <member name="T:EDlib.BGS.BgsTick">
+            <summary>Data for the BGS Tick.</summary>
+        </member>
+        <member name="P:EDlib.BGS.BgsTick.Time">
+            <summary>Returns the date and time of the BGS tick.</summary>
+        </member>
+        <member name="P:EDlib.BGS.BgsTick.TimeString">
+            <summary>Returns the date and time of the BGS tick as a string.</summary>
+        </member>
+        <member name="M:EDlib.BGS.BgsTick.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.BGS.BgsTick" /> class, with the value Unknown for the time string.</summary>
+        </member>
+        <member name="M:EDlib.BGS.BgsTick.#ctor(System.DateTime)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.BGS.BgsTick" /> class with the specified date and time.</summary>
+            <param name="time">Date and time of the BGS Tick.</param>
+        </member>
+        <member name="T:EDlib.BGS.BgsTickService">
+            <summary>Gets the date and time of BGS Ticks.</summary>
+        </member>
+        <member name="M:EDlib.BGS.BgsTickService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+            <summary>Instances the BgsTickService class singleton.</summary>
+            <param name="userAgent">The user agent used for downloads.</param>
+            <param name="cacheService">The platform specific cache for downloaded data.</param>
+            <param name="connectivityService">The platform specific connectivity service.</param>
+            <returns>BgsTickService</returns>
+        </member>
+        <member name="M:EDlib.BGS.BgsTickService.GetData(System.Boolean)">
+            <summary>Gets the latest BGS tick.</summary>
+            <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
+            <returns>BgsTick</returns>
+        </member>
+        <member name="M:EDlib.BGS.BgsTickService.GetData(System.Int32,System.Boolean)">
+            <summary>Gets multiple recent BGS ticks.</summary>
+            <param name="days">The required number of days worth of ticks.</param>
+            <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;(List&lt;BgsTick&gt;, DateTime)&gt;</returns>
+        </member>
+        <member name="T:EDlib.Common.Topic">
+            <summary>Topic for GalNet News articles and Community Goals.</summary>
+        </member>
+        <member name="P:EDlib.Common.Topic.Name">
+            <summary>The topic name.</summary>
+        </member>
+        <member name="P:EDlib.Common.Topic.Terms">
+            <summary>The words used to determine if the topic is relevant to the content.</summary>
+        </member>
+        <member name="P:EDlib.Common.Topic.Count">
+            <summary>The number of times the terms were found in the content.</summary>
+        </member>
+        <member name="M:EDlib.Common.Topic.#ctor(System.String,System.Collections.Generic.List{System.String})">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.Common.Topic" /> class.</summary>
+            <param name="name">The topic name.</param>
+            <param name="terms">The words used to determine if the topic is relevant to the content.</param>
+        </member>
+        <member name="T:EDlib.Common.TopicsList">
+            <summary>The list of topics for GalNet News articles and Community Goals.</summary>
+        </member>
+        <member name="P:EDlib.Common.TopicsList.Topics">
+            <summary>The list of topics.</summary>
+        </member>
+        <member name="M:EDlib.Common.TopicsList.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.Common.TopicsList" /> class and loads the topics from a json resource file.</summary>
+            <param name="filename">The filename of the json resource file.</param>
+        </member>
+        <member name="T:EDlib.GalNet.NewsArticle">
+            <summary>A GalNet News article.</summary>
+        </member>
+        <member name="P:EDlib.GalNet.NewsArticle.Title">
+            <summary>The title of the News article.</summary>
+        </member>
+        <member name="P:EDlib.GalNet.NewsArticle.Body">
+            <summary>The body of the News article.</summary>
+        </member>
+        <member name="P:EDlib.GalNet.NewsArticle.PublishDateTime">
+            <summary>The publish date and time of the News article.</summary>
+        </member>
+        <member name="P:EDlib.GalNet.NewsArticle.Id">
+            <summary>Frontier Development's Id for the News article.</summary>
+        </member>
+        <member name="P:EDlib.GalNet.NewsArticle.FDImageName">
+            <summary>
+              <para>
+             A key used by Frontier Development's to specify the image displayed with a News article.
+             Note: This is not an image url or filename.
+              </para>
+            </summary>
+        </member>
+        <member name="P:EDlib.GalNet.NewsArticle.Slug">
+            <summary>A normalised version of the article title used as a unique identifier.</summary>
+        </member>
+        <member name="P:EDlib.GalNet.NewsArticle.Topic">
+            <summary>The topic of the News article, generated using a Bag of Words technique.</summary>
+        </member>
+        <member name="P:EDlib.GalNet.NewsArticle.Tags">
+            <summary>Content tags for the News article, generated using a Bag of Words technique.</summary>
+        </member>
+        <member name="P:EDlib.GalNet.NewsArticle.PublishDate">
+            <summary>The publish date and time of the News article as a string.</summary>
+        </member>
+        <member name="M:EDlib.GalNet.NewsArticle.ClassifyArticle">
+            <summary>Determines the Topic and content Tags for an article by analysing it using a Bag of Words technique.</summary>
+        </member>
+        <member name="M:EDlib.GalNet.NewsArticle.ToString">
+            <summary>Returns the Title and Body of an article as a string.</summary>
+        </member>
+        <member name="T:EDlib.GalNet.NewsArticleConverter">
+            <summary>For internal use only. JsonConverter for GalNet News articles.</summary>
+        </member>
+        <member name="T:EDlib.GalNet.GalNetService">
+            <summary>Gets the GalNet News.</summary>
+        </member>
+        <member name="M:EDlib.GalNet.GalNetService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+            <summary>Instances the GalNetService class singleton.</summary>
+            <param name="userAgent">The user agent used for downloads.</param>
+            <param name="cacheService">The platform specific cache for downloaded data.</param>
+            <param name="connectivityService">The platform specific connectivity service.</param>
+            <returns>GalNetService</returns>
+        </member>
+        <member name="M:EDlib.GalNet.GalNetService.GetData(System.Int32,System.Threading.CancellationTokenSource,System.Boolean)">
+            <summary>Gets the 20 most recent GalNet News articles.</summary>
+            <param name="expiryHours">The number of hours to cache the data.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
+        </member>
+        <member name="M:EDlib.GalNet.GalNetService.GetData(System.Int32,System.Int32,System.Threading.CancellationTokenSource,System.Boolean)">
+            <summary>Gets the most recent GalNet News articles.</summary>
+            <param name="articleCount">The number of articles to return.</param>
+            <param name="expiryHours">The number of hours to cache the data.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
+        </member>
+        <member name="T:EDlib.Platform.CacheState">
+            <summary>Current state of the item in the cache.</summary>
+        </member>
+        <member name="F:EDlib.Platform.CacheState.None">
+            <summary>An unknown state for the cache item.</summary>
+        </member>
+        <member name="F:EDlib.Platform.CacheState.Expired">
+            <summary>Expired cache item.</summary>
+        </member>
+        <member name="F:EDlib.Platform.CacheState.Active">
+            <summary>Active non-expired cache item.</summary>
+        </member>
+        <member name="T:EDlib.Platform.ICacheService">
+            <summary>Interface for a platform specific data caching service.</summary>
+        </member>
+        <member name="M:EDlib.Platform.ICacheService.Add(System.String,System.String,System.TimeSpan)">
+            <summary>Add an item to the cache.</summary>
+            <param name="key">Key to identify the cached item.</param>
+            <param name="data">String data to store in the cache.</param>
+            <param name="expireIn">How long in the future the item should expire.</param>
+        </member>
+        <member name="M:EDlib.Platform.ICacheService.EmptyAll">
+            <summary>Empty all items from the cache.</summary>
+        </member>
+        <member name="M:EDlib.Platform.ICacheService.EmptyExpired">
+            <summary>Empty only expired items from the cache.</summary>
+        </member>
+        <member name="M:EDlib.Platform.ICacheService.Exists(System.String)">
+            <summary>Checks to see if an item exists in the cache.</summary>
+            <param name="key">Key to identify the cached item.</param>
+            <returns><c>true</c> if the item exists, else <c>false</c>.</returns>
+        </member>
+        <member name="M:EDlib.Platform.ICacheService.Get(System.String)">
+            <summary>Gets the cached item for the key.</summary>
+            <param name="key">Key to identify the cached item.</param>
+            <returns>The cached data string if it exists, else <c>null</c>.</returns>
+        </member>
+        <member name="M:EDlib.Platform.ICacheService.GetExpiration(System.String)">
+            <summary>Gets the expiration date for a cached item.</summary>
+            <param name="key">Key to identify the cached item.</param>
+            <returns>The date if the cached item exists, else <c>null</c>.</returns>
+        </member>
+        <member name="M:EDlib.Platform.ICacheService.GetKeys(EDlib.Platform.CacheState)">
+            <summary>Gets cached items with specified state.</summary>
+            <param name="state">State to get: Multiple with flags: CacheState.Active | CacheState.Expired</param>
+            <returns>The keys</returns>
+        </member>
+        <member name="M:EDlib.Platform.ICacheService.IsExpired(System.String)">
+            <summary>Checks if a cached item is expired.</summary>
+            <param name="key">Key to identify the cached item.</param>
+            <returns><c>true</c> if expired, else <c>false</c>.</returns>
+        </member>
+        <member name="T:EDlib.Platform.IConnectivityService">
+            <summary>Interface for a platform specific data connectivity service.</summary>
+        </member>
+        <member name="M:EDlib.Platform.IConnectivityService.IsConnected">
+            <summary>Determines whether a network is available.</summary>
+            <returns><c>true</c> if a network connection is detected, else <c>false</c>.</returns>
+        </member>
+        <member name="M:EDlib.Platform.IConnectivityService.IsMetered">
+            <summary>Determines whether the network connection is metered.</summary>
+            <returns><c>true</c> if the connection is metered, else <c>false</c>.</returns>
+        </member>
+    </members>
+</doc>

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace EDlib.Platform
 {
-    [Flags]
     /// <summary>Current state of the item in the cache.</summary>
+    [Flags]
     public enum CacheState
     {
         /// <summary>An unknown state for the cache item.</summary>

@@ -43,12 +43,12 @@ namespace EDlib.GalNet
             }
         }
 
-        [JsonProperty(PropertyName = "date")]
         /// <summary>The publish date and time of the News article.</summary>
+        [JsonProperty(PropertyName = "date")]
         public DateTime PublishDateTime { get; internal set; }
 
-        [JsonProperty(PropertyName = "nid")]
         /// <summary>Frontier Development's Id for the News article.</summary>
+        [JsonProperty(PropertyName = "nid")]
         public int Id { get; internal set; }
 
         /// <summary>
@@ -60,8 +60,8 @@ namespace EDlib.GalNet
         [JsonProperty(PropertyName = "image")]
         public string FDImageName { get; internal set; }
 
-        [JsonProperty(PropertyName = "slug")]
         /// <summary>A normalised version of the article title used as a unique identifier.</summary>
+        [JsonProperty(PropertyName = "slug")]
         public string Slug { get; internal set; }
 
         /// <summary>The topic of the News article, generated using a Bag of Words technique.</summary>
