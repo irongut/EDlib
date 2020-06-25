@@ -15,6 +15,7 @@ namespace EDlib.GalNet
 
         private string _title;
         /// <summary>The title of the News article.</summary>
+        /// <value>The article title.</value>
         [JsonProperty(PropertyName = "title")]
         public string Title
         {
@@ -29,7 +30,8 @@ namespace EDlib.GalNet
         }
 
         private string _body;
-        /// <summary>The body of the News article.</summary>
+        /// <summary>The content of the News article.</summary>
+        /// <value>The article content.</value>
         [JsonProperty(PropertyName = "body")]
         public string Body
         {
@@ -44,10 +46,12 @@ namespace EDlib.GalNet
         }
 
         /// <summary>The publish date and time of the News article.</summary>
+        /// <value>When the article was published.</value>
         [JsonProperty(PropertyName = "date")]
         public DateTime PublishDateTime { get; internal set; }
 
         /// <summary>Frontier Development's Id for the News article.</summary>
+        /// <value>Article ID.</value>
         [JsonProperty(PropertyName = "nid")]
         public int Id { get; internal set; }
 
@@ -57,19 +61,25 @@ namespace EDlib.GalNet
         ///  Note: This is not an image url or filename.
         ///   </para>
         /// </summary>
+        /// <value>Article image name.</value>
         [JsonProperty(PropertyName = "image")]
         public string FDImageName { get; internal set; }
 
         /// <summary>A normalised version of the article title used as a unique identifier.</summary>
+        /// <value>The article slug.</value>
         [JsonProperty(PropertyName = "slug")]
         public string Slug { get; internal set; }
 
         /// <summary>The topic of the News article, generated using a Bag of Words technique.</summary>
+        /// <value>The article topic.</value>
         public string Topic { get; private set; }
+
         /// <summary>Content tags for the News article, generated using a Bag of Words technique.</summary>
+        /// <value>Content tags for the article.</value>
         public List<string> Tags { get; private set; }
 
         /// <summary>The publish date and time of the News article as a string.</summary>
+        /// <value>When the article was published.</value>
         public string PublishDate
         {
             get

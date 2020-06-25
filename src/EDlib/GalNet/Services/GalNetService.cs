@@ -33,7 +33,7 @@ namespace EDlib.GalNet
             galnetNews = new List<NewsArticle>();
         }
 
-        /// <summary>Instances the GalNetService class singleton.</summary>
+        /// <summary>Instantiates the GalNetService class.</summary>
         /// <param name="userAgent">The user agent used for downloads.</param>
         /// <param name="cacheService">The platform specific cache for downloaded data.</param>
         /// <param name="connectivityService">The platform specific connectivity service.</param>

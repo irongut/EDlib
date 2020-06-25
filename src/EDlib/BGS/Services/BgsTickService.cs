@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EDlib.BGS
 {
-    /// <summary>Gets the date and time of BGS Ticks.</summary>
+    /// <summary>Gets the date and time that the Background Simulation (BGS) updates, known as the BGS tick.</summary>
     public sealed class BgsTickService
     {
         private static readonly BgsTickService instance = new BgsTickService();
@@ -31,7 +31,7 @@ namespace EDlib.BGS
             bgsTicks = new List<BgsTick>();
         }
 
-        /// <summary>Instances the BgsTickService class singleton.</summary>
+        /// <summary>Instantiates the BgsTickService class.</summary>
         /// <param name="userAgent">The user agent used for downloads.</param>
         /// <param name="cacheService">The platform specific cache for downloaded data.</param>
         /// <param name="connectivityService">The platform specific connectivity service.</param>
@@ -45,7 +45,7 @@ namespace EDlib.BGS
         }
 
         /// <summary>Gets the latest BGS tick.</summary>
-        /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
+        /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>BgsTick</returns>
         public async Task<(BgsTick tick, DateTime updated)> GetData(bool ignoreCache = false)
         {
@@ -63,7 +63,7 @@ namespace EDlib.BGS
 
         /// <summary>Gets multiple recent BGS ticks.</summary>
         /// <param name="days">The required number of days worth of ticks.</param>
-        /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
+        /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;(List&lt;BgsTick&gt;, DateTime)&gt;</returns>
         public async Task<(List<BgsTick> ticks, DateTime updated)> GetData(int days, bool ignoreCache = false)
         {

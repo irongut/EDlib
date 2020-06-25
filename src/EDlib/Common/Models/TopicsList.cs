@@ -14,6 +14,7 @@ namespace EDlib.Common
         #region Properties
 
         /// <summary>The list of topics.</summary>
+        /// <value>The list of topics.</value>
         public List<Topic> Topics { get; set; }
 
         #endregion

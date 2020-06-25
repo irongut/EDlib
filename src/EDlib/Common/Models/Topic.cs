@@ -8,10 +8,13 @@ namespace EDlib.Common
         #region Properties
 
         /// <summary>The topic name.</summary>
+        /// <value>The topic name.</value>
         public string Name { get; }
         /// <summary>The words used to determine if the topic is relevant to the content.</summary>
+        /// <value>The list of words.</value>
         public List<string> Terms { get; }
         /// <summary>The number of times the terms were found in the content.</summary>
+        /// <value>The number of times the terms were found.</value>
         public int Count { get; set; }
 
         #endregion
