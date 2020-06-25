@@ -40,7 +40,7 @@ namespace EDlib.Powerplay
                     case StandingChange.down:
                         return "Down";
                     case StandingChange.none:
-                        return "No Change";
+                        return "None";
                     default:
                         return String.Empty;
                 }
@@ -166,13 +166,15 @@ namespace EDlib.Powerplay
 
             Position = position;
             Turmoil = standing.IndexOf("Turmoil", StringComparison.OrdinalIgnoreCase) >= 0;
-            Cycle = string.Format("Cycle {0}", cycle);
+            Cycle = $"Cycle {cycle}";
             LastUpdated = updated;
         }
 
         public override string ToString()
         {
-            return String.Format("{0:00} {1} - {2} ({3})", Position, ChangeString, Name, Allegiance);
+            return Turmoil
+                ? $"{Position:00} {ChangeString} - {Name} ({Allegiance}) TURMOIL"
+                : $"{Position:00} {ChangeString} - {Name} ({Allegiance})";
         }
     }
 }
