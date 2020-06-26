@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace EDlib.Powerplay
 {
+    /// <summary>Gets a Power's statistics, ethos, benefits and comms data.</summary>
     public sealed class PowerDetailsService
     {
         private static readonly PowerDetailsService instance = new PowerDetailsService();
@@ -33,6 +34,11 @@ namespace EDlib.Powerplay
             commsList = new List<PowerComms>();
         }
 
+        /// <summary>Instantiates the PowerDetailsService class.</summary>
+        /// <param name="userAgent">The user agent used for downloads.</param>
+        /// <param name="cacheService">The platform specific cache for downloaded data.</param>
+        /// <param name="connectivityService">The platform specific connectivity service.</param>
+        /// <returns>PowerDetailsService</returns>
         public static PowerDetailsService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
         {
             agent = userAgent;
@@ -41,6 +47,9 @@ namespace EDlib.Powerplay
             return instance;
         }
 
+        /// <summary>Gets a Power's statistics, ethos and benefits data from an embedded json resource.</summary>
+        /// <param name="shortName">The required Power's short name.</param>
+        /// <returns>PowerDetals</returns>
         public PowerDetails GetPowerDetails(string shortName)
         {
             if (powerList?.Any() == false)
@@ -50,6 +59,9 @@ namespace EDlib.Powerplay
             return powerList.Find(x => x.ShortName.Equals(shortName));
         }
 
+        /// <summary>Gets the comms data for a Power from an online resource - Subreddit and Discord / Slack servers.</summary>
+        /// <param name="shortName">The required Power's short name.</param>
+        /// <returns>Task&lt;PowerComms&gt;</returns>
         public async Task<PowerComms> GetPowerCommsAsync(string shortName)
         {
             if (commsList?.Any() == false)
