@@ -6,14 +6,24 @@ using System.Text;
 
 namespace EDlib.Powerplay
 {
+    /// <summary>Represents the Powerplay Galactic Standings.</summary>
     public class GalacticStandings
     {
+        /// <summary>Gets the Powerplay cycle number.</summary>
+        /// <value>The Powerplay cycle.</value>
         public int Cycle { get; }
 
+        /// <summary>Gets the date and time the Galactic Standings were last updated.</summary>
+        /// <value>When the Standings were last updated.</value>
         public DateTime LastUpdated { get; }
 
+        /// <summary>Gets the Galactic Standings.</summary>
+        /// <value>A list of PowerStanding objects.</value>
         public List<PowerStanding> Standings { get; }
 
+        /// <summary>Initializes a new instance of the <see cref="GalacticStandings" /> class.</summary>
+        /// <param name="cycle">The Powerplay cycle.</param>
+        /// <param name="lastUpdated">When the Standings were last updated.</param>
         public GalacticStandings(int cycle, DateTime lastUpdated)
         {
             Cycle = cycle;
@@ -21,6 +31,8 @@ namespace EDlib.Powerplay
             Standings = new List<PowerStanding>();
         }
 
+        /// <summary>Returns the Powerplay Galactic Standings as a multi-line string including the cycle and when the Standings were last updated.</summary>
+        /// <returns>A <see cref="System.String" /> that represents the Galactic Standings.</returns>
         public override string ToString()
         {
             StringBuilder text = new StringBuilder();
@@ -33,6 +45,8 @@ namespace EDlib.Powerplay
             return text.ToString();
         }
 
+        /// <summary>Returns the Powerplay Galactic Standings as a comma separated string including the cycle and when the Standings were last updated.</summary>
+        /// <returns>A <see cref="System.String" /> in CSV format that represents the Galactic Standings.</returns>
         public string ToCSV()
         {
             StringBuilder csv = new StringBuilder();
@@ -53,6 +67,8 @@ namespace EDlib.Powerplay
             return csv.ToString();
         }
 
+        /// <summary>Returns the Powerplay Galactic Standings as a JSON string including the cycle and when the Standings were last updated.</summary>
+        /// <returns>A <see cref="System.String" /> in JSON format that represents the Galactic Standings.</returns>
         public string ToJson()
         {
             return JsonConvert.SerializeObject(this);
