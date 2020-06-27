@@ -50,6 +50,14 @@
         ]
       }
     ],
+    "globalMetadata": {
+      "_appTitle": "EDlib Documentation",
+      "_appLogoPath": "images/edlib-logo-50.png",
+      "_appFaviconPath": "images/favicon.ico",
+      "_enableSearch": true,
+      "_enableNewTab": true,
+      "_disableContribution": true
+    },
     "dest": "../docs",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
