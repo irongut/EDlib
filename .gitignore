@@ -364,3 +364,6 @@ MigrationBackup/
 docfx_project/api/.manifest
 docfx_project/api/*.yml
 docs
+
+# VS Code
+.vscode
