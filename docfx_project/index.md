@@ -1,9 +1,19 @@
-# ![EDlib](images/edlib-logo-50.png) EDlib
+# ![EDlib](/images/edlib-logo-50.png) EDlib
 A .Net Standard library for creating companion tools for the game Elite Dangerous by Frontier Developments.
 
-[![GitHub](https://img.shields.io/badge/GitHub-irongut/EDlib-informational?style=flat&logo=github)](https://github.com/irongut/EDlib)
-&nbsp;
 ![.Net Standard](https://img.shields.io/badge/.Net-Standard%202.0-informational?style=flat&logo=visual-studio)
+&nbsp;
+[![GitHub](https://img.shields.io/badge/GitHub-irongut/EDlib-informational?style=flat&logo=github)](https://github.com/irongut/EDlib)
+
+## Introduction
+
+EDlib provides classes that enable your .Net apps to easily consume information about the Elite Dangerous universe from several APIs. Information available includes:
+
+* The time that the Background Simulation (BGS) updates, known as the BGS tick.
+* News articles from GalNet, classified by topic and content.
+* The current Powerplay Galactic Standings.
+* Detailed information about each Power in Powerplay and communications links for their player groups.
+* The current Powerplay cycle and the time until it ends.
 
 ## Installation
 
@@ -30,7 +40,7 @@ If everything looks good, you can commit this change and you'll have an `EDlib` 
 
 ## Please Contribute!
 
-This is an open source project that welcomes contributions, suggestions and bug reports from those who use it. If you have any ideas on how to improve the library, please [create an issue](https://github.com/irongut/EDlib/issues) on GitHub. Please check out the [How to Contribute](/articles/how-to-contribute.html) article.
+This is an open source project that welcomes contributions, suggestions and bug reports from those who use it. If you have any ideas on how to improve the library, please read the [How to Contribute](/articles/how-to-contribute.html) article and [create an issue](https://github.com/irongut/EDlib/issues) on GitHub.
 
 &nbsp;
 
