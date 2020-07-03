@@ -363,3 +363,4 @@ MigrationBackup/
 # DocFX
 docfx_project/api/.manifest
 docfx_project/api/*.yml
+docs
