@@ -19,11 +19,7 @@
       {
         "files": [
           "api/**.yml",
-          "api/**.md"
-        ]
-      },
-      {
-        "files": [
+          "api/**.md",
           "articles/**.md",
           "articles/**/toc.yml",
           "toc.yml",
@@ -40,7 +36,7 @@
     ],
     "globalMetadata": {
       "_appTitle": "EDlib",
-      "_appFooter": "<a href='/'><h3><img src='/images/edlib-logo-50.png' style='vertical-align:middle' /> EDlib</h3></a>",
+      "_appFooter": "<a href='/'><h3><img src='/images/edlib-logo-50.png' alt='EDlib' style='vertical-align:middle' /> EDlib</h3></a>",
       "_appLogoPath": "images/edlib-logo-50.png",
       "_appFaviconPath": "images/favicon.ico",
       "_enableSearch": true,
