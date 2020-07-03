@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace EDlib.Network
 {
+    /// <summary>Internal class used to download and cache data.</summary>
     internal sealed class DownloadService
     {
         private static readonly DownloadService instance = new DownloadService();
@@ -28,6 +29,11 @@ namespace EDlib.Network
             client.Timeout = TimeSpan.FromSeconds(40);
         }
 
+        /// <summary>Instantiates the DownloadService class.</summary>
+        /// <param name="userAgent">The user agent used for downloads.</param>
+        /// <param name="cacheService">The platform specific cache for downloaded data.</param>
+        /// <param name="connectivityService">The platform specific connectivity service.</param>
+        /// <returns>DownloadService</returns>
         public static DownloadService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
         {
             agent = userAgent;
@@ -36,6 +42,16 @@ namespace EDlib.Network
             return instance;
         }
 
+        /// <summary>Gets and caches the data and when it was last updated.
+        /// If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.</summary>
+        /// <param name="url">The URL for downloading the data.</param>
+        /// <param name="dataKey">The key for cached data.</param>
+        /// <param name="lastUpdatedKey">The key for caching when the data was the last updated.</param>
+        /// <param name="expiry">How long to cache the data.</param>
+        /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>
+        /// <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
+        /// <exception cref="NoNetworkNoCacheException">No Internet available and no data cached.</exception>
+        /// <exception cref="APIException">Http errors from the API called.</exception>
         public async Task<(string data, DateTime updated)> GetData(string url, string dataKey, string lastUpdatedKey, TimeSpan expiry, bool ignoreCache = false)
         {
             string data;
@@ -82,6 +98,19 @@ namespace EDlib.Network
             return (data, lastUpdated);
         }
 
+        /// <summary>
+        /// Gets and caches the data and when it was last updated with the option to cancel a download.
+        /// If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.
+        /// </summary>
+        /// <param name="url">The URL for downloading the data.</param>
+        /// <param name="dataKey">The key for cached data.</param>
+        /// <param name="lastUpdatedKey">The key for caching when the data was the last updated.</param>
+        /// <param name="expiry">How long to cache the data.</param>
+        /// <param name="cancelToken">A cancellation token.</param>
+        /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>
+        /// <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
+        /// <exception cref="NoNetworkNoCacheException">No Internet available and no data cached.</exception>
+        /// <exception cref="APIException">Http errors from the API called.</exception>
         public async Task<(string data, DateTime updated)> GetData(string url, string dataKey, string lastUpdatedKey, TimeSpan expiry, CancellationTokenSource cancelToken, bool ignoreCache = false)
         {
             string data;

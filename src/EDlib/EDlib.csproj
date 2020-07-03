@@ -11,6 +11,10 @@
     <Description>EDlib - a .Net library for creating companion tools for the game Elite Dangerous by Frontier Developments.</Description>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\Dev\Csharp\EDlib\src\EDlib\Taranis.EDlib.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="GalNet\Resources\NewsBoW.json" />
     <None Remove="GalNet\Resources\NewsFalseBoW.json" />

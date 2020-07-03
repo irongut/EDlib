@@ -18,6 +18,9 @@ DevOps:
 Demo:
   - src/EDlibDemo/**/*
 
+documentation:
+- docfx_project/**/*
+
 GalNet:
   - src/EDlib/GalNet/**/*
 

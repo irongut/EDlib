@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace EDlib.GalNet
 {
+    /// <summary>For internal use only. JsonConverter for GalNet News articles.</summary>
     internal sealed class NewsArticleConverter : JsonConverter
     {
         private static readonly NewsArticleConverter instance = new NewsArticleConverter();
@@ -12,7 +13,7 @@ namespace EDlib.GalNet
 
         private NewsArticleConverter()
         {
-
+            // no creation tasks
         }
 
         public static NewsArticleConverter Instance()

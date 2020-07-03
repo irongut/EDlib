@@ -2,33 +2,58 @@
 
 namespace EDlib.Powerplay
 {
+    /// <summary>The Power's change in standings since the previous cycle.</summary>
     public enum StandingChange
     {
+        /// <summary>The Power's standing has improved.</summary>
         up,
+        /// <summary>The Power's standing has decayed.</summary>
         down,
+        /// <summary>The Power's standing has not changed.</summary>
         none
     }
 
+    /// <summary>Contains the Galactic Standings data for a Power.</summary>
     public class PowerStanding
     {
+        /// <summary>Gets or sets a unique identifier for the Power.</summary>
+        /// <value>The unique identifier for the Power.</value>
         public int Id { get; set; }
 
+        /// <summary>Gets or sets the Power's name.</summary>
+        /// <value>The Power's name.</value>
         public string Name { get; set; }
 
+        /// <summary>Gets or sets the Power's position in the Galactic Standings.</summary>
+        /// <value>The Power's position in the Galactic Standings.</value>
         public int Position { get; set; }
 
+        /// <summary>Gets or sets the Power's change in the Galactic Standings since the previous cycle.</summary>
+        /// <value>The Power's change in the standings since the previous cycle.</value>
         public StandingChange Change { get; set; }
 
+        /// <summary>Gets or sets a value indicating whether this Power is turmoil.</summary>
+        /// <value><c>true</c> if turmoil; otherwise, <c>false</c>.</value>
         public bool Turmoil { get; set; }
 
+        /// <summary>Gets or sets the Power's allegiance - Alliance, Empire, Federation or Independent.</summary>
+        /// <value>The Power's allegiance.</value>
         public string Allegiance { get; set; }
 
+        /// <summary>Gets or sets a short name for the Power.</summary>
+        /// <value>The Power's short name.</value>
         public string ShortName { get; set; }
 
+        /// <summary>Gets or sets the Powerplay cycle.</summary>
+        /// <value>The Powerplay cycle.</value>
         public string Cycle { get; set; }
 
+        /// <summary>Gets the date and time the Power's standing was last updated.</summary>
+        /// <value>When the Power's standing was last updated.</value>
         public DateTime LastUpdated { get; set; }
 
+        /// <summary>Gets the Power's change in the Galactic Standings since the previous cycle as a string.</summary>
+        /// <value>The Power's change in the standings since the previous cycle.</value>
         public string ChangeString
         {
             get
@@ -47,11 +72,21 @@ namespace EDlib.Powerplay
             }
         }
 
+        /// <summary>Initializes a new instance of the <see cref="PowerStanding" /> class with no data.</summary>
         public PowerStanding()
         {
             // required for NewtonsoftJson
         }
 
+        /// <summary>Initializes a new instance of the <see cref="PowerStanding" /> class with the given data.</summary>
+        /// <param name="id">The Power's unique identifier.</param>
+        /// <param name="name">The Power's name.</param>
+        /// <param name="position">The Power's position in the Galactic Standings.</param>
+        /// <param name="change">The Power's change in the Galactic Standings.</param>
+        /// <param name="turmoil">Whether the Power is in Turmoil.</param>
+        /// <param name="allegiance">The Power's allegiance.</param>
+        /// <param name="shortname">The Power's short name.</param>
+        /// <param name="updated">When the Power's standing was last updated.</param>
         public PowerStanding(int id, string name, int position, StandingChange change, bool turmoil, string allegiance, string shortname, DateTime updated)
         {
             Id = id;
@@ -64,6 +99,14 @@ namespace EDlib.Powerplay
             LastUpdated = updated;
         }
 
+        /// <summary>
+        ///   <para>Initializes a new instance of the <see cref="PowerStanding" /> class with the given data.</para>
+        ///   <para>Used by the Galactic Standings API back-end.</para>
+        /// </summary>
+        /// <param name="position">The Power's position in the Galactic Standings.</param>
+        /// <param name="standing">The Power's name, standings change and turmoil status.</param>
+        /// <param name="cycle">The Powerplay cycle.</param>
+        /// <param name="updated">When the Power's standing was last updated.</param>
         public PowerStanding(int position, string standing, int cycle, DateTime updated)
         {
             if (standing.IndexOf("Aisling Duval", StringComparison.OrdinalIgnoreCase) >= 0)
@@ -170,6 +213,8 @@ namespace EDlib.Powerplay
             LastUpdated = updated;
         }
 
+        /// <summary>Returns the Power's standing as a string: position + change - Power name (Power allegiance)</summary>
+        /// <returns>A <see cref="System.String" /> that represents the Power's standing.</returns>
         public override string ToString()
         {
             return Turmoil

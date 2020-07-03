@@ -359,3 +359,8 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# DocFX
+docfx_project/api/.manifest
+docfx_project/api/*.yml
+docs

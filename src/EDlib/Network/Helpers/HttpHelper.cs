@@ -5,8 +5,12 @@ using System.Threading.Tasks;
 
 namespace EDlib.Network
 {
+    /// <summary>A helper class for reading an http response that can decompress data in gzip or deflate streams.</summary>
     public static class HttpHelper
     {
+        /// <summary>Gets the content of an http response which may be compressed.</summary>
+        /// <param name="response">The http response.</param>
+        /// <returns>The content of the http response.</returns>
         public static async Task<string> ReadContentAsync(HttpResponseMessage response)
         {
             string content;
