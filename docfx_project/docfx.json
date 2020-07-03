@@ -19,7 +19,7 @@
       {
         "files": [
           "api/**.yml",
-          "api/index.md"
+          "api/**.md"
         ]
       },
       {
@@ -38,20 +38,8 @@
         ]
       }
     ],
-    "overwrite": [
-      {
-        "files": [
-          "apidoc/**.md"
-        ],
-        "exclude": [
-          "obj/**",
-          "_site/**",
-          "docs/**"
-        ]
-      }
-    ],
     "globalMetadata": {
-      "_appTitle": "EDlib Documentation",
+      "_appTitle": "EDlib",
       "_appFooter": "<a href='/'><h3><img src='/images/edlib-logo-50.png' style='vertical-align:middle' /> EDlib</h3></a>",
       "_appLogoPath": "images/edlib-logo-50.png",
       "_appFaviconPath": "images/favicon.ico",
