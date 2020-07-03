@@ -1,5 +1,5 @@
-# ![EDlib](/images/edlib-logo-50.png) EDlib
-A .Net Standard library for creating companion tools for the game Elite Dangerous by Frontier Developments.
+# ![EDlib](/images/edlib-logo-50.png) Api Documentation
+EDlib: A .Net Standard library for creating companion tools for the game Elite Dangerous by Frontier Developments.
 
 ![.Net Standard](https://img.shields.io/badge/.Net-Standard%202.0-informational?style=flat&logo=visual-studio)
 &nbsp;
