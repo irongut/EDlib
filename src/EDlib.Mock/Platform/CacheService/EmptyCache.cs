@@ -6,20 +6,13 @@ namespace EDlib.Mock.Platform
 {
     public class EmptyCache : ICacheService
     {
-        public void Add(string key, string data, TimeSpan expireIn)
-        {
-            return;
-        }
+        public void Add(string key, string data, TimeSpan expireIn) { }
 
-        public void EmptyAll()
-        {
-            return;
-        }
+        public void Delete(params string[] key) { }
 
-        public void EmptyExpired()
-        {
-            return;
-        }
+        public void EmptyAll() { }
+
+        public void EmptyExpired() { }
 
         public bool Exists(string key) => false;
 
