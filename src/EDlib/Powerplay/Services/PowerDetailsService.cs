@@ -61,12 +61,13 @@ namespace EDlib.Powerplay
 
         /// <summary>Gets the comms data for a Power from an online resource - Subreddit and Discord / Slack servers.</summary>
         /// <param name="shortName">The required Power's short name.</param>
+        /// <param name="cacheDays">The number of days to cache the Power comms data.</param>
         /// <returns>Task&lt;PowerComms&gt;</returns>
-        public async Task<PowerComms> GetPowerCommsAsync(string shortName)
+        public async Task<PowerComms> GetPowerCommsAsync(string shortName, int cacheDays)
         {
             if (commsList?.Any() == false)
             {
-                await GetPowerCommsListAsync().ConfigureAwait(false);
+                await GetPowerCommsListAsync(cacheDays).ConfigureAwait(false);
             }
             return commsList.Find(x => x.ShortName.Equals(shortName));
         }
@@ -86,10 +87,14 @@ namespace EDlib.Powerplay
             }
         }
 
-        private async Task GetPowerCommsListAsync()
+        private async Task GetPowerCommsListAsync(int cacheDays)
         {
             string json;
-            TimeSpan expiry = TimeSpan.FromDays(1);
+            if (cacheDays < 1)
+            {
+                cacheDays = 1;
+            }
+            TimeSpan expiry = TimeSpan.FromDays(cacheDays);
             DownloadService downloadService = DownloadService.Instance(agent, cache, connectivity);
             (json, _) = await downloadService.GetData(URL, dataKey, lastUpdatedKey, expiry).ConfigureAwait(false);
             commsList = JsonConvert.DeserializeObject<List<PowerComms>>(json);
