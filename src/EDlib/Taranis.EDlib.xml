@@ -9,9 +9,11 @@
         </member>
         <member name="P:EDlib.BGS.BgsTick.Time">
             <summary>Returns the date and time of the BGS tick.</summary>
+            <value>Date and time of the BGS Tick.</value>
         </member>
         <member name="P:EDlib.BGS.BgsTick.TimeString">
             <summary>Returns the date and time of the BGS tick as a string.</summary>
+            <value>Date and time of the BGS Tick.</value>
         </member>
         <member name="M:EDlib.BGS.BgsTick.#ctor">
             <summary>Initializes a new instance of the <see cref="T:EDlib.BGS.BgsTick" /> class, with the value Unknown for the time string.</summary>
@@ -21,10 +23,10 @@
             <param name="time">Date and time of the BGS Tick.</param>
         </member>
         <member name="T:EDlib.BGS.BgsTickService">
-            <summary>Gets the date and time of BGS Ticks.</summary>
+            <summary>Gets the date and time that the Background Simulation (BGS) updates, known as the BGS tick.</summary>
         </member>
         <member name="M:EDlib.BGS.BgsTickService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
-            <summary>Instances the BgsTickService class singleton.</summary>
+            <summary>Instantiates the BgsTickService class.</summary>
             <param name="userAgent">The user agent used for downloads.</param>
             <param name="cacheService">The platform specific cache for downloaded data.</param>
             <param name="connectivityService">The platform specific connectivity service.</param>
@@ -32,13 +34,13 @@
         </member>
         <member name="M:EDlib.BGS.BgsTickService.GetData(System.Boolean)">
             <summary>Gets the latest BGS tick.</summary>
-            <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>BgsTick</returns>
         </member>
         <member name="M:EDlib.BGS.BgsTickService.GetData(System.Int32,System.Boolean)">
             <summary>Gets multiple recent BGS ticks.</summary>
             <param name="days">The required number of days worth of ticks.</param>
-            <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;BgsTick&gt;, DateTime)&gt;</returns>
         </member>
         <member name="T:EDlib.Common.Topic">
@@ -46,12 +48,15 @@
         </member>
         <member name="P:EDlib.Common.Topic.Name">
             <summary>The topic name.</summary>
+            <value>The topic name.</value>
         </member>
         <member name="P:EDlib.Common.Topic.Terms">
             <summary>The words used to determine if the topic is relevant to the content.</summary>
+            <value>The list of words.</value>
         </member>
         <member name="P:EDlib.Common.Topic.Count">
             <summary>The number of times the terms were found in the content.</summary>
+            <value>The number of times the terms were found.</value>
         </member>
         <member name="M:EDlib.Common.Topic.#ctor(System.String,System.Collections.Generic.List{System.String})">
             <summary>Initializes a new instance of the <see cref="T:EDlib.Common.Topic" /> class.</summary>
@@ -63,25 +68,85 @@
         </member>
         <member name="P:EDlib.Common.TopicsList.Topics">
             <summary>The list of topics.</summary>
+            <value>The list of topics.</value>
         </member>
         <member name="M:EDlib.Common.TopicsList.#ctor(System.String)">
             <summary>Initializes a new instance of the <see cref="T:EDlib.Common.TopicsList" /> class and loads the topics from a json resource file.</summary>
             <param name="filename">The filename of the json resource file.</param>
+        </member>
+        <member name="T:EDlib.APIException">
+            <summary>Represents errors from an API.</summary>
+        </member>
+        <member name="P:EDlib.APIException.StatusCode">
+            <summary>Gets the error code from the API.</summary>
+            <value>The error code.</value>
+        </member>
+        <member name="M:EDlib.APIException.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.APIException" /> class.</summary>
+        </member>
+        <member name="M:EDlib.APIException.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.APIException" /> class with a specified error message.</summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:EDlib.APIException.#ctor(System.String,System.Exception)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.APIException" /> class with a specified error message and a reference to the inner exception that is the cause of this exception.</summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
+        </member>
+        <member name="M:EDlib.APIException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.APIException" /> class with serialised data.</summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo">SerializationInfo</see> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext">StreamingContext</see> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="M:EDlib.APIException.#ctor(System.String,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.APIException" /> class with a specified error message and error code.</summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="code">The error code from the API.</param>
+        </member>
+        <member name="M:EDlib.APIException.#ctor(System.String,System.Exception,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.APIException" /> class with a specified error message, error code and a reference to the inner exception that is the cause of this exception.</summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
+            <param name="code">The error code from the API.</param>
+        </member>
+        <member name="T:EDlib.NoNetworkNoCacheException">
+            <summary>Represents errors that occur because no network is available and no data is cached.</summary>
+        </member>
+        <member name="M:EDlib.NoNetworkNoCacheException.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.NoNetworkNoCacheException" /> class.</summary>
+        </member>
+        <member name="M:EDlib.NoNetworkNoCacheException.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.NoNetworkNoCacheException" /> class with a specified error message.</summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:EDlib.NoNetworkNoCacheException.#ctor(System.String,System.Exception)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.NoNetworkNoCacheException" /> class with a specified error message and a reference to the inner exception that is the cause of this exception.</summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
+        </member>
+        <member name="M:EDlib.NoNetworkNoCacheException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.NoNetworkNoCacheException" /> class with serialised data.</summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo">SerializationInfo</see> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext">StreamingContext</see> that contains contextual information about the source or destination.</param>
         </member>
         <member name="T:EDlib.GalNet.NewsArticle">
             <summary>A GalNet News article.</summary>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.Title">
             <summary>The title of the News article.</summary>
+            <value>The article title.</value>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.Body">
-            <summary>The body of the News article.</summary>
+            <summary>The content of the News article.</summary>
+            <value>The article content.</value>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.PublishDateTime">
             <summary>The publish date and time of the News article.</summary>
+            <value>When the article was published.</value>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.Id">
             <summary>Frontier Development's Id for the News article.</summary>
+            <value>Article ID.</value>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.FDImageName">
             <summary>
@@ -90,18 +155,23 @@
              Note: This is not an image url or filename.
               </para>
             </summary>
+            <value>Article image name.</value>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.Slug">
             <summary>A normalised version of the article title used as a unique identifier.</summary>
+            <value>The article slug.</value>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.Topic">
             <summary>The topic of the News article, generated using a Bag of Words technique.</summary>
+            <value>The article topic.</value>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.Tags">
             <summary>Content tags for the News article, generated using a Bag of Words technique.</summary>
+            <value>Content tags for the article.</value>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.PublishDate">
             <summary>The publish date and time of the News article as a string.</summary>
+            <value>When the article was published.</value>
         </member>
         <member name="M:EDlib.GalNet.NewsArticle.ClassifyArticle">
             <summary>Determines the Topic and content Tags for an article by analysing it using a Bag of Words technique.</summary>
@@ -116,7 +186,7 @@
             <summary>Gets the GalNet News.</summary>
         </member>
         <member name="M:EDlib.GalNet.GalNetService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
-            <summary>Instances the GalNetService class singleton.</summary>
+            <summary>Instantiates the GalNetService class.</summary>
             <param name="userAgent">The user agent used for downloads.</param>
             <param name="cacheService">The platform specific cache for downloaded data.</param>
             <param name="connectivityService">The platform specific connectivity service.</param>
@@ -136,6 +206,51 @@
             <param name="cancelToken">A cancellation token.</param>
             <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
+        </member>
+        <member name="T:EDlib.Network.HttpHelper">
+            <summary>A helper class for reading an http response that can decompress data in gzip or deflate streams.</summary>
+        </member>
+        <member name="M:EDlib.Network.HttpHelper.ReadContentAsync(System.Net.Http.HttpResponseMessage)">
+            <summary>Gets the content of an http response which may be compressed.</summary>
+            <param name="response">The http response.</param>
+            <returns>The content of the http response.</returns>
+        </member>
+        <member name="T:EDlib.Network.DownloadService">
+            <summary>Internal class used to download and cache data.</summary>
+        </member>
+        <member name="M:EDlib.Network.DownloadService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+            <summary>Instantiates the DownloadService class.</summary>
+            <param name="userAgent">The user agent used for downloads.</param>
+            <param name="cacheService">The platform specific cache for downloaded data.</param>
+            <param name="connectivityService">The platform specific connectivity service.</param>
+            <returns>DownloadService</returns>
+        </member>
+        <member name="M:EDlib.Network.DownloadService.GetData(System.String,System.String,System.String,System.TimeSpan,System.Boolean)">
+            <summary>Gets and caches the data and when it was last updated.
+            If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.</summary>
+            <param name="url">The URL for downloading the data.</param>
+            <param name="dataKey">The key for cached data.</param>
+            <param name="lastUpdatedKey">The key for caching when the data was the last updated.</param>
+            <param name="expiry">How long to cache the data.</param>
+            <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>
+            <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
+            <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
+            <exception cref="T:EDlib.APIException">Http errors from the API called.</exception>
+        </member>
+        <member name="M:EDlib.Network.DownloadService.GetData(System.String,System.String,System.String,System.TimeSpan,System.Threading.CancellationTokenSource,System.Boolean)">
+            <summary>
+            Gets and caches the data and when it was last updated with the option to cancel a download.
+            If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.
+            </summary>
+            <param name="url">The URL for downloading the data.</param>
+            <param name="dataKey">The key for cached data.</param>
+            <param name="lastUpdatedKey">The key for caching when the data was the last updated.</param>
+            <param name="expiry">How long to cache the data.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>
+            <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
+            <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
+            <exception cref="T:EDlib.APIException">Http errors from the API called.</exception>
         </member>
         <member name="T:EDlib.Platform.CacheState">
             <summary>Current state of the item in the cache.</summary>
@@ -162,7 +277,7 @@
             <summary>Empty all items from the cache.</summary>
         </member>
         <member name="M:EDlib.Platform.ICacheService.EmptyExpired">
-            <summary>Empty only expired items from the cache.</summary>
+            <summary>Empty expired items from the cache.</summary>
         </member>
         <member name="M:EDlib.Platform.ICacheService.Exists(System.String)">
             <summary>Checks to see if an item exists in the cache.</summary>
@@ -170,19 +285,19 @@
             <returns><c>true</c> if the item exists, else <c>false</c>.</returns>
         </member>
         <member name="M:EDlib.Platform.ICacheService.Get(System.String)">
-            <summary>Gets the cached item for the key.</summary>
+            <summary>Gets a cached item.</summary>
             <param name="key">Key to identify the cached item.</param>
             <returns>The cached data string if it exists, else <c>null</c>.</returns>
         </member>
         <member name="M:EDlib.Platform.ICacheService.GetExpiration(System.String)">
-            <summary>Gets the expiration date for a cached item.</summary>
+            <summary>Gets the expiration date and time for a cached item.</summary>
             <param name="key">Key to identify the cached item.</param>
             <returns>The date if the cached item exists, else <c>null</c>.</returns>
         </member>
         <member name="M:EDlib.Platform.ICacheService.GetKeys(EDlib.Platform.CacheState)">
-            <summary>Gets cached items with specified state.</summary>
+            <summary>Gets keys for any cached items with the specified state.</summary>
             <param name="state">State to get: Multiple with flags: CacheState.Active | CacheState.Expired</param>
-            <returns>The keys</returns>
+            <returns>The relevant keys.</returns>
         </member>
         <member name="M:EDlib.Platform.ICacheService.IsExpired(System.String)">
             <summary>Checks if a cached item is expired.</summary>
@@ -199,6 +314,350 @@
         <member name="M:EDlib.Platform.IConnectivityService.IsMetered">
             <summary>Determines whether the network connection is metered.</summary>
             <returns><c>true</c> if the connection is metered, else <c>false</c>.</returns>
+        </member>
+        <member name="T:EDlib.Powerplay.GalacticStandings">
+            <summary>Represents the Powerplay Galactic Standings.</summary>
+        </member>
+        <member name="P:EDlib.Powerplay.GalacticStandings.Cycle">
+            <summary>Gets the Powerplay cycle number.</summary>
+            <value>The Powerplay cycle.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.GalacticStandings.LastUpdated">
+            <summary>Gets the date and time the Galactic Standings were last updated.</summary>
+            <value>When the Standings were last updated.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.GalacticStandings.Standings">
+            <summary>Gets the Galactic Standings.</summary>
+            <value>A list of PowerStanding objects.</value>
+        </member>
+        <member name="M:EDlib.Powerplay.GalacticStandings.#ctor(System.Int32,System.DateTime)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.Powerplay.GalacticStandings" /> class.</summary>
+            <param name="cycle">The Powerplay cycle.</param>
+            <param name="lastUpdated">When the Standings were last updated.</param>
+        </member>
+        <member name="M:EDlib.Powerplay.GalacticStandings.ToString">
+            <summary>Returns the Powerplay Galactic Standings as a multi-line string including the cycle and when the Standings were last updated.</summary>
+            <returns>A <see cref="T:System.String" /> that represents the Galactic Standings.</returns>
+        </member>
+        <member name="M:EDlib.Powerplay.GalacticStandings.ToCSV">
+            <summary>Returns the Powerplay Galactic Standings as a comma separated string including the cycle and when the Standings were last updated.</summary>
+            <returns>A <see cref="T:System.String" /> in CSV format that represents the Galactic Standings.</returns>
+        </member>
+        <member name="M:EDlib.Powerplay.GalacticStandings.ToJson">
+            <summary>Returns the Powerplay Galactic Standings as a JSON string including the cycle and when the Standings were last updated.</summary>
+            <returns>A <see cref="T:System.String" /> in JSON format that represents the Galactic Standings.</returns>
+        </member>
+        <member name="T:EDlib.Powerplay.PowerComms">
+            <summary>Contains the comms data for a Power - Reddit Sub and Discord / Slack servers.</summary>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerComms.Id">
+            <summary>Gets or sets a unique identifier for the Power.</summary>
+            <value>The unique identifier for the Power.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerComms.ShortName">
+            <summary>Gets or sets a short name for the Power.</summary>
+            <value>The Power's short name.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerComms.Reddit">
+            <summary>Gets or sets the URL for the Power's subreddit.</summary>
+            <value>The Power's subreddit URL.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerComms.Comms">
+            <summary>Gets or sets the join link for the Power's Discord or Slack server.</summary>
+            <value>The Power's Discord or Slack server join link.</value>
+        </member>
+        <member name="M:EDlib.Powerplay.PowerComms.#ctor(System.Int32,System.String,System.String,System.String)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.Powerplay.PowerComms" /> class.</summary>
+            <param name="id">The unique identifier for the Power.</param>
+            <param name="shortName">The Power's short name.</param>
+            <param name="reddit">The Power's subreddit.</param>
+            <param name="comms">The Power's Discord or Slack server.</param>
+        </member>
+        <member name="M:EDlib.Powerplay.PowerComms.ToString">
+            <summary>Returns the Power's comms details as a string.</summary>
+            <returns>A <see cref="T:System.String" /> that represents the Power's comms details.</returns>
+        </member>
+        <member name="T:EDlib.Powerplay.PowerDetails">
+            <summary>Contains a Power's statistics, ethos and benefits data.</summary>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.Id">
+            <summary>Gets or sets a unique identifier for the Power.</summary>
+            <value>The unique identifier for the Power.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.ShortName">
+            <summary>Gets or sets a short name for the Power.</summary>
+            <value>The Power's short name.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.HQ">
+            <summary>Gets the name of the Power's headquarters system.</summary>
+            <value>The name of the Power's headquarters.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.YearOfBirth">
+            <summary>Gets the year the Power was born.</summary>
+            <value>The year the Power was born..</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.Allegiance">
+            <summary>Gets the Power's allegiance.</summary>
+            <value>The Power's allegiance.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.PreparationEthos">
+            <summary>Gets the Power's preparation ethos.</summary>
+            <value>The Power's preparation ethos.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.PreparationText">
+            <summary>Gets the description of the Power's preparation ethos.</summary>
+            <value>The description of the preparation ethos.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.ExpansionEthos">
+            <summary>Gets the Power's expansion ethos.</summary>
+            <value>The Power's expansion ethos.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.ExpansionText">
+            <summary>Gets the description of the Power's expansion ethos.</summary>
+            <value>The description of the expansion ethos.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.ExpansionStrongGovernment">
+            <summary>Gets the government types that help the Power's expansion.</summary>
+            <value>The government types that help expansion.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.ExpansionWeakGovernment">
+            <summary>Gets the government types that hinder the Power's expansion.</summary>
+            <value>The government types that hinder expansion.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.ControlEthos">
+            <summary>Gets the Power's control ethos.</summary>
+            <value>The Power's control ethos.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.ControlText">
+            <summary>Gets the description of the Power's control ethos.</summary>
+            <value>The description of the control ethos.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.ControlStrongGovernment">
+            <summary>Gets the government types that help the Power control their domain.</summary>
+            <value>The government types that help with control.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.ControlWeakGovernment">
+            <summary>Gets the government types that hinder the Power control their domain.</summary>
+            <value>The government types that hinder with control.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.HQSystemEffect">
+            <summary>Gets a description of any effects in the Power's headquarters system.</summary>
+            <value>A description of any effects in the Power's headquarters.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.ControlSystemEffect">
+            <summary>Gets a description of the effects a Power has on systems they control.</summary>
+            <value>A description of the effects on systems the Power controls.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.AllianceExploitedEffect">
+            <summary>Gets a description of the effects a Power has on Alliance systems they exploit.</summary>
+            <value>A description of the effects on Alliance systems the Power exploits.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.EmpireExploitedEffect">
+            <summary>Gets a description of the effects a Power has on Empire systems they exploit.</summary>
+            <value>A description of the effects on Empire systems the Power exploits.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.FederationExploitedEffect">
+            <summary>Gets a description of the effects a Power has on Federation systems they exploit.</summary>
+            <value>A description of the effects on Federation systems the Power exploits.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.IndependentExploitedEffect">
+            <summary>Gets a description of the effects a Power has on Independent systems they exploit.</summary>
+            <value>A description of the effects on Independent systems the Power exploits.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.Rating1">
+            <summary>Gets a description of the benefits to a Commander at rank 1.</summary>
+            <value>A description of the rank 1 benefits.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.Rating2">
+            <summary>Gets a description of the benefits to a Commander at rank 2.</summary>
+            <value>A description of the rank 2 benefits.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.Rating3">
+            <summary>Gets a description of the benefits to a Commander at rank 3.</summary>
+            <value>A description of the rank 3 benefits.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.Rating4">
+            <summary>Gets a description of the benefits to a Commander at rank 4.</summary>
+            <value>A description of the rank 4 benefits.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerDetails.Rating5">
+            <summary>Gets a description of the benefits to a Commander at rank 5.</summary>
+            <value>A description of the rank 5 benefits.</value>
+        </member>
+        <member name="M:EDlib.Powerplay.PowerDetails.#ctor(System.Int32,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.Powerplay.PowerDetails" /> class.</summary>
+            <param name="id">The unique identifier for the Power.</param>
+            <param name="shortName">The Power's short name.</param>
+            <param name="hq">The Power's headquarters.</param>
+            <param name="yearOfBirth">The Power's year of birth.</param>
+            <param name="allegiance">The Power's allegiance.</param>
+            <param name="preparationEthos">The Power's preparation ethos.</param>
+            <param name="preparationText">The description of the preparation ethos.</param>
+            <param name="expansionEthos">The Power's expansion ethos.</param>
+            <param name="expansionText">The description of the expansion ethos.</param>
+            <param name="expansionStrongGovernment">The government types that help expansion.</param>
+            <param name="expansionWeakGovernment">The government types that hinder expansion.</param>
+            <param name="controlEthos">The Power's control ethos.</param>
+            <param name="controlText">The description of the control ethos.</param>
+            <param name="controlStrongGovernment">The government types that help with control.</param>
+            <param name="controlWeakGovernment">The government types that hinder with control.</param>
+            <param name="hqSystemEffect">Any effects in the Power's headquarters.</param>
+            <param name="controlSystemEffect">The effects on systems the Power controls.</param>
+            <param name="allianceExploitedEffect">The effects on Alliance systems the Power exploits.</param>
+            <param name="empireExploitedEffect">The effects on Empire systems the Power exploits.</param>
+            <param name="federationExploitedEffect">The effects on Federation systems the Power exploits.</param>
+            <param name="independentExploitedEffect">The effects on Independent systems the Power exploits.</param>
+            <param name="rating1">Commander benefits at rank 1.</param>
+            <param name="rating2">Commander benefits at rank 2.</param>
+            <param name="rating3">Commander benefits at rank 3.</param>
+            <param name="rating4">Commander benefits at rank 4.</param>
+            <param name="rating5">Commander benefits at rank 5.</param>
+        </member>
+        <member name="M:EDlib.Powerplay.PowerDetails.ToString">
+            <summary>Returns a string containing some Power details: short name (allegiance) - headquarters</summary>
+            <returns>A <see cref="T:System.String" /> that represents the Power details.</returns>
+        </member>
+        <member name="T:EDlib.Powerplay.StandingChange">
+            <summary>The Power's change in standings since the previous cycle.</summary>
+        </member>
+        <member name="F:EDlib.Powerplay.StandingChange.up">
+            <summary>The Power's standing has improved.</summary>
+        </member>
+        <member name="F:EDlib.Powerplay.StandingChange.down">
+            <summary>The Power's standing has decayed.</summary>
+        </member>
+        <member name="F:EDlib.Powerplay.StandingChange.none">
+            <summary>The Power's standing has not changed.</summary>
+        </member>
+        <member name="T:EDlib.Powerplay.PowerStanding">
+            <summary>Contains the Galactic Standings data for a Power.</summary>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerStanding.Id">
+            <summary>Gets or sets a unique identifier for the Power.</summary>
+            <value>The unique identifier for the Power.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerStanding.Name">
+            <summary>Gets or sets the Power's name.</summary>
+            <value>The Power's name.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerStanding.Position">
+            <summary>Gets or sets the Power's position in the Galactic Standings.</summary>
+            <value>The Power's position in the Galactic Standings.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerStanding.Change">
+            <summary>Gets or sets the Power's change in the Galactic Standings since the previous cycle.</summary>
+            <value>The Power's change in the standings since the previous cycle.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerStanding.Turmoil">
+            <summary>Gets or sets a value indicating whether this Power is turmoil.</summary>
+            <value><c>true</c> if turmoil; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerStanding.Allegiance">
+            <summary>Gets or sets the Power's allegiance - Alliance, Empire, Federation or Independent.</summary>
+            <value>The Power's allegiance.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerStanding.ShortName">
+            <summary>Gets or sets a short name for the Power.</summary>
+            <value>The Power's short name.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerStanding.Cycle">
+            <summary>Gets or sets the Powerplay cycle.</summary>
+            <value>The Powerplay cycle.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerStanding.LastUpdated">
+            <summary>Gets the date and time the Power's standing was last updated.</summary>
+            <value>When the Power's standing was last updated.</value>
+        </member>
+        <member name="P:EDlib.Powerplay.PowerStanding.ChangeString">
+            <summary>Gets the Power's change in the Galactic Standings since the previous cycle as a string.</summary>
+            <value>The Power's change in the standings since the previous cycle.</value>
+        </member>
+        <member name="M:EDlib.Powerplay.PowerStanding.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.Powerplay.PowerStanding" /> class with no data.</summary>
+        </member>
+        <member name="M:EDlib.Powerplay.PowerStanding.#ctor(System.Int32,System.String,System.Int32,EDlib.Powerplay.StandingChange,System.Boolean,System.String,System.String,System.DateTime)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.Powerplay.PowerStanding" /> class with the given data.</summary>
+            <param name="id">The Power's unique identifier.</param>
+            <param name="name">The Power's name.</param>
+            <param name="position">The Power's position in the Galactic Standings.</param>
+            <param name="change">The Power's change in the Galactic Standings.</param>
+            <param name="turmoil">Whether the Power is in Turmoil.</param>
+            <param name="allegiance">The Power's allegiance.</param>
+            <param name="shortname">The Power's short name.</param>
+            <param name="updated">When the Power's standing was last updated.</param>
+        </member>
+        <member name="M:EDlib.Powerplay.PowerStanding.#ctor(System.Int32,System.String,System.Int32,System.DateTime)">
+            <summary>
+              <para>Initializes a new instance of the <see cref="T:EDlib.Powerplay.PowerStanding" /> class with the given data.</para>
+              <para>Used by the Galactic Standings API back-end.</para>
+            </summary>
+            <param name="position">The Power's position in the Galactic Standings.</param>
+            <param name="standing">The Power's name, standings change and turmoil status.</param>
+            <param name="cycle">The Powerplay cycle.</param>
+            <param name="updated">When the Power's standing was last updated.</param>
+        </member>
+        <member name="M:EDlib.Powerplay.PowerStanding.ToString">
+            <summary>Returns the Power's standing as a string: position + change - Power name (Power allegiance)</summary>
+            <returns>A <see cref="T:System.String" /> that represents the Power's standing.</returns>
+        </member>
+        <member name="T:EDlib.Powerplay.CycleService">
+            <summary>A static class that deals with the Powerplay cycle and when it changes (ticks).</summary>
+        </member>
+        <member name="M:EDlib.Powerplay.CycleService.TimeRemaining">
+            <summary>Gets the time remaining till the end of the current Powerplay cycle.</summary>
+            <returns>Days and hours until the last 24 hours, then hours and minutes.</returns>
+        </member>
+        <member name="M:EDlib.Powerplay.CycleService.CycleImminent">
+            <summary>Determines if the end of the current Powerplay cycle is imminent - less than 12 hours remaining.</summary>
+            <returns><c>true</c> if imminent, else <c>false</c>.</returns>
+        </member>
+        <member name="M:EDlib.Powerplay.CycleService.FinalDay">
+            <summary>Determines if the current Powerplay cycle ends within 24 hours.</summary>
+            <returns><c>true</c> if it is the final 24 hours of the cycle, else <c>false</c>.</returns>
+        </member>
+        <member name="M:EDlib.Powerplay.CycleService.TimeTillTick">
+            <summary>Gets the time remaining till the end of the current Powerplay cycle.</summary>
+            <returns>The time till the end of the cycle.</returns>
+        </member>
+        <member name="M:EDlib.Powerplay.CycleService.CurrentCycle">
+            <summary>Gets the current Powerplay cycle number.</summary>
+            <returns>The current Powerplay cycle number.</returns>
+        </member>
+        <member name="T:EDlib.Powerplay.PowerDetailsService">
+            <summary>Gets a Power's statistics, ethos, benefits and comms data.</summary>
+        </member>
+        <member name="M:EDlib.Powerplay.PowerDetailsService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+            <summary>Instantiates the PowerDetailsService class.</summary>
+            <param name="userAgent">The user agent used for downloads.</param>
+            <param name="cacheService">The platform specific cache for downloaded data.</param>
+            <param name="connectivityService">The platform specific connectivity service.</param>
+            <returns>PowerDetailsService</returns>
+        </member>
+        <member name="M:EDlib.Powerplay.PowerDetailsService.GetPowerDetails(System.String)">
+            <summary>Gets a Power's statistics, ethos and benefits data from an embedded json resource.</summary>
+            <param name="shortName">The required Power's short name.</param>
+            <returns>PowerDetals</returns>
+        </member>
+        <member name="M:EDlib.Powerplay.PowerDetailsService.GetPowerCommsAsync(System.String)">
+            <summary>Gets the comms data for a Power from an online resource - Subreddit and Discord / Slack servers.</summary>
+            <param name="shortName">The required Power's short name.</param>
+            <returns>Task&lt;PowerComms&gt;</returns>
+        </member>
+        <member name="T:EDlib.Powerplay.StandingsService">
+            <summary>Gets the current Powerplay Galactic Standings.</summary>
+        </member>
+        <member name="M:EDlib.Powerplay.StandingsService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+            <summary>Instantiates the StandingsService class.</summary>
+            <param name="userAgent">The user agent used for downloads.</param>
+            <param name="cacheService">The platform specific cache for downloaded data.</param>
+            <param name="connectivityService">The platform specific connectivity service.</param>
+            <returns>StandingsService</returns>
+        </member>
+        <member name="M:EDlib.Powerplay.StandingsService.GetData(System.Threading.CancellationTokenSource,System.Boolean)">
+            <summary>Gets the current Powerplay Galactic Standings.</summary>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;GalacticStandings&gt;</returns>
         </member>
     </members>
 </doc>
