@@ -24,6 +24,10 @@ namespace EDlib.Platform
         /// <param name="expireIn">How long in the future the item should expire.</param>
         void Add(string key, string data, TimeSpan expireIn);
 
+        /// <summary>Delete the specified items from the cache.</summary>
+        /// <param name="key">A <c>params</c> list of keys identifying the items to delete.</param>
+        void Delete(params string[] key);
+
         /// <summary>Empty all items from the cache.</summary>
         void EmptyAll();
 

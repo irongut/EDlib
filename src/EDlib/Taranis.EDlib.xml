@@ -273,6 +273,10 @@
             <param name="data">String data to store in the cache.</param>
             <param name="expireIn">How long in the future the item should expire.</param>
         </member>
+        <member name="M:EDlib.Platform.ICacheService.Delete(System.String[])">
+            <summary>Delete the specified items from the cache.</summary>
+            <param name="key">A <c>params</c> list of keys identifying the items to delete.</param>
+        </member>
         <member name="M:EDlib.Platform.ICacheService.EmptyAll">
             <summary>Empty all items from the cache.</summary>
         </member>
@@ -638,9 +642,10 @@
             <param name="shortName">The required Power's short name.</param>
             <returns>PowerDetals</returns>
         </member>
-        <member name="M:EDlib.Powerplay.PowerDetailsService.GetPowerCommsAsync(System.String)">
+        <member name="M:EDlib.Powerplay.PowerDetailsService.GetPowerCommsAsync(System.String,System.Int32)">
             <summary>Gets the comms data for a Power from an online resource - Subreddit and Discord / Slack servers.</summary>
             <param name="shortName">The required Power's short name.</param>
+            <param name="cacheDays">The number of days to cache the Power comms data.</param>
             <returns>Task&lt;PowerComms&gt;</returns>
         </member>
         <member name="T:EDlib.Powerplay.StandingsService">

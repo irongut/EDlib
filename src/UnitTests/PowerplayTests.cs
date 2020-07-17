@@ -24,7 +24,7 @@ namespace UnitTests
         public async Task PowerCommsTest()
         {
             PowerDetailsService pdService = PowerDetailsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
-            PowerComms comms = await pdService.GetPowerCommsAsync("ALD").ConfigureAwait(false);
+            PowerComms comms = await pdService.GetPowerCommsAsync("ALD", 1).ConfigureAwait(false);
             Assert.AreEqual(comms.Id, 3);
             Assert.AreEqual(comms.ShortName, "ALD");
             Assert.IsTrue(comms.Reddit.Contains("reddit.com", StringComparison.OrdinalIgnoreCase));
