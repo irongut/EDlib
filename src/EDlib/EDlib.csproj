@@ -19,6 +19,11 @@
     <None Remove="GalNet\Resources\NewsBoW.json" />
     <None Remove="GalNet\Resources\NewsFalseBoW.json" />
     <None Remove="Powerplay\Resources\PowerDetails.json" />
+    <None Remove="SecurityCodeScan.config.yml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="SecurityCodeScan.config.yml" />
   </ItemGroup>
 
   <ItemGroup>
