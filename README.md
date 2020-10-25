@@ -1,6 +1,12 @@
 # ![EDlib](edlib-logo-50.png) EDlib
 A .Net Standard library for creating companion tools for the game Elite Dangerous by Frontier Developments.
 
+<div align="center">
+  
+[![forthebadge](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](https://forthebadge.com)
+&nbsp;
+[![forthebadge](https://forthebadge.com/images/badges/powered-by-coffee.svg)](https://forthebadge.com)
+
 ![.Net Standard](https://img.shields.io/badge/.Net-Standard%202.0-informational?style=flat&logo=visual-studio)
 &nbsp;
 [![GitHub](https://img.shields.io/badge/GitHub-irongut/EDlib-informational?style=flat&logo=github)](https://github.com/irongut/EDlib)
@@ -8,6 +14,8 @@ A .Net Standard library for creating companion tools for the game Elite Dangerou
 [![Build Status](https://dev.azure.com/taranissoftware/EDlib/_apis/build/status/irongut.EDlib?branchName=master)](https://dev.azure.com/taranissoftware/EDlib/_build/latest?definitionId=3&branchName=master)
 &nbsp;
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=irongut/EDlib&identifier=258617844)](https://dependabot.com)
+
+</div>
 
 ## Introduction
 
