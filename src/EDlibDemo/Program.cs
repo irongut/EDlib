@@ -30,9 +30,13 @@ namespace EDlibDemo
 
                 Random rand = new Random();
                 string shortName = galacticStandings.Standings[rand.Next(10)].ShortName;
-                PowerDetailsService powerService = PowerDetailsService.Instance(userAgent, null, null);
+                PowerDetailsService powerService = PowerDetailsService.Instance(userAgent, new EmptyCache(), new UnmeteredConnection());
                 PowerDetails powerDetails = powerService.GetPowerDetails(shortName);
                 Console.WriteLine(powerDetails.ToString());
+                Console.WriteLine("");
+
+                PowerComms commms = await powerService.GetPowerCommsAsync(shortName, 1).ConfigureAwait(false);
+                Console.WriteLine(commms.ToString());
                 Console.WriteLine("");
             }
             catch (Exception ex)
