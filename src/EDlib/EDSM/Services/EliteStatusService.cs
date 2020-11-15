@@ -16,8 +16,8 @@ namespace EDlib.EDSM
         private static IConnectivityService connectivity;
 
         private const string edsmMethod = "api-status-v1/elite-server";
-        private const string dataKey = "EDServerStatus";
-        private const string lastUpdatedKey = "EDServerStatusLastUpdated";
+        private const string dataKey = "Elite-Status";
+        private const string lastUpdatedKey = "Elite-Status-LastUpdated";
 
         private EliteStatus eliteStatus;
         private DateTime lastUpdated;
@@ -32,10 +32,10 @@ namespace EDlib.EDSM
             return instance;
         }
 
-        public async Task<(EliteStatus status, DateTime updated)> GetData(int minutes = 5, bool ignoreCache = false)
+        public async Task<(EliteStatus status, DateTime updated)> GetData(int cacheMinutes = 5, bool ignoreCache = false)
         {
-            if (minutes < 5) minutes = 5;
-            TimeSpan expiry = TimeSpan.FromMinutes(minutes);
+            if (cacheMinutes < 5) cacheMinutes = 5;
+            TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
             if (eliteStatus == null || (lastUpdated + expiry < DateTime.Now))
             {
                 string json;
