@@ -73,6 +73,46 @@ namespace UnitTests
         }
 
         [TestMethod]
+        public async Task SystemsTest()
+        {
+            SystemsOptions options = new SystemsOptions
+            {
+                ShowId = true,
+                ShowCoordinates = true
+            };
+            string[] systemNames = { "Achenar", "Ngarawe", "Sol" };
+            SystemsService systemsService = SystemsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            (List<SolarSystem> systems, DateTime lastUpdated) = await systemsService.GetSystems(systemNames, options).ConfigureAwait(false);
+            Assert.IsNotNull(systems);
+            Assert.IsTrue(systems.Count > 0);
+
+            SolarSystem solSystem = systems.Find(x => x.Name == "Sol");
+            Assert.IsNotNull(solSystem);
+            Assert.AreEqual(solSystem.Name, "Sol");
+            Assert.AreEqual(solSystem.Distance, 0);
+            Assert.IsTrue(solSystem.Id > 0);
+            Assert.IsTrue(solSystem.Id64 > 0);
+            Assert.AreEqual(solSystem.Coords.X, 0);
+            Assert.AreEqual(solSystem.Coords.Y, 0);
+            Assert.AreEqual(solSystem.Coords.Z, 0);
+            Assert.IsTrue(solSystem.CoordsLocked);
+
+            SolarSystem acSystem = systems.Find(x => x.Name == "Achenar");
+            Assert.IsNotNull(acSystem);
+            Assert.AreEqual(acSystem.Name, "Achenar");
+            Assert.AreEqual(solSystem.Distance, 0);
+            Assert.IsTrue(acSystem.Id > 0);
+            Assert.IsTrue(acSystem.Id64 > 0);
+            Assert.IsTrue(acSystem.Coords.X != 0);
+            Assert.IsTrue(acSystem.Coords.Y != 0);
+            Assert.IsTrue(acSystem.Coords.Z != 0);
+            Assert.IsTrue(acSystem.CoordsLocked);
+
+            SolarSystem wSystem = systems.Find(x => x.Name == "Wolf 359");
+            Assert.IsNull(wSystem);
+        }
+
+        [TestMethod]
         public async Task SolCubeTest()
         {
             SystemsOptions options = new SystemsOptions

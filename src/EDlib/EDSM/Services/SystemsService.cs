@@ -21,6 +21,10 @@ namespace EDlib.EDSM
         private const string infoDataKey = "Systems-Info";
         private const string infoLastUpdatedKey = "Systems-Info-LastUpdated";
 
+        private const string systemsMethod = "api-v1/systems?";
+        private const string systemsDataKey = "Systems";
+        private const string systemsLastUpdatedKey = "Systems-LastUpdated";
+
         private const string cubeMethod = "api-v1/cube-systems";
         private const string cubeDataKey = "Systems-Cube";
         private const string cubeLastUpdatedKey = "Systems-Cube-LastUpdated";
@@ -30,6 +34,9 @@ namespace EDlib.EDSM
         private const string sphereLastUpdatedKey = "Systems-Sphere-LastUpdated";
 
         private SolarSystem solarSystem;
+
+        private List<SolarSystem> systems;
+        private DateTime systemsUpdated;
 
         private List<SolarSystem> cubeSystems;
         private DateTime cubeUpdated;
@@ -71,6 +78,36 @@ namespace EDlib.EDSM
                 solarSystem = JsonConvert.DeserializeObject<SolarSystem>(json);
             }
             return solarSystem;
+        }
+
+        public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystems(string[] systemNames, SystemsOptions options, bool ignoreCache = false)
+        {
+            if (systemNames?.Any() == false)
+            {
+                throw new ArgumentNullException(nameof(systemNames));
+            }
+
+            // caching needs a rethink, for now use 60s
+            TimeSpan expiry = TimeSpan.FromSeconds(60);
+            if (systems?.Any() == false || (systemsUpdated + expiry < DateTime.Now))
+            {
+                // Dictionary doesn't allow multiple identical keys so add system names to method
+                string method = systemsMethod;
+                foreach (string systemName in systemNames)
+                {
+                    method = $"{method}systemName[]={systemName}&";
+                }
+                method = method.Remove(method.Length - 1);
+
+                Dictionary<string, string> parameters = AddOptions(new Dictionary<string, string>(), options);
+
+                string json;
+                EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
+                (json, systemsUpdated) = await edsmService.GetData(method, parameters, systemsDataKey, systemsLastUpdatedKey, expiry, ignoreCache).ConfigureAwait(false);
+
+                systems = JsonConvert.DeserializeObject<List<SolarSystem>>(json);
+            }
+            return (systems, systemsUpdated);
         }
 
         public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystemsInCube(string systemName, int size, SystemsOptions options, bool ignoreCache = false)

@@ -51,7 +51,10 @@ namespace EDlib.EDSM
             string url = EdsmURL + method;
             if (parameters?.Any() == true)
             {
-                url += "?";
+                if (url.Contains("?"))
+                    url += "&";
+                else
+                    url += "?";
                 foreach (var param in parameters)
                 {
                     url = $"{url}{param.Key}={param.Value}&";
