@@ -54,48 +54,7 @@ namespace EDlib.Network
         /// <exception cref="APIException">Http errors from the API called.</exception>
         public async Task<(string data, DateTime updated)> GetData(string url, string dataKey, string lastUpdatedKey, TimeSpan expiry, bool ignoreCache = false)
         {
-            string data;
-            DateTime lastUpdated;
-
-            if (!connectivity.IsConnected())
-            {
-                // no valid connectivity
-                if (cache.Exists(dataKey))
-                {
-                    // use cached data
-                    data = cache.Get(dataKey);
-                    lastUpdated = DateTime.Parse(cache.Get(lastUpdatedKey));
-                }
-                else
-                {
-                    throw new NoNetworkNoCacheException("No Internet available and no data cached.");
-                }
-            }
-            else if (!ignoreCache && cache.Exists(dataKey) && !cache.IsExpired(dataKey))
-            {
-                // use cached data
-                data = cache.Get(dataKey);
-                lastUpdated = DateTime.Parse(cache.Get(lastUpdatedKey));
-            }
-            else
-            {
-                // download data
-                var uri = new Uri(url);
-                HttpResponseMessage response = await client.GetAsync(uri).ConfigureAwait(false);
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw new APIException($"{response.StatusCode} - {response.ReasonPhrase}", (int)response.StatusCode);
-                }
-                else
-                {
-                    data = await HttpHelper.ReadContentAsync(response).ConfigureAwait(false);
-                    lastUpdated = DateTime.Now;
-                    // cache data
-                    cache.Add(dataKey, data, expiry);
-                    cache.Add(lastUpdatedKey, lastUpdated.ToString(), expiry);
-                }
-            }
-            return (data, lastUpdated);
+            return await GetData(url, dataKey, lastUpdatedKey, expiry, null, ignoreCache).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -140,7 +99,16 @@ namespace EDlib.Network
             {
                 // download data
                 var uri = new Uri(url);
-                HttpResponseMessage response = await client.GetAsync(uri, cancelToken.Token).ConfigureAwait(false);
+                HttpResponseMessage response;
+                if (cancelToken == null)
+                {
+                    response = await client.GetAsync(uri).ConfigureAwait(false);
+                }
+                else
+                {
+                    response = await client.GetAsync(uri, cancelToken.Token).ConfigureAwait(false);
+                }
+
                 if (!response.IsSuccessStatusCode)
                 {
                     throw new APIException($"{response.StatusCode} - {response.ReasonPhrase}", (int)response.StatusCode);
