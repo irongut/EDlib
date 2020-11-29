@@ -30,19 +30,16 @@ namespace EDlib.EDSM
             return instance;
         }
 
-        public async Task<(string data, DateTime updated)> GetData(string method, Dictionary<string, string> parameters, string dataKey, string lastUpdatedKey, TimeSpan expiry, bool ignoreCache = false)
+        public async Task<(string data, DateTime updated)> GetData(string method, Dictionary<string, string> parameters, TimeSpan expiry, bool ignoreCache = false)
         {
-            string url = BuildUrl(method, parameters);
-            DownloadService downloadService = DownloadService.Instance(agent, cache, connectivity);
-            (string json, DateTime lastUpdated) = await downloadService.GetData(url, dataKey, lastUpdatedKey, expiry, ignoreCache).ConfigureAwait(false);
-            return (json, lastUpdated);
+            return await GetData(method, parameters, expiry, null, ignoreCache).ConfigureAwait(false);
         }
 
-        public async Task<(string data, DateTime updated)> GetData(string method, Dictionary<string, string> parameters, string dataKey, string lastUpdatedKey, TimeSpan expiry, CancellationTokenSource cancelToken, bool ignoreCache = false)
+        public async Task<(string data, DateTime updated)> GetData(string method, Dictionary<string, string> parameters, TimeSpan expiry, CancellationTokenSource cancelToken, bool ignoreCache = false)
         {
             string url = BuildUrl(method, parameters);
             DownloadService downloadService = DownloadService.Instance(agent, cache, connectivity);
-            (string json, DateTime lastUpdated) = await downloadService.GetData(url, dataKey, lastUpdatedKey, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+            (string json, DateTime lastUpdated) = await downloadService.GetData(url, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
             return (json, lastUpdated);
         }
 

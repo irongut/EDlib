@@ -21,8 +21,6 @@ namespace EDlib.GalNet
         private static IConnectivityService connectivity;
 
         private const string GalNetURL = "https://elitedangerous-website-backend-production.elitedangerous.com/api/galnet?_format=json";
-        private const string dataKey = "NewsFeed";
-        private const string lastUpdatedKey = "NewsLastUpdated";
 
         private readonly List<NewsArticle> galnetNews;
         private DateTime lastUpdated;
@@ -71,7 +69,7 @@ namespace EDlib.GalNet
                 // download the json
                 string json;
                 DownloadService downloadService = DownloadService.Instance(agent, cache, connectivity);
-                (json, lastUpdated) = await downloadService.GetData(GalNetURL, dataKey, lastUpdatedKey, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                (json, lastUpdated) = await downloadService.GetData(GalNetURL, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
                 // parse the news articles
                 galnetNews.Clear();

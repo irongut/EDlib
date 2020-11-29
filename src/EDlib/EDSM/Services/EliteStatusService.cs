@@ -16,8 +16,6 @@ namespace EDlib.EDSM
         private static IConnectivityService connectivity;
 
         private const string edsmMethod = "api-status-v1/elite-server";
-        private const string dataKey = "Elite-Status";
-        private const string lastUpdatedKey = "Elite-Status-LastUpdated";
 
         private EliteStatus eliteStatus;
         private DateTime lastUpdated;
@@ -40,7 +38,7 @@ namespace EDlib.EDSM
             {
                 string json;
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
-                (json, lastUpdated) = await edsmService.GetData(edsmMethod, null, dataKey, lastUpdatedKey, expiry, ignoreCache).ConfigureAwait(false);
+                (json, lastUpdated) = await edsmService.GetData(edsmMethod, null, expiry, ignoreCache).ConfigureAwait(false);
 
                 eliteStatus = JsonConvert.DeserializeObject<EliteStatus>(json);
             }

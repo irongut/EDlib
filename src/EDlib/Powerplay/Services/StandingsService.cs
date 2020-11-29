@@ -20,7 +20,7 @@ namespace EDlib.Powerplay
 
         private const string URL = "https://api.taranissoftware.com/elite-dangerous/galactic-standings.json";
         private const string dataKey = "Standings";
-        private const string lastUpdatedKey = "StandingsUpdated";
+        private const string updatedKey = "StandingsUpdated";
 
         private GalacticStandings galacticStandings;
         private DateTime lastUpdated;
@@ -55,7 +55,7 @@ namespace EDlib.Powerplay
                 // download the standings
                 string json;
                 DownloadService downloadService = DownloadService.Instance(agent, cache, connectivity);
-                (json, lastUpdated) = await downloadService.GetData(URL, dataKey, lastUpdatedKey, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                (json, lastUpdated) = await downloadService.GetData(URL, dataKey, updatedKey, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
                 // parse the standings
                 galacticStandings = JsonConvert.DeserializeObject<GalacticStandings>(json);
@@ -65,7 +65,7 @@ namespace EDlib.Powerplay
                 {
                     expiry = CycleService.TimeTillTick();
                     cache.Add(dataKey, json, expiry);
-                    cache.Add(lastUpdatedKey, lastUpdated.ToString(), expiry);
+                    cache.Add(updatedKey, lastUpdated.ToString(), expiry);
                 }
             }
             return galacticStandings;

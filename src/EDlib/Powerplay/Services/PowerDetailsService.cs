@@ -22,8 +22,6 @@ namespace EDlib.Powerplay
         private static IConnectivityService connectivity;
 
         private const string URL = "https://api.taranissoftware.com/elite-dangerous/power-comms.json";
-        private const string dataKey = "PowerComms";
-        private const string lastUpdatedKey = "PowerCommsUpdated";
 
         private List<PowerDetails> powerList;
         private List<PowerComms> commsList;
@@ -96,7 +94,7 @@ namespace EDlib.Powerplay
             }
             TimeSpan expiry = TimeSpan.FromDays(cacheDays);
             DownloadService downloadService = DownloadService.Instance(agent, cache, connectivity);
-            (json, _) = await downloadService.GetData(URL, dataKey, lastUpdatedKey, expiry).ConfigureAwait(false);
+            (json, _) = await downloadService.GetData(URL, expiry).ConfigureAwait(false);
             commsList = JsonConvert.DeserializeObject<List<PowerComms>>(json);
         }
     }

@@ -225,13 +225,24 @@
             <param name="connectivityService">The platform specific connectivity service.</param>
             <returns>DownloadService</returns>
         </member>
-        <member name="M:EDlib.Network.DownloadService.GetData(System.String,System.String,System.String,System.TimeSpan,System.Boolean)">
+        <member name="M:EDlib.Network.DownloadService.GetData(System.String,System.TimeSpan,System.Boolean)">
             <summary>Gets and caches the data and when it was last updated.
             If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.</summary>
             <param name="url">The URL for downloading the data.</param>
-            <param name="dataKey">The key for cached data.</param>
-            <param name="lastUpdatedKey">The key for caching when the data was the last updated.</param>
             <param name="expiry">How long to cache the data.</param>
+            <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>
+            <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
+            <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
+            <exception cref="T:EDlib.APIException">Http errors from the API called.</exception>
+        </member>
+        <member name="M:EDlib.Network.DownloadService.GetData(System.String,System.TimeSpan,System.Threading.CancellationTokenSource,System.Boolean)">
+            <summary>
+            Gets and caches the data and when it was last updated with the option to cancel a download.
+            If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.
+            </summary>
+            <param name="url">The URL for downloading the data.</param>
+            <param name="expiry">How long to cache the data.</param>
+            <param name="cancelToken">A cancellation token.</param>
             <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>
             <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
             <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
@@ -244,7 +255,7 @@
             </summary>
             <param name="url">The URL for downloading the data.</param>
             <param name="dataKey">The key for cached data.</param>
-            <param name="lastUpdatedKey">The key for caching when the data was the last updated.</param>
+            <param name="updatedKey">The key for caching when the data was the last updated.</param>
             <param name="expiry">How long to cache the data.</param>
             <param name="cancelToken">A cancellation token.</param>
             <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>

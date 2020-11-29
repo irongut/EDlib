@@ -18,22 +18,12 @@ namespace EDlib.EDSM
         private static IConnectivityService connectivity;
 
         private const string infoMethod = "api-v1/system";
-        private const string infoDataKey = "Systems-Info";
-        private const string infoLastUpdatedKey = "Systems-Info-LastUpdated";
-
         private const string systemsMethod = "api-v1/systems?";
-        private const string systemsDataKey = "Systems";
-        private const string systemsLastUpdatedKey = "Systems-LastUpdated";
-
         private const string cubeMethod = "api-v1/cube-systems";
-        private const string cubeDataKey = "Systems-Cube";
-        private const string cubeLastUpdatedKey = "Systems-Cube-LastUpdated";
-
         private const string sphereMethod = "api-v1/sphere-systems";
-        private const string sphereDataKey = "Systems-Sphere";
-        private const string sphereLastUpdatedKey = "Systems-Sphere-LastUpdated";
 
         private SolarSystem solarSystem;
+        private SystemsOptions solarSystemOptions;
 
         private List<SolarSystem> systems;
         private DateTime systemsUpdated;
@@ -63,7 +53,7 @@ namespace EDlib.EDSM
 
             if (cacheMinutes < 5) cacheMinutes = 5;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
-            if (solarSystem == null || solarSystem.Name != systemName || (solarSystem.LastUpdated + expiry < DateTime.Now))
+            if (solarSystem == null || solarSystem.Name != systemName || (solarSystem.LastUpdated + expiry < DateTime.Now) || !solarSystemOptions.Equals(options))
             {
                 Dictionary<string, string> parameters = new Dictionary<string, string>
                 {
@@ -73,9 +63,10 @@ namespace EDlib.EDSM
 
                 string json;
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
-                (json, _) = await edsmService.GetData(infoMethod, parameters, infoDataKey, infoLastUpdatedKey, expiry, ignoreCache).ConfigureAwait(false);
+                (json, _) = await edsmService.GetData(infoMethod, parameters, expiry, ignoreCache).ConfigureAwait(false);
 
                 solarSystem = JsonConvert.DeserializeObject<SolarSystem>(json);
+                solarSystemOptions = options;
             }
             return solarSystem;
         }
@@ -103,7 +94,7 @@ namespace EDlib.EDSM
 
                 string json;
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
-                (json, systemsUpdated) = await edsmService.GetData(method, parameters, systemsDataKey, systemsLastUpdatedKey, expiry, ignoreCache).ConfigureAwait(false);
+                (json, systemsUpdated) = await edsmService.GetData(method, parameters, expiry, ignoreCache).ConfigureAwait(false);
 
                 systems = JsonConvert.DeserializeObject<List<SolarSystem>>(json);
             }
@@ -132,7 +123,7 @@ namespace EDlib.EDSM
 
                 string json;
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
-                (json, cubeUpdated) = await edsmService.GetData(cubeMethod, parameters, cubeDataKey, cubeLastUpdatedKey, expiry, ignoreCache).ConfigureAwait(false);
+                (json, cubeUpdated) = await edsmService.GetData(cubeMethod, parameters, expiry, ignoreCache).ConfigureAwait(false);
 
                 cubeSystems = JsonConvert.DeserializeObject<List<SolarSystem>>(json);
             }
@@ -164,7 +155,7 @@ namespace EDlib.EDSM
 
                 string json;
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
-                (json, sphereUpdated) = await edsmService.GetData(sphereMethod, parameters, sphereDataKey, sphereLastUpdatedKey, expiry, ignoreCache).ConfigureAwait(false);
+                (json, sphereUpdated) = await edsmService.GetData(sphereMethod, parameters, expiry, ignoreCache).ConfigureAwait(false);
 
                 sphereSystems = JsonConvert.DeserializeObject<List<SolarSystem>>(json);
             }
