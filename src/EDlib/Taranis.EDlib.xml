@@ -74,6 +74,261 @@
             <summary>Initializes a new instance of the <see cref="T:EDlib.Common.TopicsList" /> class and loads the topics from a json resource file.</summary>
             <param name="filename">The filename of the json resource file.</param>
         </member>
+        <member name="T:EDlib.EDSM.EliteStatus">
+            <summary>Elite: Dangerous server status.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.EliteStatus.Status">
+            <summary>The status code returned by the Elite: Dangerous server.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.EliteStatus.Type">
+            <summary>A Bootstrap style status string - success / warning / danger.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.EliteStatus.Message">
+            <summary>The message returned by the Elite: Dangerous server.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.EliteStatus.LastUpdated">
+            <summary>When EDSM last checked the status from the Elite: Dangerous server.</summary>
+        </member>
+        <member name="M:EDlib.EDSM.EliteStatus.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.EDSM.EliteStatus" /> class with unknown status.</summary>
+        </member>
+        <member name="M:EDlib.EDSM.EliteStatus.#ctor(System.Int32,System.String,System.String,System.DateTime)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.EDSM.EliteStatus" /> class.</summary>
+            <param name="status">The server status code.</param>
+            <param name="type">The status string.</param>
+            <param name="message">The server status message.</param>
+            <param name="lastupdate">When the server status was last checked.</param>
+        </member>
+        <member name="M:EDlib.EDSM.EliteStatus.ToString">
+            <summary>Returns the server status message and last updated as a string.</summary>
+            <returns>A <see cref="T:System.String" /> that represents the server status.</returns>
+        </member>
+        <member name="T:EDlib.EDSM.SolarSystem">
+            <summary>Represents a solar system returned by EDSM Systems API methods.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SolarSystem.Name">
+            <summary>The name of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SolarSystem.Distance">
+            <summary>Distance in light years from another system specified in the API request.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SolarSystem.Id">
+            <summary>The EDSM internal ID of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SolarSystem.Id64">
+            <summary>The EDSM internal ID of the system (64 bit).</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SolarSystem.Coords">
+            <summary>Coordinates of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SolarSystem.CoordsLocked">
+            <summary>Whether EDSM has locked the coordinates of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SolarSystem.RequiresPermit">
+            <summary>Whether the system requires a permit.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SolarSystem.PermitName">
+            <summary>The name of the system permit if required.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SolarSystem.Information">
+            <summary>
+              <para>A summary of information about the system.</para>
+              <para>Includes Allegiance, Government, Faction, Population, Security and Economic information.</para>
+            </summary>
+        </member>
+        <member name="P:EDlib.EDSM.SolarSystem.PrimaryStar">
+            <summary>
+              <para>Information concerning the primary star of the system.</para>
+              <para>Includes Type, Name and if the star can be scooped for fuel.</para>
+            </summary>
+        </member>
+        <member name="P:EDlib.EDSM.SolarSystem.LastUpdated">
+            <summary>The date and time when the information was requested.</summary>
+        </member>
+        <member name="M:EDlib.EDSM.SolarSystem.#ctor(System.String,System.Double,System.Int64,System.Int64,EDlib.EDSM.Coords,System.Boolean,System.Boolean,System.String,EDlib.EDSM.SystemInfo,EDlib.EDSM.PrimaryStar)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.EDSM.SolarSystem" /> class.</summary>
+            <param name="name">The system name.</param>
+            <param name="distance">Distance from a specified system.</param>
+            <param name="id">The EDSM system ID.</param>
+            <param name="id64">The EDSM 64 bit system ID.</param>
+            <param name="coords">The system coords.</param>
+            <param name="coordsLocked">if set to <c>true</c> [coords locked].</param>
+            <param name="requirePermit">If the system requires a permit.</param>
+            <param name="permitName">Name of the system permit.</param>
+            <param name="information">The system information.</param>
+            <param name="primaryStar">The primary star information.</param>
+        </member>
+        <member name="T:EDlib.EDSM.Coords">
+            <summary>Galactic coordinates for the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Coords.X">
+            <summary>X coordinate.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Coords.Y">
+            <summary>Y coordinate.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Coords.Z">
+            <summary>Z coordinate.</summary>
+        </member>
+        <member name="T:EDlib.EDSM.SystemInfo">
+            <summary>A summary of information about a system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemInfo.Allegiance">
+            <summary>The current superpower allegiance of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemInfo.Government">
+            <summary>The current government type of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemInfo.Faction">
+            <summary>The current faction that controls the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemInfo.FactionState">
+            <summary>The current active state of the controlling faction.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemInfo.Population">
+            <summary>The population of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemInfo.Security">
+            <summary>The current security level of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemInfo.Economy">
+            <summary>The primary economy type of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemInfo.SecondEconomy">
+            <summary>The secondary economy type of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemInfo.Reserve">
+            <summary>The mining reserves present in system.</summary>
+        </member>
+        <member name="T:EDlib.EDSM.PrimaryStar">
+            <summary>Details of the primary star in a system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.PrimaryStar.Type">
+            <summary>The type of the primary star. See the EDSM Celestial Bodies FAQ for more info.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.PrimaryStar.Name">
+            <summary>The name of the primary star.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.PrimaryStar.IsScoopable">
+            <summary>Whether the primary star can be scooped for fuel.</summary>
+        </member>
+        <member name="T:EDlib.EDSM.SystemsOptions">
+            <summary>EDSM Systems API request options.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemsOptions.ShowId">
+            <summary>Include the EDSM system ID in the results.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemsOptions.ShowCoordinates">
+            <summary>Include the stellar coordinates of the system in the results.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemsOptions.ShowPermit">
+            <summary>Include system permit details in the results.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemsOptions.ShowInformation">
+            <summary>Include a summary of system information in the results.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemsOptions.ShowPrimaryStar">
+            <summary>Include primary star details in the results.</summary>
+        </member>
+        <member name="M:EDlib.EDSM.SystemsOptions.Equals(System.Object)">
+            <summary>Determines whether the specified <see cref="T:System.Object" />, is equal to this instance.</summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
+            <returns><c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemsOptions.Equals(EDlib.EDSM.SystemsOptions)">
+            <summary>Indicates whether the current object is equal to another object of the same type.</summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemsOptions.GetHashCode">
+            <summary>Returns a hash code for this instance.</summary>
+            <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
+        </member>
+        <member name="T:EDlib.EDSM.EdsmService">
+            <summary>Utility service used by other services to get data from EDSM APIs.</summary>
+        </member>
+        <member name="M:EDlib.EDSM.EdsmService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+            <summary>Instantiates the EdsmService class.</summary>
+            <param name="userAgent">The user agent used for downloads.</param>
+            <param name="cacheService">The platform specific cache for downloaded data.</param>
+            <param name="connectivityService">The platform specific connectivity service.</param>
+            <returns>EdsmService</returns>
+        </member>
+        <member name="M:EDlib.EDSM.EdsmService.GetData(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.TimeSpan,System.Boolean)">
+            <summary>Gets data from an EDSM API.</summary>
+            <param name="method">The EDSM API method.</param>
+            <param name="parameters">The parameters for the API method.</param>
+            <param name="expiry">The expiry time for cached data.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;(string, DateTime)&gt;<br /></returns>
+        </member>
+        <member name="M:EDlib.EDSM.EdsmService.GetData(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.TimeSpan,System.Threading.CancellationTokenSource,System.Boolean)">
+            <summary>Gets data from an EDSM API with the option to cancel the download.</summary>
+            <param name="method">The EDSM API method.</param>
+            <param name="parameters">The parameters for the API method.</param>
+            <param name="expiry">The expiry time for cached data.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;(string, DateTime)&gt;<br /></returns>
+        </member>
+        <member name="T:EDlib.EDSM.EliteStatusService">
+            <summary>Gets Elite: Dangerous server status.</summary>
+        </member>
+        <member name="M:EDlib.EDSM.EliteStatusService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+            <summary>Instantiates the EliteStatusService class.</summary>
+            <param name="userAgent">The user agent used for downloads.</param>
+            <param name="cacheService">The platform specific cache for downloaded data.</param>
+            <param name="connectivityService">The platform specific connectivity service.</param>
+            <returns>EliteStatusService</returns>
+        </member>
+        <member name="M:EDlib.EDSM.EliteStatusService.GetData(System.Int32,System.Boolean)">
+            <summary>Gets the status of the Elite: Dangerous server.</summary>
+            <param name="cacheMinutes">The number of minutes to cache the data.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
+        </member>
+        <member name="T:EDlib.EDSM.SystemsService">
+            <summary>Gets data from the EDSM Systems API.</summary>
+        </member>
+        <member name="M:EDlib.EDSM.SystemsService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+            <summary>Instantiates the SystemsService class.</summary>
+            <param name="userAgent">The user agent used for downloads.</param>
+            <param name="cacheService">The platform specific cache for downloaded data.</param>
+            <param name="connectivityService">The platform specific connectivity service.</param>
+            <returns>SystemsService</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemsService.GetSystem(System.String,EDlib.EDSM.SystemsOptions,System.Int32,System.Boolean)">
+            <summary>Gets information about a solar system.</summary>
+            <param name="systemName">The system name.</param>
+            <param name="options">The Systems API request options.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;SolarSystem&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemsService.GetSystems(System.String[],EDlib.EDSM.SystemsOptions,System.Boolean)">
+            <summary>Gets information about an array of solar systems.</summary>
+            <param name="systemNames">An array of system names.</param>
+            <param name="options">The Systems API request options.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemsService.GetSystemsInCube(System.String,System.Int32,EDlib.EDSM.SystemsOptions,System.Boolean)">
+            <summary>Gets information about systems within a cube.</summary>
+            <param name="systemName">The name of the system at the centre of the cube.</param>
+            <param name="size">The size of the cube in light years; max 200 ly.</param>
+            <param name="options">The Systems API request options.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemsService.GetSystemsInSphere(System.String,System.Int32,System.Int32,EDlib.EDSM.SystemsOptions,System.Boolean)">
+            <summary>Gets information about systems within a sphere.</summary>
+            <param name="systemName">The name of the system at the centre of the sphere.</param>
+            <param name="radius">The radius of the sphere in light years; max 100 ly.</param>
+            <param name="minRadius">Set to a value between 0 and <c>radius</c> to reduce the returned results, in light years.</param>
+            <param name="options">The Systems API request options.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
+        </member>
         <member name="T:EDlib.APIException">
             <summary>Represents errors from an API.</summary>
         </member>
@@ -214,6 +469,14 @@
             <summary>Gets the content of an http response which may be compressed.</summary>
             <param name="response">The http response.</param>
             <returns>The content of the http response.</returns>
+        </member>
+        <member name="T:EDlib.Network.Sha256Helper">
+            <summary>Helper class for generating an SHA256 hash.</summary>
+        </member>
+        <member name="M:EDlib.Network.Sha256Helper.GenerateHash(System.String)">
+            <summary>Generates the SHA256 hash of a string.</summary>
+            <param name="input">The string that will be hashed.</param>
+            <returns>string</returns>
         </member>
         <member name="T:EDlib.Network.DownloadService">
             <summary>Internal class used to download and cache data.</summary>

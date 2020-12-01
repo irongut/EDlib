@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace EDlib.EDSM
 {
+    /// <summary>Gets Elite: Dangerous server status.</summary>
     public sealed class EliteStatusService
     {
         private static readonly EliteStatusService instance = new EliteStatusService();
@@ -22,6 +23,11 @@ namespace EDlib.EDSM
 
         private EliteStatusService() { }
 
+        /// <summary>Instantiates the EliteStatusService class.</summary>
+        /// <param name="userAgent">The user agent used for downloads.</param>
+        /// <param name="cacheService">The platform specific cache for downloaded data.</param>
+        /// <param name="connectivityService">The platform specific connectivity service.</param>
+        /// <returns>EliteStatusService</returns>
         public static EliteStatusService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
         {
             agent = userAgent;
@@ -30,6 +36,10 @@ namespace EDlib.EDSM
             return instance;
         }
 
+        /// <summary>Gets the status of the Elite: Dangerous server.</summary>
+        /// <param name="cacheMinutes">The number of minutes to cache the data.</param>
+        /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+        /// <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
         public async Task<(EliteStatus status, DateTime updated)> GetData(int cacheMinutes = 5, bool ignoreCache = false)
         {
             if (cacheMinutes < 5) cacheMinutes = 5;

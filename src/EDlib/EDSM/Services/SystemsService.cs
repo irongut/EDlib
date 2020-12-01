@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace EDlib.EDSM
 {
+    /// <summary>Gets data from the EDSM Systems API.</summary>
     public sealed class SystemsService
     {
         private static readonly SystemsService instance = new SystemsService();
@@ -36,6 +37,11 @@ namespace EDlib.EDSM
 
         private SystemsService() { }
 
+        /// <summary>Instantiates the SystemsService class.</summary>
+        /// <param name="userAgent">The user agent used for downloads.</param>
+        /// <param name="cacheService">The platform specific cache for downloaded data.</param>
+        /// <param name="connectivityService">The platform specific connectivity service.</param>
+        /// <returns>SystemsService</returns>
         public static SystemsService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
         {
             agent = userAgent;
@@ -44,6 +50,12 @@ namespace EDlib.EDSM
             return instance;
         }
 
+        /// <summary>Gets information about a solar system.</summary>
+        /// <param name="systemName">The system name.</param>
+        /// <param name="options">The Systems API request options.</param>
+        /// <param name="cacheMinutes">The number of minutes to cache the data.</param>
+        /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+        /// <returns>Task&lt;SolarSystem&gt;</returns>
         public async Task<SolarSystem> GetSystem(string systemName, SystemsOptions options, int cacheMinutes = 5, bool ignoreCache = false)
         {
             if (string.IsNullOrWhiteSpace(systemName))
@@ -71,6 +83,11 @@ namespace EDlib.EDSM
             return solarSystem;
         }
 
+        /// <summary>Gets information about an array of solar systems.</summary>
+        /// <param name="systemNames">An array of system names.</param>
+        /// <param name="options">The Systems API request options.</param>
+        /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+        /// <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
         public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystems(string[] systemNames, SystemsOptions options, bool ignoreCache = false)
         {
             if (systemNames?.Any() == false)
@@ -101,6 +118,12 @@ namespace EDlib.EDSM
             return (systems, systemsUpdated);
         }
 
+        /// <summary>Gets information about systems within a cube.</summary>
+        /// <param name="systemName">The name of the system at the centre of the cube.</param>
+        /// <param name="size">The size of the cube in light years; max 200 ly.</param>
+        /// <param name="options">The Systems API request options.</param>
+        /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+        /// <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
         public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystemsInCube(string systemName, int size, SystemsOptions options, bool ignoreCache = false)
         {
             if (string.IsNullOrWhiteSpace(systemName))
@@ -130,6 +153,13 @@ namespace EDlib.EDSM
             return (cubeSystems, cubeUpdated);
         }
 
+        /// <summary>Gets information about systems within a sphere.</summary>
+        /// <param name="systemName">The name of the system at the centre of the sphere.</param>
+        /// <param name="radius">The radius of the sphere in light years; max 100 ly.</param>
+        /// <param name="minRadius">Set to a value between 0 and <c>radius</c> to reduce the returned results, in light years.</param>
+        /// <param name="options">The Systems API request options.</param>
+        /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+        /// <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
         public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystemsInSphere(string systemName, int radius, int minRadius, SystemsOptions options, bool ignoreCache = false)
         {
             if (string.IsNullOrWhiteSpace(systemName))
