@@ -27,12 +27,21 @@ namespace EDlib.EDSM
         private SystemsOptions solarSystemOptions;
 
         private List<SolarSystem> systems;
+        private string[] systemsNameList;
+        private SystemsOptions systemsOptions;
         private DateTime systemsUpdated;
 
         private List<SolarSystem> cubeSystems;
+        private string cubeSystem;
+        private int cubeSize;
+        private SystemsOptions cubeOptions;
         private DateTime cubeUpdated;
 
         private List<SolarSystem> sphereSystems;
+        private string sphereSystem;
+        private int sphereRadius;
+        private int sphereMinRadius;
+        private SystemsOptions sphereOptions;
         private DateTime sphereUpdated;
 
         private SystemsService() { }
@@ -53,7 +62,7 @@ namespace EDlib.EDSM
         /// <summary>Gets information about a solar system.</summary>
         /// <param name="systemName">The system name.</param>
         /// <param name="options">The Systems API request options.</param>
-        /// <param name="cacheMinutes">The number of minutes to cache the data.</param>
+        /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;SolarSystem&gt;</returns>
         public async Task<SolarSystem> GetSystem(string systemName, SystemsOptions options, int cacheMinutes = 5, bool ignoreCache = false)
@@ -86,18 +95,19 @@ namespace EDlib.EDSM
         /// <summary>Gets information about an array of solar systems.</summary>
         /// <param name="systemNames">An array of system names.</param>
         /// <param name="options">The Systems API request options.</param>
+        /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
-        public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystems(string[] systemNames, SystemsOptions options, bool ignoreCache = false)
+        public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystems(string[] systemNames, SystemsOptions options, int cacheMinutes = 5, bool ignoreCache = false)
         {
             if (systemNames?.Any() == false)
             {
                 throw new ArgumentNullException(nameof(systemNames));
             }
 
-            // caching needs a rethink, for now use 60s
-            TimeSpan expiry = TimeSpan.FromSeconds(60);
-            if (systems?.Any() == false || (systemsUpdated + expiry < DateTime.Now))
+            if (cacheMinutes < 5) cacheMinutes = 5;
+            TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
+            if (systems?.Any() == false || (systemsUpdated + expiry < DateTime.Now) || systemsNameList.Equals(systemNames) || !systemsOptions.Equals(options))
             {
                 // Dictionary doesn't allow multiple identical keys so add system names to method
                 string method = systemsMethod;
@@ -114,6 +124,8 @@ namespace EDlib.EDSM
                 (json, systemsUpdated) = await edsmService.GetData(method, parameters, expiry, ignoreCache).ConfigureAwait(false);
 
                 systems = JsonConvert.DeserializeObject<List<SolarSystem>>(json);
+                systemsNameList = systemNames;
+                systemsOptions = options;
             }
             return (systems, systemsUpdated);
         }
@@ -122,18 +134,19 @@ namespace EDlib.EDSM
         /// <param name="systemName">The name of the system at the centre of the cube.</param>
         /// <param name="size">The size of the cube in light years; max 200 ly.</param>
         /// <param name="options">The Systems API request options.</param>
+        /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
-        public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystemsInCube(string systemName, int size, SystemsOptions options, bool ignoreCache = false)
+        public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystemsInCube(string systemName, int size, SystemsOptions options, int cacheMinutes = 5, bool ignoreCache = false)
         {
             if (string.IsNullOrWhiteSpace(systemName))
             {
                 throw new ArgumentNullException(nameof(systemName));
             }
 
-            // caching needs a rethink, for now use 60s
-            TimeSpan expiry = TimeSpan.FromSeconds(60);
-            if (cubeSystems?.Any() == false || (cubeUpdated + expiry < DateTime.Now))
+            if (cacheMinutes < 5) cacheMinutes = 5;
+            TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
+            if (cubeSystems?.Any() == false || (cubeUpdated + expiry < DateTime.Now) || cubeSystem != systemName || cubeSize != size || !cubeOptions.Equals(options))
             {
                 if (size < 1) size = 1;
                 else if (size > 200) size = 200;
@@ -149,6 +162,9 @@ namespace EDlib.EDSM
                 (json, cubeUpdated) = await edsmService.GetData(cubeMethod, parameters, expiry, ignoreCache).ConfigureAwait(false);
 
                 cubeSystems = JsonConvert.DeserializeObject<List<SolarSystem>>(json);
+                cubeSystem = systemName;
+                cubeSize = size;
+                cubeOptions = options;
             }
             return (cubeSystems, cubeUpdated);
         }
@@ -158,18 +174,19 @@ namespace EDlib.EDSM
         /// <param name="radius">The radius of the sphere in light years; max 100 ly.</param>
         /// <param name="minRadius">Set to a value between 0 and <c>radius</c> to reduce the returned results, in light years.</param>
         /// <param name="options">The Systems API request options.</param>
+        /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
-        public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystemsInSphere(string systemName, int radius, int minRadius, SystemsOptions options, bool ignoreCache = false)
+        public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystemsInSphere(string systemName, int radius, int minRadius, SystemsOptions options, int cacheMinutes = 5, bool ignoreCache = false)
         {
             if (string.IsNullOrWhiteSpace(systemName))
             {
                 throw new ArgumentNullException(nameof(systemName));
             }
 
-            // caching needs a rethink, for now use 60s
-            TimeSpan expiry = TimeSpan.FromSeconds(60);
-            if (sphereSystems == null || (sphereUpdated + expiry < DateTime.Now))
+            if (cacheMinutes < 5) cacheMinutes = 5;
+            TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
+            if (sphereSystems == null || (sphereUpdated + expiry < DateTime.Now) || sphereSystem != systemName || sphereRadius != radius || sphereMinRadius != minRadius || !sphereOptions.Equals(options))
             {
                 if (radius < 1) radius = 1;
                 else if (radius > 100) radius = 100;
@@ -188,6 +205,10 @@ namespace EDlib.EDSM
                 (json, sphereUpdated) = await edsmService.GetData(sphereMethod, parameters, expiry, ignoreCache).ConfigureAwait(false);
 
                 sphereSystems = JsonConvert.DeserializeObject<List<SolarSystem>>(json);
+                sphereSystem = systemName;
+                sphereRadius = radius;
+                sphereMinRadius = minRadius;
+                sphereOptions = options;
             }
             return (sphereSystems, sphereUpdated);
         }
