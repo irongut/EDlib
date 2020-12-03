@@ -1,6 +1,7 @@
 ﻿using EDlib.Platform;
 using Newtonsoft.Json;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EDlib.EDSM
@@ -42,13 +43,23 @@ namespace EDlib.EDSM
         /// <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
         public async Task<(EliteStatus status, DateTime updated)> GetData(int cacheMinutes = 5, bool ignoreCache = false)
         {
+            return await GetData(null, cacheMinutes, ignoreCache).ConfigureAwait(false);
+        }
+
+        /// <summary>Gets the status of the Elite: Dangerous server.</summary>
+        /// <param name="cancelToken">A cancellation token.</param>
+        /// <param name="cacheMinutes">The number of minutes to cache the data.</param>
+        /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+        /// <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
+        public async Task<(EliteStatus status, DateTime updated)> GetData(CancellationTokenSource cancelToken, int cacheMinutes = 5, bool ignoreCache = false)
+        {
             if (cacheMinutes < 5) cacheMinutes = 5;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
             if (eliteStatus == null || (lastUpdated + expiry < DateTime.Now))
             {
                 string json;
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
-                (json, lastUpdated) = await edsmService.GetData(edsmMethod, null, expiry, ignoreCache).ConfigureAwait(false);
+                (json, lastUpdated) = await edsmService.GetData(edsmMethod, null, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
                 eliteStatus = JsonConvert.DeserializeObject<EliteStatus>(json);
             }
