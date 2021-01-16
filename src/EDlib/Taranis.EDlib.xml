@@ -74,6 +74,24 @@
             <summary>Initializes a new instance of the <see cref="T:EDlib.Common.TopicsList" /> class and loads the topics from a json resource file.</summary>
             <param name="filename">The filename of the json resource file.</param>
         </member>
+        <member name="T:EDlib.EDSM.ControllingFaction">
+            <summary>Represents the BGS faction that controls a system or station returned by EDSM API methods.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.ControllingFaction.Id">
+            <summary>
+              <para>The ID of the faction.</para>
+              <para>Engineer factions do not have an Id so this property is nullable.</para>
+            </summary>
+        </member>
+        <member name="P:EDlib.EDSM.ControllingFaction.Name">
+            <summary>The name of the faction.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.ControllingFaction.Allegiance">
+            <summary>The superpower allegiance of the faction when returned by the EDSM method.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.ControllingFaction.Government">
+            <summary>The government type of the faction when returned by the EDSM method.</summary>
+        </member>
         <member name="T:EDlib.EDSM.EliteStatus">
             <summary>Elite: Dangerous server status.</summary>
         </member>
@@ -102,6 +120,169 @@
         <member name="M:EDlib.EDSM.EliteStatus.ToString">
             <summary>Returns the server status message and last updated as a string.</summary>
             <returns>A <see cref="T:System.String" /> that represents the server status.</returns>
+        </member>
+        <member name="T:EDlib.EDSM.Faction">
+            <summary>Represents a BGS faction returned by EDSM System API methods.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Faction.Id">
+            <summary>The ID of the faction.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Faction.Name">
+            <summary>The name of the faction.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Faction.Allegiance">
+            <summary>The superpower allegiance of the faction.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Faction.Government">
+            <summary>The government type of the faction.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Faction.Influence">
+            <summary>The faction's influence level.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Faction.State">
+            <summary>The faction's current state.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Faction.ActiveStates">
+            <summary>The faction's active states.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Faction.RecoveringStates">
+            <summary>The faction's recovering states.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Faction.PendingStates">
+            <summary>The faction's pending states.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Faction.Happiness">
+            <summary>The faction's current happiness.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Faction.IsPlayer">
+            <summary><c>true</c> if the faction is a player faction.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Faction.LastUpdate">
+            <summary>The date and time when the information was requested.</summary>
+        </member>
+        <member name="T:EDlib.EDSM.FactionState">
+            <summary>Represents a faction's BGS state returned by EDSM System API methods.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.FactionState.State">
+            <summary>The BGS state.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.FactionState.Trend">
+            <summary>The BGS state trend.</summary>
+        </member>
+        <member name="T:EDlib.EDSM.Market">
+            <summary>Represents a station market returned by EDSM System API methods.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Market.Id">
+            <summary>The EDSM internal ID of the market.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Market.Id64">
+            <summary>The EDSM internal ID of the market (64 bit).</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Market.Name">
+            <summary>The name of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Market.MarketId">
+            <summary>The market ID (use this ID for EDSM queries).</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Market.SId">
+            <summary>The EDSM internal ID of the station.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Market.SName">
+            <summary>The name of the station.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Market.Url">
+            <summary>The EDSM URL for the market.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Market.Commodities">
+            <summary>List of <see cref="T:EDlib.EDSM.Commodity" /> available from this market.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Market.LastUpdated">
+            <summary>The date and time when the information was requested.</summary>
+        </member>
+        <member name="M:EDlib.EDSM.Market.#ctor(System.Int64,System.Int64,System.String,System.Int64,System.Int64,System.String,System.String,System.Collections.Generic.List{EDlib.EDSM.Commodity})">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.EDSM.Market" /> class.</summary>
+            <param name="id">The EDSM market ID.</param>
+            <param name="id64">The EDSM 64 bit market ID.</param>
+            <param name="name">The system name.</param>
+            <param name="marketId">The market ID.</param>
+            <param name="sId">The station ID.</param>
+            <param name="sName">The station name.</param>
+            <param name="url">The EDSM URL for the market.</param>
+            <param name="commodities">List of <see cref="T:EDlib.EDSM.Commodity" /> available from this market.</param>
+        </member>
+        <member name="T:EDlib.EDSM.Commodity">
+            <summary>Represents a market commodity returned by EDSM System API methods.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Commodity.Id">
+            <summary>The ID of the commodity.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Commodity.Name">
+            <summary>The name of the commodity.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Commodity.BuyPrice">
+            <summary>The price when buying the commodity.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Commodity.Stock">
+            <summary>The quantity of the commodity available to buy.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Commodity.SellPrice">
+            <summary>The price when selling the commodity.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Commodity.Demand">
+            <summary>Demand for the commodity when selling.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Commodity.StockBracket">
+            <summary>Stock bracket for the commodity.</summary>
+        </member>
+        <member name="T:EDlib.EDSM.Shipyard">
+            <summary>Represents a station shipyard returned by EDSM System API methods.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Shipyard.Id">
+            <summary>The EDSM internal ID of the shipyard.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Shipyard.Id64">
+            <summary>The EDSM internal ID of the shipyard (64 bit).</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Shipyard.Name">
+            <summary>The name of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Shipyard.MarketId">
+            <summary>The shipyard ID (use this ID for EDSM queries).</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Shipyard.SId">
+            <summary>The EDSM internal ID of the station.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Shipyard.SName">
+            <summary>The name of the station.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Shipyard.Url">
+            <summary>The EDSM URL for the shipyard.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Shipyard.Ships">
+            <summary>List of <see cref="T:EDlib.EDSM.Ship" /> available from this shipyard.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Shipyard.LastUpdated">
+            <summary>The date and time when the information was requested.</summary>
+        </member>
+        <member name="M:EDlib.EDSM.Shipyard.#ctor(System.Int64,System.Int64,System.String,System.Int64,System.Int64,System.String,System.String,System.Collections.Generic.List{EDlib.EDSM.Ship})">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.EDSM.Market" /> class.</summary>
+            <param name="id">The EDSM shipyard ID.</param>
+            <param name="id64">The EDSM 64 bit shipyard ID.</param>
+            <param name="name">The system name.</param>
+            <param name="marketId">The shipyard ID.</param>
+            <param name="sId">The station ID.</param>
+            <param name="sName">The station name.</param>
+            <param name="url">The EDSM URL for the shipyard.</param>
+            <param name="ships">List of <see cref="T:EDlib.EDSM.Ship" /> available from this shipyard.</param>
+        </member>
+        <member name="T:EDlib.EDSM.Ship">
+            <summary>Represents a ship returned by EDSM System API methods.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Ship.Id">
+            <summary>The ship ID.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Ship.Name">
+            <summary>The name of the ship.</summary>
         </member>
         <member name="T:EDlib.EDSM.SolarSystem">
             <summary>Represents a solar system returned by EDSM Systems API methods.</summary>
@@ -180,7 +361,7 @@
             <summary>The current government type of the system.</summary>
         </member>
         <member name="P:EDlib.EDSM.SystemInfo.Faction">
-            <summary>The current faction that controls the system.</summary>
+            <summary>The current faction who controls the system.</summary>
         </member>
         <member name="P:EDlib.EDSM.SystemInfo.FactionState">
             <summary>The current active state of the controlling faction.</summary>
@@ -211,6 +392,170 @@
         </member>
         <member name="P:EDlib.EDSM.PrimaryStar.IsScoopable">
             <summary>Whether the primary star can be scooped for fuel.</summary>
+        </member>
+        <member name="T:EDlib.EDSM.Station">
+            <summary>Represents a station returned by EDSM System API methods.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.Id">
+            <summary>The EDSM internal ID of the station.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.MarketId">
+            <summary>The market ID (use this ID for EDSM queries).</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.Type">
+            <summary>The type of station.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.Name">
+            <summary>The name of station.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.DistanceToArrival">
+            <summary>Distance from the primary star to the station in light seconds.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.Allegiance">
+            <summary>The superpower allegiance of the faction.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.Government">
+            <summary>The government type of the faction.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.Economy">
+            <summary>The primary economy type of the station.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.SecondEconomy">
+            <summary>The secondary economy type of the station.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.HaveMarket">
+            <summary><c>true</c> if the station has a market.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.HaveShipyard">
+            <summary><c>true</c> if the station has a shipyard.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.HaveOutfitting">
+            <summary><c>true</c> if the station has an outfitting service.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.OtherServices">
+            <summary>Array of other services available in the station.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.ControllingFaction">
+            <summary>The current faction that controls the station.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.UpdateTime">
+            <summary>When the station details were last updated on ESDM.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Station.Body">
+            <summary>Location of a planetary outpost.</summary>
+        </member>
+        <member name="T:EDlib.EDSM.UpdateTime">
+            <summary>Represents when the station details were last updated on ESDM.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.UpdateTime.Information">
+            <summary>The date and time when the station data was last updated on EDSM.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.UpdateTime.Market">
+            <summary>The date and time when the market data was last updated on EDSM.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.UpdateTime.Shipyard">
+            <summary>The date and time when the shipyard data was last updated on EDSM.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.UpdateTime.Outfitting">
+            <summary>The date and time when the outfitting data was last updated on EDSM.</summary>
+        </member>
+        <member name="T:EDlib.EDSM.Body">
+            <summary>Represents the location of a planetary outpost returned by EDSM System API methods.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Body.Id">
+            <summary>The ID of the body.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Body.Name">
+            <summary>The name of the body.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Body.Latitude">
+            <summary>The latitude of the planetary outpost if known.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.Body.Longitude">
+            <summary>The longitude of the planetary outpost if known.</summary>
+        </member>
+        <member name="T:EDlib.EDSM.StationOutfitting">
+            <summary>Represents an outfitting service returned by EDSM System API methods.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.StationOutfitting.Id">
+            <summary>The EDSM internal ID of the outfitting service.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.StationOutfitting.Id64">
+            <summary>The EDSM internal ID of the outfitting service (64 bit).</summary>
+        </member>
+        <member name="P:EDlib.EDSM.StationOutfitting.Name">
+            <summary>The name of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.StationOutfitting.MarketId">
+            <summary>The outfitting service ID (use this ID for EDSM queries).</summary>
+        </member>
+        <member name="P:EDlib.EDSM.StationOutfitting.SId">
+            <summary>The EDSM internal ID of the station.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.StationOutfitting.SName">
+            <summary>The name of the station.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.StationOutfitting.Url">
+            <summary>The EDSM URL for the outfitting service.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.StationOutfitting.Outfitting">
+            <summary>List of <see cref="T:EDlib.EDSM.ShipModule" /> available from this outfitting service.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.StationOutfitting.LastUpdated">
+            <summary>The date and time when the information was requested.</summary>
+        </member>
+        <member name="M:EDlib.EDSM.StationOutfitting.#ctor(System.Int64,System.Int64,System.String,System.Int64,System.Int64,System.String,System.String,System.Collections.Generic.List{EDlib.EDSM.ShipModule})">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.EDSM.StationOutfitting" /> class.</summary>
+            <param name="id">The EDSM outfitting service ID.</param>
+            <param name="id64">The EDSM 64 bit outfitting service ID.</param>
+            <param name="name">The system name.</param>
+            <param name="marketId">The outfitting service ID.</param>
+            <param name="sId">The station ID.</param>
+            <param name="sName">The station name.</param>
+            <param name="url">The EDSM URL for the outfitting service.</param>
+            <param name="outfitting">List of <see cref="P:EDlib.EDSM.StationOutfitting.Outfitting" /> available from this outfitting service.</param>
+        </member>
+        <member name="T:EDlib.EDSM.ShipModule">
+            <summary>Represents a ship module returned by EDSM System API methods.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.ShipModule.Id">
+            <summary>The module ID.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.ShipModule.Name">
+            <summary>The name of the module.</summary>
+        </member>
+        <member name="T:EDlib.EDSM.SystemFactions">
+            <summary>Lists the factions in a system returned by EDSM System API methods.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemFactions.Id">
+            <summary>The EDSM internal ID of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemFactions.Id64">
+            <summary>The EDSM internal ID of the system (64 bit).</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemFactions.Name">
+            <summary>The name of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemFactions.Url">
+            <summary>The EDSM URL for the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemFactions.ControllingFaction">
+            <summary>The BGS faction that controls the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemFactions.Factions">
+            <summary>Array of <see cref="T:EDlib.EDSM.Faction" /> in the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemFactions.LastUpdated">
+            <summary>The date and time when the information was requested.</summary>
+        </member>
+        <member name="M:EDlib.EDSM.SystemFactions.#ctor(System.Int64,System.Int64,System.String,System.String,EDlib.EDSM.ControllingFaction,System.Collections.Generic.List{EDlib.EDSM.Faction})">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.EDSM.SystemFactions" /> class.</summary>
+            <param name="id">The EDSM system ID.</param>
+            <param name="id64">The EDSM 64 bit system ID.</param>
+            <param name="name">The system name.</param>
+            <param name="url">The EDSM URL for the system.</param>
+            /// <param name="controlFaction">The faction that controls the system.</param>
+            <param name="factions">Array of <see cref="T:EDlib.EDSM.Faction" /> in the system.</param>
         </member>
         <member name="T:EDlib.EDSM.SystemsOptions">
             <summary>EDSM Systems API request options.</summary>
@@ -244,8 +589,34 @@
             <summary>Returns a hash code for this instance.</summary>
             <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
         </member>
+        <member name="T:EDlib.EDSM.SystemStations">
+            <summary>Lists the stations in a system returned by EDSM System API methods.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemStations.Id">
+            <summary>The EDSM internal ID of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemStations.Id64">
+            <summary>The EDSM internal ID of the system. (64 bit)</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemStations.Name">
+            <summary>The name of the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemStations.Url">
+            <summary>The EDSM URL for the system.</summary>
+        </member>
+        <member name="P:EDlib.EDSM.SystemStations.Stations">
+            <summary>List of <see cref="T:EDlib.EDSM.Station" /> in the system.</summary>
+        </member>
         <member name="P:EDlib.EDSM.SystemStations.LastUpdated">
             <summary>The date and time when the information was requested.</summary>
+        </member>
+        <member name="M:EDlib.EDSM.SystemStations.#ctor(System.Int64,System.Int64,System.String,System.String,System.Collections.Generic.List{EDlib.EDSM.Station})">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.EDSM.SystemStations" /> class.</summary>
+            <param name="id">The EDSM system ID.</param>
+            <param name="id64">The EDSM 64 bit system ID.</param>
+            <param name="name">The system name.</param>
+            <param name="url">The EDSM URL for the system.</param>
+            <param name="stations">Array of <see cref="T:EDlib.EDSM.Station" /> in the system.</param>
         </member>
         <member name="T:EDlib.EDSM.EdsmService">
             <summary>Utility service used by other services to get data from EDSM APIs.</summary>
@@ -296,6 +667,142 @@
             <param name="cacheMinutes">The number of minutes to cache the data.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
+        </member>
+        <member name="T:EDlib.EDSM.SystemService">
+            <summary>Gets data from the EDSM System API.</summary>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+            <summary>Instantiates the SystemService class.</summary>
+            <param name="userAgent">The user agent used for downloads.</param>
+            <param name="cacheService">The platform specific cache for downloaded data.</param>
+            <param name="connectivityService">The platform specific connectivity service.</param>
+            <returns>SystemService</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetStations(System.String,System.Int32,System.Boolean)">
+            <summary>Gets information about stations in a system.</summary>
+            <param name="systemName">The system name.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;SystemStations&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetStations(System.String,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
+            <summary>Gets information about stations in a system.</summary>
+            <param name="systemName">The system name.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;SystemStations&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetMarket(System.Int64,System.Int32,System.Boolean)">
+            <summary>Gets information about a market in a station.</summary>
+            <param name="marketId">The in-game marketId of the market.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;Market&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetMarket(System.Int64,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
+            <summary>Gets information about a market in a station.</summary>
+            <param name="marketId">The in-game marketId of the market.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;Market&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetMarket(System.String,System.String,System.Int32,System.Boolean)">
+            <summary>Gets information about a market in a station.</summary>
+            <param name="systemName">The name of the system where the market is located.</param>
+            <param name="stationName">The name of the station where the market is located.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;Market&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetMarket(System.String,System.String,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
+            <summary>Gets information about a market in a station.</summary>
+            <param name="systemName">The name of the system where the market is located.</param>
+            <param name="stationName">The name of the station where the market is located.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;Market&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetShipyard(System.Int64,System.Int32,System.Boolean)">
+            <summary>Gets information about a shipyard in a station.</summary>
+            <param name="marketId">The in-game marketId of the station where the shipyard is located.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;Shipyard&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetShipyard(System.Int64,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
+            <summary>Gets information about a shipyard in a station.</summary>
+            <param name="marketId">The in-game marketId of the station where the shipyard is located.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;Shipyard&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetShipyard(System.String,System.String,System.Int32,System.Boolean)">
+            <summary>Gets information about a shipyard in a station.</summary>
+            <param name="systemName">The name of the system where the shipyard is located.</param>
+            <param name="stationName">The name of the station where the shipyard is located.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;Shipyard&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetShipyard(System.String,System.String,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
+            <summary>Gets information about a shipyard in a station.</summary>
+            <param name="systemName">The name of the system where the shipyard is located.</param>
+            <param name="stationName">The name of the station where the shipyard is located.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;Shipyard&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetOutfitting(System.Int64,System.Int32,System.Boolean)">
+            <summary>Gets information about a outfitting in a station.</summary>
+            <param name="marketId">The in-game marketId of the station where the outfitting is located.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;StationOutfitting&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetOutfitting(System.Int64,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
+            <summary>Gets information about a outfitting in a station.</summary>
+            <param name="marketId">The in-game marketId of the station where the outfitting is located.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;StationOutfitting&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetOutfitting(System.String,System.String,System.Int32,System.Boolean)">
+            <summary>Gets information about a outfitting in a station.</summary>
+            <param name="systemName">The name of the system where the outfitting is located.</param>
+            <param name="stationName">The name of the station where the outfitting is located.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;StationOutfitting&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetOutfitting(System.String,System.String,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
+            <summary>Gets information about a outfitting in a station.</summary>
+            <param name="systemName">The name of the system where the outfitting is located.</param>
+            <param name="stationName">The name of the station where the outfitting is located.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;StationOutfitting&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetFactions(System.String,System.Int32,System.Boolean)">
+            <summary>Gets information about factions in a system.</summary>
+            <param name="systemName">The system name.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;SystemFactions&gt;</returns>
+        </member>
+        <member name="M:EDlib.EDSM.SystemService.GetFactions(System.String,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
+            <summary>Gets information about factions in a system.</summary>
+            <param name="systemName">The system name.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;SystemFactions&gt;</returns>
         </member>
         <member name="T:EDlib.EDSM.SystemsService">
             <summary>Gets data from the EDSM Systems API.</summary>

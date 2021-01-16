@@ -109,7 +109,7 @@ namespace EDlib.EDSM
         [JsonProperty("government")]
         public string Government { get; set; }
 
-        /// <summary>The current faction that controls the system.</summary>
+        /// <summary>The current faction who controls the system.</summary>
         [JsonProperty("faction")]
         public string Faction { get; set; }
 
