@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace UnitTests
 {
     [TestClass]
-    public class EliteStatusTests
+    public class EdsmStatusTests
     {
         [TestMethod]
         public void UnknownStatusTest()
