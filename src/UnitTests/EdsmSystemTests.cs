@@ -1,4 +1,5 @@
-﻿using EDlib.EDSM;
+﻿using EDlib;
+using EDlib.EDSM;
 using EDlib.Mock.Platform;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -13,7 +14,17 @@ namespace UnitTests
         public async Task StationsTest()
         {
             SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
-            SystemStations stations = await systemService.GetStations("Sol").ConfigureAwait(false);
+            SystemStations stations;
+            try
+            {
+                stations = await systemService.GetStations("Sol").ConfigureAwait(false);
+            }
+            catch (APIException)
+            {
+                Assert.Inconclusive("Skipping test due to issue with EDSM API.");
+                return;
+            }
+
             Assert.IsNotNull(stations);
             Assert.IsTrue(stations.Id > 0);
             Assert.IsTrue(stations.Id64 > 0);
@@ -77,7 +88,17 @@ namespace UnitTests
         public async Task MarketTest()
         {
             SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
-            Market gMarket = await systemService.GetMarket(128016640).ConfigureAwait(false);
+            Market gMarket;
+            try
+            {
+                gMarket = await systemService.GetMarket(128016640).ConfigureAwait(false);
+            }
+            catch (APIException)
+            {
+                Assert.Inconclusive("Skipping test due to issue with EDSM API.");
+                return;
+            }
+
             Assert.IsNotNull(gMarket);
             Assert.IsTrue(gMarket.Id > 0);
             Assert.IsTrue(gMarket.Id64 > 0);
@@ -104,7 +125,17 @@ namespace UnitTests
         public async Task ShipyardTest()
         {
             SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
-            Shipyard gShipyard = await systemService.GetShipyard(128016640).ConfigureAwait(false);
+            Shipyard gShipyard;
+            try
+            {
+                gShipyard = await systemService.GetShipyard(128016640).ConfigureAwait(false);
+            }
+            catch (APIException)
+            {
+                Assert.Inconclusive("Skipping test due to issue with EDSM API.");
+                return;
+            }
+
             Assert.IsNotNull(gShipyard);
             Assert.IsTrue(gShipyard.Id > 0);
             Assert.IsTrue(gShipyard.Id64 > 0);
@@ -126,7 +157,17 @@ namespace UnitTests
         public async Task OutfittingTest()
         {
             SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
-            StationOutfitting gOutfit = await systemService.GetOutfitting(128016640).ConfigureAwait(false);
+            StationOutfitting gOutfit;
+            try
+            {
+                gOutfit = await systemService.GetOutfitting(128016640).ConfigureAwait(false);
+            }
+            catch (APIException)
+            {
+                Assert.Inconclusive("Skipping test due to issue with EDSM API.");
+                return;
+            }
+
             Assert.IsNotNull(gOutfit);
             Assert.IsTrue(gOutfit.Id > 0);
             Assert.IsTrue(gOutfit.Id64 > 0);
@@ -148,7 +189,17 @@ namespace UnitTests
         public async Task FactionsTest()
         {
             SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
-            SystemFactions factions = await systemService.GetFactions("Sol").ConfigureAwait(false);
+            SystemFactions factions;
+            try
+            {
+                factions = await systemService.GetFactions("Sol").ConfigureAwait(false);
+            }
+            catch (APIException)
+            {
+                Assert.Inconclusive("Skipping test due to issue with EDSM API.");
+                return;
+            }
+
             Assert.IsNotNull(factions);
             Assert.IsTrue(factions.Id > 0);
             Assert.IsTrue(factions.Id64 > 0);

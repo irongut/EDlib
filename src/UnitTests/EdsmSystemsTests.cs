@@ -1,4 +1,5 @@
-﻿using EDlib.EDSM;
+﻿using EDlib;
+using EDlib.EDSM;
 using EDlib.Mock.Platform;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -22,7 +23,17 @@ namespace UnitTests
                 ShowPrimaryStar = true
             };
             SystemsService systemsService = SystemsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
-            SolarSystem solSystem = await systemsService.GetSystem("Sol", options).ConfigureAwait(false);
+            SolarSystem solSystem;
+            try
+            {
+                solSystem = await systemsService.GetSystem("Sol", options).ConfigureAwait(false);
+            }
+            catch (APIException)
+            {
+                Assert.Inconclusive("Skipping test due to issue with EDSM API.");
+                return;
+            }
+
             Assert.IsNotNull(solSystem);
             Assert.AreEqual(solSystem.Name, "Sol");
             Assert.AreEqual(solSystem.Distance, 0);
@@ -57,7 +68,17 @@ namespace UnitTests
                 ShowPermit = true
             };
             SystemsService systemsService = SystemsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
-            SolarSystem ngSystem = await systemsService.GetSystem("Ngarawe", options).ConfigureAwait(false);
+            SolarSystem ngSystem;
+            try
+            {
+                ngSystem = await systemsService.GetSystem("Ngarawe", options).ConfigureAwait(false);
+            }
+            catch (APIException)
+            {
+                Assert.Inconclusive("Skipping test due to issue with EDSM API.");
+                return;
+            }
+
             Assert.IsNotNull(ngSystem);
             Assert.AreEqual(ngSystem.Name, "Ngarawe");
             Assert.AreEqual(ngSystem.Distance, 0);
@@ -82,7 +103,17 @@ namespace UnitTests
             };
             string[] systemNames = { "Achenar", "Ngarawe", "Sol" };
             SystemsService systemsService = SystemsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
-            (List<SolarSystem> systems, DateTime lastUpdated) = await systemsService.GetSystems(systemNames, options).ConfigureAwait(false);
+            List<SolarSystem> systems;
+            try
+            {
+                (systems, _) = await systemsService.GetSystems(systemNames, options).ConfigureAwait(false);
+            }
+            catch (APIException)
+            {
+                Assert.Inconclusive("Skipping test due to issue with EDSM API.");
+                return;
+            }
+
             Assert.IsNotNull(systems);
             Assert.IsTrue(systems.Count > 0);
 
@@ -121,7 +152,17 @@ namespace UnitTests
                 ShowCoordinates = true
             };
             SystemsService systemsService = SystemsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
-            (List<SolarSystem> solCube, DateTime lastUpdated) = await systemsService.GetSystemsInCube("Sol", 10, options).ConfigureAwait(false);
+            List<SolarSystem> solCube;
+            try
+            {
+                (solCube, _) = await systemsService.GetSystemsInCube("Sol", 10, options).ConfigureAwait(false);
+            }
+            catch (APIException)
+            {
+                Assert.Inconclusive("Skipping test due to issue with EDSM API.");
+                return;
+            }
+            
             Assert.IsNotNull(solCube);
             Assert.IsTrue(solCube.Count > 0);
 
@@ -160,7 +201,17 @@ namespace UnitTests
                 ShowCoordinates = true
             };
             SystemsService systemsService = SystemsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
-            (List<SolarSystem> solSphere, DateTime lastUpdated) = await systemsService.GetSystemsInSphere("Sol", 8, 4, options).ConfigureAwait(false);
+            List<SolarSystem> solSphere;
+            try
+            {
+                (solSphere, _) = await systemsService.GetSystemsInSphere("Sol", 8, 4, options).ConfigureAwait(false);
+            }
+            catch (APIException)
+            {
+                Assert.Inconclusive("Skipping test due to issue with EDSM API.");
+                return;
+            }
+
             Assert.IsNotNull(solSphere);
             Assert.IsTrue(solSphere.Count > 0);
 
