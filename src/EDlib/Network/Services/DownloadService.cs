@@ -45,57 +45,33 @@ namespace EDlib.Network
         /// <summary>Gets and caches the data and when it was last updated.
         /// If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.</summary>
         /// <param name="url">The URL for downloading the data.</param>
-        /// <param name="dataKey">The key for cached data.</param>
-        /// <param name="lastUpdatedKey">The key for caching when the data was the last updated.</param>
         /// <param name="expiry">How long to cache the data.</param>
         /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>
         /// <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
         /// <exception cref="NoNetworkNoCacheException">No Internet available and no data cached.</exception>
         /// <exception cref="APIException">Http errors from the API called.</exception>
-        public async Task<(string data, DateTime updated)> GetData(string url, string dataKey, string lastUpdatedKey, TimeSpan expiry, bool ignoreCache = false)
+        public async Task<(string data, DateTime updated)> GetData(string url, TimeSpan expiry, bool ignoreCache = false)
         {
-            string data;
-            DateTime lastUpdated;
+            return await GetData(url, expiry, null, ignoreCache).ConfigureAwait(false);
+        }
 
-            if (!connectivity.IsConnected())
-            {
-                // no valid connectivity
-                if (cache.Exists(dataKey))
-                {
-                    // use cached data
-                    data = cache.Get(dataKey);
-                    lastUpdated = DateTime.Parse(cache.Get(lastUpdatedKey));
-                }
-                else
-                {
-                    throw new NoNetworkNoCacheException("No Internet available and no data cached.");
-                }
-            }
-            else if (!ignoreCache && cache.Exists(dataKey) && !cache.IsExpired(dataKey))
-            {
-                // use cached data
-                data = cache.Get(dataKey);
-                lastUpdated = DateTime.Parse(cache.Get(lastUpdatedKey));
-            }
-            else
-            {
-                // download data
-                var uri = new Uri(url);
-                HttpResponseMessage response = await client.GetAsync(uri).ConfigureAwait(false);
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw new APIException($"{response.StatusCode} - {response.ReasonPhrase}", (int)response.StatusCode);
-                }
-                else
-                {
-                    data = await HttpHelper.ReadContentAsync(response).ConfigureAwait(false);
-                    lastUpdated = DateTime.Now;
-                    // cache data
-                    cache.Add(dataKey, data, expiry);
-                    cache.Add(lastUpdatedKey, lastUpdated.ToString(), expiry);
-                }
-            }
-            return (data, lastUpdated);
+        /// <summary>
+        /// Gets and caches the data and when it was last updated with the option to cancel a download.
+        /// If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.
+        /// </summary>
+        /// <param name="url">The URL for downloading the data.</param>
+        /// <param name="expiry">How long to cache the data.</param>
+        /// <param name="cancelToken">A cancellation token.</param>
+        /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>
+        /// <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
+        /// <exception cref="NoNetworkNoCacheException">No Internet available and no data cached.</exception>
+        /// <exception cref="APIException">Http errors from the API called.</exception>
+        public async Task<(string data, DateTime updated)> GetData(string url, TimeSpan expiry, CancellationTokenSource cancelToken, bool ignoreCache = false)
+        {
+            string urlHash = Sha256Helper.GenerateHash(url);
+            string dataKey = $"{urlHash}-Data";
+            string updatedKey = $"{urlHash}-Updated";
+            return await GetData(url, dataKey, updatedKey, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -104,14 +80,14 @@ namespace EDlib.Network
         /// </summary>
         /// <param name="url">The URL for downloading the data.</param>
         /// <param name="dataKey">The key for cached data.</param>
-        /// <param name="lastUpdatedKey">The key for caching when the data was the last updated.</param>
+        /// <param name="updatedKey">The key for caching when the data was the last updated.</param>
         /// <param name="expiry">How long to cache the data.</param>
         /// <param name="cancelToken">A cancellation token.</param>
         /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>
         /// <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
         /// <exception cref="NoNetworkNoCacheException">No Internet available and no data cached.</exception>
         /// <exception cref="APIException">Http errors from the API called.</exception>
-        public async Task<(string data, DateTime updated)> GetData(string url, string dataKey, string lastUpdatedKey, TimeSpan expiry, CancellationTokenSource cancelToken, bool ignoreCache = false)
+        public async Task<(string data, DateTime updated)> GetData(string url, string dataKey, string updatedKey, TimeSpan expiry, CancellationTokenSource cancelToken, bool ignoreCache = false)
         {
             string data;
             DateTime lastUpdated;
@@ -123,7 +99,7 @@ namespace EDlib.Network
                 {
                     // use cached data
                     data = cache.Get(dataKey);
-                    lastUpdated = DateTime.Parse(cache.Get(lastUpdatedKey));
+                    lastUpdated = DateTime.Parse(cache.Get(updatedKey));
                 }
                 else
                 {
@@ -134,27 +110,42 @@ namespace EDlib.Network
             {
                 // use cached data
                 data = cache.Get(dataKey);
-                lastUpdated = DateTime.Parse(cache.Get(lastUpdatedKey));
+                lastUpdated = DateTime.Parse(cache.Get(updatedKey));
             }
             else
             {
                 // download data
-                var uri = new Uri(url);
-                HttpResponseMessage response = await client.GetAsync(uri, cancelToken.Token).ConfigureAwait(false);
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw new APIException($"{response.StatusCode} - {response.ReasonPhrase}", (int)response.StatusCode);
-                }
-                else
-                {
-                    data = await HttpHelper.ReadContentAsync(response).ConfigureAwait(false);
-                    lastUpdated = DateTime.Now;
-                    // cache data
-                    cache.Add(dataKey, data, expiry);
-                    cache.Add(lastUpdatedKey, lastUpdated.ToString(), expiry);
-                }
+                (data, lastUpdated) = await Download(url, cancelToken).ConfigureAwait(false);
+
+                // cache data
+                cache.Add(dataKey, data, expiry);
+                cache.Add(updatedKey, lastUpdated.ToString(), expiry);
             }
             return (data, lastUpdated);
+        }
+
+        private async Task<(string data, DateTime updated)> Download(string url, CancellationTokenSource cancelToken)
+        {
+            var uri = new Uri(url);
+            HttpResponseMessage response;
+            if (cancelToken == null)
+            {
+                response = await client.GetAsync(uri).ConfigureAwait(false);
+            }
+            else
+            {
+                response = await client.GetAsync(uri, cancelToken.Token).ConfigureAwait(false);
+            }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new APIException($"{response.StatusCode} - {response.ReasonPhrase}", (int)response.StatusCode);
+            }
+            else
+            {
+                string data = await HttpHelper.ReadContentAsync(response).ConfigureAwait(false);
+                return (data, DateTime.Now);
+            }
         }
     }
 }

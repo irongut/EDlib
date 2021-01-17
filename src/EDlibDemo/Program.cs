@@ -1,4 +1,6 @@
-﻿using EDlib.Powerplay;
+﻿using EDlib.EDSM;
+using EDlib.Mock.Platform;
+using EDlib.Powerplay;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
@@ -8,6 +10,7 @@ namespace EDlibDemo
 {
     internal static class Program
     {
+        private const string userAgent = "EDlib Demo";
         private static HttpClient client;
 
         private static async Task Main()
@@ -16,18 +19,24 @@ namespace EDlibDemo
             {
                 SetupClient();
 
+                EliteStatusService statusService = EliteStatusService.Instance(userAgent, new EmptyCache(), new UnmeteredConnection());
+                (EliteStatus eliteStatus, DateTime lastUpdated) = await statusService.GetData().ConfigureAwait(false);
+                Console.WriteLine(eliteStatus.ToString());
+                Console.WriteLine("");
+
                 string json = await GetDataAsync().ConfigureAwait(false);
                 GalacticStandings galacticStandings = JsonConvert.DeserializeObject<GalacticStandings>(json);
-
                 Console.WriteLine(galacticStandings.ToString());
-                Console.WriteLine("");
 
                 Random rand = new Random();
                 string shortName = galacticStandings.Standings[rand.Next(10)].ShortName;
-                PowerDetailsService powerService = PowerDetailsService.Instance("EDlib Demo", null, null);
+                PowerDetailsService powerService = PowerDetailsService.Instance(userAgent, new EmptyCache(), new UnmeteredConnection());
                 PowerDetails powerDetails = powerService.GetPowerDetails(shortName);
-
                 Console.WriteLine(powerDetails.ToString());
+                Console.WriteLine("");
+
+                PowerComms commms = await powerService.GetPowerCommsAsync(shortName, 1).ConfigureAwait(false);
+                Console.WriteLine(commms.ToString());
                 Console.WriteLine("");
             }
             catch (Exception ex)
@@ -39,7 +48,7 @@ namespace EDlibDemo
         private static void SetupClient()
         {
             client = new HttpClient();
-            client.DefaultRequestHeaders.Add("X-Requested-With", "EDlib Demo");
+            client.DefaultRequestHeaders.Add("X-Requested-With", userAgent);
             client.Timeout = TimeSpan.FromSeconds(40);
         }
 

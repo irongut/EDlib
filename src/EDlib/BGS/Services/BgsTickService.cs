@@ -20,8 +20,6 @@ namespace EDlib.BGS
         private static IConnectivityService connectivity;
 
         private readonly string TickURL = "http://tick.phelbore.com/api/ticks?start={0}&end={1}";
-        private const string dataKey = "BgsTick";
-        private const string lastUpdatedKey = "BgsTickLastUpdated";
 
         private List<BgsTick> bgsTicks;
         private DateTime lastUpdated;
@@ -77,7 +75,7 @@ namespace EDlib.BGS
 
                 // download the json
                 DownloadService downloadService = DownloadService.Instance(agent, cache, connectivity);
-                (json, lastUpdated) = await downloadService.GetData(queryURL, dataKey, lastUpdatedKey, expiry, ignoreCache).ConfigureAwait(false);
+                (json, lastUpdated) = await downloadService.GetData(queryURL, expiry, ignoreCache).ConfigureAwait(false);
 
                 // parse the data
                 bgsTicks = JsonConvert.DeserializeObject<List<BgsTick>>(json);
