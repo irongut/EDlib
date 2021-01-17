@@ -85,7 +85,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public async Task MarketTest()
+        public async Task MarketByIdTest()
         {
             SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
             Market gMarket;
@@ -122,7 +122,44 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public async Task ShipyardTest()
+        public async Task MarketByNameTest()
+        {
+            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            Market gMarket;
+            try
+            {
+                gMarket = await systemService.GetMarket("Sol", "Galileo").ConfigureAwait(false);
+            }
+            catch (APIException)
+            {
+                Assert.Inconclusive("Skipping test due to issue with EDSM API.");
+                return;
+            }
+
+            Assert.IsNotNull(gMarket);
+            Assert.IsTrue(gMarket.Id > 0);
+            Assert.IsTrue(gMarket.Id64 > 0);
+            Assert.AreEqual(gMarket.Name, "Sol");
+            Assert.AreEqual(gMarket.MarketId, 128016640);
+            Assert.IsTrue(gMarket.SId > 0);
+            Assert.AreEqual(gMarket.SName, "Galileo");
+            Assert.IsFalse(string.IsNullOrWhiteSpace(gMarket.Url));
+            Assert.IsTrue(gMarket.Commodities.Count > 0);
+            Assert.IsTrue(gMarket.LastUpdated > DateTime.MinValue);
+
+            Commodity aluminium = gMarket.Commodities.Find(x => x.Name == "Aluminium");
+            Assert.IsNotNull(aluminium);
+            Assert.AreEqual(aluminium.Id, "aluminium");
+            Assert.AreEqual(aluminium.Name, "Aluminium");
+            Assert.IsTrue(aluminium.BuyPrice > 0);
+            Assert.IsTrue(aluminium.SellPrice > 0);
+            Assert.IsTrue(aluminium.Stock > 0);
+            Assert.IsTrue(aluminium.Demand > 0);
+            Assert.IsTrue(aluminium.StockBracket > 0);
+        }
+
+        [TestMethod]
+        public async Task ShipyardByIdTest()
         {
             SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
             Shipyard gShipyard;
@@ -154,13 +191,77 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public async Task OutfittingTest()
+        public async Task ShipyardByNameTest()
+        {
+            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            Shipyard gShipyard;
+            try
+            {
+                gShipyard = await systemService.GetShipyard("Sol", "Galileo").ConfigureAwait(false);
+            }
+            catch (APIException)
+            {
+                Assert.Inconclusive("Skipping test due to issue with EDSM API.");
+                return;
+            }
+
+            Assert.IsNotNull(gShipyard);
+            Assert.IsTrue(gShipyard.Id > 0);
+            Assert.IsTrue(gShipyard.Id64 > 0);
+            Assert.AreEqual(gShipyard.Name, "Sol");
+            Assert.AreEqual(gShipyard.MarketId, 128016640);
+            Assert.IsTrue(gShipyard.SId > 0);
+            Assert.AreEqual(gShipyard.SName, "Galileo");
+            Assert.IsFalse(string.IsNullOrWhiteSpace(gShipyard.Url));
+            Assert.IsTrue(gShipyard.Ships.Count > 0);
+            Assert.IsTrue(gShipyard.LastUpdated > DateTime.MinValue);
+
+            Ship eagle = gShipyard.Ships.Find(x => x.Name == "Eagle");
+            Assert.IsNotNull(eagle);
+            Assert.IsTrue(eagle.Id > 0);
+            Assert.AreEqual(eagle.Name, "Eagle");
+        }
+
+        [TestMethod]
+        public async Task OutfittingByIdTest()
         {
             SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
             StationOutfitting gOutfit;
             try
             {
                 gOutfit = await systemService.GetOutfitting(128016640).ConfigureAwait(false);
+            }
+            catch (APIException)
+            {
+                Assert.Inconclusive("Skipping test due to issue with EDSM API.");
+                return;
+            }
+
+            Assert.IsNotNull(gOutfit);
+            Assert.IsTrue(gOutfit.Id > 0);
+            Assert.IsTrue(gOutfit.Id64 > 0);
+            Assert.AreEqual(gOutfit.Name, "Sol");
+            Assert.AreEqual(gOutfit.MarketId, 128016640);
+            Assert.IsTrue(gOutfit.SId > 0);
+            Assert.AreEqual(gOutfit.SName, "Galileo");
+            Assert.IsFalse(string.IsNullOrWhiteSpace(gOutfit.Url));
+            Assert.IsTrue(gOutfit.Outfitting.Count > 0);
+            Assert.IsTrue(gOutfit.LastUpdated > DateTime.MinValue);
+
+            ShipModule eagleArmour = gOutfit.Outfitting.Find(x => x.Id == "eagle_armour_grade1");
+            Assert.IsNotNull(eagleArmour);
+            Assert.AreEqual(eagleArmour.Id, "eagle_armour_grade1");
+            Assert.AreEqual(eagleArmour.Name, "1I Lightweight Alloy");
+        }
+
+        [TestMethod]
+        public async Task OutfittingByNameTest()
+        {
+            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            StationOutfitting gOutfit;
+            try
+            {
+                gOutfit = await systemService.GetOutfitting("Sol", "Galileo").ConfigureAwait(false);
             }
             catch (APIException)
             {
