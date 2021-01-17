@@ -22,6 +22,7 @@ steps:
 
 # build all projects
 - task: VSBuild@1
+  displayName: 'Build All'
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
@@ -29,13 +30,15 @@ steps:
 
 # run unit tests
 - task: DotNetCoreCLI@2
+  displayName: 'Run Unit Tests'
   inputs:
     command: test
     projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 
 # copy demo to staging folder
 - task: CopyFiles@2
+  displayName: 'Copy Build to Staging'
   inputs:
     Contents: '**\EDlibDemo\bin\**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
@@ -46,6 +49,7 @@ steps:
 
 # package with 7z
 - task: ArchiveFiles@2
+  displayName: 'Package Build'
   inputs:
     rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
     includeRootFolder: false
@@ -56,6 +60,7 @@ steps:
 
 # publish build artifact
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish Build'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)\EDlib-$(Build.BuildNumber).7z'
     ArtifactName: 'CI-Build'
