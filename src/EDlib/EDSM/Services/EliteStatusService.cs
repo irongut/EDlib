@@ -61,6 +61,11 @@ namespace EDlib.EDSM
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
                 (json, lastUpdated) = await edsmService.GetData(edsmMethod, null, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
+                if (string.IsNullOrWhiteSpace(json) || json == "{}")
+                {
+                    throw new APIException("EDSM method returned no data.");
+                }
+
                 eliteStatus = JsonConvert.DeserializeObject<EliteStatus>(json);
             }
             return (eliteStatus, lastUpdated);

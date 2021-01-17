@@ -99,6 +99,11 @@ namespace EDlib.EDSM
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
                 (json, _) = await edsmService.GetData(infoMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
+                if (string.IsNullOrWhiteSpace(json) || json == "{}")
+                {
+                    throw new APIException("EDSM method returned no data.");
+                }
+
                 solarSystem = JsonConvert.DeserializeObject<SolarSystem>(json);
                 solarSystemOptions = options;
             }
@@ -147,6 +152,11 @@ namespace EDlib.EDSM
                 string json;
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
                 (json, systemsUpdated) = await edsmService.GetData(method, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+
+                if (string.IsNullOrWhiteSpace(json) || json == "{}")
+                {
+                    throw new APIException("EDSM method returned no data.");
+                }
 
                 systems = JsonConvert.DeserializeObject<List<SolarSystem>>(json);
                 systemsNameList = systemNames;
@@ -198,6 +208,11 @@ namespace EDlib.EDSM
                 string json;
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
                 (json, cubeUpdated) = await edsmService.GetData(cubeMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+
+                if (string.IsNullOrWhiteSpace(json) || json == "{}")
+                {
+                    throw new APIException("EDSM method returned no data.");
+                }
 
                 cubeSystems = JsonConvert.DeserializeObject<List<SolarSystem>>(json);
                 cubeSystem = systemName;
@@ -255,6 +270,11 @@ namespace EDlib.EDSM
                 string json;
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
                 (json, sphereUpdated) = await edsmService.GetData(sphereMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+
+                if (string.IsNullOrWhiteSpace(json) || json == "{}")
+                {
+                    throw new APIException("EDSM method returned no data.");
+                }
 
                 sphereSystems = JsonConvert.DeserializeObject<List<SolarSystem>>(json);
                 sphereSystem = systemName;

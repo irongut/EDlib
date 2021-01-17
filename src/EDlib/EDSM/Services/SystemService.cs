@@ -89,6 +89,11 @@ namespace EDlib.EDSM
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
                 (json, _) = await edsmService.GetData(stationsMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
+                if (string.IsNullOrWhiteSpace(json) || json == "{}")
+                {
+                    throw new APIException("EDSM method returned no data.");
+                }
+
                 stations = JsonConvert.DeserializeObject<SystemStations>(json);
             }
             return stations;
@@ -161,6 +166,11 @@ namespace EDlib.EDSM
                 string json;
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
                 (json, _) = await edsmService.GetData(marketMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+
+                if (string.IsNullOrWhiteSpace(json) || json == "{}")
+                {
+                    throw new APIException("EDSM method returned no data.");
+                }
 
                 market = JsonConvert.DeserializeObject<Market>(json);
                 marketParams = parameters;
@@ -236,6 +246,11 @@ namespace EDlib.EDSM
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
                 (json, _) = await edsmService.GetData(shipyardMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
+                if (string.IsNullOrWhiteSpace(json) || json == "{}")
+                {
+                    throw new APIException("EDSM method returned no data.");
+                }
+
                 shipyard = JsonConvert.DeserializeObject<Shipyard>(json);
                 shipyardParams = parameters;
             }
@@ -310,6 +325,11 @@ namespace EDlib.EDSM
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
                 (json, _) = await edsmService.GetData(outfittingMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
+                if (string.IsNullOrWhiteSpace(json) || json == "{}")
+                {
+                    throw new APIException("EDSM method returned no data.");
+                }
+
                 outfitting = JsonConvert.DeserializeObject<StationOutfitting>(json);
                 outfittingParams = parameters;
             }
@@ -351,6 +371,11 @@ namespace EDlib.EDSM
                 string json;
                 EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
                 (json, _) = await edsmService.GetData(factionsMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+
+                if (string.IsNullOrWhiteSpace(json) || json == "{}")
+                {
+                    throw new APIException("EDSM method returned no data.");
+                }
 
                 factions = JsonConvert.DeserializeObject<SystemFactions>(json);
             }
