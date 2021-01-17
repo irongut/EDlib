@@ -68,7 +68,7 @@ namespace EDlib.GalNet
             {
                 // download the json
                 string json;
-                DownloadService downloadService = DownloadService.Instance(agent, cache, connectivity);
+                CachedDownloadService downloadService = CachedDownloadService.Instance(agent, cache, connectivity);
                 (json, lastUpdated) = await downloadService.GetData(GalNetURL, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
                 // parse the news articles

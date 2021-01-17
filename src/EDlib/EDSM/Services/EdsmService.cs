@@ -57,7 +57,7 @@ namespace EDlib.EDSM
         public async Task<(string data, DateTime updated)> GetData(string method, Dictionary<string, string> parameters, TimeSpan expiry, CancellationTokenSource cancelToken, bool ignoreCache = false)
         {
             string url = BuildUrl(method, parameters);
-            DownloadService downloadService = DownloadService.Instance(agent, cache, connectivity);
+            CachedDownloadService downloadService = CachedDownloadService.Instance(agent, cache, connectivity);
             (string json, DateTime lastUpdated) = await downloadService.GetData(url, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
             return (json, lastUpdated);
         }

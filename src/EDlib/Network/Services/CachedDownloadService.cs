@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace EDlib.Network
 {
     /// <summary>Internal class used to download and cache data.</summary>
-    internal sealed class DownloadService
+    internal sealed class CachedDownloadService : IDownloadService
     {
-        private static readonly DownloadService instance = new DownloadService();
+        private static readonly CachedDownloadService instance = new CachedDownloadService();
 
         private static string agent;
 
@@ -20,7 +20,7 @@ namespace EDlib.Network
 
         private readonly HttpClient client;
 
-        private DownloadService()
+        private CachedDownloadService()
         {
             client = new HttpClient();
             client.DefaultRequestHeaders.Add("X-Requested-With", agent);
@@ -34,7 +34,7 @@ namespace EDlib.Network
         /// <param name="cacheService">The platform specific cache for downloaded data.</param>
         /// <param name="connectivityService">The platform specific connectivity service.</param>
         /// <returns>DownloadService</returns>
-        public static DownloadService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
+        public static CachedDownloadService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
         {
             agent = userAgent;
             cache = cacheService;

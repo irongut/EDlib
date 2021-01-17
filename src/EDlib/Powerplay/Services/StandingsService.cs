@@ -54,7 +54,7 @@ namespace EDlib.Powerplay
             {
                 // download the standings
                 string json;
-                DownloadService downloadService = DownloadService.Instance(agent, cache, connectivity);
+                CachedDownloadService downloadService = CachedDownloadService.Instance(agent, cache, connectivity);
                 (json, lastUpdated) = await downloadService.GetData(URL, dataKey, updatedKey, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
                 // parse the standings

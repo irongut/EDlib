@@ -93,7 +93,7 @@ namespace EDlib.Powerplay
                 cacheDays = 1;
             }
             TimeSpan expiry = TimeSpan.FromDays(cacheDays);
-            DownloadService downloadService = DownloadService.Instance(agent, cache, connectivity);
+            CachedDownloadService downloadService = CachedDownloadService.Instance(agent, cache, connectivity);
             (json, _) = await downloadService.GetData(URL, expiry).ConfigureAwait(false);
             commsList = JsonConvert.DeserializeObject<List<PowerComms>>(json);
         }
