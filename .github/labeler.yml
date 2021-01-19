@@ -2,11 +2,11 @@
 # See: https://github.com/actions/labeler/blob/master/README.md
 
 # Examples
-# Add 'label1' to any changes within 'example' folder or any subfolders
+# Add 'label1' to PR if anything changes within 'example' folder or any subfolders
 # label1:
 #   - example/**/*
 
-# Add 'label2' to any file changes within 'example2' folder
+# Add 'label2' to PR if any file changes within 'example2' folder
 # label2: example2/*
 
 BGS:
@@ -19,13 +19,23 @@ Demo:
   - src/EDlibDemo/**/*
 
 documentation:
-- docfx_project/**/*
+  - docfx_project/**/*
 
+ED Status:
+  - src/EDlib/EDSM/Models/EliteStatus.cs
+  - src/EDlib/EDSM/Services/EliteStatusService.cs
+
+EDSM:
+  - src/EDlib/EDSM/**/*
+  
 GalNet:
   - src/EDlib/GalNet/**/*
 
 Network:
   - src/EDlib/Network/**/*
+
+Platform:
+  - src/EDlib/Platform/**/*
 
 Powerplay:
   - src/EDlib/Powerplay/**/*
