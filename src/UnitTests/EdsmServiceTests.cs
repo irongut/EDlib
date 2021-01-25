@@ -3,7 +3,6 @@ using EDlib.Mock.Platform;
 using EDlib.Network;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace UnitTests
@@ -14,17 +13,9 @@ namespace UnitTests
         [TestMethod]
         public async Task GetDataTest()
         {
+            DownloadOptions options = new DownloadOptions(null);
             EdsmService edsmService = EdsmService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
-            (string json, DateTime lastUpdated) = await edsmService.GetData("api-status-v1/elite-server", null, TimeSpan.FromMinutes(5)).ConfigureAwait(false);
-            Assert.IsFalse(string.IsNullOrWhiteSpace(json));
-            Assert.IsTrue(lastUpdated > DateTime.MinValue);
-        }
-
-        [TestMethod]
-        public async Task GetDataWithCancelTest()
-        {
-            EdsmService edsmService = EdsmService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
-            (string json, DateTime lastUpdated) = await edsmService.GetData("api-status-v1/elite-server", null, TimeSpan.FromMinutes(5), new CancellationTokenSource()).ConfigureAwait(false);
+            (string json, DateTime lastUpdated) = await edsmService.GetData("api-status-v1/elite-server", null, options).ConfigureAwait(false);
             Assert.IsFalse(string.IsNullOrWhiteSpace(json));
             Assert.IsTrue(lastUpdated > DateTime.MinValue);
         }

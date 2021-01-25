@@ -88,8 +88,9 @@ namespace EDlib.EDSM
                 parameters = AddOptions(parameters, options);
 
                 string json;
+                DownloadOptions downloadOptions = new DownloadOptions(cancelToken, expiry, ignoreCache);
                 EdsmService edsmService = EdsmService.Instance(dService);
-                (json, _) = await edsmService.GetData(infoMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                (json, _) = await edsmService.GetData(infoMethod, parameters, downloadOptions).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {
@@ -142,8 +143,9 @@ namespace EDlib.EDSM
                 Dictionary<string, string> parameters = AddOptions(new Dictionary<string, string>(), options);
 
                 string json;
+                DownloadOptions downloadOptions = new DownloadOptions(cancelToken, expiry, ignoreCache);
                 EdsmService edsmService = EdsmService.Instance(dService);
-                (json, systemsUpdated) = await edsmService.GetData(method, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                (json, systemsUpdated) = await edsmService.GetData(method, parameters, downloadOptions).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {
@@ -198,8 +200,9 @@ namespace EDlib.EDSM
                 parameters = AddOptions(parameters, options);
 
                 string json;
+                DownloadOptions downloadOptions = new DownloadOptions(cancelToken, expiry, ignoreCache);
                 EdsmService edsmService = EdsmService.Instance(dService);
-                (json, cubeUpdated) = await edsmService.GetData(cubeMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                (json, cubeUpdated) = await edsmService.GetData(cubeMethod, parameters, downloadOptions).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {
@@ -260,8 +263,9 @@ namespace EDlib.EDSM
                 parameters = AddOptions(parameters, options);
 
                 string json;
+                DownloadOptions downloadOptions = new DownloadOptions(cancelToken, expiry, ignoreCache);
                 EdsmService edsmService = EdsmService.Instance(dService);
-                (json, sphereUpdated) = await edsmService.GetData(sphereMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                (json, sphereUpdated) = await edsmService.GetData(sphereMethod, parameters, downloadOptions).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {

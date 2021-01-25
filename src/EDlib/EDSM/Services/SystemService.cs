@@ -78,8 +78,9 @@ namespace EDlib.EDSM
                 };
 
                 string json;
+                DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
                 EdsmService edsmService = EdsmService.Instance(dService);
-                (json, _) = await edsmService.GetData(stationsMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                (json, _) = await edsmService.GetData(stationsMethod, parameters, options).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {
@@ -156,8 +157,9 @@ namespace EDlib.EDSM
             if (market == null || (market.LastUpdated + expiry < DateTime.Now) || !marketParams.Equals(parameters))
             {
                 string json;
+                DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
                 EdsmService edsmService = EdsmService.Instance(dService);
-                (json, _) = await edsmService.GetData(marketMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                (json, _) = await edsmService.GetData(marketMethod, parameters, options).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {
@@ -235,8 +237,9 @@ namespace EDlib.EDSM
             if (shipyard == null || (shipyard.LastUpdated + expiry < DateTime.Now) || !shipyardParams.Equals(parameters))
             {
                 string json;
+                DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
                 EdsmService edsmService = EdsmService.Instance(dService);
-                (json, _) = await edsmService.GetData(shipyardMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                (json, _) = await edsmService.GetData(shipyardMethod, parameters, options).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {
@@ -314,8 +317,9 @@ namespace EDlib.EDSM
             if (outfitting == null || (outfitting.LastUpdated + expiry < DateTime.Now) || !outfittingParams.Equals(parameters))
             {
                 string json;
+                DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
                 EdsmService edsmService = EdsmService.Instance(dService);
-                (json, _) = await edsmService.GetData(outfittingMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                (json, _) = await edsmService.GetData(outfittingMethod, parameters, options).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {
@@ -361,8 +365,9 @@ namespace EDlib.EDSM
                 };
 
                 string json;
+                DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
                 EdsmService edsmService = EdsmService.Instance(dService);
-                (json, _) = await edsmService.GetData(factionsMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                (json, _) = await edsmService.GetData(factionsMethod, parameters, options).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {

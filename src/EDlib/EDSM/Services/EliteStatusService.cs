@@ -50,8 +50,9 @@ namespace EDlib.EDSM
             if (eliteStatus == null || (lastUpdated + expiry < DateTime.Now))
             {
                 string json;
+                DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
                 EdsmService edsmService = EdsmService.Instance(dService);
-                (json, lastUpdated) = await edsmService.GetData(edsmMethod, null, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                (json, lastUpdated) = await edsmService.GetData(edsmMethod, null, options).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {
