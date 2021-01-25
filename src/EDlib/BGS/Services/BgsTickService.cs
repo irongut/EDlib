@@ -65,7 +65,7 @@ namespace EDlib.BGS
                                                 DateTime.UtcNow.Date.ToString("yyyy-MM-dd"));
 
                 // download the json
-                DownloadOptions options = new DownloadOptions(null, expiry, ignoreCache);
+                DownloadOptions options = new DownloadOptions(expiry, ignoreCache);
                 (json, lastUpdated) = await dService.GetData(queryURL, options).ConfigureAwait(false);
 
                 // parse the data

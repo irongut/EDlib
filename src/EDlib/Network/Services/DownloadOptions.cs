@@ -24,6 +24,15 @@ namespace EDlib.Network
         }
 
         /// <summary>DownloadOptions constructor.</summary>
+        /// <param name="expiry">How long to cache the data.</param>
+        public DownloadOptions(TimeSpan expiry)
+        {
+            CancelToken = null;
+            Expiry = expiry;
+            IgnoreCache = false;
+        }
+
+        /// <summary>DownloadOptions constructor.</summary>
         /// <param name="cancelToken">A cancellation token.</param>
         /// <param name="expiry">How long to cache the data.</param>
         public DownloadOptions(CancellationTokenSource cancelToken, TimeSpan expiry)
@@ -31,6 +40,16 @@ namespace EDlib.Network
             CancelToken = cancelToken;
             Expiry = expiry;
             IgnoreCache = false;
+        }
+
+        /// <summary>DownloadOptions constructor.</summary>
+        /// <param name="expiry">How long to cache the data.</param>
+        /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
+        public DownloadOptions(TimeSpan expiry, bool ignoreCache)
+        {
+            CancelToken = null;
+            Expiry = expiry;
+            IgnoreCache = ignoreCache;
         }
 
         /// <summary>DownloadOptions constructor.</summary>
