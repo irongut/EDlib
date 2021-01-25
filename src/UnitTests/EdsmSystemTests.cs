@@ -1,6 +1,7 @@
 ﻿using EDlib;
 using EDlib.EDSM;
 using EDlib.Mock.Platform;
+using EDlib.Network;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading;
@@ -14,7 +15,7 @@ namespace UnitTests
         [TestMethod]
         public async Task StationsTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             SystemStations stations;
             try
             {
@@ -88,7 +89,7 @@ namespace UnitTests
         [TestMethod]
         public async Task StationsWithCancelTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             SystemStations stations;
             try
             {
@@ -162,7 +163,7 @@ namespace UnitTests
         [TestMethod]
         public async Task MarketByIdTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             Market gMarket;
             try
             {
@@ -199,7 +200,7 @@ namespace UnitTests
         [TestMethod]
         public async Task MarketByIdWithCancelTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             Market gMarket;
             try
             {
@@ -236,7 +237,7 @@ namespace UnitTests
         [TestMethod]
         public async Task MarketByNameTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             Market gMarket;
             try
             {
@@ -273,7 +274,7 @@ namespace UnitTests
         [TestMethod]
         public async Task MarketByNameWithCancelTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             Market gMarket;
             try
             {
@@ -310,7 +311,7 @@ namespace UnitTests
         [TestMethod]
         public async Task ShipyardByIdTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             Shipyard gShipyard;
             try
             {
@@ -342,7 +343,7 @@ namespace UnitTests
         [TestMethod]
         public async Task ShipyardByIdWithCancelTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             Shipyard gShipyard;
             try
             {
@@ -374,7 +375,7 @@ namespace UnitTests
         [TestMethod]
         public async Task ShipyardByNameTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             Shipyard gShipyard;
             try
             {
@@ -406,7 +407,7 @@ namespace UnitTests
         [TestMethod]
         public async Task ShipyardByNameWithCancelTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             Shipyard gShipyard;
             try
             {
@@ -438,7 +439,7 @@ namespace UnitTests
         [TestMethod]
         public async Task OutfittingByIdTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             StationOutfitting gOutfit;
             try
             {
@@ -470,7 +471,7 @@ namespace UnitTests
         [TestMethod]
         public async Task OutfittingByIdWithCancelTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             StationOutfitting gOutfit;
             try
             {
@@ -502,7 +503,7 @@ namespace UnitTests
         [TestMethod]
         public async Task OutfittingByNameTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             StationOutfitting gOutfit;
             try
             {
@@ -534,7 +535,7 @@ namespace UnitTests
         [TestMethod]
         public async Task OutfittingByNameWithCancelTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             StationOutfitting gOutfit;
             try
             {
@@ -566,7 +567,7 @@ namespace UnitTests
         [TestMethod]
         public async Task FactionsTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             SystemFactions factions;
             try
             {
@@ -623,7 +624,7 @@ namespace UnitTests
         [TestMethod]
         public async Task FactionsWithCancelTest()
         {
-            SystemService systemService = SystemService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemService systemService = SystemService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             SystemFactions factions;
             try
             {

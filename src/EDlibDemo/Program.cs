@@ -1,5 +1,6 @@
 ﻿using EDlib.EDSM;
 using EDlib.Mock.Platform;
+using EDlib.Network;
 using EDlib.Powerplay;
 using Newtonsoft.Json;
 using System;
@@ -19,7 +20,7 @@ namespace EDlibDemo
             {
                 SetupClient();
 
-                EliteStatusService statusService = EliteStatusService.Instance(userAgent, new EmptyCache(), new UnmeteredConnection());
+                EliteStatusService statusService = EliteStatusService.Instance(DownloadService.Instance(userAgent, new UnmeteredConnection()));
                 (EliteStatus eliteStatus, DateTime lastUpdated) = await statusService.GetData().ConfigureAwait(false);
                 Console.WriteLine(eliteStatus.ToString());
                 Console.WriteLine("");
@@ -30,7 +31,7 @@ namespace EDlibDemo
 
                 Random rand = new Random();
                 string shortName = galacticStandings.Standings[rand.Next(10)].ShortName;
-                PowerDetailsService powerService = PowerDetailsService.Instance(userAgent, new EmptyCache(), new UnmeteredConnection());
+                PowerDetailsService powerService = PowerDetailsService.Instance(DownloadService.Instance(userAgent, new UnmeteredConnection()));
                 PowerDetails powerDetails = powerService.GetPowerDetails(shortName);
                 Console.WriteLine(powerDetails.ToString());
                 Console.WriteLine("");

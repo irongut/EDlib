@@ -1,4 +1,5 @@
 ﻿using EDlib.BGS;
+using EDlib.Network;
 using EDlib.Mock.Platform;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -28,7 +29,7 @@ namespace UnitTests
         [TestMethod]
         public async Task LatestTickTest()
         {
-            BgsTickService bgsService = BgsTickService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            BgsTickService bgsService = BgsTickService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             (BgsTick tick, DateTime lastUpdated) = await bgsService.GetData().ConfigureAwait(false);
             Assert.IsNotNull(tick);
             Assert.IsTrue(lastUpdated > DateTime.Now.AddMinutes(-1));
@@ -37,7 +38,7 @@ namespace UnitTests
         [TestMethod]
         public async Task MultipleTickTest()
         {
-            BgsTickService bgsService = BgsTickService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            BgsTickService bgsService = BgsTickService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             (List<BgsTick> ticks, DateTime lastUpdated) = await bgsService.GetData(5).ConfigureAwait(false);
             Assert.IsNotNull(ticks);
             Assert.IsTrue(lastUpdated > DateTime.Now.AddMinutes(-1));

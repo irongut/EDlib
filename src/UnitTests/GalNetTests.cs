@@ -1,5 +1,6 @@
 ﻿using EDlib.GalNet;
 using EDlib.Mock.Platform;
+using EDlib.Network;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace UnitTests
         [TestMethod]
         public async Task GalNetSingleArticleTest()
         {
-            GalNetService gnService = GalNetService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            GalNetService gnService = GalNetService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             (List<NewsArticle> newsList, DateTime updated) = await gnService.GetData(1, 1, new CancellationTokenSource()).ConfigureAwait(false);
             Assert.IsTrue(newsList.Count == 1);
             Assert.IsTrue(updated > DateTime.MinValue);
@@ -36,7 +37,7 @@ namespace UnitTests
         [TestMethod]
         public async Task GalNetNewsTest()
         {
-            GalNetService gnService = GalNetService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            GalNetService gnService = GalNetService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             (List<NewsArticle> newsList, DateTime updated) = await gnService.GetData(1, new CancellationTokenSource()).ConfigureAwait(false);
             Assert.IsTrue(newsList.Count > 1);
             Assert.IsTrue(updated > DateTime.MinValue);
