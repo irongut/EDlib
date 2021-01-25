@@ -1,5 +1,4 @@
 ﻿using EDlib.Network;
-using EDlib.Platform;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,11 +14,7 @@ namespace EDlib.Powerplay
     {
         private static readonly PowerDetailsService instance = new PowerDetailsService();
 
-        private static string agent;
-
-        private static ICacheService cache;
-
-        private static IConnectivityService connectivity;
+        private static IDownloadService dService;
 
         private const string URL = "https://api.taranissoftware.com/elite-dangerous/power-comms.json";
 
@@ -33,15 +28,11 @@ namespace EDlib.Powerplay
         }
 
         /// <summary>Instantiates the PowerDetailsService class.</summary>
-        /// <param name="userAgent">The user agent used for downloads.</param>
-        /// <param name="cacheService">The platform specific cache for downloaded data.</param>
-        /// <param name="connectivityService">The platform specific connectivity service.</param>
+        /// <param name="downloadService">IDownloadService instance used to download data.</param>
         /// <returns>PowerDetailsService</returns>
-        public static PowerDetailsService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
+        public static PowerDetailsService Instance(IDownloadService downloadService)
         {
-            agent = userAgent;
-            cache = cacheService;
-            connectivity = connectivityService;
+            dService = downloadService;
             return instance;
         }
 
@@ -93,8 +84,8 @@ namespace EDlib.Powerplay
                 cacheDays = 1;
             }
             TimeSpan expiry = TimeSpan.FromDays(cacheDays);
-            CachedDownloadService downloadService = CachedDownloadService.Instance(agent, cache, connectivity);
-            (json, _) = await downloadService.GetData(URL, expiry).ConfigureAwait(false);
+            DownloadOptions options = new DownloadOptions(null, expiry);
+            (json, _) = await dService.GetData(URL, options).ConfigureAwait(false);
             commsList = JsonConvert.DeserializeObject<List<PowerComms>>(json);
         }
     }

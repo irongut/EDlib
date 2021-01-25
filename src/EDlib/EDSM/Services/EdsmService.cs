@@ -1,5 +1,4 @@
 ﻿using EDlib.Network;
-using EDlib.Platform;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,24 +14,16 @@ namespace EDlib.EDSM
 
         private const string EdsmURL = "https://www.edsm.net/";
 
-        private static string agent;
-
-        private static ICacheService cache;
-
-        private static IConnectivityService connectivity;
+        private static IDownloadService dService;
 
         private EdsmService() { }
 
         /// <summary>Instantiates the EdsmService class.</summary>
-        /// <param name="userAgent">The user agent used for downloads.</param>
-        /// <param name="cacheService">The platform specific cache for downloaded data.</param>
-        /// <param name="connectivityService">The platform specific connectivity service.</param>
+        /// <param name="downloadService">IDownloadService instance used to download data.</param>
         /// <returns>EdsmService</returns>
-        public static EdsmService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
+        public static EdsmService Instance(IDownloadService downloadService)
         {
-            agent = userAgent;
-            cache = cacheService;
-            connectivity = connectivityService;
+            dService = downloadService;
             return instance;
         }
 
@@ -57,8 +48,8 @@ namespace EDlib.EDSM
         public async Task<(string data, DateTime updated)> GetData(string method, Dictionary<string, string> parameters, TimeSpan expiry, CancellationTokenSource cancelToken, bool ignoreCache = false)
         {
             string url = BuildUrl(method, parameters);
-            CachedDownloadService downloadService = CachedDownloadService.Instance(agent, cache, connectivity);
-            (string json, DateTime lastUpdated) = await downloadService.GetData(url, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+            DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
+            (string json, DateTime lastUpdated) = await dService.GetData(url, options).ConfigureAwait(false);
             return (json, lastUpdated);
         }
 

@@ -25,11 +25,9 @@
         <member name="T:EDlib.BGS.BgsTickService">
             <summary>Gets the date and time that the Background Simulation (BGS) updates, known as the BGS tick.</summary>
         </member>
-        <member name="M:EDlib.BGS.BgsTickService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+        <member name="M:EDlib.BGS.BgsTickService.Instance(EDlib.Network.IDownloadService)">
             <summary>Instantiates the BgsTickService class.</summary>
-            <param name="userAgent">The user agent used for downloads.</param>
-            <param name="cacheService">The platform specific cache for downloaded data.</param>
-            <param name="connectivityService">The platform specific connectivity service.</param>
+            <param name="downloadService">IDownloadService instance used to download data.</param>
             <returns>BgsTickService</returns>
         </member>
         <member name="M:EDlib.BGS.BgsTickService.GetData(System.Boolean)">
@@ -621,11 +619,9 @@
         <member name="T:EDlib.EDSM.EdsmService">
             <summary>Utility service used by other services to get data from EDSM APIs.</summary>
         </member>
-        <member name="M:EDlib.EDSM.EdsmService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+        <member name="M:EDlib.EDSM.EdsmService.Instance(EDlib.Network.IDownloadService)">
             <summary>Instantiates the EdsmService class.</summary>
-            <param name="userAgent">The user agent used for downloads.</param>
-            <param name="cacheService">The platform specific cache for downloaded data.</param>
-            <param name="connectivityService">The platform specific connectivity service.</param>
+            <param name="downloadService">IDownloadService instance used to download data.</param>
             <returns>EdsmService</returns>
         </member>
         <member name="M:EDlib.EDSM.EdsmService.GetData(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.TimeSpan,System.Boolean)">
@@ -648,11 +644,9 @@
         <member name="T:EDlib.EDSM.EliteStatusService">
             <summary>Gets Elite: Dangerous server status.</summary>
         </member>
-        <member name="M:EDlib.EDSM.EliteStatusService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+        <member name="M:EDlib.EDSM.EliteStatusService.Instance(EDlib.Network.IDownloadService)">
             <summary>Instantiates the EliteStatusService class.</summary>
-            <param name="userAgent">The user agent used for downloads.</param>
-            <param name="cacheService">The platform specific cache for downloaded data.</param>
-            <param name="connectivityService">The platform specific connectivity service.</param>
+            <param name="downloadService">IDownloadService instance used to download data.</param>
             <returns>EliteStatusService</returns>
         </member>
         <member name="M:EDlib.EDSM.EliteStatusService.GetData(System.Int32,System.Boolean)">
@@ -671,11 +665,9 @@
         <member name="T:EDlib.EDSM.SystemService">
             <summary>Gets data from the EDSM System API.</summary>
         </member>
-        <member name="M:EDlib.EDSM.SystemService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+        <member name="M:EDlib.EDSM.SystemService.Instance(EDlib.Network.IDownloadService)">
             <summary>Instantiates the SystemService class.</summary>
-            <param name="userAgent">The user agent used for downloads.</param>
-            <param name="cacheService">The platform specific cache for downloaded data.</param>
-            <param name="connectivityService">The platform specific connectivity service.</param>
+            <param name="downloadService">IDownloadService instance used to download data.</param>
             <returns>SystemService</returns>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetStations(System.String,System.Int32,System.Boolean)">
@@ -807,11 +799,9 @@
         <member name="T:EDlib.EDSM.SystemsService">
             <summary>Gets data from the EDSM Systems API.</summary>
         </member>
-        <member name="M:EDlib.EDSM.SystemsService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+        <member name="M:EDlib.EDSM.SystemsService.Instance(EDlib.Network.IDownloadService)">
             <summary>Instantiates the SystemsService class.</summary>
-            <param name="userAgent">The user agent used for downloads.</param>
-            <param name="cacheService">The platform specific cache for downloaded data.</param>
-            <param name="connectivityService">The platform specific connectivity service.</param>
+            <param name="downloadService">IDownloadService instance used to download data.</param>
             <returns>SystemsService</returns>
         </member>
         <member name="M:EDlib.EDSM.SystemsService.GetSystem(System.String,EDlib.EDSM.SystemsOptions,System.Int32,System.Boolean)">
@@ -999,11 +989,9 @@
         <member name="T:EDlib.GalNet.GalNetService">
             <summary>Gets the GalNet News.</summary>
         </member>
-        <member name="M:EDlib.GalNet.GalNetService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+        <member name="M:EDlib.GalNet.GalNetService.Instance(EDlib.Network.IDownloadService)">
             <summary>Instantiates the GalNetService class.</summary>
-            <param name="userAgent">The user agent used for downloads.</param>
-            <param name="cacheService">The platform specific cache for downloaded data.</param>
-            <param name="connectivityService">The platform specific connectivity service.</param>
+            <param name="downloadService">IDownloadService instance used to download data.</param>
             <returns>GalNetService</returns>
         </member>
         <member name="M:EDlib.GalNet.GalNetService.GetData(System.Int32,System.Threading.CancellationTokenSource,System.Boolean)">
@@ -1037,40 +1025,27 @@
             <param name="input">The string that will be hashed.</param>
             <returns>string</returns>
         </member>
-        <member name="T:EDlib.Network.DownloadService">
-            <summary>Internal class used to download and cache data.</summary>
+        <member name="T:EDlib.Network.CachedDownloadService">
+            <summary>Class used to download and cache data.</summary>
         </member>
-        <member name="M:EDlib.Network.DownloadService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
-            <summary>Instantiates the DownloadService class.</summary>
+        <member name="M:EDlib.Network.CachedDownloadService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+            <summary>Instantiates the CachedDownloadService class.</summary>
             <param name="userAgent">The user agent used for downloads.</param>
             <param name="cacheService">The platform specific cache for downloaded data.</param>
             <param name="connectivityService">The platform specific connectivity service.</param>
             <returns>DownloadService</returns>
         </member>
-        <member name="M:EDlib.Network.DownloadService.GetData(System.String,System.TimeSpan,System.Boolean)">
-            <summary>Gets and caches the data and when it was last updated.
-            If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.</summary>
-            <param name="url">The URL for downloading the data.</param>
-            <param name="expiry">How long to cache the data.</param>
-            <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>
-            <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
-            <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
-            <exception cref="T:EDlib.APIException">Http errors from the API called.</exception>
-        </member>
-        <member name="M:EDlib.Network.DownloadService.GetData(System.String,System.TimeSpan,System.Threading.CancellationTokenSource,System.Boolean)">
+        <member name="M:EDlib.Network.CachedDownloadService.GetData(System.String,EDlib.Network.DownloadOptions)">
             <summary>
             Gets and caches the data and when it was last updated with the option to cancel a download.
             If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.
             </summary>
             <param name="url">The URL for downloading the data.</param>
-            <param name="expiry">How long to cache the data.</param>
-            <param name="cancelToken">A cancellation token.</param>
-            <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>
             <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
             <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
             <exception cref="T:EDlib.APIException">Http errors from the API called.</exception>
         </member>
-        <member name="M:EDlib.Network.DownloadService.GetData(System.String,System.String,System.String,System.TimeSpan,System.Threading.CancellationTokenSource,System.Boolean)">
+        <member name="M:EDlib.Network.CachedDownloadService.GetData(System.String,System.String,System.String,EDlib.Network.DownloadOptions)">
             <summary>
             Gets and caches the data and when it was last updated with the option to cancel a download.
             If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.
@@ -1078,9 +1053,49 @@
             <param name="url">The URL for downloading the data.</param>
             <param name="dataKey">The key for cached data.</param>
             <param name="updatedKey">The key for caching when the data was the last updated.</param>
-            <param name="expiry">How long to cache the data.</param>
+            <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
+            <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
+            <exception cref="T:EDlib.APIException">Http errors from the API called.</exception>
+        </member>
+        <member name="T:EDlib.Network.DownloadOptions">
+            <summary>Options structure for download services.</summary>
+        </member>
+        <member name="P:EDlib.Network.DownloadOptions.CancelToken">
+            <summary>A cancellation token for the download method.</summary>
+        </member>
+        <member name="P:EDlib.Network.DownloadOptions.Expiry">
+            <summary>How long to cache the data.</summary>
+        </member>
+        <member name="P:EDlib.Network.DownloadOptions.IgnoreCache">
+            <summary>Download method will ignore any cached data if set to <c>true</c>.</summary>
+        </member>
+        <member name="M:EDlib.Network.DownloadOptions.#ctor(System.Threading.CancellationTokenSource)">
+            <summary>DownloadOptions constructor.</summary>
+            <param name="cancelToken">A cancellation token for the download method.</param>
+        </member>
+        <member name="M:EDlib.Network.DownloadOptions.#ctor(System.Threading.CancellationTokenSource,System.TimeSpan)">
+            <summary>DownloadOptions constructor.</summary>
             <param name="cancelToken">A cancellation token.</param>
-            <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>
+            <param name="expiry">How long to cache the data.</param>
+        </member>
+        <member name="M:EDlib.Network.DownloadOptions.#ctor(System.Threading.CancellationTokenSource,System.TimeSpan,System.Boolean)">
+            <summary>DownloadOptions constructor.</summary>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="expiry">How long to cache the data.</param>
+            <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
+        </member>
+        <member name="T:EDlib.Network.DownloadService">
+            <summary>Class used to download without caching.</summary>
+        </member>
+        <member name="M:EDlib.Network.DownloadService.Instance(System.String,EDlib.Platform.IConnectivityService)">
+            <summary>Instantiates the DownloadService class.</summary>
+            <param name="userAgent">The user agent used for downloads.</param>
+            <param name="connectivityService">The platform specific connectivity service.</param>
+            <returns>DownloadService</returns>
+        </member>
+        <member name="M:EDlib.Network.DownloadService.GetData(System.String,EDlib.Network.DownloadOptions)">
+            <summary>Gets the data.</summary>
+            <param name="url">The URL for downloading the data.</param>
             <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
             <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
             <exception cref="T:EDlib.APIException">Http errors from the API called.</exception>
@@ -1463,11 +1478,9 @@
         <member name="T:EDlib.Powerplay.PowerDetailsService">
             <summary>Gets a Power's statistics, ethos, benefits and comms data.</summary>
         </member>
-        <member name="M:EDlib.Powerplay.PowerDetailsService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+        <member name="M:EDlib.Powerplay.PowerDetailsService.Instance(EDlib.Network.IDownloadService)">
             <summary>Instantiates the PowerDetailsService class.</summary>
-            <param name="userAgent">The user agent used for downloads.</param>
-            <param name="cacheService">The platform specific cache for downloaded data.</param>
-            <param name="connectivityService">The platform specific connectivity service.</param>
+            <param name="downloadService">IDownloadService instance used to download data.</param>
             <returns>PowerDetailsService</returns>
         </member>
         <member name="M:EDlib.Powerplay.PowerDetailsService.GetPowerDetails(System.String)">

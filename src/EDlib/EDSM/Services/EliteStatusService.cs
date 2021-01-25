@@ -1,4 +1,4 @@
-﻿using EDlib.Platform;
+﻿using EDlib.Network;
 using Newtonsoft.Json;
 using System;
 using System.Threading;
@@ -11,11 +11,7 @@ namespace EDlib.EDSM
     {
         private static readonly EliteStatusService instance = new EliteStatusService();
 
-        private static string agent;
-
-        private static ICacheService cache;
-
-        private static IConnectivityService connectivity;
+        private static IDownloadService dService;
 
         private const string edsmMethod = "api-status-v1/elite-server";
 
@@ -25,15 +21,11 @@ namespace EDlib.EDSM
         private EliteStatusService() { }
 
         /// <summary>Instantiates the EliteStatusService class.</summary>
-        /// <param name="userAgent">The user agent used for downloads.</param>
-        /// <param name="cacheService">The platform specific cache for downloaded data.</param>
-        /// <param name="connectivityService">The platform specific connectivity service.</param>
+        /// <param name="downloadService">IDownloadService instance used to download data.</param>
         /// <returns>EliteStatusService</returns>
-        public static EliteStatusService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
+        public static EliteStatusService Instance(IDownloadService downloadService)
         {
-            agent = userAgent;
-            cache = cacheService;
-            connectivity = connectivityService;
+            dService = downloadService;
             return instance;
         }
 
@@ -58,7 +50,7 @@ namespace EDlib.EDSM
             if (eliteStatus == null || (lastUpdated + expiry < DateTime.Now))
             {
                 string json;
-                EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
+                EdsmService edsmService = EdsmService.Instance(dService);
                 (json, lastUpdated) = await edsmService.GetData(edsmMethod, null, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")

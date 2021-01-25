@@ -14,11 +14,7 @@ namespace EDlib.GalNet
     {
         private static readonly GalNetService instance = new GalNetService();
 
-        private static string agent;
-
-        private static ICacheService cache;
-
-        private static IConnectivityService connectivity;
+        private static IDownloadService dService;
 
         private const string GalNetURL = "https://elitedangerous-website-backend-production.elitedangerous.com/api/galnet?_format=json";
 
@@ -32,15 +28,11 @@ namespace EDlib.GalNet
         }
 
         /// <summary>Instantiates the GalNetService class.</summary>
-        /// <param name="userAgent">The user agent used for downloads.</param>
-        /// <param name="cacheService">The platform specific cache for downloaded data.</param>
-        /// <param name="connectivityService">The platform specific connectivity service.</param>
+        /// <param name="downloadService">IDownloadService instance used to download data.</param>
         /// <returns>GalNetService</returns>
-        public static GalNetService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
+        public static GalNetService Instance(IDownloadService downloadService)
         {
-            agent = userAgent;
-            cache = cacheService;
-            connectivity = connectivityService;
+            dService = downloadService;
             return instance;
         }
 
@@ -68,8 +60,8 @@ namespace EDlib.GalNet
             {
                 // download the json
                 string json;
-                CachedDownloadService downloadService = CachedDownloadService.Instance(agent, cache, connectivity);
-                (json, lastUpdated) = await downloadService.GetData(GalNetURL, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
+                (json, lastUpdated) = await dService.GetData(GalNetURL, options).ConfigureAwait(false);
 
                 // parse the news articles
                 galnetNews.Clear();

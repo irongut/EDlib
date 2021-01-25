@@ -1,4 +1,4 @@
-﻿using EDlib.Platform;
+﻿using EDlib.Network;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,11 +13,7 @@ namespace EDlib.EDSM
     {
         private static readonly SystemService instance = new SystemService();
 
-        private static string agent;
-
-        private static ICacheService cache;
-
-        private static IConnectivityService connectivity;
+        private static IDownloadService dService;
 
         private const string stationsMethod = "api-system-v1/stations";
         private const string marketMethod = "api-system-v1/stations/market";
@@ -41,15 +37,11 @@ namespace EDlib.EDSM
         private SystemService() {  }
 
         /// <summary>Instantiates the SystemService class.</summary>
-        /// <param name="userAgent">The user agent used for downloads.</param>
-        /// <param name="cacheService">The platform specific cache for downloaded data.</param>
-        /// <param name="connectivityService">The platform specific connectivity service.</param>
+        /// <param name="downloadService">IDownloadService instance used to download data.</param>
         /// <returns>SystemService</returns>
-        public static SystemService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
+        public static SystemService Instance(IDownloadService downloadService)
         {
-            agent = userAgent;
-            cache = cacheService;
-            connectivity = connectivityService;
+            dService = downloadService;
             return instance;
         }
 
@@ -86,7 +78,7 @@ namespace EDlib.EDSM
                 };
 
                 string json;
-                EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
+                EdsmService edsmService = EdsmService.Instance(dService);
                 (json, _) = await edsmService.GetData(stationsMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
@@ -164,7 +156,7 @@ namespace EDlib.EDSM
             if (market == null || (market.LastUpdated + expiry < DateTime.Now) || !marketParams.Equals(parameters))
             {
                 string json;
-                EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
+                EdsmService edsmService = EdsmService.Instance(dService);
                 (json, _) = await edsmService.GetData(marketMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
@@ -243,7 +235,7 @@ namespace EDlib.EDSM
             if (shipyard == null || (shipyard.LastUpdated + expiry < DateTime.Now) || !shipyardParams.Equals(parameters))
             {
                 string json;
-                EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
+                EdsmService edsmService = EdsmService.Instance(dService);
                 (json, _) = await edsmService.GetData(shipyardMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
@@ -322,7 +314,7 @@ namespace EDlib.EDSM
             if (outfitting == null || (outfitting.LastUpdated + expiry < DateTime.Now) || !outfittingParams.Equals(parameters))
             {
                 string json;
-                EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
+                EdsmService edsmService = EdsmService.Instance(dService);
                 (json, _) = await edsmService.GetData(outfittingMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
@@ -369,7 +361,7 @@ namespace EDlib.EDSM
                 };
 
                 string json;
-                EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
+                EdsmService edsmService = EdsmService.Instance(dService);
                 (json, _) = await edsmService.GetData(factionsMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")

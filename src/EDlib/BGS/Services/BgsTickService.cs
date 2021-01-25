@@ -1,5 +1,4 @@
 ﻿using EDlib.Network;
-using EDlib.Platform;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,11 +12,7 @@ namespace EDlib.BGS
     {
         private static readonly BgsTickService instance = new BgsTickService();
 
-        private static string agent;
-
-        private static ICacheService cache;
-
-        private static IConnectivityService connectivity;
+        private static IDownloadService dService;
 
         private readonly string TickURL = "http://tick.phelbore.com/api/ticks?start={0}&end={1}";
 
@@ -30,15 +25,11 @@ namespace EDlib.BGS
         }
 
         /// <summary>Instantiates the BgsTickService class.</summary>
-        /// <param name="userAgent">The user agent used for downloads.</param>
-        /// <param name="cacheService">The platform specific cache for downloaded data.</param>
-        /// <param name="connectivityService">The platform specific connectivity service.</param>
+        /// <param name="downloadService">IDownloadService instance used to download data.</param>
         /// <returns>BgsTickService</returns>
-        public static BgsTickService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
+        public static BgsTickService Instance(IDownloadService downloadService)
         {
-            agent = userAgent;
-            cache = cacheService;
-            connectivity = connectivityService;
+            dService = downloadService;
             return instance;
         }
 
@@ -74,8 +65,8 @@ namespace EDlib.BGS
                                                 DateTime.UtcNow.Date.ToString("yyyy-MM-dd"));
 
                 // download the json
-                CachedDownloadService downloadService = CachedDownloadService.Instance(agent, cache, connectivity);
-                (json, lastUpdated) = await downloadService.GetData(queryURL, expiry, ignoreCache).ConfigureAwait(false);
+                DownloadOptions options = new DownloadOptions(null, expiry, ignoreCache);
+                (json, lastUpdated) = await dService.GetData(queryURL, options).ConfigureAwait(false);
 
                 // parse the data
                 bgsTicks = JsonConvert.DeserializeObject<List<BgsTick>>(json);

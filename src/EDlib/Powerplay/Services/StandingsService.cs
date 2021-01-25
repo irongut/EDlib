@@ -55,7 +55,8 @@ namespace EDlib.Powerplay
                 // download the standings
                 string json;
                 CachedDownloadService downloadService = CachedDownloadService.Instance(agent, cache, connectivity);
-                (json, lastUpdated) = await downloadService.GetData(URL, dataKey, updatedKey, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
+                (json, lastUpdated) = await downloadService.GetData(URL, dataKey, updatedKey, options).ConfigureAwait(false);
 
                 // parse the standings
                 galacticStandings = JsonConvert.DeserializeObject<GalacticStandings>(json);
