@@ -1041,6 +1041,7 @@
             If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.
             </summary>
             <param name="url">The URL for downloading the data.</param>
+            <param name="options">Options structure for download.</param>
             <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
             <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
             <exception cref="T:EDlib.APIException">Http errors from the API called.</exception>
@@ -1053,6 +1054,7 @@
             <param name="url">The URL for downloading the data.</param>
             <param name="dataKey">The key for cached data.</param>
             <param name="updatedKey">The key for caching when the data was the last updated.</param>
+            <param name="options">Options structure for download.</param>
             <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
             <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
             <exception cref="T:EDlib.APIException">Http errors from the API called.</exception>
@@ -1073,10 +1075,19 @@
             <summary>DownloadOptions constructor.</summary>
             <param name="cancelToken">A cancellation token for the download method.</param>
         </member>
+        <member name="M:EDlib.Network.DownloadOptions.#ctor(System.TimeSpan)">
+            <summary>DownloadOptions constructor.</summary>
+            <param name="expiry">How long to cache the data.</param>
+        </member>
         <member name="M:EDlib.Network.DownloadOptions.#ctor(System.Threading.CancellationTokenSource,System.TimeSpan)">
             <summary>DownloadOptions constructor.</summary>
             <param name="cancelToken">A cancellation token.</param>
             <param name="expiry">How long to cache the data.</param>
+        </member>
+        <member name="M:EDlib.Network.DownloadOptions.#ctor(System.TimeSpan,System.Boolean)">
+            <summary>DownloadOptions constructor.</summary>
+            <param name="expiry">How long to cache the data.</param>
+            <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
         </member>
         <member name="M:EDlib.Network.DownloadOptions.#ctor(System.Threading.CancellationTokenSource,System.TimeSpan,System.Boolean)">
             <summary>DownloadOptions constructor.</summary>
@@ -1096,9 +1107,19 @@
         <member name="M:EDlib.Network.DownloadService.GetData(System.String,EDlib.Network.DownloadOptions)">
             <summary>Gets the data.</summary>
             <param name="url">The URL for downloading the data.</param>
+            <param name="options">Options structure for download.</param>
             <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
             <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
             <exception cref="T:EDlib.APIException">Http errors from the API called.</exception>
+        </member>
+        <member name="T:EDlib.Network.IDownloadService">
+            <summary>Interface for services used to download data.</summary>
+        </member>
+        <member name="M:EDlib.Network.IDownloadService.GetData(System.String,EDlib.Network.DownloadOptions)">
+            <summary>Gets the data.</summary>
+            <param name="url">The URL for downloading the data.</param>
+            <param name="options">Options structure for download.</param>
+            <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
         </member>
         <member name="T:EDlib.Platform.CacheState">
             <summary>Current state of the item in the cache.</summary>
