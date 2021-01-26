@@ -12,25 +12,31 @@
 BGS:
   - src/EDlib/BGS/**/*
 
-DevOps:
-  - .github/**/*
-  
+CGs:
+  - src/EDlib/Common/Models/Topic*
+
 Demo:
   - src/EDlibDemo/**/*
 
+DevOps:
+  - .github/**/*
+  
 documentation:
   - docfx_project/**/*
 
 ED Status:
-  - src/EDlib/EDSM/Models/EliteStatus.cs
-  - src/EDlib/EDSM/Services/EliteStatusService.cs
+  - src/EDlib/EDSM/Models/EliteStatus*
 
 EDSM:
   - src/EDlib/EDSM/**/*
   
 GalNet:
   - src/EDlib/GalNet/**/*
+  - src/EDlib/Common/Models/Topic*
 
+INARA:
+  - src/EDlib/INARA/**/*
+  
 Network:
   - src/EDlib/Network/**/*
 
