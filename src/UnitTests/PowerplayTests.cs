@@ -1,4 +1,5 @@
 ﻿using EDlib.Mock.Platform;
+using EDlib.Network;
 using EDlib.Powerplay;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -23,7 +24,7 @@ namespace UnitTests
         [TestMethod]
         public async Task PowerCommsTest()
         {
-            PowerDetailsService pdService = PowerDetailsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            PowerDetailsService pdService = PowerDetailsService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             PowerComms comms = await pdService.GetPowerCommsAsync("ALD", 1).ConfigureAwait(false);
             Assert.AreEqual(comms.Id, 3);
             Assert.AreEqual(comms.ShortName, "ALD");
@@ -35,7 +36,7 @@ namespace UnitTests
         [TestMethod]
         public void PowerDetailsTest()
         {
-            PowerDetailsService pdService = PowerDetailsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            PowerDetailsService pdService = PowerDetailsService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             PowerDetails details = pdService.GetPowerDetails("ALD");
             Assert.AreEqual(details.Id, 3);
             Assert.AreEqual(details.HQ, "Kamadhenu");

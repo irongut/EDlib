@@ -1,6 +1,7 @@
 ﻿using EDlib;
 using EDlib.EDSM;
 using EDlib.Mock.Platform;
+using EDlib.Network;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace UnitTests
                 ShowInformation = true,
                 ShowPrimaryStar = true
             };
-            SystemsService systemsService = SystemsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemsService systemsService = SystemsService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             SolarSystem solSystem;
             try
             {
@@ -72,7 +73,7 @@ namespace UnitTests
                 ShowInformation = true,
                 ShowPrimaryStar = true
             };
-            SystemsService systemsService = SystemsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemsService systemsService = SystemsService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             SolarSystem solSystem;
             try
             {
@@ -117,7 +118,7 @@ namespace UnitTests
             {
                 ShowPermit = true
             };
-            SystemsService systemsService = SystemsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemsService systemsService = SystemsService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             SolarSystem ngSystem;
             try
             {
@@ -152,7 +153,7 @@ namespace UnitTests
                 ShowCoordinates = true
             };
             string[] systemNames = { "Achenar", "Ngarawe", "Sol" };
-            SystemsService systemsService = SystemsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemsService systemsService = SystemsService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             List<SolarSystem> systems;
             try
             {
@@ -202,7 +203,7 @@ namespace UnitTests
                 ShowCoordinates = true
             };
             string[] systemNames = { "Achenar", "Ngarawe", "Sol" };
-            SystemsService systemsService = SystemsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemsService systemsService = SystemsService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             List<SolarSystem> systems;
             try
             {
@@ -251,7 +252,7 @@ namespace UnitTests
                 ShowId = true,
                 ShowCoordinates = true
             };
-            SystemsService systemsService = SystemsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemsService systemsService = SystemsService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             List<SolarSystem> solCube;
             try
             {
@@ -300,7 +301,7 @@ namespace UnitTests
                 ShowId = true,
                 ShowCoordinates = true
             };
-            SystemsService systemsService = SystemsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemsService systemsService = SystemsService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             List<SolarSystem> solCube;
             try
             {
@@ -349,7 +350,7 @@ namespace UnitTests
                 ShowId = true,
                 ShowCoordinates = true
             };
-            SystemsService systemsService = SystemsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemsService systemsService = SystemsService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             List<SolarSystem> solSphere;
             try
             {
@@ -397,7 +398,7 @@ namespace UnitTests
                 ShowId = true,
                 ShowCoordinates = true
             };
-            SystemsService systemsService = SystemsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            SystemsService systemsService = SystemsService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             List<SolarSystem> solSphere;
             try
             {

@@ -1,6 +1,7 @@
 ﻿using EDlib;
 using EDlib.EDSM;
 using EDlib.Mock.Platform;
+using EDlib.Network;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Threading;
@@ -24,7 +25,7 @@ namespace UnitTests
         [TestMethod]
         public async Task EliteStatusTest()
         {
-            EliteStatusService statusService = EliteStatusService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            EliteStatusService statusService = EliteStatusService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             EliteStatus eliteStatus;
             DateTime lastUpdated;
             try
@@ -50,7 +51,7 @@ namespace UnitTests
         [TestMethod]
         public async Task EliteStatusWithCancelTest()
         {
-            EliteStatusService statusService = EliteStatusService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            EliteStatusService statusService = EliteStatusService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             EliteStatus eliteStatus;
             DateTime lastUpdated;
             try

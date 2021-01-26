@@ -1,4 +1,4 @@
-﻿using EDlib.Platform;
+﻿using EDlib.Network;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,11 +13,7 @@ namespace EDlib.EDSM
     {
         private static readonly SystemsService instance = new SystemsService();
 
-        private static string agent;
-
-        private static ICacheService cache;
-
-        private static IConnectivityService connectivity;
+        private static IDownloadService dService;
 
         private const string infoMethod = "api-v1/system";
         private const string systemsMethod = "api-v1/systems?";
@@ -48,15 +44,11 @@ namespace EDlib.EDSM
         private SystemsService() { }
 
         /// <summary>Instantiates the SystemsService class.</summary>
-        /// <param name="userAgent">The user agent used for downloads.</param>
-        /// <param name="cacheService">The platform specific cache for downloaded data.</param>
-        /// <param name="connectivityService">The platform specific connectivity service.</param>
+        /// <param name="downloadService">IDownloadService instance used to download data.</param>
         /// <returns>SystemsService</returns>
-        public static SystemsService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
+        public static SystemsService Instance(IDownloadService downloadService)
         {
-            agent = userAgent;
-            cache = cacheService;
-            connectivity = connectivityService;
+            dService = downloadService;
             return instance;
         }
 
@@ -96,8 +88,9 @@ namespace EDlib.EDSM
                 parameters = AddOptions(parameters, options);
 
                 string json;
-                EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
-                (json, _) = await edsmService.GetData(infoMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                DownloadOptions downloadOptions = new DownloadOptions(cancelToken, expiry, ignoreCache);
+                EdsmService edsmService = EdsmService.Instance(dService);
+                (json, _) = await edsmService.GetData(infoMethod, parameters, downloadOptions).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {
@@ -150,8 +143,9 @@ namespace EDlib.EDSM
                 Dictionary<string, string> parameters = AddOptions(new Dictionary<string, string>(), options);
 
                 string json;
-                EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
-                (json, systemsUpdated) = await edsmService.GetData(method, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                DownloadOptions downloadOptions = new DownloadOptions(cancelToken, expiry, ignoreCache);
+                EdsmService edsmService = EdsmService.Instance(dService);
+                (json, systemsUpdated) = await edsmService.GetData(method, parameters, downloadOptions).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {
@@ -206,8 +200,9 @@ namespace EDlib.EDSM
                 parameters = AddOptions(parameters, options);
 
                 string json;
-                EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
-                (json, cubeUpdated) = await edsmService.GetData(cubeMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                DownloadOptions downloadOptions = new DownloadOptions(cancelToken, expiry, ignoreCache);
+                EdsmService edsmService = EdsmService.Instance(dService);
+                (json, cubeUpdated) = await edsmService.GetData(cubeMethod, parameters, downloadOptions).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {
@@ -268,8 +263,9 @@ namespace EDlib.EDSM
                 parameters = AddOptions(parameters, options);
 
                 string json;
-                EdsmService edsmService = EdsmService.Instance(agent, cache, connectivity);
-                (json, sphereUpdated) = await edsmService.GetData(sphereMethod, parameters, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
+                DownloadOptions downloadOptions = new DownloadOptions(cancelToken, expiry, ignoreCache);
+                EdsmService edsmService = EdsmService.Instance(dService);
+                (json, sphereUpdated) = await edsmService.GetData(sphereMethod, parameters, downloadOptions).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {

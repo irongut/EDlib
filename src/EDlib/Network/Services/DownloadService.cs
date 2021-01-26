@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 
 namespace EDlib.Network
 {
-    /// <summary>Internal class used to download and cache data.</summary>
-    internal sealed class DownloadService
+    /// <summary>Class used to download without caching.</summary>
+    public class DownloadService : IDownloadService
     {
         private static readonly DownloadService instance = new DownloadService();
 
         private static string agent;
-
-        private static ICacheService cache;
 
         private static IConnectivityService connectivity;
 
@@ -31,63 +29,22 @@ namespace EDlib.Network
 
         /// <summary>Instantiates the DownloadService class.</summary>
         /// <param name="userAgent">The user agent used for downloads.</param>
-        /// <param name="cacheService">The platform specific cache for downloaded data.</param>
         /// <param name="connectivityService">The platform specific connectivity service.</param>
         /// <returns>DownloadService</returns>
-        public static DownloadService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
+        public static DownloadService Instance(string userAgent, IConnectivityService connectivityService)
         {
             agent = userAgent;
-            cache = cacheService;
             connectivity = connectivityService;
             return instance;
         }
 
-        /// <summary>Gets and caches the data and when it was last updated.
-        /// If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.</summary>
+        /// <summary>Gets the data.</summary>
         /// <param name="url">The URL for downloading the data.</param>
-        /// <param name="expiry">How long to cache the data.</param>
-        /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>
+        /// <param name="options">Options structure for download.</param>
         /// <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
         /// <exception cref="NoNetworkNoCacheException">No Internet available and no data cached.</exception>
         /// <exception cref="APIException">Http errors from the API called.</exception>
-        public async Task<(string data, DateTime updated)> GetData(string url, TimeSpan expiry, bool ignoreCache = false)
-        {
-            return await GetData(url, expiry, null, ignoreCache).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Gets and caches the data and when it was last updated with the option to cancel a download.
-        /// If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.
-        /// </summary>
-        /// <param name="url">The URL for downloading the data.</param>
-        /// <param name="expiry">How long to cache the data.</param>
-        /// <param name="cancelToken">A cancellation token.</param>
-        /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>
-        /// <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
-        /// <exception cref="NoNetworkNoCacheException">No Internet available and no data cached.</exception>
-        /// <exception cref="APIException">Http errors from the API called.</exception>
-        public async Task<(string data, DateTime updated)> GetData(string url, TimeSpan expiry, CancellationTokenSource cancelToken, bool ignoreCache = false)
-        {
-            string urlHash = Sha256Helper.GenerateHash(url);
-            string dataKey = $"{urlHash}-Data";
-            string updatedKey = $"{urlHash}-Updated";
-            return await GetData(url, dataKey, updatedKey, expiry, cancelToken, ignoreCache).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Gets and caches the data and when it was last updated with the option to cancel a download.
-        /// If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.
-        /// </summary>
-        /// <param name="url">The URL for downloading the data.</param>
-        /// <param name="dataKey">The key for cached data.</param>
-        /// <param name="updatedKey">The key for caching when the data was the last updated.</param>
-        /// <param name="expiry">How long to cache the data.</param>
-        /// <param name="cancelToken">A cancellation token.</param>
-        /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>. (optional)</param>
-        /// <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
-        /// <exception cref="NoNetworkNoCacheException">No Internet available and no data cached.</exception>
-        /// <exception cref="APIException">Http errors from the API called.</exception>
-        public async Task<(string data, DateTime updated)> GetData(string url, string dataKey, string updatedKey, TimeSpan expiry, CancellationTokenSource cancelToken, bool ignoreCache = false)
+        public async Task<(string data, DateTime updated)> GetData(string url, DownloadOptions options)
         {
             string data;
             DateTime lastUpdated;
@@ -95,31 +52,12 @@ namespace EDlib.Network
             if (!connectivity.IsConnected())
             {
                 // no valid connectivity
-                if (cache.Exists(dataKey))
-                {
-                    // use cached data
-                    data = cache.Get(dataKey);
-                    lastUpdated = DateTime.Parse(cache.Get(updatedKey));
-                }
-                else
-                {
-                    throw new NoNetworkNoCacheException("No Internet available and no data cached.");
-                }
-            }
-            else if (!ignoreCache && cache.Exists(dataKey) && !cache.IsExpired(dataKey))
-            {
-                // use cached data
-                data = cache.Get(dataKey);
-                lastUpdated = DateTime.Parse(cache.Get(updatedKey));
+                throw new NoNetworkNoCacheException("No Internet available.");
             }
             else
             {
                 // download data
-                (data, lastUpdated) = await Download(url, cancelToken).ConfigureAwait(false);
-
-                // cache data
-                cache.Add(dataKey, data, expiry);
-                cache.Add(updatedKey, lastUpdated.ToString(), expiry);
+                (data, lastUpdated) = await Download(url, options.CancelToken).ConfigureAwait(false);
             }
             return (data, lastUpdated);
         }
