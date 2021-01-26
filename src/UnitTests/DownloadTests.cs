@@ -15,6 +15,11 @@ namespace UnitTests
         [TestMethod]
         public void DownloadOptionsTest()
         {
+            DownloadOptions optionsZero = new DownloadOptions();
+            Assert.IsNull(optionsZero.CancelToken);
+            Assert.AreEqual(optionsZero.Expiry, TimeSpan.FromTicks(0));
+            Assert.IsFalse(optionsZero.IgnoreCache);
+
             DownloadOptions optionsOne = new DownloadOptions(new CancellationTokenSource());
             Assert.IsNotNull(optionsOne.CancelToken);
             Assert.AreEqual(optionsOne.Expiry, TimeSpan.FromTicks(0));
@@ -45,7 +50,7 @@ namespace UnitTests
         public async Task DownloadServiceTest()
         {
             DownloadService dService = DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection());
-            DownloadOptions options = new DownloadOptions(null);
+            DownloadOptions options = new DownloadOptions();
             (string data, DateTime lastUpdated) = await dService.GetData(url, options);
 
             Assert.IsFalse(string.IsNullOrWhiteSpace(data));

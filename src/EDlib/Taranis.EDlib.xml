@@ -624,21 +624,13 @@
             <param name="downloadService">IDownloadService instance used to download data.</param>
             <returns>EdsmService</returns>
         </member>
-        <member name="M:EDlib.EDSM.EdsmService.GetData(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.TimeSpan,System.Boolean)">
+        <member name="M:EDlib.EDSM.EdsmService.GetData(System.String,System.Collections.Generic.Dictionary{System.String,System.String},EDlib.Network.DownloadOptions)">
             <summary>Gets data from an EDSM API.</summary>
             <param name="method">The EDSM API method.</param>
             <param name="parameters">The parameters for the API method.</param>
-            <param name="expiry">The expiry time for cached data.</param>
-            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
-            <returns>Task&lt;(string, DateTime)&gt;<br /></returns>
-        </member>
-        <member name="M:EDlib.EDSM.EdsmService.GetData(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.TimeSpan,System.Threading.CancellationTokenSource,System.Boolean)">
-            <summary>Gets data from an EDSM API with the option to cancel the download.</summary>
-            <param name="method">The EDSM API method.</param>
-            <param name="parameters">The parameters for the API method.</param>
-            <param name="expiry">The expiry time for cached data.</param>
-            <param name="cancelToken">A cancellation token.</param>
-            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <param name="options"></param>
+            
+            
             <returns>Task&lt;(string, DateTime)&gt;<br /></returns>
         </member>
         <member name="T:EDlib.EDSM.EliteStatusService">
@@ -1073,7 +1065,7 @@
         </member>
         <member name="M:EDlib.Network.DownloadOptions.#ctor(System.Threading.CancellationTokenSource)">
             <summary>DownloadOptions constructor.</summary>
-            <param name="cancelToken">A cancellation token for the download method.</param>
+            <param name="cancelToken">A cancellation token for the download method. (optional)</param>
         </member>
         <member name="M:EDlib.Network.DownloadOptions.#ctor(System.TimeSpan)">
             <summary>DownloadOptions constructor.</summary>

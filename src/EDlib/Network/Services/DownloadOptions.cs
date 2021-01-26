@@ -16,8 +16,8 @@ namespace EDlib.Network
         public bool IgnoreCache { get; }
 
         /// <summary>DownloadOptions constructor.</summary>
-        /// <param name="cancelToken">A cancellation token for the download method.</param>
-        public DownloadOptions(CancellationTokenSource cancelToken)
+        /// <param name="cancelToken">A cancellation token for the download method. (optional)</param>
+        public DownloadOptions(CancellationTokenSource cancelToken = null)
         {
             CancelToken = cancelToken;
             IgnoreCache = false;
