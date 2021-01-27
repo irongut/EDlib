@@ -1,4 +1,5 @@
 ﻿using EDlib.Network;
+using EDlib.Platform;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace EDlib.BGS
         /// <summary>Instantiates the BgsTickService class.</summary>
         /// <param name="downloadService">IDownloadService instance used to download data.</param>
         /// <returns>BgsTickService</returns>
+        [Preserve(Conditional = true)]
         public static BgsTickService Instance(IDownloadService downloadService)
         {
             dService = downloadService;
@@ -36,6 +38,7 @@ namespace EDlib.BGS
         /// <summary>Gets the latest BGS tick.</summary>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>BgsTick</returns>
+        [Preserve(Conditional = true)]
         public async Task<(BgsTick tick, DateTime updated)> GetData(bool ignoreCache = false)
         {
             (List<BgsTick> _, DateTime _) = await GetData(7, ignoreCache).ConfigureAwait(false);
@@ -54,6 +57,7 @@ namespace EDlib.BGS
         /// <param name="days">The required number of days worth of ticks.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;(List&lt;BgsTick&gt;, DateTime)&gt;</returns>
+        [Preserve(Conditional = true)]
         public async Task<(List<BgsTick> ticks, DateTime updated)> GetData(int days, bool ignoreCache = false)
         {
             TimeSpan expiry = TimeSpan.FromHours(1);
