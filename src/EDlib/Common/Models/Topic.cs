@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using EDlib.Platform;
+using System.Collections.Generic;
 
 namespace EDlib.Common
 {
@@ -22,6 +23,7 @@ namespace EDlib.Common
         /// <summary>Initializes a new instance of the <see cref="Topic" /> class.</summary>
         /// <param name="name">The topic name.</param>
         /// <param name="terms">The words used to determine if the topic is relevant to the content.</param>
+        [Preserve(Conditional = true)]
         public Topic(string name, List<string> terms)
         {
             Name = name;

@@ -30,6 +30,7 @@ namespace EDlib.GalNet
         /// <summary>Instantiates the GalNetService class.</summary>
         /// <param name="downloadService">IDownloadService instance used to download data.</param>
         /// <returns>GalNetService</returns>
+        [Preserve(Conditional = true)]
         public static GalNetService Instance(IDownloadService downloadService)
         {
             dService = downloadService;
@@ -41,6 +42,7 @@ namespace EDlib.GalNet
         /// <param name="cancelToken">A cancellation token.</param>
         /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
+        [Preserve(Conditional = true)]
         public async Task<(List<NewsArticle> news, DateTime updated)> GetData(int expiryHours, CancellationTokenSource cancelToken, bool ignoreCache = false)
         {
             (List<NewsArticle> _, DateTime _) = await GetData(20, expiryHours, cancelToken, ignoreCache).ConfigureAwait(false);
@@ -53,6 +55,7 @@ namespace EDlib.GalNet
         /// <param name="cancelToken">A cancellation token.</param>
         /// <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
+        [Preserve(Conditional = true)]
         public async Task<(List<NewsArticle> news, DateTime updated)> GetData(int articleCount, int expiryHours, CancellationTokenSource cancelToken, bool ignoreCache = false)
         {
             TimeSpan expiry = TimeSpan.FromHours(expiryHours);

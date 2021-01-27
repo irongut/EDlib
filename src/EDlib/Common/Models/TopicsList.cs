@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EDlib.Platform;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,13 +22,14 @@ namespace EDlib.Common
 
         /// <summary>Initializes a new instance of the <see cref="TopicsList" /> class and loads the topics from a json resource file.</summary>
         /// <param name="filename">The filename of the json resource file.</param>
+        [Preserve(Conditional = true)]
         public TopicsList(string filename)
         {
             BoWFilename = filename;
             Topics = new List<Topic>();
             GetBagOfWords();
         }
-
+        
         private void GetBagOfWords()
         {
             try
