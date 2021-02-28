@@ -1,4 +1,6 @@
-﻿namespace EDlib.Powerplay
+﻿using EDlib.Platform;
+
+namespace EDlib.Powerplay
 {
     /// <summary>Contains a Power's statistics, ethos and benefits data.</summary>
     public class PowerDetails
@@ -134,6 +136,7 @@
         /// <param name="rating3">Commander benefits at rank 3.</param>
         /// <param name="rating4">Commander benefits at rank 4.</param>
         /// <param name="rating5">Commander benefits at rank 5.</param>
+        [Preserve(Conditional = true)]
         public PowerDetails(int id,
                             string shortName,
                             string hq,
