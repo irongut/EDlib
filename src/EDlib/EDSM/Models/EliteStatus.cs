@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EDlib.Platform;
+using Newtonsoft.Json;
 using System;
 
 namespace EDlib.EDSM
@@ -23,6 +24,7 @@ namespace EDlib.EDSM
         public DateTime LastUpdated { get; internal set; }
 
         /// <summary>Initializes a new instance of the <see cref="EliteStatus" /> class with unknown status.</summary>
+        [Preserve(Conditional = true)]
         public EliteStatus()
         {
             Status = -1;
@@ -36,6 +38,7 @@ namespace EDlib.EDSM
         /// <param name="type">The status string.</param>
         /// <param name="message">The server status message.</param>
         /// <param name="lastupdate">When the server status was last checked.</param>
+        [Preserve(Conditional = true)]
         public EliteStatus(int status, string type, string message, DateTime lastupdate)
         {
             Status = status;

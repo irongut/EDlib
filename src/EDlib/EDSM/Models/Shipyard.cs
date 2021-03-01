@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EDlib.Platform;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -51,6 +52,7 @@ namespace EDlib.EDSM
         /// <param name="sName">The station name.</param>
         /// <param name="url">The EDSM URL for the shipyard.</param>
         /// <param name="ships">List of <see cref="Ship" /> available from this shipyard.</param>
+        [Preserve(Conditional = true)]
         public Shipyard(long id, long id64, string name, long marketId, long sId, string sName, string url, List<Ship> ships)
         {
             Id = id;
@@ -69,10 +71,12 @@ namespace EDlib.EDSM
     public class Ship
     {
         /// <summary>The ship ID.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("id")]
         public long Id { get; set; }
 
         /// <summary>The name of the ship.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("name")]
         public string Name { get; set; }
     }

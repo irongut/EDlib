@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EDlib.Platform;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -36,6 +37,7 @@ namespace EDlib.EDSM
         /// <param name="name">The system name.</param>
         /// <param name="url">The EDSM URL for the system.</param>
         /// <param name="stations">Array of <see cref="Station" /> in the system.</param>
+        [Preserve(Conditional = true)]
         public SystemStations(long id, long id64, string name, string url, List<Station> stations)
         {
             Id = id;
