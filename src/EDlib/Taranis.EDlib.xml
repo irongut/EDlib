@@ -1180,6 +1180,28 @@
             <summary>Determines whether the network connection is metered.</summary>
             <returns><c>true</c> if the connection is metered, else <c>false</c>.</returns>
         </member>
+        <member name="T:EDlib.Platform.PreserveAttribute">
+            <summary>
+              <para>Linker control attribute.</para>
+              <para>To preserve the whole type, use the syntax <c>[Preserve (AllMembers = true)]</c> on the type.
+            To preserve a member if the containing type was preserved, use <c>[Preserve (Conditional=true)]</c> on the member.</para>
+              <para>See: https://docs.microsoft.com/en-gb/xamarin/ios/deploy-test/linker </para>
+            </summary>
+        </member>
+        <member name="F:EDlib.Platform.PreserveAttribute.AllMembers">
+            <summary>Set <c>true</c> to preserve the whole type.</summary>
+        </member>
+        <member name="F:EDlib.Platform.PreserveAttribute.Conditional">
+            <summary>Set <c>true</c> to preserve an individual type member.</summary>
+        </member>
+        <member name="M:EDlib.Platform.PreserveAttribute.#ctor(System.Boolean,System.Boolean)">
+            <summary>Preserve attribute constructor.</summary>
+            <param name="allMembers">Set <c>true</c> when preserving the whole type.</param>
+            <param name="conditional">Set <c>true</c> when preserving an individual type member.</param>
+        </member>
+        <member name="M:EDlib.Platform.PreserveAttribute.#ctor">
+            <summary>Preserve attribute default constructor.</summary>
+        </member>
         <member name="T:EDlib.Powerplay.GalacticStandings">
             <summary>Represents the Powerplay Galactic Standings.</summary>
         </member>

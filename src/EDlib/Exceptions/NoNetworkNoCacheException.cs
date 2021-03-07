@@ -1,9 +1,11 @@
-﻿using System;
+﻿using EDlib.Platform;
+using System;
 using System.Runtime.Serialization;
 
 namespace EDlib
 {
     /// <summary>Represents errors that occur because no network is available and no data is cached.</summary>
+    [Preserve(AllMembers = true)]
     [Serializable]
     public class NoNetworkNoCacheException : Exception
     {

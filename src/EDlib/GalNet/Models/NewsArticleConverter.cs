@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EDlib.Platform;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -21,11 +22,13 @@ namespace EDlib.GalNet
             return instance;
         }
 
+        [Preserve(Conditional = true)]
         public override bool CanConvert(Type objectType)
         {
             return NewsArticleType.IsAssignableFrom(objectType);
         }
 
+        [Preserve(Conditional = true)]
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             var collection = new List<NewsArticle>();
@@ -48,6 +51,7 @@ namespace EDlib.GalNet
             return collection;
         }
 
+        [Preserve(Conditional = true)]
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             throw new NotImplementedException();

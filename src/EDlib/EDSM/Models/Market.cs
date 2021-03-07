@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EDlib.Platform;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -51,6 +52,7 @@ namespace EDlib.EDSM
         /// <param name="sName">The station name.</param>
         /// <param name="url">The EDSM URL for the market.</param>
         /// <param name="commodities">List of <see cref="Commodity" /> available from this market.</param>
+        [Preserve(Conditional = true)]
         public Market(long id, long id64, string name, long marketId, long sId, string sName, string url, List<Commodity> commodities)
         {
             Id = id;
@@ -69,30 +71,37 @@ namespace EDlib.EDSM
     public class Commodity
     {
         /// <summary>The ID of the commodity.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("id")]
         public string Id { get; set; }
 
         /// <summary>The name of the commodity.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>The price when buying the commodity.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("buyPrice")]
         public long BuyPrice { get; set; }
 
         /// <summary>The quantity of the commodity available to buy.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("stock")]
         public long Stock { get; set; }
 
         /// <summary>The price when selling the commodity.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("sellPrice")]
         public long SellPrice { get; set; }
 
         /// <summary>Demand for the commodity when selling.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("demand")]
         public long Demand { get; set; }
 
         /// <summary>Stock bracket for the commodity.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("stockBracket")]
         public long StockBracket { get; set; }
     }

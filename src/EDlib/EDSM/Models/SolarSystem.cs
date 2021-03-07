@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EDlib.Platform;
+using Newtonsoft.Json;
 using System;
 
 namespace EDlib.EDSM
@@ -66,6 +67,7 @@ namespace EDlib.EDSM
         /// <param name="permitName">Name of the system permit.</param>
         /// <param name="information">The system information.</param>
         /// <param name="primaryStar">The primary star information.</param>
+        [Preserve(Conditional = true)]
         public SolarSystem(string name, double distance, long id, long id64, Coords coords, bool coordsLocked, bool requirePermit, string permitName, SystemInfo information, PrimaryStar primaryStar)
         {
             Name = name;
@@ -86,14 +88,17 @@ namespace EDlib.EDSM
     public class Coords
     {
         /// <summary>X coordinate.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("x")]
         public double X { get; set; }
 
         /// <summary>Y coordinate.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("y")]
         public double Y { get; set; }
 
         /// <summary>Z coordinate.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("z")]
         public double Z { get; set; }
     }
@@ -102,38 +107,47 @@ namespace EDlib.EDSM
     public class SystemInfo
     {
         /// <summary>The current superpower allegiance of the system.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("allegiance")]
         public string Allegiance { get; set; }
 
         /// <summary>The current government type of the system.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("government")]
         public string Government { get; set; }
 
         /// <summary>The current faction who controls the system.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("faction")]
         public string Faction { get; set; }
 
         /// <summary>The current active state of the controlling faction.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("factionState")]
         public string FactionState { get; set; }
 
         /// <summary>The population of the system.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("population")]
         public long Population { get; set; }
 
         /// <summary>The current security level of the system.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("security")]
         public string Security { get; set; }
 
         /// <summary>The primary economy type of the system.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("economy")]
         public string Economy { get; set; }
 
         /// <summary>The secondary economy type of the system.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("secondEconomy")]
         public string SecondEconomy { get; set; }
 
         /// <summary>The mining reserves present in system.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("reserve")]
         public string Reserve { get; set; }
     }
@@ -142,14 +156,17 @@ namespace EDlib.EDSM
     public class PrimaryStar
     {
         /// <summary>The type of the primary star. See the EDSM Celestial Bodies FAQ for more info.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("type")]
         public string Type { get; set; }
 
         /// <summary>The name of the primary star.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>Whether the primary star can be scooped for fuel.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("isScoopable")]
         public bool IsScoopable { get; set; }
     }

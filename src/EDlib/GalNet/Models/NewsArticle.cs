@@ -1,4 +1,5 @@
 ﻿using EDlib.Common;
+using EDlib.Platform;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -80,6 +81,7 @@ namespace EDlib.GalNet
 
         /// <summary>The publish date and time of the News article as a string.</summary>
         /// <value>When the article was published.</value>
+        [Preserve(Conditional = true)]
         public string PublishDate
         {
             get
@@ -156,6 +158,7 @@ namespace EDlib.GalNet
         }
 
         /// <summary>Returns the Title and Body of an article as a string.</summary>
+        [Preserve(Conditional = true)]
         public override string ToString()
         {
             return String.Format("{0}: {1}", Title, Body);
