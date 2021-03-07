@@ -46,7 +46,7 @@
     },
     {
         "Name": "Politics",
-         "Terms": [ "politic", "election", "senate", "senator", "congress", "president", "governor", "government", "rebellion", "diplomacy", "corrupt", "emancipat", "homeless", "immigra", "activist", "anti-slavery", "civil unrest", "terrorism", "terrorist", "activism", "activist", "superpower", "restitution", "oversight", "regulat", "galactic summit" ],
+        "Terms": [ "politic", "election", "senate", "senator", "congress", "president", "governor", "government", "rebellion", "diplomacy", "diplomat", "corrupt", "emancipat", "homeless", "immigra", "activist", "anti-slavery", "civil unrest", "terrorism", "terrorist", "activism", "activist", "superpower", "restitution", "oversight", "regulat", "galactic summit", "treaty", "treaties", "ratified", "debate", "humanitarian", "council", "ambassador", "delegation" ],
         "Count": 0
     },
     {
@@ -66,22 +66,22 @@
     },
     {
         "Name": "Empire",
-        "Terms": [ "empire", "imperial", "emperor", "arissa", "lavigny", "duval", "patreus", "torval", "senate", "senator", "chancellor", "blaine", "slave", "achenar", "capitol", "imperium", "galactic summit" ],
+        "Terms": [ "empire", "imperial", "emperor", "arissa", "lavigny", "duval", "patreus", "torval", "senate", "senator", "chancellor", "blaine", "slave", "achenar", "capitol", "imperium", "galactic summit", "gutamaya" ],
         "Count": 0
     },
     {
         "Name": "Federation",
-        "Terms": [ "federation", "federal", "hudson", "winters", "halsey", "congress", "olympus village", "core dynamics", "galactic summit" ],
+        "Terms": [ "federation", "federal", "hudson", "winters", "halsey", "congress", "olympus village", "core dynamics", "galactic summit", "rochester", "vice president brad mitchell" ],
         "Count": 0
     },
     {
         "Name": "AD",
-        "Terms": [ "aisling duval" ],
+        "Terms": [ "aisling duval", "princess duval" ],
         "Count": 0
     },
     {
         "Name": "Delaine",
-        "Terms": [ "archon delaine" ],
+        "Terms": [ "archon delaine", "kumo crew", "pirate warlord" ],
         "Count": 0
     },
     {
