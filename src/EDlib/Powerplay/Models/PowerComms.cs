@@ -1,4 +1,6 @@
-﻿namespace EDlib.Powerplay
+﻿using EDlib.Platform;
+
+namespace EDlib.Powerplay
 {
     /// <summary>Contains the comms data for a Power - Reddit Sub and Discord / Slack servers.</summary>
     public class PowerComms
@@ -24,6 +26,7 @@
         /// <param name="shortName">The Power's short name.</param>
         /// <param name="reddit">The Power's subreddit.</param>
         /// <param name="comms">The Power's Discord or Slack server.</param>
+        [Preserve(Conditional = true)]
         public PowerComms(int id, string shortName, string reddit, string comms)
         {
             Id = id;

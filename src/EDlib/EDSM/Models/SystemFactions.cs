@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EDlib.Platform;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -41,6 +42,7 @@ namespace EDlib.EDSM
         /// <param name="url">The EDSM URL for the system.</param>
         /// /// <param name="controlFaction">The faction that controls the system.</param>
         /// <param name="factions">Array of <see cref="Faction" /> in the system.</param>
+        [Preserve(Conditional = true)]
         public SystemFactions(long id, long id64, string name, string url, ControllingFaction controlFaction, List<Faction> factions)
         {
             Id = id;

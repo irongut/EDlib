@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EDlib.Platform;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace EDlib.Powerplay
         /// <summary>Initializes a new instance of the <see cref="GalacticStandings" /> class.</summary>
         /// <param name="cycle">The Powerplay cycle.</param>
         /// <param name="lastUpdated">When the Standings were last updated.</param>
+        [Preserve(Conditional = true)]
         public GalacticStandings(int cycle, DateTime lastUpdated)
         {
             Cycle = cycle;

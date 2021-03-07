@@ -1,9 +1,11 @@
-﻿using System;
+﻿using EDlib.Platform;
+using System;
 using System.Runtime.Serialization;
 
 namespace EDlib
 {
     /// <summary>Represents errors from an API.</summary>
+    [Preserve(AllMembers = true)]
     [Serializable]
     public class APIException : Exception
     {

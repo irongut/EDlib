@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EDlib.Platform;
+using System;
 
 namespace EDlib.Powerplay
 {
@@ -73,6 +74,7 @@ namespace EDlib.Powerplay
         }
 
         /// <summary>Initializes a new instance of the <see cref="PowerStanding" /> class with no data.</summary>
+        [Preserve(Conditional = true)]
         public PowerStanding()
         {
             // required for NewtonsoftJson
