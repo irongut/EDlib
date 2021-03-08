@@ -4,6 +4,11 @@
         <name>Taranis.EDlib</name>
     </assembly>
     <members>
+        <member name="T:EDlib.LinkerSafeAttribute">
+            <summary>
+            This attribute allows you to mark your assemblies as safe to link.<br />When present the linker will process the assembly even if you’re using the "SDK Assemblies Only" option.
+            </summary>
+        </member>
         <member name="T:EDlib.BGS.BgsTick">
             <summary>Data for the BGS Tick.</summary>
         </member>
