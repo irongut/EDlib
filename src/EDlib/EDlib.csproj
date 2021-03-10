@@ -5,7 +5,8 @@
     <AssemblyName>Taranis.EDlib</AssemblyName>
     <Version>0.1-alpha</Version>
     <Title>EDlib</Title>
-    <Authors>Taranis Software</Authors>
+    <Authors>Irongut</Authors>
+    <Owners>Irongut, Taranis Software</Owners>
     <Company>Taranis Software</Company>
     <Product>EDlib</Product>
     <Copyright>Copyright © 2020 - 2021 Taranis Software</Copyright>
@@ -18,6 +19,7 @@
     <PackageTags>EliteDangerous Elite Dangerous elite-dangerous GalNet EDSM</PackageTags>
     <RepositoryType>git</RepositoryType>
     <PackageId>Taranis.Software.EDlib</PackageId>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
