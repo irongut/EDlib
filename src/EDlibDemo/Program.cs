@@ -1,9 +1,11 @@
 ﻿using EDlib.EDSM;
+using EDlib.GalNet;
 using EDlib.Mock.Platform;
 using EDlib.Network;
 using EDlib.Powerplay;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -23,7 +25,7 @@ namespace EDlibDemo
                 EliteStatusService statusService = EliteStatusService.Instance(DownloadService.Instance(userAgent, new UnmeteredConnection()));
                 (EliteStatus eliteStatus, DateTime lastUpdated) = await statusService.GetData().ConfigureAwait(false);
                 Console.WriteLine(eliteStatus.ToString());
-                Console.WriteLine("");
+                Console.WriteLine(string.Empty);
 
                 string json = await GetDataAsync().ConfigureAwait(false);
                 GalacticStandings galacticStandings = JsonConvert.DeserializeObject<GalacticStandings>(json);
@@ -33,12 +35,26 @@ namespace EDlibDemo
                 string shortName = galacticStandings.Standings[rand.Next(10)].ShortName;
                 PowerDetailsService powerService = PowerDetailsService.Instance(DownloadService.Instance(userAgent, new UnmeteredConnection()));
                 PowerDetails powerDetails = powerService.GetPowerDetails(shortName);
-                Console.WriteLine(powerDetails.ToString());
-                Console.WriteLine("");
+                Console.WriteLine($"Random Power: {powerDetails}");
 
-                PowerComms commms = await powerService.GetPowerCommsAsync(shortName, 1).ConfigureAwait(false);
-                Console.WriteLine(commms.ToString());
-                Console.WriteLine("");
+                PowerComms powerCommms = await powerService.GetPowerCommsAsync(shortName, 1).ConfigureAwait(false);
+                Console.WriteLine($"Comms: {powerCommms}");
+                Console.WriteLine(string.Empty);
+
+                GalNetService gnService = GalNetService.Instance(DownloadService.Instance(userAgent, new UnmeteredConnection()));
+                (List<NewsArticle> newsList, DateTime updated) = await gnService.GetData(20, 1, null).ConfigureAwait(false);
+                Console.WriteLine("### GalNet News ###");
+                Console.WriteLine(string.Empty);
+                foreach (NewsArticle article in newsList)
+                {
+                    Console.WriteLine($"{article.Title} ({article.Topic})");
+                    foreach (string tag in article.Tags)
+                    {
+                        Console.Write($"{tag} ");
+                    }
+                    Console.Write(Environment.NewLine);
+                    Console.WriteLine(string.Empty);
+                }
             }
             catch (Exception ex)
             {
