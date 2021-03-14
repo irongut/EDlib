@@ -6,26 +6,28 @@ labels: bug
 assignees: irongut
 
 ---
+## Bug Report
 
-**Insert error message here**
+Provide a short description of the bug with any error message.
 
-#### Stack Trace
+### Stack Trace
 ```c#
-**Insert stack trace here (calls only, not namespaces)**
+Add​ ​a​ ​stack​ ​trace​ ​if​ ​available​.
 ```
 
-**Describe the bug**
-A clear and concise description of the bug.
-
-**To Reproduce**
+### To Reproduce
 Steps to reproduce the behavior:
 1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
+2. Scroll down to '....'
+3. Click on '....'
 4. See error
 
-**Expected behavior**
+### Expected Behavior
 A clear and concise description of what you expected to happen.
 
-**Additional context**
+### Additional Context
 Add any other context about the problem here.
+
+### Linked To
+
+List any issues linked to this bug.
