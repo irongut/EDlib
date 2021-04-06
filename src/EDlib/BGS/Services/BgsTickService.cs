@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -60,9 +61,10 @@ namespace EDlib.BGS
             if (bgsTicks == null || bgsTicks.Count < days || (lastUpdated + expiry < DateTime.Now))
             {
                 string json;
+                CultureInfo culture = new CultureInfo("en-GB");
                 string queryURL = String.Format(TickURL,
-                                                DateTime.UtcNow.Date.AddDays(0 - days).ToString("yyyy-MM-dd"),
-                                                DateTime.UtcNow.Date.ToString("yyyy-MM-dd"));
+                                                DateTime.UtcNow.Date.AddDays(0 - days).ToString("yyyy-MM-dd", culture),
+                                                DateTime.UtcNow.Date.ToString("yyyy-MM-dd", culture));
 
                 // download the json
                 DownloadOptions options = new DownloadOptions(expiry, ignoreCache);
