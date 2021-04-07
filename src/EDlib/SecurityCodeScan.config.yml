@@ -1,7 +1,7 @@
 # Security Code Scan (SCS) Config
 # See: https://github.com/security-code-scan/security-code-scan/blob/master/SecurityCodeScan/Config/Main.yml
 
-Version: 3.0
+Version: 3.1
 
 # Set to 'true' to get fake SCS0000 warning when analysis completes.
 ReportAnalysisCompletion: true
