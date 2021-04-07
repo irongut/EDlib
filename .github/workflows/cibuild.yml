@@ -20,4 +20,4 @@ jobs:
     - name: Build
       run: dotnet build src/EDlib.sln --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test src/EDlib.sln --no-build --verbosity normal
