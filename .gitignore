@@ -367,3 +367,6 @@ docs
 
 # VS Code
 .vscode
+
+# coverlet code coverage
+[Cc]overage/
