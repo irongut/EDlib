@@ -89,6 +89,7 @@ namespace EDlib.Powerplay
         /// <param name="allegiance">The Power's allegiance.</param>
         /// <param name="shortname">The Power's short name.</param>
         /// <param name="updated">When the Power's standing was last updated.</param>
+        [Preserve(Conditional = true)]
         public PowerStanding(int id, string name, int position, StandingChange change, bool turmoil, string allegiance, string shortname, DateTime updated)
         {
             Id = id;

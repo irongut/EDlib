@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Taranis.EDlib</AssemblyName>
-    <Version>0.3-alpha</Version>
+    <Version>0.4-alpha</Version>
     <Title>EDlib</Title>
     <Authors>Irongut</Authors>
     <Owners>Irongut, Taranis Software</Owners>
