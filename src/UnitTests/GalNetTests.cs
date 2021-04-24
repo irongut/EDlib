@@ -4,6 +4,8 @@ using EDlib.Network;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,7 +19,7 @@ namespace UnitTests
         {
             GalNetService gnService = GalNetService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             (List<NewsArticle> newsList, DateTime updated) = await gnService.GetData(1, 1, new CancellationTokenSource()).ConfigureAwait(false);
-            Assert.IsTrue(newsList.Count == 1);
+            Assert.AreEqual(newsList.Count, 1);
             Assert.IsTrue(updated > DateTime.MinValue);
             NewsArticle article = newsList[0];
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Title));
@@ -54,6 +56,42 @@ namespace UnitTests
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Tags[0]));
             Assert.IsTrue(article.ToString().Contains(article.Title));
             Assert.IsTrue(article.ToString().Contains(article.Body));
+        }
+
+        [TestMethod]
+        public async Task AlternateBoWTest()
+        {
+            GalNetService gnService = GalNetService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
+            string BoW = LoadBoW("UnitTests.Resources.NewsBoW.json");
+            string ignoreBoW = LoadBoW("UnitTests.Resources.NewsFalseBoW.json");
+            (List<NewsArticle> newsList, DateTime updated) = await gnService.GetData(1, 1, new CancellationTokenSource(), BoW, ignoreBoW).ConfigureAwait(false);
+            Assert.AreEqual(newsList.Count, 1);
+            Assert.IsTrue(updated > DateTime.MinValue);
+            NewsArticle article = newsList[0];
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Title));
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Body));
+            Assert.IsTrue(article.PublishDateTime > DateTime.MinValue);
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.PublishDate));
+            Assert.IsTrue(article.Id > 0);
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.FDImageName));
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Slug));
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Topic));
+            Assert.IsTrue(article.Tags.Count > 0);
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Tags[0]));
+            Assert.IsTrue(article.ToString().Contains(article.Title));
+            Assert.IsTrue(article.ToString().Contains(article.Body));
+        }
+
+        private string LoadBoW(string filename)
+        {
+            Assembly assembly = GetType().GetTypeInfo().Assembly;
+            using (Stream stream = assembly.GetManifestResourceStream(filename))
+            {
+                using (StreamReader reader = new(stream))
+                {
+                    return reader.ReadToEnd();
+                }
+            }
         }
     }
 }

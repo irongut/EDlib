@@ -58,8 +58,8 @@ namespace EDlib.GalNet
 
         /// <summary>
         ///   <para>
-        ///  A key used by Frontier Development's to specify the image displayed with a News article.
-        ///  Note: This is not an image url or filename.
+        ///  A value used by Frontier Developments to display an image with each News article.
+        ///  Note: This is not a url or filename.
         ///   </para>
         /// </summary>
         /// <value>Article image name.</value>
@@ -94,30 +94,30 @@ namespace EDlib.GalNet
         #endregion
 
         /// <summary>Determines the Topic and content Tags for an article by analysing it using a Bag of Words technique.</summary>
-        public void ClassifyArticle()
+        /// <param name="topics">List of <see cref="Topic" /> to use when classifying article.</param>
+        /// <param name="ignoreTopics">List of <see cref="Topic" /> to ignore when classifying article.</param>
+        public void ClassifyArticle(List<Topic> topics, List<Topic> ignoreTopics)
         {
             Tags = new List<string>();
             List<string> sentences = SplitSentences();
 
             // analyse article using Bag of Words technique
-            TopicsList topicsList = new TopicsList("EDlib.GalNet.Resources.NewsBoW.json");
-            AnalyseSentences(sentences, topicsList);
+            AnalyseSentences(sentences, topics);
 
             // analyse article again to identify false positives
-            TopicsList falseTopicsList = new TopicsList("EDlib.GalNet.Resources.NewsFalseBoW.json");
-            AnalyseSentences(sentences, falseTopicsList);
+            AnalyseSentences(sentences, ignoreTopics);
 
             // subtract false positives from topics list
-            foreach (Topic falseTopic in falseTopicsList.Topics)
+            foreach (Topic falseTopic in ignoreTopics)
             {
-                Topic topic = topicsList.Topics.Find(x => x.Name.Equals(falseTopic.Name));
+                Topic topic = topics.Find(x => x.Name.Equals(falseTopic.Name));
                 topic.Count -= falseTopic.Count;
             }
 
             // select topic + tags
-            Topic tempTopic = topicsList.Topics.OrderByDescending(o => o.Count).First();
+            Topic tempTopic = topics.OrderByDescending(o => o.Count).First();
             Topic = (tempTopic.Count < 2 || string.Equals(Title, "week in review", StringComparison.OrdinalIgnoreCase)) ? "Unclassified" : tempTopic.Name;
-            foreach (Topic topic in topicsList.Topics.OrderByDescending(o => o.Count).Take(4))
+            foreach (Topic topic in topics.OrderByDescending(o => o.Count).Take(4))
             {
                 if (topic.Count > 0)
                 {
@@ -126,11 +126,11 @@ namespace EDlib.GalNet
             }
         }
 
-        private void AnalyseSentences(List<string> sentences, TopicsList topicsList)
+        private void AnalyseSentences(List<string> sentences, List<Topic> topicsList)
         {
             foreach (string sentence in sentences)
             {
-                Parallel.ForEach(topicsList.Topics, topic =>
+                Parallel.ForEach(topicsList, topic =>
                 {
                     foreach (string term in topic.Terms)
                     {
