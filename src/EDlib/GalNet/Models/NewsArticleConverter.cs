@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace EDlib.GalNet
 {
@@ -70,7 +71,7 @@ namespace EDlib.GalNet
                     item.Body = (string)reader.Value;
                     break;
                 case "date":
-                    item.PublishDateTime = Convert.ToDateTime(reader.Value);
+                    item.PublishDateTime = Convert.ToDateTime(reader.Value, new CultureInfo("en-GB"));
                     break;
                 case "nid":
                     item.Id = Convert.ToInt32(reader.Value);
