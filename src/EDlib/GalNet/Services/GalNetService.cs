@@ -89,6 +89,11 @@ namespace EDlib.GalNet
                     {
                         item.ClassifyArticle(topics, ignoreTopics);
                         galnetNews.Add(item);
+
+                        foreach (Topic topic in topics)
+                            topic.Count = 0;
+                        foreach (Topic topic in ignoreTopics)
+                            topic.Count = 0;
                     }
                 }).ConfigureAwait(false);
             }
