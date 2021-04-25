@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace EDlib.Powerplay
 {
@@ -105,7 +106,7 @@ namespace EDlib.Powerplay
         /// <returns>The current Powerplay cycle number.</returns>
         public static int CurrentCycle()
         {
-            DateTime ppStart = DateTime.Parse("2015-06-04 07:00:00");
+            DateTime ppStart = DateTime.Parse("04-06-2015 07:00:00", new CultureInfo("en-GB"));
             TimeSpan diff = DateTime.UtcNow - ppStart;
             return (diff.Days / 7) + 1;
         }
