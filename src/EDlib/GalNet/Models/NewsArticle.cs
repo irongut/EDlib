@@ -3,6 +3,7 @@ using EDlib.Platform;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -86,7 +87,7 @@ namespace EDlib.GalNet
         {
             get
             {
-                string date = PublishDateTime.ToString();
+                string date = PublishDateTime.ToString(new CultureInfo("en-GB"));
                 return date.Substring(0, date.IndexOf(" "));
             }
         }
