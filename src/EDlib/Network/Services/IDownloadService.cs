@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace EDlib.Network
@@ -18,6 +17,6 @@ namespace EDlib.Network
         /// <param name="content">The content of the API request.</param>
         /// <param name="options">Options structure for download.</param>
         /// <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
-        Task<(string data, DateTime updated)> PostData(string url, StringContent content, DownloadOptions options);
+        Task<(string data, DateTime updated)> PostData(string url, string content, DownloadOptions options);
     }
 }

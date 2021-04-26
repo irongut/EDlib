@@ -2,6 +2,7 @@
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -69,7 +70,7 @@ namespace EDlib.Network
         /// <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
         /// <exception cref="NoNetworkNoCacheException">No Internet available and no data cached.</exception>
         /// <exception cref="APIException">Http errors from the API called.</exception>
-        public async Task<(string data, DateTime updated)> PostData(string url, StringContent content, DownloadOptions options)
+        public async Task<(string data, DateTime updated)> PostData(string url, string content, DownloadOptions options)
         {
             if (!connectivity.IsConnected())
             {
@@ -80,13 +81,14 @@ namespace EDlib.Network
             {
                 // post request
                 HttpResponseMessage response;
+                StringContent httpContent = new StringContent(content, Encoding.UTF8, "application/json");
                 if (options.CancelToken == null)
                 {
-                    response = await client.PostAsync(new Uri(url), content).ConfigureAwait(false);
+                    response = await client.PostAsync(new Uri(url), httpContent).ConfigureAwait(false);
                 }
                 else
                 {
-                    response = await client.PostAsync(new Uri(url), content, options.CancelToken.Token).ConfigureAwait(false);
+                    response = await client.PostAsync(new Uri(url), httpContent, options.CancelToken.Token).ConfigureAwait(false);
                 }
 
                 if (!response.IsSuccessStatusCode)
