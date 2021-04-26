@@ -3,11 +3,19 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Taranis.EDlib.Mock</AssemblyName>
-    <Version>0.1</Version>
-    <Authors>Taranis Software</Authors>
+    <Version>0.5-alpha</Version>
+    <Authors>Irongut</Authors>
     <Product>EDlib.Mock</Product>
-    <Description>EDlib - a .Net library for creating companion tools for the game Elite Dangerous by Frontier Developments.</Description>
-    <Copyright>(c) 2020 Taranis Software</Copyright>
+    <Description>A .Net Standard library for creating companion apps for the game Elite Dangerous by Frontier Developments.</Description>
+    <Copyright>Copyright © 2020 - 2021 Taranis Software</Copyright>
+    <PackageId>Taranis.Software.EDlib.Mock</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/irongut/EDlib</PackageProjectUrl>
+    <PackageIcon></PackageIcon>
+    <RepositoryUrl>https://github.com/irongut/EDlib</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>EliteDangerous Elite Dangerous elite-dangerous GalNet EDSM</PackageTags>
+    <PackageReleaseNotes>Pre-release testing version.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

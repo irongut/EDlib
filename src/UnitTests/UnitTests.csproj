@@ -4,6 +4,26 @@
     <TargetFramework>net5.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <Version>0.5-alpha</Version>
+
+    <Authors>Irongut</Authors>
+
+    <Company>Taranis Software</Company>
+
+    <Product>EDlib</Product>
+
+    <Copyright>Copyright © 2020 - 2021 Taranis Software</Copyright>
+
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
+    <PackageProjectUrl>https://github.com/irongut/EDlib</PackageProjectUrl>
+
+    <RepositoryUrl>https://github.com/irongut/EDlib</RepositoryUrl>
+
+    <RepositoryType>git</RepositoryType>
+
+    <PackageIcon></PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>

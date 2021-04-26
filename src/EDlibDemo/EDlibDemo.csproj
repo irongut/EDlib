@@ -3,6 +3,18 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>0.5-alpha</Version>
+    <Authors>Irongut</Authors>
+    <Company>Taranis Software</Company>
+    <Product>EDlib</Product>
+    <Copyright>Copyright © 2020 - 2021 Taranis Software</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/irongut/EDlib</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/irongut/EDlib</RepositoryUrl>
+    <PackageIcon></PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags></PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
