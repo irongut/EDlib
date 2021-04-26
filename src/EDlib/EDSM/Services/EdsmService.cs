@@ -30,8 +30,6 @@ namespace EDlib.EDSM
         /// <param name="method">The EDSM API method.</param>
         /// <param name="parameters">The parameters for the API method.</param>
         /// <param name="options"></param>
-        /// 
-        /// 
         /// <returns>Task&lt;(string, DateTime)&gt;<br /></returns>
         public async Task<(string data, DateTime updated)> GetData(string method, Dictionary<string, string> parameters, DownloadOptions options)
         {

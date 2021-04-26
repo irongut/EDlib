@@ -623,8 +623,6 @@
             <param name="method">The EDSM API method.</param>
             <param name="parameters">The parameters for the API method.</param>
             <param name="options"></param>
-            
-            
             <returns>Task&lt;(string, DateTime)&gt;<br /></returns>
         </member>
         <member name="T:EDlib.EDSM.EliteStatusService">
@@ -1029,7 +1027,7 @@
         </member>
         <member name="M:EDlib.Network.CachedDownloadService.GetData(System.String,EDlib.Network.DownloadOptions)">
             <summary>
-            Gets and caches the data and when it was last updated with the option to cancel a download.
+            Gets data from an API, caches the data and when it was last updated with the option to cancel the request.
             If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.
             </summary>
             <param name="url">The URL for downloading the data.</param>
@@ -1040,12 +1038,24 @@
         </member>
         <member name="M:EDlib.Network.CachedDownloadService.GetData(System.String,System.String,System.String,EDlib.Network.DownloadOptions)">
             <summary>
-            Gets and caches the data and when it was last updated with the option to cancel a download.
+            Gets data from an API, caches the data and when it was last updated with the option to cancel the request.
             If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.
             </summary>
             <param name="url">The URL for downloading the data.</param>
             <param name="dataKey">The key for cached data.</param>
             <param name="updatedKey">The key for caching when the data was the last updated.</param>
+            <param name="options">Options structure for download.</param>
+            <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
+            <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
+            <exception cref="T:EDlib.APIException">Http errors from the API called.</exception>
+        </member>
+        <member name="M:EDlib.Network.CachedDownloadService.PostData(System.String,System.String,EDlib.Network.DownloadOptions)">
+            <summary>
+            Posts a request to an API, caches the response and when it was last updated with the option to cancel the request.
+            If a copy of the response exists in the cache and has not expired it will be returned, otherwise the API will be queried.
+            </summary>
+            <param name="url">The URL of the API.</param>
+            <param name="content">The content of the API request.</param>
             <param name="options">Options structure for download.</param>
             <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
             <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
@@ -1097,8 +1107,17 @@
             <returns>DownloadService</returns>
         </member>
         <member name="M:EDlib.Network.DownloadService.GetData(System.String,EDlib.Network.DownloadOptions)">
-            <summary>Gets the data.</summary>
-            <param name="url">The URL for downloading the data.</param>
+            <summary>Gets data from an API and returns the response with the option to cancel the request.</summary>
+            <param name="url">The URL of the API.</param>
+            <param name="options">Options structure for download.</param>
+            <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
+            <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
+            <exception cref="T:EDlib.APIException">Http errors from the API called.</exception>
+        </member>
+        <member name="M:EDlib.Network.DownloadService.PostData(System.String,System.String,EDlib.Network.DownloadOptions)">
+            <summary>Posts a request to an API and returns the response with the option to cancel the request.</summary>
+            <param name="url">The URL of the API.</param>
+            <param name="content">The content of the API request.</param>
             <param name="options">Options structure for download.</param>
             <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
             <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
@@ -1108,8 +1127,15 @@
             <summary>Interface for services used to download data.</summary>
         </member>
         <member name="M:EDlib.Network.IDownloadService.GetData(System.String,EDlib.Network.DownloadOptions)">
-            <summary>Gets the data.</summary>
-            <param name="url">The URL for downloading the data.</param>
+            <summary>Gets data from an API and returns the response with the option to cancel the request.</summary>
+            <param name="url">The URL of the API.</param>
+            <param name="options">Options structure for download.</param>
+            <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
+        </member>
+        <member name="M:EDlib.Network.IDownloadService.PostData(System.String,System.String,EDlib.Network.DownloadOptions)">
+            <summary>Posts a request to an API and returns the response with the option to cancel the request.</summary>
+            <param name="url">The URL of the API.</param>
+            <param name="content">The content of the API request.</param>
             <param name="options">Options structure for download.</param>
             <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
         </member>
