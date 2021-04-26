@@ -11,19 +11,28 @@ jobs:
     runs-on: ubuntu-latest
     name: CI Build
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+
     - name: Restore Dependencies
       run: dotnet restore src/EDlib.sln
+
     - name: Build EDlib
       run: dotnet build src/EDlib.sln --configuration Release --no-restore
+
     - name: Test EDlib
       run: dotnet test src/EDlib.sln --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage
+
     - name: Upload Coverage Report Artifact
       uses: actions/upload-artifact@v2.2.3
       with:
         name: test-coverage-report
         path: coverage/**/coverage.cobertura.xml
+
+    - name: Run EDlib Demo
+      run: dotnet src/EDlibDemo/bin/Release/net5.0/EDlibDemo.dll
