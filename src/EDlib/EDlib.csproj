@@ -29,6 +29,7 @@
   <ItemGroup>
     <None Remove="GalNet\Resources\NewsBoW.json" />
     <None Remove="GalNet\Resources\NewsFalseBoW.json" />
+    <None Remove="INARA\Resources\CGBoW.json" />
     <None Remove="Powerplay\Resources\PowerDetails.json" />
     <None Remove="SecurityCodeScan.config.yml" />
     <None Include="edlib-logo-128.png">
@@ -44,6 +45,7 @@
   <ItemGroup>
     <EmbeddedResource Include="GalNet\Resources\NewsBoW.json" />
     <EmbeddedResource Include="GalNet\Resources\NewsFalseBoW.json" />
+    <EmbeddedResource Include="INARA\Resources\CGBoW.json" />
     <EmbeddedResource Include="Powerplay\Resources\PowerDetails.json" />
   </ItemGroup>
 
