@@ -22,6 +22,7 @@ namespace EDlib.INARA
 
         private readonly List<CommunityGoal> communityGoals;
         private DateTime lastUpdated;
+        private int lastDays;
 
         private CommunityGoalsService()
         {
@@ -46,7 +47,7 @@ namespace EDlib.INARA
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
             if (requestDays < 7) requestDays = 7;
 
-            if (communityGoals?.Any() == false || lastUpdated + expiry < DateTime.Now)
+            if (communityGoals?.Any() == false || lastDays != requestDays || lastUpdated + expiry < DateTime.Now)
             {
                 // request data
                 string json;
@@ -57,6 +58,7 @@ namespace EDlib.INARA
                     new InaraEvent(eventName, new List<object>())
                 };
                 (json, lastUpdated) = await inaraService.GetData(new InaraHeader(identity), input, options).ConfigureAwait(false);
+                lastDays = requestDays;
 
                 // parse community goals
                 communityGoals.Clear();
