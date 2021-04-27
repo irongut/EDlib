@@ -29,11 +29,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\CGBoW.json" />
     <None Remove="Resources\NewsBoW.json" />
     <None Remove="Resources\NewsFalseBoW.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\CGBoW.json" />
     <EmbeddedResource Include="Resources\NewsBoW.json" />
     <EmbeddedResource Include="Resources\NewsFalseBoW.json" />
   </ItemGroup>

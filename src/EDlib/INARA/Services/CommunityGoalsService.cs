@@ -36,8 +36,23 @@ namespace EDlib.INARA
             return instance;
         }
 
+        public async Task<(List<CommunityGoal> goals, DateTime updated)> GetData(int goalCount,
+                                                                                 int cacheMinutes,
+                                                                                 InaraIdentity identity,
+                                                                                 CancellationTokenSource cancelToken,
+                                                                                 string BoW = null,
+                                                                                 bool ignoreCache = false)
+        {
+            if (cacheMinutes < 60) cacheMinutes = 60;
+
+            if (communityGoals?.Any() == false || communityGoals.Count < goalCount || lastUpdated + TimeSpan.FromMinutes(cacheMinutes) < DateTime.Now)
+            {
+                await GetData(cacheMinutes, identity, cancelToken, BoW, ignoreCache).ConfigureAwait(false);
+            }
+            return (communityGoals.Take(goalCount).ToList(), lastUpdated);
+        }
+
         public async Task<(List<CommunityGoal> goals, DateTime updated)> GetData(int cacheMinutes,
-                                                                                 int requestDays,
                                                                                  InaraIdentity identity,
                                                                                  CancellationTokenSource cancelToken,
                                                                                  string BoW = null,
@@ -45,9 +60,8 @@ namespace EDlib.INARA
         {
             if (cacheMinutes < 60) cacheMinutes = 60;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
-            if (requestDays < 7) requestDays = 7;
 
-            if (communityGoals?.Any() == false || lastDays != requestDays || lastUpdated + expiry < DateTime.Now)
+            if (communityGoals?.Any() == false || lastUpdated + expiry < DateTime.Now)
             {
                 // request data
                 string json;
@@ -58,7 +72,6 @@ namespace EDlib.INARA
                     new InaraEvent(eventName, new List<object>())
                 };
                 (json, lastUpdated) = await inaraService.GetData(new InaraHeader(identity), input, options).ConfigureAwait(false);
-                lastDays = requestDays;
 
                 // parse community goals
                 communityGoals.Clear();
@@ -73,19 +86,43 @@ namespace EDlib.INARA
                             foreach (JObject cg in item.EventData)
                             {
                                 CommunityGoal goal = cg.ToObject<CommunityGoal>();
-                                if (goal.GoalExpiry > DateTime.Today.AddDays(0 - requestDays))
-                                {
-                                    goal.ClassifyCG(topics);
-                                    communityGoals.Add(goal);
-                                    foreach (Topic topic in topics)
-                                        topic.Count = 0;
-                                }
+                                goal.ClassifyCG(topics);
+                                communityGoals.Add(goal);
+                                foreach (Topic topic in topics)
+                                    topic.Count = 0;
                             }
                         }
                     }
                 }).ConfigureAwait(false);
             }
             return (communityGoals, lastUpdated);
+        }
+
+        public async Task<(List<CommunityGoal> goals, DateTime updated)> GetDataByTime(int requestDays,
+                                                                                       int cacheMinutes,
+                                                                                       InaraIdentity identity,
+                                                                                       CancellationTokenSource cancelToken,
+                                                                                       string BoW = null,
+                                                                                       bool ignoreCache = false)
+        {
+            if (requestDays < 7) requestDays = 7;
+            if (cacheMinutes < 60) cacheMinutes = 60;
+
+            if (communityGoals?.Any() == false || lastDays != requestDays || lastUpdated + TimeSpan.FromMinutes(cacheMinutes) < DateTime.Now)
+            {
+                await GetData(cacheMinutes, identity, cancelToken, BoW, ignoreCache).ConfigureAwait(false);
+            }
+
+            lastDays = requestDays;
+            List<CommunityGoal> goals = new List<CommunityGoal>();
+            foreach (CommunityGoal goal in communityGoals)
+            {
+                if (goal.GoalExpiry > DateTime.Today.AddDays(0 - requestDays))
+                {
+                    goals.Add(goal);
+                }
+            }
+            return (goals, lastUpdated);
         }
 
         private List<Topic> GetTopics(string BoW)
