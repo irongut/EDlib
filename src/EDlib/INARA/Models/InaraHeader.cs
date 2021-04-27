@@ -30,6 +30,8 @@ namespace EDlib.INARA
 
         #endregion
 
+        public InaraHeader() { }
+
         public InaraHeader(InaraIdentity identity)
         {
             AppName = identity.AppName;
