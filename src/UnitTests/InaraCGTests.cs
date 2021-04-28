@@ -16,11 +16,13 @@ namespace UnitTests
     public class InaraCGTests
     {
         private IConfigurationRoot config;
+        private string appName;
+        private InaraIdentity identity;
 
         [TestMethod]
         public async Task CommunityGoalTest()
         {
-            (string appName, InaraIdentity identity) = InitialiseInaraTests();
+            InitialiseInaraTests();
 
             CommunityGoalsService cgService = CommunityGoalsService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
             (List<CommunityGoal> cgList, DateTime updated) = await cgService.GetData(1, 60, identity, new CancellationTokenSource()).ConfigureAwait(false);
@@ -59,7 +61,7 @@ namespace UnitTests
         [TestMethod]
         public async Task CommunityGoalAltBoWTest()
         {
-            (string appName, InaraIdentity identity) = InitialiseInaraTests();
+            InitialiseInaraTests();
 
             CommunityGoalsService cgService = CommunityGoalsService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
             string BoW = LoadBoW("UnitTests.Resources.CGBoW.json");
@@ -99,7 +101,7 @@ namespace UnitTests
         [TestMethod]
         public async Task CommunityGoalsTest()
         {
-            (string appName, InaraIdentity identity) = InitialiseInaraTests();
+            InitialiseInaraTests();
 
             CommunityGoalsService cgService = CommunityGoalsService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
             (List<CommunityGoal> cgList, DateTime updated) = await cgService.GetData(60, identity, new CancellationTokenSource()).ConfigureAwait(false);
@@ -142,7 +144,7 @@ namespace UnitTests
         [TestMethod]
         public async Task CommunityGoalsByTimeTest()
         {
-            (string appName, InaraIdentity identity) = InitialiseInaraTests();
+            InitialiseInaraTests();
 
             CommunityGoalsService cgService = CommunityGoalsService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
             (List<CommunityGoal> cgList, DateTime updated) = await cgService.GetDataByTime(28, 60, identity, new CancellationTokenSource()).ConfigureAwait(false);
@@ -182,7 +184,7 @@ namespace UnitTests
             }
         }
 
-        private (string appName, InaraIdentity identity) InitialiseInaraTests()
+        private void InitialiseInaraTests()
         {
             if (config == null)
             {
@@ -191,15 +193,13 @@ namespace UnitTests
                              .AddJsonFile("appsettings.json")
                              .AddUserSecrets<InaraCGTests>()
                              .Build();
+
+                appName = config["Inara-AppName"];
+                identity = new(appName,
+                               config["Inara-AppVersion"],
+                               config["Inara-ApiKey"],
+                               bool.Parse(config["Inara-IsDeveloped"]));
             }
-
-            string name = config["Inara-AppName"];
-            InaraIdentity identity = new(name,
-                                         config["Inara-AppVersion"],
-                                         config["Inara-ApiKey"],
-                                         bool.Parse(config["Inara-IsDeveloped"]));
-
-            return (name, identity);
         }
 
         private string LoadBoW(string filename)
