@@ -12,7 +12,7 @@ namespace EDlib.INARA
         public DateTime EventTimestamp { get; }
 
         [JsonProperty(PropertyName = "eventData")]
-        public object EventData { get; internal set; }
+        public dynamic EventData { get; internal set; }
 
         [JsonProperty("eventStatus")]
         public int? EventStatus { get; internal set; }
