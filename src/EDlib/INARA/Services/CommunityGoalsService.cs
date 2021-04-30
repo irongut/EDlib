@@ -83,7 +83,7 @@ namespace EDlib.INARA
                     {
                         if (item.EventData != null)
                         {
-                            foreach (JObject cg in item.EventData)
+                            foreach (JObject cg in item.EventData as List<object>)
                             {
                                 CommunityGoal goal = cg.ToObject<CommunityGoal>();
                                 goal.ClassifyCG(topics);

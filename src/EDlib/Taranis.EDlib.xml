@@ -999,6 +999,12 @@
             <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
         </member>
+        <member name="P:EDlib.INARA.CommanderProfile.LastUpdated">
+            <summary>The date and time when the information was requested.</summary>
+        </member>
+        <member name="M:EDlib.INARA.CommanderProfile.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.INARA.CommanderProfile" /> class.</summary>
+        </member>
         <member name="T:EDlib.Network.HttpHelper">
             <summary>A helper class for reading an http response that can decompress data in gzip or deflate streams.</summary>
         </member>

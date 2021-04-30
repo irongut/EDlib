@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 
 namespace EDlib.INARA
 {
@@ -13,7 +12,7 @@ namespace EDlib.INARA
         public DateTime EventTimestamp { get; }
 
         [JsonProperty(PropertyName = "eventData")]
-        public List<object> EventData { get; internal set; }
+        public object EventData { get; internal set; }
 
         [JsonProperty("eventStatus")]
         public int? EventStatus { get; internal set; }
@@ -21,11 +20,23 @@ namespace EDlib.INARA
         [JsonProperty("eventStatusText")]
         public string EventStatusText { get; internal set; }
 
-        public InaraEvent(string name, List<object> data)
+        public InaraEvent(string name, object data)
         {
             EventName = name;
             EventTimestamp = DateTime.Now;
             EventData = data;
         }
     }
+
+    public struct SearchNameParameter
+    {
+        [JsonProperty(PropertyName = "searchName")]
+        public string SearchName { get; }
+
+        public SearchNameParameter(string name)
+        {
+            SearchName = name;
+        }
+    }
+
 }
