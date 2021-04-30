@@ -26,7 +26,7 @@ namespace UnitTests
 
             CommunityGoalsService cgService = CommunityGoalsService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
             (List<CommunityGoal> cgList, DateTime updated) = await cgService.GetData(1, 60, identity, new CancellationTokenSource()).ConfigureAwait(false);
-            Assert.AreEqual(cgList.Count, 1);
+            Assert.AreEqual(1, cgList.Count);
             Assert.IsTrue(updated > DateTime.MinValue);
 
             CommunityGoal cg = cgList[0];
@@ -66,7 +66,7 @@ namespace UnitTests
             CommunityGoalsService cgService = CommunityGoalsService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
             string BoW = LoadBoW("UnitTests.Resources.CGBoW.json");
             (List<CommunityGoal> cgList, DateTime updated) = await cgService.GetData(1, 60, identity, new CancellationTokenSource(), BoW).ConfigureAwait(false);
-            Assert.AreEqual(cgList.Count, 1);
+            Assert.AreEqual(1, cgList.Count);
             Assert.IsTrue(updated > DateTime.MinValue);
 
             CommunityGoal cg = cgList[0];
