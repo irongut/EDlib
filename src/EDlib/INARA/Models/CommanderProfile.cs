@@ -80,7 +80,7 @@ namespace EDlib.INARA
         public int Value { get; set; }
 
         [JsonProperty("rankProgress")]
-        public int Progress { get; set; }
+        public double Progress { get; set; }
     }
 
     public class CommanderSquadron
@@ -98,7 +98,7 @@ namespace EDlib.INARA
         public string Rank { get; set; }
 
         [JsonProperty("inaraURL")]
-        public Uri InaraUrl { get; set; }
+        public string InaraUrl { get; set; }
     }
 
     public class CommanderWing
@@ -116,6 +116,6 @@ namespace EDlib.INARA
         public string Rank { get; set; }
 
         [JsonProperty("inaraURL")]
-        public Uri InaraUrl { get; set; }
+        public string InaraUrl { get; set; }
     }
 }
