@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EDlib.Platform;
+using Newtonsoft.Json;
 
 namespace EDlib.INARA
 {
@@ -30,8 +31,10 @@ namespace EDlib.INARA
 
         #endregion
 
+        [Preserve(Conditional = true)]
         public InaraHeader() { }
 
+        [Preserve(Conditional = true)]
         public InaraHeader(InaraIdentity identity)
         {
             AppName = identity.AppName;

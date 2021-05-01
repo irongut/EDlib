@@ -8,6 +8,8 @@ namespace EDlib.INARA
 {
     public class CommanderProfile
     {
+        #region Properties
+
         [JsonProperty("userID")]
         public long UserId { get; set; }
 
@@ -46,6 +48,8 @@ namespace EDlib.INARA
 
         /// <summary>The date and time when the information was requested.</summary>
         public DateTime LastUpdated { get; }
+
+        #endregion
 
         /// <summary>Initializes a new instance of the <see cref="CommanderProfile" /> class.</summary>
         [Preserve(Conditional = true)]

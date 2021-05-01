@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EDlib.Platform;
+using Newtonsoft.Json;
 using System;
 
 namespace EDlib.INARA
@@ -20,6 +21,7 @@ namespace EDlib.INARA
         [JsonProperty("eventStatusText")]
         public string EventStatusText { get; internal set; }
 
+        [Preserve(Conditional = true)]
         public InaraEvent(string name, object data)
         {
             EventName = name;
@@ -27,16 +29,4 @@ namespace EDlib.INARA
             EventData = data;
         }
     }
-
-    public struct SearchNameParameter
-    {
-        [JsonProperty(PropertyName = "searchName")]
-        public string SearchName { get; }
-
-        public SearchNameParameter(string name)
-        {
-            SearchName = name;
-        }
-    }
-
 }

@@ -7,6 +7,17 @@ using System.Threading.Tasks;
 
 namespace EDlib.INARA
 {
+    public struct SearchNameParameter
+    {
+        [JsonProperty(PropertyName = "searchName")]
+        public string SearchName { get; }
+
+        public SearchNameParameter(string name)
+        {
+            SearchName = name;
+        }
+    }
+
     public sealed class CommanderProfileService
     {
         private static readonly CommanderProfileService instance = new CommanderProfileService();
