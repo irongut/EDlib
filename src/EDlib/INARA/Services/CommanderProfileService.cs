@@ -27,6 +27,7 @@ namespace EDlib.INARA
         private const string eventName = "getCommanderProfile";
 
         private CommanderProfile commander;
+        private string cachedName;
 
         private CommanderProfileService() { }
 
@@ -45,7 +46,7 @@ namespace EDlib.INARA
             if (cacheMinutes < 5) cacheMinutes = 5;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
 
-            if (commander == null || commander.LastUpdated + expiry < DateTime.Now)
+            if (commander == null || !searchName.Equals(cachedName, StringComparison.OrdinalIgnoreCase) || commander.LastUpdated + expiry < DateTime.Now)
             {
                 // request data
                 DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
@@ -65,6 +66,7 @@ namespace EDlib.INARA
                     if (item.EventData != null)
                     {
                         commander = JsonConvert.DeserializeObject<CommanderProfile>(item.EventData.ToString());
+                        cachedName = searchName;
                     }
                 }
             }
