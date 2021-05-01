@@ -75,7 +75,7 @@ namespace UnitTests
             Assert.IsNotNull(cmdr);
             Assert.IsTrue(cmdr.LastUpdated > DateTime.MinValue);
 
-            Assert.AreEqual(11668, cmdr.UserId);
+            Assert.IsTrue(cmdr.UserId > 0);
             Assert.AreEqual("Jubei Himura", cmdr.UserName);
             Assert.AreEqual("Empire", cmdr.PreferredAllegiance);
             Assert.AreEqual("Arissa Lavigny-Duval", cmdr.PreferredPower);
