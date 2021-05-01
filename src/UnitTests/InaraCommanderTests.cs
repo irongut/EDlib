@@ -1,4 +1,5 @@
-﻿using EDlib.INARA;
+﻿using EDlib;
+using EDlib.INARA;
 using EDlib.Mock.Platform;
 using EDlib.Network;
 using Microsoft.Extensions.Configuration;
@@ -22,7 +23,17 @@ namespace UnitTests
             InitialiseInaraTests(false);
 
             CommanderProfileService cmdrService = CommanderProfileService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
-            CommanderProfile cmdr = await cmdrService.GetData("Irongut", 5, identity, new CancellationTokenSource()).ConfigureAwait(false);
+            CommanderProfile cmdr;
+            try
+            {
+                cmdr = await cmdrService.GetData("Irongut", 5, identity, new CancellationTokenSource()).ConfigureAwait(false);
+            }
+            catch (APIException ex)
+            {
+                Assert.Inconclusive($"Skipping test due to INARA API issue: {ex.Message}");
+                return;
+            }
+
             Assert.IsNotNull(cmdr);
             Assert.IsTrue(cmdr.LastUpdated > DateTime.MinValue);
 
@@ -71,7 +82,17 @@ namespace UnitTests
             InitialiseInaraTests(true);
 
             CommanderProfileService cmdrService = CommanderProfileService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
-            CommanderProfile cmdr = await cmdrService.GetData("Jubei Himura", 5, identity, new CancellationTokenSource()).ConfigureAwait(false);
+            CommanderProfile cmdr;
+            try
+            {
+                cmdr = await cmdrService.GetData("Jubei Himura", 5, identity, new CancellationTokenSource()).ConfigureAwait(false);
+            }
+            catch (APIException ex)
+            {
+                Assert.Inconclusive($"Skipping test due to INARA API issue: {ex.Message}");
+                return;
+            }
+
             Assert.IsNotNull(cmdr);
             Assert.IsTrue(cmdr.LastUpdated > DateTime.MinValue);
 
@@ -119,7 +140,17 @@ namespace UnitTests
             InitialiseInaraTests(true);
 
             CommanderProfileService cmdrService = CommanderProfileService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
-            CommanderProfile cmdr = await cmdrService.GetData("Seraphina", 5, identity, new CancellationTokenSource()).ConfigureAwait(false);
+            CommanderProfile cmdr;
+            try
+            {
+                cmdr = await cmdrService.GetData("Seraphina", 5, identity, new CancellationTokenSource()).ConfigureAwait(false);
+            }
+            catch (APIException ex)
+            {
+                Assert.Inconclusive($"Skipping test due to INARA API issue: {ex.Message}");
+                return;
+            }
+
             Assert.IsNotNull(cmdr);
             Assert.IsTrue(cmdr.LastUpdated > DateTime.MinValue);
 

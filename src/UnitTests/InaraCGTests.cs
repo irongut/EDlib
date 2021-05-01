@@ -1,4 +1,5 @@
-﻿using EDlib.INARA;
+﻿using EDlib;
+using EDlib.INARA;
 using EDlib.Mock.Platform;
 using EDlib.Network;
 using Microsoft.Extensions.Configuration;
@@ -25,7 +26,18 @@ namespace UnitTests
             InitialiseInaraTests();
 
             CommunityGoalsService cgService = CommunityGoalsService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
-            (List<CommunityGoal> cgList, DateTime updated) = await cgService.GetData(1, 60, identity, new CancellationTokenSource()).ConfigureAwait(false);
+            List<CommunityGoal> cgList;
+            DateTime updated;
+            try
+            {
+                (cgList, updated) = await cgService.GetData(1, 60, identity, new CancellationTokenSource()).ConfigureAwait(false);
+            }
+            catch (APIException ex)
+            {
+                Assert.Inconclusive($"Skipping test due to INARA API issue: {ex.Message}");
+                return;
+            }
+
             Assert.AreEqual(1, cgList.Count);
             Assert.IsTrue(updated > DateTime.MinValue);
 
@@ -65,7 +77,18 @@ namespace UnitTests
 
             CommunityGoalsService cgService = CommunityGoalsService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
             string BoW = LoadBoW("UnitTests.Resources.CGBoW.json");
-            (List<CommunityGoal> cgList, DateTime updated) = await cgService.GetData(1, 60, identity, new CancellationTokenSource(), BoW).ConfigureAwait(false);
+            List<CommunityGoal> cgList;
+            DateTime updated;
+            try
+            {
+                (cgList, updated) = await cgService.GetData(1, 60, identity, new CancellationTokenSource(), BoW).ConfigureAwait(false);
+            }
+            catch (APIException ex)
+            {
+                Assert.Inconclusive($"Skipping test due to INARA API issue: {ex.Message}");
+                return;
+            }
+
             Assert.AreEqual(1, cgList.Count);
             Assert.IsTrue(updated > DateTime.MinValue);
 
@@ -104,7 +127,18 @@ namespace UnitTests
             InitialiseInaraTests();
 
             CommunityGoalsService cgService = CommunityGoalsService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
-            (List<CommunityGoal> cgList, DateTime updated) = await cgService.GetData(60, identity, new CancellationTokenSource()).ConfigureAwait(false);
+            List<CommunityGoal> cgList;
+            DateTime updated;
+            try
+            {
+                (cgList, updated) = await cgService.GetData(60, identity, new CancellationTokenSource()).ConfigureAwait(false);
+            }
+            catch (APIException ex)
+            {
+                Assert.Inconclusive($"Skipping test due to INARA API issue: {ex.Message}");
+                return;
+            }
+
             Assert.IsTrue(cgList.Count > 1);
             Assert.IsTrue(updated > DateTime.MinValue);
 
@@ -147,7 +181,18 @@ namespace UnitTests
             InitialiseInaraTests();
 
             CommunityGoalsService cgService = CommunityGoalsService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
-            (List<CommunityGoal> cgList, DateTime updated) = await cgService.GetDataByTime(28, 60, identity, new CancellationTokenSource()).ConfigureAwait(false);
+            List<CommunityGoal> cgList;
+            DateTime updated;
+            try
+            {
+                (cgList, updated) = await cgService.GetDataByTime(28, 60, identity, new CancellationTokenSource()).ConfigureAwait(false);
+            }
+            catch (APIException ex)
+            {
+                Assert.Inconclusive($"Skipping test due to INARA API issue: {ex.Message}");
+                return;
+            }
+
             Assert.IsTrue(cgList.Count > 1);
             Assert.IsTrue(updated > DateTime.MinValue);
 

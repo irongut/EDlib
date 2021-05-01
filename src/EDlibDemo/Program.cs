@@ -80,7 +80,7 @@ namespace EDlibDemo
                 }
                 catch (APIException ex)
                 {
-                    Console.WriteLine($"API Error: {ex.StatusCode} - {ex.Message}");
+                    Console.WriteLine($"API Error: {ex.Message}");
                 }
             }
             catch (Exception ex)
