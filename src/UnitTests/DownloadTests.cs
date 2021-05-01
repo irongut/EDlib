@@ -11,38 +11,38 @@ namespace UnitTests
     public class DownloadTests
     {
         private const string url = "https://api.taranissoftware.com/elite-dangerous/galactic-standings.json";
-        
+
         [TestMethod]
         public void DownloadOptionsTest()
         {
-            DownloadOptions optionsZero = new DownloadOptions();
+            DownloadOptions optionsZero = new();
             Assert.IsNull(optionsZero.CancelToken);
-            Assert.AreEqual(optionsZero.Expiry, TimeSpan.FromTicks(0));
+            Assert.AreEqual(TimeSpan.FromTicks(0), optionsZero.Expiry);
             Assert.IsFalse(optionsZero.IgnoreCache);
 
-            DownloadOptions optionsOne = new DownloadOptions(new CancellationTokenSource());
+            DownloadOptions optionsOne = new(new CancellationTokenSource());
             Assert.IsNotNull(optionsOne.CancelToken);
-            Assert.AreEqual(optionsOne.Expiry, TimeSpan.FromTicks(0));
+            Assert.AreEqual(TimeSpan.FromTicks(0), optionsOne.Expiry);
             Assert.IsFalse(optionsOne.IgnoreCache);
 
-            DownloadOptions optionsTwo = new DownloadOptions(TimeSpan.FromMinutes(5));
+            DownloadOptions optionsTwo = new(TimeSpan.FromMinutes(5));
             Assert.IsNull(optionsTwo.CancelToken);
-            Assert.AreEqual(optionsTwo.Expiry, TimeSpan.FromMinutes(5));
+            Assert.AreEqual(TimeSpan.FromMinutes(5), optionsTwo.Expiry);
             Assert.IsFalse(optionsTwo.IgnoreCache);
 
-            DownloadOptions optionsThree = new DownloadOptions(new CancellationTokenSource(), TimeSpan.FromMinutes(5));
+            DownloadOptions optionsThree = new(new CancellationTokenSource(), TimeSpan.FromMinutes(5));
             Assert.IsNotNull(optionsThree.CancelToken);
-            Assert.AreEqual(optionsThree.Expiry, TimeSpan.FromMinutes(5));
+            Assert.AreEqual(TimeSpan.FromMinutes(5), optionsThree.Expiry);
             Assert.IsFalse(optionsThree.IgnoreCache);
 
-            DownloadOptions optionsFour = new DownloadOptions(TimeSpan.FromMinutes(5), true);
+            DownloadOptions optionsFour = new(TimeSpan.FromMinutes(5), true);
             Assert.IsNull(optionsFour.CancelToken);
-            Assert.AreEqual(optionsFour.Expiry, TimeSpan.FromMinutes(5));
+            Assert.AreEqual(TimeSpan.FromMinutes(5), optionsFour.Expiry);
             Assert.IsTrue(optionsFour.IgnoreCache);
 
-            DownloadOptions optionsFive = new DownloadOptions(new CancellationTokenSource(), TimeSpan.FromMinutes(5), true);
+            DownloadOptions optionsFive = new(new CancellationTokenSource(), TimeSpan.FromMinutes(5), true);
             Assert.IsNotNull(optionsFive.CancelToken);
-            Assert.AreEqual(optionsFive.Expiry, TimeSpan.FromMinutes(5));
+            Assert.AreEqual(TimeSpan.FromMinutes(5), optionsFive.Expiry);
             Assert.IsTrue(optionsFive.IgnoreCache);
         }
 
@@ -50,8 +50,8 @@ namespace UnitTests
         public async Task DownloadServiceTest()
         {
             DownloadService dService = DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection());
-            DownloadOptions options = new DownloadOptions();
-            (string data, DateTime lastUpdated) = await dService.GetData(url, options);
+            DownloadOptions options = new();
+            (string data, DateTime lastUpdated) = await dService.GetData(url, options).ConfigureAwait(false);
 
             Assert.IsFalse(string.IsNullOrWhiteSpace(data));
             Assert.IsTrue(data.Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
@@ -62,8 +62,8 @@ namespace UnitTests
         public async Task CachedDownloadServiceTest()
         {
             CachedDownloadService dService = CachedDownloadService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
-            DownloadOptions options = new DownloadOptions(TimeSpan.FromHours(1));
-            (string data, DateTime lastUpdated) = await dService.GetData(url, options);
+            DownloadOptions options = new(TimeSpan.FromHours(1));
+            (string data, DateTime lastUpdated) = await dService.GetData(url, options).ConfigureAwait(false);
 
             Assert.IsFalse(string.IsNullOrWhiteSpace(data));
             Assert.IsTrue(data.Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
@@ -74,8 +74,8 @@ namespace UnitTests
         public async Task CachedDownloadServiceTwoTest()
         {
             CachedDownloadService dService = CachedDownloadService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
-            DownloadOptions options = new DownloadOptions(TimeSpan.FromHours(1));
-            (string data, DateTime lastUpdated) = await dService.GetData(url, "testData", "testUpdated", options);
+            DownloadOptions options = new(TimeSpan.FromHours(1));
+            (string data, DateTime lastUpdated) = await dService.GetData(url, "testData", "testUpdated", options).ConfigureAwait(false);
 
             Assert.IsFalse(string.IsNullOrWhiteSpace(data));
             Assert.IsTrue(data.Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));

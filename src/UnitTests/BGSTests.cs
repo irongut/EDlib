@@ -14,16 +14,16 @@ namespace UnitTests
         [TestMethod]
         public void UnknownTickTest()
         {
-            BgsTick tick = new BgsTick();
-            Assert.AreEqual(tick.TimeString, "Unknown");
+            BgsTick tick = new();
+            Assert.AreEqual("Unknown", tick.TimeString);
         }
 
         [TestMethod]
         public void NewTickTest()
         {
             DateTime date = DateTime.Now;
-            BgsTick tick = new BgsTick(date);
-            Assert.AreEqual(tick.TimeString, date.ToString("g"));
+            BgsTick tick = new(date);
+            Assert.AreEqual(date.ToString("g"), tick.TimeString);
         }
 
         [TestMethod]

@@ -19,7 +19,7 @@ namespace UnitTests
         {
             GalNetService gnService = GalNetService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             (List<NewsArticle> newsList, DateTime updated) = await gnService.GetData(1, 1, new CancellationTokenSource()).ConfigureAwait(false);
-            Assert.AreEqual(newsList.Count, 1);
+            Assert.AreEqual(1, newsList.Count);
             Assert.IsTrue(updated > DateTime.MinValue);
             NewsArticle article = newsList[0];
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Title));
@@ -65,7 +65,7 @@ namespace UnitTests
             string BoW = LoadBoW("UnitTests.Resources.NewsBoW.json");
             string ignoreBoW = LoadBoW("UnitTests.Resources.NewsFalseBoW.json");
             (List<NewsArticle> newsList, DateTime updated) = await gnService.GetData(1, 1, new CancellationTokenSource(), BoW, ignoreBoW).ConfigureAwait(false);
-            Assert.AreEqual(newsList.Count, 1);
+            Assert.AreEqual(1, newsList.Count);
             Assert.IsTrue(updated > DateTime.MinValue);
             NewsArticle article = newsList[0];
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Title));

@@ -13,7 +13,7 @@ namespace UnitTests
         [TestMethod]
         public async Task GetDataTest()
         {
-            DownloadOptions options = new DownloadOptions();
+            DownloadOptions options = new();
             EdsmService edsmService = EdsmService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             (string json, DateTime lastUpdated) = await edsmService.GetData("api-status-v1/elite-server", null, options).ConfigureAwait(false);
             Assert.IsFalse(string.IsNullOrWhiteSpace(json));

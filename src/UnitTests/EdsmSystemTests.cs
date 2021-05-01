@@ -30,7 +30,7 @@ namespace UnitTests
             Assert.IsNotNull(stations);
             Assert.IsTrue(stations.Id > 0);
             Assert.IsTrue(stations.Id64 > 0);
-            Assert.AreEqual(stations.Name, "Sol");
+            Assert.AreEqual("Sol", stations.Name);
             Assert.IsFalse(string.IsNullOrWhiteSpace(stations.Url));
             Assert.IsTrue(stations.Stations.Count > 0);
             Assert.IsTrue(stations.LastUpdated > DateTime.MinValue);
@@ -39,12 +39,12 @@ namespace UnitTests
             Assert.IsNotNull(gStation);
             Assert.IsTrue(gStation.Id > 0);
             Assert.IsTrue(gStation.MarketId > 0);
-            Assert.AreEqual(gStation.Type, "Ocellus Starport");
-            Assert.AreEqual(gStation.Name, "Galileo");
+            Assert.AreEqual("Ocellus Starport", gStation.Type);
+            Assert.AreEqual("Galileo", gStation.Name);
             Assert.IsTrue(gStation.DistanceToArrival > 0);
             Assert.IsFalse(string.IsNullOrWhiteSpace(gStation.Allegiance));
             Assert.IsFalse(string.IsNullOrWhiteSpace(gStation.Government));
-            Assert.AreEqual(gStation.Economy, "Refinery");
+            Assert.AreEqual("Refinery", gStation.Economy);
             Assert.IsTrue(string.IsNullOrWhiteSpace(gStation.SecondEconomy));
             Assert.IsTrue(gStation.HaveMarket);
             Assert.IsTrue(gStation.HaveOutfitting);
@@ -62,12 +62,12 @@ namespace UnitTests
             Assert.IsNotNull(hStation);
             Assert.IsTrue(hStation.Id > 0);
             Assert.IsTrue(hStation.MarketId > 0);
-            Assert.AreEqual(hStation.Type, "Planetary Outpost");
-            Assert.AreEqual(hStation.Name, "Haberlandt Survey");
+            Assert.AreEqual("Planetary Outpost", hStation.Type);
+            Assert.AreEqual("Haberlandt Survey", hStation.Name);
             Assert.IsTrue(hStation.DistanceToArrival > 0);
             Assert.IsFalse(string.IsNullOrWhiteSpace(hStation.Allegiance));
             Assert.IsFalse(string.IsNullOrWhiteSpace(hStation.Government));
-            Assert.AreEqual(hStation.Economy, "Military");
+            Assert.AreEqual("Military", hStation.Economy);
             Assert.IsTrue(string.IsNullOrWhiteSpace(hStation.SecondEconomy));
             Assert.IsTrue(hStation.HaveMarket);
             Assert.IsTrue(hStation.HaveOutfitting);
@@ -81,7 +81,7 @@ namespace UnitTests
             Assert.IsTrue(hStation.UpdateTime.Outfitting > DateTime.MinValue);
             Assert.IsNotNull(hStation.Body);
             Assert.IsTrue(hStation.Body.Id > 0);
-            Assert.AreEqual(hStation.Body.Name, "Europa");
+            Assert.AreEqual("Europa", hStation.Body.Name);
             Assert.IsNotNull(hStation.Body.Latitude);
             Assert.IsNotNull(hStation.Body.Longitude);
         }
@@ -104,7 +104,7 @@ namespace UnitTests
             Assert.IsNotNull(stations);
             Assert.IsTrue(stations.Id > 0);
             Assert.IsTrue(stations.Id64 > 0);
-            Assert.AreEqual(stations.Name, "Sol");
+            Assert.AreEqual("Sol", stations.Name);
             Assert.IsFalse(string.IsNullOrWhiteSpace(stations.Url));
             Assert.IsTrue(stations.Stations.Count > 0);
             Assert.IsTrue(stations.LastUpdated > DateTime.MinValue);
@@ -113,12 +113,12 @@ namespace UnitTests
             Assert.IsNotNull(gStation);
             Assert.IsTrue(gStation.Id > 0);
             Assert.IsTrue(gStation.MarketId > 0);
-            Assert.AreEqual(gStation.Type, "Ocellus Starport");
-            Assert.AreEqual(gStation.Name, "Galileo");
+            Assert.AreEqual("Ocellus Starport", gStation.Type);
+            Assert.AreEqual("Galileo", gStation.Name);
             Assert.IsTrue(gStation.DistanceToArrival > 0);
             Assert.IsFalse(string.IsNullOrWhiteSpace(gStation.Allegiance));
             Assert.IsFalse(string.IsNullOrWhiteSpace(gStation.Government));
-            Assert.AreEqual(gStation.Economy, "Refinery");
+            Assert.AreEqual("Refinery", gStation.Economy);
             Assert.IsTrue(string.IsNullOrWhiteSpace(gStation.SecondEconomy));
             Assert.IsTrue(gStation.HaveMarket);
             Assert.IsTrue(gStation.HaveOutfitting);
@@ -136,12 +136,12 @@ namespace UnitTests
             Assert.IsNotNull(hStation);
             Assert.IsTrue(hStation.Id > 0);
             Assert.IsTrue(hStation.MarketId > 0);
-            Assert.AreEqual(hStation.Type, "Planetary Outpost");
-            Assert.AreEqual(hStation.Name, "Haberlandt Survey");
+            Assert.AreEqual("Planetary Outpost", hStation.Type);
+            Assert.AreEqual("Haberlandt Survey", hStation.Name);
             Assert.IsTrue(hStation.DistanceToArrival > 0);
             Assert.IsFalse(string.IsNullOrWhiteSpace(hStation.Allegiance));
             Assert.IsFalse(string.IsNullOrWhiteSpace(hStation.Government));
-            Assert.AreEqual(hStation.Economy, "Military");
+            Assert.AreEqual("Military", hStation.Economy);
             Assert.IsTrue(string.IsNullOrWhiteSpace(hStation.SecondEconomy));
             Assert.IsTrue(hStation.HaveMarket);
             Assert.IsTrue(hStation.HaveOutfitting);
@@ -155,7 +155,7 @@ namespace UnitTests
             Assert.IsTrue(hStation.UpdateTime.Outfitting > DateTime.MinValue);
             Assert.IsNotNull(hStation.Body);
             Assert.IsTrue(hStation.Body.Id > 0);
-            Assert.AreEqual(hStation.Body.Name, "Europa");
+            Assert.AreEqual("Europa", hStation.Body.Name);
             Assert.IsNotNull(hStation.Body.Latitude);
             Assert.IsNotNull(hStation.Body.Longitude);
         }
@@ -178,18 +178,18 @@ namespace UnitTests
             Assert.IsNotNull(gMarket);
             Assert.IsTrue(gMarket.Id > 0);
             Assert.IsTrue(gMarket.Id64 > 0);
-            Assert.AreEqual(gMarket.Name, "Sol");
-            Assert.AreEqual(gMarket.MarketId, 128016640);
+            Assert.AreEqual("Sol", gMarket.Name);
+            Assert.AreEqual(128016640, gMarket.MarketId);
             Assert.IsTrue(gMarket.SId > 0);
-            Assert.AreEqual(gMarket.SName, "Galileo");
+            Assert.AreEqual("Galileo", gMarket.SName);
             Assert.IsFalse(string.IsNullOrWhiteSpace(gMarket.Url));
             Assert.IsTrue(gMarket.Commodities.Count > 0);
             Assert.IsTrue(gMarket.LastUpdated > DateTime.MinValue);
 
             Commodity aluminium = gMarket.Commodities.Find(x => x.Name == "Aluminium");
             Assert.IsNotNull(aluminium);
-            Assert.AreEqual(aluminium.Id, "aluminium");
-            Assert.AreEqual(aluminium.Name, "Aluminium");
+            Assert.AreEqual("aluminium", aluminium.Id);
+            Assert.AreEqual("Aluminium", aluminium.Name);
             Assert.IsTrue(aluminium.BuyPrice > 0);
             Assert.IsTrue(aluminium.SellPrice > 0);
             Assert.IsTrue(aluminium.Stock > 0);
@@ -215,18 +215,18 @@ namespace UnitTests
             Assert.IsNotNull(gMarket);
             Assert.IsTrue(gMarket.Id > 0);
             Assert.IsTrue(gMarket.Id64 > 0);
-            Assert.AreEqual(gMarket.Name, "Sol");
-            Assert.AreEqual(gMarket.MarketId, 128016640);
+            Assert.AreEqual("Sol", gMarket.Name);
+            Assert.AreEqual(128016640, gMarket.MarketId);
             Assert.IsTrue(gMarket.SId > 0);
-            Assert.AreEqual(gMarket.SName, "Galileo");
+            Assert.AreEqual("Galileo", gMarket.SName);
             Assert.IsFalse(string.IsNullOrWhiteSpace(gMarket.Url));
             Assert.IsTrue(gMarket.Commodities.Count > 0);
             Assert.IsTrue(gMarket.LastUpdated > DateTime.MinValue);
 
             Commodity aluminium = gMarket.Commodities.Find(x => x.Name == "Aluminium");
             Assert.IsNotNull(aluminium);
-            Assert.AreEqual(aluminium.Id, "aluminium");
-            Assert.AreEqual(aluminium.Name, "Aluminium");
+            Assert.AreEqual("aluminium", aluminium.Id);
+            Assert.AreEqual("Aluminium", aluminium.Name);
             Assert.IsTrue(aluminium.BuyPrice > 0);
             Assert.IsTrue(aluminium.SellPrice > 0);
             Assert.IsTrue(aluminium.Stock > 0);
@@ -252,18 +252,18 @@ namespace UnitTests
             Assert.IsNotNull(gMarket);
             Assert.IsTrue(gMarket.Id > 0);
             Assert.IsTrue(gMarket.Id64 > 0);
-            Assert.AreEqual(gMarket.Name, "Sol");
-            Assert.AreEqual(gMarket.MarketId, 128016640);
+            Assert.AreEqual("Sol", gMarket.Name);
+            Assert.AreEqual(128016640, gMarket.MarketId);
             Assert.IsTrue(gMarket.SId > 0);
-            Assert.AreEqual(gMarket.SName, "Galileo");
+            Assert.AreEqual("Galileo", gMarket.SName);
             Assert.IsFalse(string.IsNullOrWhiteSpace(gMarket.Url));
             Assert.IsTrue(gMarket.Commodities.Count > 0);
             Assert.IsTrue(gMarket.LastUpdated > DateTime.MinValue);
 
             Commodity aluminium = gMarket.Commodities.Find(x => x.Name == "Aluminium");
             Assert.IsNotNull(aluminium);
-            Assert.AreEqual(aluminium.Id, "aluminium");
-            Assert.AreEqual(aluminium.Name, "Aluminium");
+            Assert.AreEqual("aluminium", aluminium.Id);
+            Assert.AreEqual("Aluminium", aluminium.Name);
             Assert.IsTrue(aluminium.BuyPrice > 0);
             Assert.IsTrue(aluminium.SellPrice > 0);
             Assert.IsTrue(aluminium.Stock > 0);
@@ -289,18 +289,18 @@ namespace UnitTests
             Assert.IsNotNull(gMarket);
             Assert.IsTrue(gMarket.Id > 0);
             Assert.IsTrue(gMarket.Id64 > 0);
-            Assert.AreEqual(gMarket.Name, "Sol");
-            Assert.AreEqual(gMarket.MarketId, 128016640);
+            Assert.AreEqual("Sol", gMarket.Name);
+            Assert.AreEqual(128016640, gMarket.MarketId);
             Assert.IsTrue(gMarket.SId > 0);
-            Assert.AreEqual(gMarket.SName, "Galileo");
+            Assert.AreEqual("Galileo", gMarket.SName);
             Assert.IsFalse(string.IsNullOrWhiteSpace(gMarket.Url));
             Assert.IsTrue(gMarket.Commodities.Count > 0);
             Assert.IsTrue(gMarket.LastUpdated > DateTime.MinValue);
 
             Commodity aluminium = gMarket.Commodities.Find(x => x.Name == "Aluminium");
             Assert.IsNotNull(aluminium);
-            Assert.AreEqual(aluminium.Id, "aluminium");
-            Assert.AreEqual(aluminium.Name, "Aluminium");
+            Assert.AreEqual("aluminium", aluminium.Id);
+            Assert.AreEqual("Aluminium", aluminium.Name);
             Assert.IsTrue(aluminium.BuyPrice > 0);
             Assert.IsTrue(aluminium.SellPrice > 0);
             Assert.IsTrue(aluminium.Stock > 0);
@@ -326,10 +326,10 @@ namespace UnitTests
             Assert.IsNotNull(gShipyard);
             Assert.IsTrue(gShipyard.Id > 0);
             Assert.IsTrue(gShipyard.Id64 > 0);
-            Assert.AreEqual(gShipyard.Name, "Sol");
-            Assert.AreEqual(gShipyard.MarketId, 128016640);
+            Assert.AreEqual("Sol", gShipyard.Name);
+            Assert.AreEqual(128016640, gShipyard.MarketId);
             Assert.IsTrue(gShipyard.SId > 0);
-            Assert.AreEqual(gShipyard.SName, "Galileo");
+            Assert.AreEqual("Galileo", gShipyard.SName);
             Assert.IsFalse(string.IsNullOrWhiteSpace(gShipyard.Url));
             Assert.IsTrue(gShipyard.Ships.Count > 0);
             Assert.IsTrue(gShipyard.LastUpdated > DateTime.MinValue);
@@ -337,7 +337,7 @@ namespace UnitTests
             Ship eagle = gShipyard.Ships.Find(x => x.Name == "Eagle");
             Assert.IsNotNull(eagle);
             Assert.IsTrue(eagle.Id > 0);
-            Assert.AreEqual(eagle.Name, "Eagle");
+            Assert.AreEqual("Eagle", eagle.Name);
         }
 
         [TestMethod]
@@ -358,10 +358,10 @@ namespace UnitTests
             Assert.IsNotNull(gShipyard);
             Assert.IsTrue(gShipyard.Id > 0);
             Assert.IsTrue(gShipyard.Id64 > 0);
-            Assert.AreEqual(gShipyard.Name, "Sol");
-            Assert.AreEqual(gShipyard.MarketId, 128016640);
+            Assert.AreEqual("Sol", gShipyard.Name);
+            Assert.AreEqual(128016640, gShipyard.MarketId);
             Assert.IsTrue(gShipyard.SId > 0);
-            Assert.AreEqual(gShipyard.SName, "Galileo");
+            Assert.AreEqual("Galileo", gShipyard.SName);
             Assert.IsFalse(string.IsNullOrWhiteSpace(gShipyard.Url));
             Assert.IsTrue(gShipyard.Ships.Count > 0);
             Assert.IsTrue(gShipyard.LastUpdated > DateTime.MinValue);
@@ -369,7 +369,7 @@ namespace UnitTests
             Ship eagle = gShipyard.Ships.Find(x => x.Name == "Eagle");
             Assert.IsNotNull(eagle);
             Assert.IsTrue(eagle.Id > 0);
-            Assert.AreEqual(eagle.Name, "Eagle");
+            Assert.AreEqual("Eagle", eagle.Name);
         }
 
         [TestMethod]
@@ -390,10 +390,10 @@ namespace UnitTests
             Assert.IsNotNull(gShipyard);
             Assert.IsTrue(gShipyard.Id > 0);
             Assert.IsTrue(gShipyard.Id64 > 0);
-            Assert.AreEqual(gShipyard.Name, "Sol");
-            Assert.AreEqual(gShipyard.MarketId, 128016640);
+            Assert.AreEqual("Sol", gShipyard.Name);
+            Assert.AreEqual(128016640, gShipyard.MarketId);
             Assert.IsTrue(gShipyard.SId > 0);
-            Assert.AreEqual(gShipyard.SName, "Galileo");
+            Assert.AreEqual("Galileo", gShipyard.SName);
             Assert.IsFalse(string.IsNullOrWhiteSpace(gShipyard.Url));
             Assert.IsTrue(gShipyard.Ships.Count > 0);
             Assert.IsTrue(gShipyard.LastUpdated > DateTime.MinValue);
@@ -401,7 +401,7 @@ namespace UnitTests
             Ship eagle = gShipyard.Ships.Find(x => x.Name == "Eagle");
             Assert.IsNotNull(eagle);
             Assert.IsTrue(eagle.Id > 0);
-            Assert.AreEqual(eagle.Name, "Eagle");
+            Assert.AreEqual("Eagle", eagle.Name);
         }
 
         [TestMethod]
@@ -422,10 +422,10 @@ namespace UnitTests
             Assert.IsNotNull(gShipyard);
             Assert.IsTrue(gShipyard.Id > 0);
             Assert.IsTrue(gShipyard.Id64 > 0);
-            Assert.AreEqual(gShipyard.Name, "Sol");
-            Assert.AreEqual(gShipyard.MarketId, 128016640);
+            Assert.AreEqual("Sol", gShipyard.Name);
+            Assert.AreEqual(128016640, gShipyard.MarketId);
             Assert.IsTrue(gShipyard.SId > 0);
-            Assert.AreEqual(gShipyard.SName, "Galileo");
+            Assert.AreEqual("Galileo", gShipyard.SName);
             Assert.IsFalse(string.IsNullOrWhiteSpace(gShipyard.Url));
             Assert.IsTrue(gShipyard.Ships.Count > 0);
             Assert.IsTrue(gShipyard.LastUpdated > DateTime.MinValue);
@@ -433,7 +433,7 @@ namespace UnitTests
             Ship eagle = gShipyard.Ships.Find(x => x.Name == "Eagle");
             Assert.IsNotNull(eagle);
             Assert.IsTrue(eagle.Id > 0);
-            Assert.AreEqual(eagle.Name, "Eagle");
+            Assert.AreEqual("Eagle", eagle.Name);
         }
 
         [TestMethod]
@@ -454,18 +454,18 @@ namespace UnitTests
             Assert.IsNotNull(gOutfit);
             Assert.IsTrue(gOutfit.Id > 0);
             Assert.IsTrue(gOutfit.Id64 > 0);
-            Assert.AreEqual(gOutfit.Name, "Sol");
-            Assert.AreEqual(gOutfit.MarketId, 128016640);
+            Assert.AreEqual("Sol", gOutfit.Name);
+            Assert.AreEqual(128016640, gOutfit.MarketId);
             Assert.IsTrue(gOutfit.SId > 0);
-            Assert.AreEqual(gOutfit.SName, "Galileo");
+            Assert.AreEqual("Galileo", gOutfit.SName);
             Assert.IsFalse(string.IsNullOrWhiteSpace(gOutfit.Url));
             Assert.IsTrue(gOutfit.Outfitting.Count > 0);
             Assert.IsTrue(gOutfit.LastUpdated > DateTime.MinValue);
 
             ShipModule eagleArmour = gOutfit.Outfitting.Find(x => x.Id == "eagle_armour_grade1");
             Assert.IsNotNull(eagleArmour);
-            Assert.AreEqual(eagleArmour.Id, "eagle_armour_grade1");
-            Assert.AreEqual(eagleArmour.Name, "1I Lightweight Alloy");
+            Assert.AreEqual("eagle_armour_grade1", eagleArmour.Id);
+            Assert.AreEqual("1I Lightweight Alloy", eagleArmour.Name);
         }
 
         [TestMethod]
@@ -486,18 +486,18 @@ namespace UnitTests
             Assert.IsNotNull(gOutfit);
             Assert.IsTrue(gOutfit.Id > 0);
             Assert.IsTrue(gOutfit.Id64 > 0);
-            Assert.AreEqual(gOutfit.Name, "Sol");
-            Assert.AreEqual(gOutfit.MarketId, 128016640);
+            Assert.AreEqual("Sol", gOutfit.Name);
+            Assert.AreEqual(128016640, gOutfit.MarketId);
             Assert.IsTrue(gOutfit.SId > 0);
-            Assert.AreEqual(gOutfit.SName, "Galileo");
+            Assert.AreEqual("Galileo", gOutfit.SName);
             Assert.IsFalse(string.IsNullOrWhiteSpace(gOutfit.Url));
             Assert.IsTrue(gOutfit.Outfitting.Count > 0);
             Assert.IsTrue(gOutfit.LastUpdated > DateTime.MinValue);
 
             ShipModule eagleArmour = gOutfit.Outfitting.Find(x => x.Id == "eagle_armour_grade1");
             Assert.IsNotNull(eagleArmour);
-            Assert.AreEqual(eagleArmour.Id, "eagle_armour_grade1");
-            Assert.AreEqual(eagleArmour.Name, "1I Lightweight Alloy");
+            Assert.AreEqual("eagle_armour_grade1", eagleArmour.Id);
+            Assert.AreEqual("1I Lightweight Alloy", eagleArmour.Name);
         }
 
         [TestMethod]
@@ -518,18 +518,18 @@ namespace UnitTests
             Assert.IsNotNull(gOutfit);
             Assert.IsTrue(gOutfit.Id > 0);
             Assert.IsTrue(gOutfit.Id64 > 0);
-            Assert.AreEqual(gOutfit.Name, "Sol");
-            Assert.AreEqual(gOutfit.MarketId, 128016640);
+            Assert.AreEqual("Sol", gOutfit.Name);
+            Assert.AreEqual(128016640, gOutfit.MarketId);
             Assert.IsTrue(gOutfit.SId > 0);
-            Assert.AreEqual(gOutfit.SName, "Galileo");
+            Assert.AreEqual("Galileo", gOutfit.SName);
             Assert.IsFalse(string.IsNullOrWhiteSpace(gOutfit.Url));
             Assert.IsTrue(gOutfit.Outfitting.Count > 0);
             Assert.IsTrue(gOutfit.LastUpdated > DateTime.MinValue);
 
             ShipModule eagleArmour = gOutfit.Outfitting.Find(x => x.Id == "eagle_armour_grade1");
             Assert.IsNotNull(eagleArmour);
-            Assert.AreEqual(eagleArmour.Id, "eagle_armour_grade1");
-            Assert.AreEqual(eagleArmour.Name, "1I Lightweight Alloy");
+            Assert.AreEqual("eagle_armour_grade1", eagleArmour.Id);
+            Assert.AreEqual("1I Lightweight Alloy", eagleArmour.Name);
         }
 
         [TestMethod]
@@ -550,18 +550,18 @@ namespace UnitTests
             Assert.IsNotNull(gOutfit);
             Assert.IsTrue(gOutfit.Id > 0);
             Assert.IsTrue(gOutfit.Id64 > 0);
-            Assert.AreEqual(gOutfit.Name, "Sol");
-            Assert.AreEqual(gOutfit.MarketId, 128016640);
+            Assert.AreEqual("Sol", gOutfit.Name);
+            Assert.AreEqual(128016640, gOutfit.MarketId);
             Assert.IsTrue(gOutfit.SId > 0);
-            Assert.AreEqual(gOutfit.SName, "Galileo");
+            Assert.AreEqual("Galileo", gOutfit.SName);
             Assert.IsFalse(string.IsNullOrWhiteSpace(gOutfit.Url));
             Assert.IsTrue(gOutfit.Outfitting.Count > 0);
             Assert.IsTrue(gOutfit.LastUpdated > DateTime.MinValue);
 
             ShipModule eagleArmour = gOutfit.Outfitting.Find(x => x.Id == "eagle_armour_grade1");
             Assert.IsNotNull(eagleArmour);
-            Assert.AreEqual(eagleArmour.Id, "eagle_armour_grade1");
-            Assert.AreEqual(eagleArmour.Name, "1I Lightweight Alloy");
+            Assert.AreEqual("eagle_armour_grade1", eagleArmour.Id);
+            Assert.AreEqual("1I Lightweight Alloy", eagleArmour.Name);
         }
 
         [TestMethod]
@@ -582,7 +582,7 @@ namespace UnitTests
             Assert.IsNotNull(factions);
             Assert.IsTrue(factions.Id > 0);
             Assert.IsTrue(factions.Id64 > 0);
-            Assert.AreEqual(factions.Name, "Sol");
+            Assert.AreEqual("Sol", factions.Name);
             Assert.IsFalse(string.IsNullOrWhiteSpace(factions.Url));
             Assert.IsNotNull(factions.ControllingFaction);
             Assert.IsTrue(factions.ControllingFaction.Id > 0);
@@ -596,9 +596,9 @@ namespace UnitTests
             Faction mgFaction = factions.Factions.Find(x => x.Name == "Mother Gaia");
             Assert.IsNotNull(mgFaction);
             Assert.IsTrue(mgFaction.Id > 0);
-            Assert.AreEqual(mgFaction.Name, "Mother Gaia");
-            Assert.AreEqual(mgFaction.Allegiance, "Federation");
-            Assert.AreEqual(mgFaction.Government, "Democracy");
+            Assert.AreEqual("Mother Gaia", mgFaction.Name);
+            Assert.AreEqual("Federation", mgFaction.Allegiance);
+            Assert.AreEqual("Democracy", mgFaction.Government);
             Assert.IsTrue(mgFaction.Influence > 0);
             Assert.IsFalse(string.IsNullOrWhiteSpace(mgFaction.State));
             foreach (FactionState state in mgFaction.ActiveStates)
@@ -639,7 +639,7 @@ namespace UnitTests
             Assert.IsNotNull(factions);
             Assert.IsTrue(factions.Id > 0);
             Assert.IsTrue(factions.Id64 > 0);
-            Assert.AreEqual(factions.Name, "Sol");
+            Assert.AreEqual("Sol", factions.Name);
             Assert.IsFalse(string.IsNullOrWhiteSpace(factions.Url));
             Assert.IsNotNull(factions.ControllingFaction);
             Assert.IsTrue(factions.ControllingFaction.Id > 0);
@@ -653,9 +653,9 @@ namespace UnitTests
             Faction mgFaction = factions.Factions.Find(x => x.Name == "Mother Gaia");
             Assert.IsNotNull(mgFaction);
             Assert.IsTrue(mgFaction.Id > 0);
-            Assert.AreEqual(mgFaction.Name, "Mother Gaia");
-            Assert.AreEqual(mgFaction.Allegiance, "Federation");
-            Assert.AreEqual(mgFaction.Government, "Democracy");
+            Assert.AreEqual("Mother Gaia", mgFaction.Name);
+            Assert.AreEqual("Federation", mgFaction.Allegiance);
+            Assert.AreEqual("Democracy", mgFaction.Government);
             Assert.IsTrue(mgFaction.Influence > 0);
             Assert.IsFalse(string.IsNullOrWhiteSpace(mgFaction.State));
             foreach (FactionState state in mgFaction.ActiveStates)

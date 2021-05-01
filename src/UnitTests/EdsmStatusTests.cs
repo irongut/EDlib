@@ -15,7 +15,7 @@ namespace UnitTests
         [TestMethod]
         public void UnknownStatusTest()
         {
-            EliteStatus eliteStatus = new EliteStatus();
+            EliteStatus eliteStatus = new();
             Assert.IsTrue(eliteStatus.Status == -1);
             Assert.IsTrue(eliteStatus.Type.Contains("unknown", StringComparison.OrdinalIgnoreCase));
             Assert.IsTrue(eliteStatus.Message.Contains("unknown", StringComparison.OrdinalIgnoreCase));
