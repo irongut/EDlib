@@ -12,6 +12,10 @@ using System.Threading.Tasks;
 
 namespace EDlib.INARA
 {
+    /// <summary>
+    ///   <para>Gets details of ongoing and recently completed Community Goals from the INARA API.</para>
+    ///   <para>See INARA documentation for <a href="https://inara.cz/inara-api-docs/#event-37">getCommunityGoalsRecent</a>.</para>
+    /// </summary>
     public sealed class CommunityGoalsService
     {
         private static readonly CommunityGoalsService instance = new CommunityGoalsService();
@@ -30,12 +34,23 @@ namespace EDlib.INARA
             communityGoals = new List<CommunityGoal>();
         }
 
+        /// <summary>Instantiates the CommunityGoalsService class.</summary>
+        /// <param name="downloadService">IDownloadService instance used to download data.</param>
+        /// <returns>CommunityGoalsService</returns>
         public static CommunityGoalsService Instance(IDownloadService downloadService)
         {
             dService = downloadService;
             return instance;
         }
 
+        /// <summary>Gets a number of recent Community Goals from INARA.</summary>
+        /// <param name="goalCount">The number of Community Goals to return.</param>
+        /// <param name="cacheMinutes">How long to cache the data in minutes, minimum 60 minutes.</param>
+        /// <param name="identity">The credentials required to access the INARA API.</param>
+        /// <param name="cancelToken">A cancellation token.</param>
+        /// <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
+        /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+        /// <returns>Task&lt;(List&lt;CommunityGoal&gt;, DateTime)&gt;<br /></returns>
         public async Task<(List<CommunityGoal> goals, DateTime updated)> GetData(int goalCount,
                                                                                  int cacheMinutes,
                                                                                  InaraIdentity identity,
@@ -52,6 +67,13 @@ namespace EDlib.INARA
             return (communityGoals.Take(goalCount).ToList(), lastUpdated);
         }
 
+        /// <summary>Gets all the recent Community Goals from INARA; usually 15.</summary>
+        /// <param name="cacheMinutes">How long to cache the data in minutes, minimum 60 minutes.</param>
+        /// <param name="identity">The credentials required to access the INARA API.</param>
+        /// <param name="cancelToken">A cancellation token.</param>
+        /// <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
+        /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+        /// <returns>Task&lt;(List&lt;CommunityGoal&gt;, DateTime)&gt;<br /></returns>
         public async Task<(List<CommunityGoal> goals, DateTime updated)> GetData(int cacheMinutes,
                                                                                  InaraIdentity identity,
                                                                                  CancellationTokenSource cancelToken,
@@ -98,6 +120,14 @@ namespace EDlib.INARA
             return (communityGoals, lastUpdated);
         }
 
+        /// <summary>Gets recent Community Goals from INARA over a specified number of days.</summary>
+        /// <param name="requestDays">How many days back to look for Community Goals, minimum 7 days.</param>
+        /// <param name="cacheMinutes">How long to cache the data in minutes, minimum 60 minutes.</param>
+        /// <param name="identity">The credentials required to access the INARA API.</param>
+        /// <param name="cancelToken">A cancellation token.</param>
+        /// <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
+        /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+        /// <returns>Task&lt;(List&lt;CommunityGoal&gt;, DateTime)&gt;<br /></returns>
         public async Task<(List<CommunityGoal> goals, DateTime updated)> GetDataByTime(int requestDays,
                                                                                        int cacheMinutes,
                                                                                        InaraIdentity identity,

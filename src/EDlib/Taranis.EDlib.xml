@@ -1005,6 +1005,126 @@
         <member name="M:EDlib.INARA.CommanderProfile.#ctor">
             <summary>Initializes a new instance of the <see cref="T:EDlib.INARA.CommanderProfile" /> class.</summary>
         </member>
+        <member name="T:EDlib.INARA.CommunityGoal">
+            <summary>
+              <para>Represents a Community Goal returned by the INARA API.</para>
+              <para>See INARA documentation for <a href="https://inara.cz/inara-api-docs/#event-37">getCommunityGoalsRecent</a>.</para>
+            </summary>
+        </member>
+        <member name="E:EDlib.INARA.CommunityGoal.PropertyChanged">
+            <summary>Raised when some properties change.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.CommunityGoalName">
+            <summary>The name of the Community goal.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.CommunityGoalGameID">
+            <summary>The ID of the community goal.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.StarsystemName">
+            <summary>The name of the system where the Community Goal taking place.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.StationName">
+            <summary>The name of the station where the Community Goal taking place.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.GoalExpiry">
+            <summary>The date and time when the Community Goal ends.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.TierReached">
+            <summary>The current tier reached.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.TierMax">
+            <summary>The maximum number of tiers. If reached, the Community Goal ends.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.ContributorsNum">
+            <summary>The number of contributors to the Community Goal.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.ContributionsTotal">
+            <summary>The total contributions to the Community Goal.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.IsCompleted">
+            <summary>Whether the Community Goal has ended.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.LastUpdate">
+            <summary>The date and time when INARA last updated this information.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.GoalObjectiveText">
+            <summary>The objective for the Community Goal.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.GoalRewardText">
+            <summary>The reward for the Community Goal.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.GoalDescriptionText">
+            <summary>The full description of the Community Goal.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.InaraURL">
+            <summary>The INARA URL for this Community Goal.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.TimeRemaining">
+            <summary>The time remaining until this Community Goal expires.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.Progress">
+            <summary>The date and time when the Community Goal ends.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.ProgressText">
+            <summary>The progress of the Community Goal. (Progress x/y Tiers)</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommunityGoal.Topic">
+            <summary>The topic for this Community Goal, generated using a Bag of Words technique.</summary>
+        </member>
+        <member name="M:EDlib.INARA.CommunityGoal.ClassifyCG(System.Collections.Generic.List{EDlib.Common.Topic})">
+            <summary>Determines the Topic for a Community Goal by analysing it using a Bag of Words technique.</summary>
+            <param name="topics">List of <see cref="P:EDlib.INARA.CommunityGoal.Topic" /> to use when classifying article.</param>
+        </member>
+        <member name="M:EDlib.INARA.CommunityGoal.OnPropertyChanged(System.String)">
+            <summary>
+              <para>Raised when some properties change to handle System.ComponentModel.INotifyPropertyChanged.PropertyChanged.</para>
+              <para>Can be used to update properties that change with time, e.g. GoalExpiry and IsCompleted.</para>
+            </summary>
+            <param name="propertyName">Name of the property that changed.</param>
+        </member>
+        <member name="M:EDlib.INARA.CommunityGoal.ToString">
+            <summary>Returns the Name, System and Objective for a Community Goal as a string.</summary>
+        </member>
+        <member name="T:EDlib.INARA.CommunityGoalsService">
+            <summary>
+              <para>Gets details of ongoing and recently completed Community Goals from the INARA API.</para>
+              <para>See INARA documentation for <a href="https://inara.cz/inara-api-docs/#event-37">getCommunityGoalsRecent</a>.</para>
+            </summary>
+        </member>
+        <member name="M:EDlib.INARA.CommunityGoalsService.Instance(EDlib.Network.IDownloadService)">
+            <summary>Instantiates the CommunityGoalsService class.</summary>
+            <param name="downloadService">IDownloadService instance used to download data.</param>
+            <returns>CommunityGoalsService</returns>
+        </member>
+        <member name="M:EDlib.INARA.CommunityGoalsService.GetData(System.Int32,System.Int32,EDlib.INARA.InaraIdentity,System.Threading.CancellationTokenSource,System.String,System.Boolean)">
+            <summary>Gets a number of recent Community Goals from INARA.</summary>
+            <param name="goalCount">The number of Community Goals to return.</param>
+            <param name="cacheMinutes">How long to cache the data in minutes, minimum 60 minutes.</param>
+            <param name="identity">The credentials required to access the INARA API.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;(List&lt;CommunityGoal&gt;, DateTime)&gt;<br /></returns>
+        </member>
+        <member name="M:EDlib.INARA.CommunityGoalsService.GetData(System.Int32,EDlib.INARA.InaraIdentity,System.Threading.CancellationTokenSource,System.String,System.Boolean)">
+            <summary>Gets all the recent Community Goals from INARA; usually 15.</summary>
+            <param name="cacheMinutes">How long to cache the data in minutes, minimum 60 minutes.</param>
+            <param name="identity">The credentials required to access the INARA API.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;(List&lt;CommunityGoal&gt;, DateTime)&gt;<br /></returns>
+        </member>
+        <member name="M:EDlib.INARA.CommunityGoalsService.GetDataByTime(System.Int32,System.Int32,EDlib.INARA.InaraIdentity,System.Threading.CancellationTokenSource,System.String,System.Boolean)">
+            <summary>Gets recent Community Goals from INARA over a specified number of days.</summary>
+            <param name="requestDays">How many days back to look for Community Goals, minimum 7 days.</param>
+            <param name="cacheMinutes">How long to cache the data in minutes, minimum 60 minutes.</param>
+            <param name="identity">The credentials required to access the INARA API.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;(List&lt;CommunityGoal&gt;, DateTime)&gt;<br /></returns>
+        </member>
         <member name="T:EDlib.Network.HttpHelper">
             <summary>A helper class for reading an http response that can decompress data in gzip or deflate streams.</summary>
         </member>
