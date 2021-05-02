@@ -3,19 +3,27 @@ using Newtonsoft.Json;
 
 namespace EDlib.INARA
 {
+    /// <summary>
+    ///   <para>Represents the header block in an INARA API request and response.</para>
+    ///   <para>See INARA documentation for <a href="https://inara.cz/inara-api-docs/#eventdataheaderprops">Header properties</a>.</para>
+    /// </summary>
     public class InaraHeader
     {
         #region input fields
 
+        /// <summary>The name of the application.</summary>
         [JsonProperty("appName")]
         public string AppName { get; }
 
+        /// <summary>The version of the application.</summary>
         [JsonProperty("appVersion")]
         public string AppVersion { get; }
 
+        /// <summary>A user's personal API key or a generic application API key (for read-only events).</summary>
         [JsonProperty("APIkey")]
         public string ApiKey { get; }
 
+        /// <summary>Set to <c>true</c> to indicate this version is in development.</summary>
         [JsonProperty("isDeveloped")]
         public bool IsDeveloped { get; }
 
@@ -23,17 +31,22 @@ namespace EDlib.INARA
 
         #region output fields
 
+        /// <summary>Event status code, see <a href="https://inara.cz/inara-api-docs/#eventdatacodes">INARA eventStatus codes</a>.</summary>
         [JsonProperty("eventStatus")]
         public int? EventStatus { get; internal set; }
 
+        /// <summary>Explanation of the status code, only returned on errors and warnings.</summary>
         [JsonProperty("eventStatusText")]
         public string EventStatusText { get; internal set; }
 
         #endregion
 
+        /// <summary>Initializes a new empty instance of the <see cref="InaraHeader" /> class.</summary>
         [Preserve(Conditional = true)]
         public InaraHeader() { }
 
+        /// <summary>Initializes a new instance of the <see cref="InaraHeader" /> class with the provided credentials.</summary>
+        /// <param name="identity">The <see cref="InaraIdentity" /> credentials required to access the INARA API.</param>
         [Preserve(Conditional = true)]
         public InaraHeader(InaraIdentity identity)
         {

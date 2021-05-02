@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace EDlib.INARA
 {
+    /// <summary>
+    ///   <para>Utility service used by other services to get data from INARA APIs.</para>
+    ///   <para>See INARA <a href="https://inara.cz/inara-api-docs/">API documentation.</a>.</para>
+    /// </summary>
     public sealed class InaraService
     {
         private static readonly InaraService instance = new InaraService();
@@ -16,12 +20,20 @@ namespace EDlib.INARA
 
         private InaraService() { }
 
+        /// <summary>Instantiates the InaraService class.</summary>
+        /// <param name="downloadService">IDownloadService instance used to download data.</param>
+        /// <returns>InaraService</returns>
         public static InaraService Instance(IDownloadService downloadService)
         {
             dService = downloadService;
             return instance;
         }
 
+        /// <summary>Gets data from an INARA API.</summary>
+        /// <param name="header">The header for an INARA API request.</param>
+        /// <param name="input">The data for an INARA API request.</param>
+        /// <param name="options">Options for download.</param>
+        /// <returns>Task&lt;(string, DateTime)&gt;<br /></returns>
         public async Task<(string data, DateTime updated)> GetData(InaraHeader header, IList<InaraEvent> input, DownloadOptions options)
         {
             // download data
