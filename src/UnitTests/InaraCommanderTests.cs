@@ -18,6 +18,16 @@ namespace UnitTests
         private InaraIdentity identity;
 
         [TestMethod]
+        public void EmptyProfileTest()
+        {
+            DateTime beforeTime = DateTime.Now;
+            CommanderProfile cmdr = new();
+
+            Assert.IsTrue(cmdr.LastUpdated > beforeTime);
+            Assert.IsTrue(cmdr.LastUpdated < DateTime.Now);
+        }
+
+        [TestMethod]
         public async Task ExactMatchAppKeyTest()
         {
             InitialiseInaraTests(false);
