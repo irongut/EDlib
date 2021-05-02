@@ -46,7 +46,7 @@ namespace EDlib.INARA
         /// <summary>Gets a number of recent Community Goals from INARA.</summary>
         /// <param name="goalCount">The number of Community Goals to return.</param>
         /// <param name="cacheMinutes">How long to cache the data in minutes, minimum 60 minutes.</param>
-        /// <param name="identity">The credentials required to access the INARA API.</param>
+        /// <param name="identity">The <see cref="InaraIdentity" /> credentials required to access the INARA API.</param>
         /// <param name="cancelToken">A cancellation token.</param>
         /// <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
@@ -69,7 +69,7 @@ namespace EDlib.INARA
 
         /// <summary>Gets all the recent Community Goals from INARA; usually 15.</summary>
         /// <param name="cacheMinutes">How long to cache the data in minutes, minimum 60 minutes.</param>
-        /// <param name="identity">The credentials required to access the INARA API.</param>
+        /// <param name="identity">The <see cref="InaraIdentity" /> credentials required to access the INARA API.</param>
         /// <param name="cancelToken">A cancellation token.</param>
         /// <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
@@ -123,7 +123,7 @@ namespace EDlib.INARA
         /// <summary>Gets recent Community Goals from INARA over a specified number of days.</summary>
         /// <param name="requestDays">How many days back to look for Community Goals, minimum 7 days.</param>
         /// <param name="cacheMinutes">How long to cache the data in minutes, minimum 60 minutes.</param>
-        /// <param name="identity">The credentials required to access the INARA API.</param>
+        /// <param name="identity">The <see cref="InaraIdentity" /> credentials required to access the INARA API.</param>
         /// <param name="cancelToken">A cancellation token.</param>
         /// <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>

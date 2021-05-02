@@ -622,7 +622,7 @@
             <summary>Gets data from an EDSM API.</summary>
             <param name="method">The EDSM API method.</param>
             <param name="parameters">The parameters for the API method.</param>
-            <param name="options"></param>
+            <param name="options">Options for download.</param>
             <returns>Task&lt;(string, DateTime)&gt;<br /></returns>
         </member>
         <member name="T:EDlib.EDSM.EliteStatusService">
@@ -1190,6 +1190,100 @@
         <member name="M:EDlib.INARA.CommunityGoal.ToString">
             <summary>Returns the Name, System and Objective for a Community Goal as a string.</summary>
         </member>
+        <member name="T:EDlib.INARA.InaraEvent">
+            <summary>
+              <para>Represents the data block in an INARA API request and response.</para>
+              <para>See INARA documentation for <a href="https://inara.cz/inara-api-docs/#eventdataeventsprops">Events properties</a>.</para>
+            </summary>
+        </member>
+        <member name="P:EDlib.INARA.InaraEvent.EventName">
+            <summary>The name of the event / method.</summary>
+        </member>
+        <member name="P:EDlib.INARA.InaraEvent.EventTimestamp">
+            <summary>Date and time in ISO 8601 format (like: 2017-05-02T17:30:49Z)</summary>
+        </member>
+        <member name="P:EDlib.INARA.InaraEvent.EventData">
+            <summary>Required properties for a request / data returned by the API. Individual event properties are detailed in the event's documentation.</summary>
+        </member>
+        <member name="P:EDlib.INARA.InaraEvent.EventStatus">
+            <summary>Event status code, see <a href="https://inara.cz/inara-api-docs/#eventdatacodes">INARA eventStatus codes</a>.</summary>
+        </member>
+        <member name="P:EDlib.INARA.InaraEvent.EventStatusText">
+            <summary>Explanation of the status code, only returned on errors and warnings.</summary>
+        </member>
+        <member name="M:EDlib.INARA.InaraEvent.#ctor(System.String,System.Object)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.INARA.InaraEvent" /> class.</summary>
+            <param name="name">The name of the event / method.</param>
+            <param name="data">The event data.</param>
+        </member>
+        <member name="T:EDlib.INARA.InaraHeader">
+            <summary>
+              <para>Represents the header block in an INARA API request and response.</para>
+              <para>See INARA documentation for <a href="https://inara.cz/inara-api-docs/#eventdataheaderprops">Header properties</a>.</para>
+            </summary>
+        </member>
+        <member name="P:EDlib.INARA.InaraHeader.AppName">
+            <summary>The name of the application.</summary>
+        </member>
+        <member name="P:EDlib.INARA.InaraHeader.AppVersion">
+            <summary>The version of the application.</summary>
+        </member>
+        <member name="P:EDlib.INARA.InaraHeader.ApiKey">
+            <summary>A user's personal API key or a generic application API key (for read-only events).</summary>
+        </member>
+        <member name="P:EDlib.INARA.InaraHeader.IsDeveloped">
+            <summary>Set to <c>true</c> to indicate this version is in development.</summary>
+        </member>
+        <member name="P:EDlib.INARA.InaraHeader.EventStatus">
+            <summary>Event status code, see <a href="https://inara.cz/inara-api-docs/#eventdatacodes">INARA eventStatus codes</a>.</summary>
+        </member>
+        <member name="P:EDlib.INARA.InaraHeader.EventStatusText">
+            <summary>Explanation of the status code, only returned on errors and warnings.</summary>
+        </member>
+        <member name="M:EDlib.INARA.InaraHeader.#ctor">
+            <summary>Initializes a new empty instance of the <see cref="T:EDlib.INARA.InaraHeader" /> class.</summary>
+        </member>
+        <member name="M:EDlib.INARA.InaraHeader.#ctor(EDlib.INARA.InaraIdentity)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.INARA.InaraHeader" /> class with the provided credentials.</summary>
+            <param name="identity">The <see cref="T:EDlib.INARA.InaraIdentity" /> credentials required to access the INARA API.</param>
+        </member>
+        <member name="T:EDlib.INARA.InaraIdentity">
+            <summary>
+              <para>Represents the credentials required to access the INARA API.</para>
+              <para>See INARA documentation for <a href="https://inara.cz/inara-api-docs/#eventdataheaderprops">Header properties</a>.</para>
+            </summary>
+        </member>
+        <member name="P:EDlib.INARA.InaraIdentity.AppName">
+            <summary>The name of the application.</summary>
+        </member>
+        <member name="P:EDlib.INARA.InaraIdentity.AppVersion">
+            <summary>The version of the application.</summary>
+        </member>
+        <member name="P:EDlib.INARA.InaraIdentity.ApiKey">
+            <summary>A user's personal API key or a generic application API key (for read-only events).</summary>
+        </member>
+        <member name="P:EDlib.INARA.InaraIdentity.IsDeveloped">
+            <summary>Set to <c>true</c> to indicate this version is in development.</summary>
+        </member>
+        <member name="M:EDlib.INARA.InaraIdentity.#ctor(System.String,System.String,System.String,System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.INARA.InaraIdentity" /> class with the provided credentials.</summary>
+            <param name="appName">The name of the application.</param>
+            <param name="appVersion">The version of the application.</param>
+            <param name="apiKey">A user's personal API key or a generic application API key.</param>
+            <param name="isDeveloped">Set <c>true</c> if in development.</param>
+        </member>
+        <member name="T:EDlib.INARA.InaraRequest">
+            <summary>
+              <para>Represents an INARA API request and response.</para>
+              <para>See INARA <a href="https://inara.cz/inara-api-docs/">API documentation.</a>.</para>
+            </summary>
+        </member>
+        <member name="F:EDlib.INARA.InaraRequest.Header">
+            <summary>The header block in an INARA API request and response.</summary>
+        </member>
+        <member name="F:EDlib.INARA.InaraRequest.Events">
+            <summary>The data block in an INARA API request and response.</summary>
+        </member>
         <member name="T:EDlib.INARA.CommanderProfileService">
             <summary>
               <para>Gets basic information about a Commander from the INARA API like ranks, squadron and allegiance.</para>
@@ -1206,7 +1300,7 @@
             <summary>Gets basic information about a Commander from the INARA API.</summary>
             <param name="searchName">The Comander's name to search for. If an exact match is not found a number of partial matches may be returned.</param>
             <param name="cacheMinutes">How long to cache the data in minutes, minimum 5 minutes.</param>
-            <param name="identity">The credentials required to access the INARA API.</param>
+            <param name="identity">The <see cref="T:EDlib.INARA.InaraIdentity" /> credentials required to access the INARA API.</param>
             <param name="cancelToken">A cancellation token.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;CommanderProfile&gt;</returns>
@@ -1226,7 +1320,7 @@
             <summary>Gets a number of recent Community Goals from INARA.</summary>
             <param name="goalCount">The number of Community Goals to return.</param>
             <param name="cacheMinutes">How long to cache the data in minutes, minimum 60 minutes.</param>
-            <param name="identity">The credentials required to access the INARA API.</param>
+            <param name="identity">The <see cref="T:EDlib.INARA.InaraIdentity" /> credentials required to access the INARA API.</param>
             <param name="cancelToken">A cancellation token.</param>
             <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
@@ -1235,7 +1329,7 @@
         <member name="M:EDlib.INARA.CommunityGoalsService.GetData(System.Int32,EDlib.INARA.InaraIdentity,System.Threading.CancellationTokenSource,System.String,System.Boolean)">
             <summary>Gets all the recent Community Goals from INARA; usually 15.</summary>
             <param name="cacheMinutes">How long to cache the data in minutes, minimum 60 minutes.</param>
-            <param name="identity">The credentials required to access the INARA API.</param>
+            <param name="identity">The <see cref="T:EDlib.INARA.InaraIdentity" /> credentials required to access the INARA API.</param>
             <param name="cancelToken">A cancellation token.</param>
             <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
@@ -1245,11 +1339,29 @@
             <summary>Gets recent Community Goals from INARA over a specified number of days.</summary>
             <param name="requestDays">How many days back to look for Community Goals, minimum 7 days.</param>
             <param name="cacheMinutes">How long to cache the data in minutes, minimum 60 minutes.</param>
-            <param name="identity">The credentials required to access the INARA API.</param>
+            <param name="identity">The <see cref="T:EDlib.INARA.InaraIdentity" /> credentials required to access the INARA API.</param>
             <param name="cancelToken">A cancellation token.</param>
             <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;CommunityGoal&gt;, DateTime)&gt;</returns>
+        </member>
+        <member name="T:EDlib.INARA.InaraService">
+            <summary>
+              <para>Utility service used by other services to get data from INARA APIs.</para>
+              <para>See INARA <a href="https://inara.cz/inara-api-docs/">API documentation.</a>.</para>
+            </summary>
+        </member>
+        <member name="M:EDlib.INARA.InaraService.Instance(EDlib.Network.IDownloadService)">
+            <summary>Instantiates the InaraService class.</summary>
+            <param name="downloadService">IDownloadService instance used to download data.</param>
+            <returns>InaraService</returns>
+        </member>
+        <member name="M:EDlib.INARA.InaraService.GetData(EDlib.INARA.InaraHeader,System.Collections.Generic.IList{EDlib.INARA.InaraEvent},EDlib.Network.DownloadOptions)">
+            <summary>Gets data from an INARA API.</summary>
+            <param name="header">The header for an INARA API request.</param>
+            <param name="input">The data for an INARA API request.</param>
+            <param name="options">Options for download.</param>
+            <returns>Task&lt;(string, DateTime)&gt;<br /></returns>
         </member>
         <member name="T:EDlib.Network.HttpHelper">
             <summary>A helper class for reading an http response that can decompress data in gzip or deflate streams.</summary>
