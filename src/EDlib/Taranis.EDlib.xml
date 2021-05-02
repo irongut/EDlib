@@ -999,11 +999,116 @@
             <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
         </member>
+        <member name="T:EDlib.INARA.CommanderProfile">
+            <summary>
+              <para>Represents basic information about a Commander from the INARA API.</para>
+              <para>See INARA documentation for <a href="https://inara.cz/inara-api-docs/#event-2">getCommanderProfile</a>.</para>
+            </summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderProfile.UserId">
+            <summary>The Commander's user ID on INARA.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderProfile.UserName">
+            <summary>The Commander's user name on INARA.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderProfile.Ranks">
+            <summary>The Commander's ranks in combat, trade, exploration, etc.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderProfile.PreferredAllegiance">
+            <summary>The Commander's superpower allegiance.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderProfile.PreferredPower">
+            <summary>The Galactic Power supported by the Commander.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderProfile.MainShip">
+            <summary>The Commander's main ship as set on INARA.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderProfile.Squadron">
+            <summary>The Commander's Squadron.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderProfile.Wing">
+            <summary>The Commander's Wing.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderProfile.PreferredGameRole">
+            <summary>The Commander's preferred role in game.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderProfile.AvatarImageUrl">
+            <summary>URL for the Commander's avatar image on INARA. (jpeg)</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderProfile.InaraUrl">
+            <summary>URL for the Commander's profile on INARA.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderProfile.OtherNamesFound">
+            <summary>List of possible Commander names returned when a partial match is found.</summary>
+        </member>
         <member name="P:EDlib.INARA.CommanderProfile.LastUpdated">
             <summary>The date and time when the information was requested.</summary>
         </member>
         <member name="M:EDlib.INARA.CommanderProfile.#ctor">
             <summary>Initializes a new instance of the <see cref="T:EDlib.INARA.CommanderProfile" /> class.</summary>
+        </member>
+        <member name="T:EDlib.INARA.CommanderShip">
+            <summary>Basic information about a Commander's ship returned by the INARA API.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderShip.Type">
+            <summary>The ship type.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderShip.Name">
+            <summary>The ship's name.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderShip.Ident">
+            <summary>The ship's ID tag.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderShip.Role">
+            <summary>The ship's role.</summary>
+        </member>
+        <member name="T:EDlib.INARA.CommanderRank">
+            <summary>Information about a Commander's rank returned by the INARA API.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderRank.Name">
+            <summary>The name of the rank.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderRank.Value">
+            <summary>The rank reached by the Commander.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderRank.Progress">
+            <summary>The Commander's progress in their current rank.</summary>
+        </member>
+        <member name="T:EDlib.INARA.CommanderSquadron">
+            <summary>Information about a Commander's squadron returned by the INARA API.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderSquadron.Id">
+            <summary>The squadron's ID on INARA.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderSquadron.Name">
+            <summary>The squadron's name.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderSquadron.MembersCount">
+            <summary>The number of Commanders in the squadron.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderSquadron.Rank">
+            <summary>The Commander's rank in the squadron.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderSquadron.InaraUrl">
+            <summary>URL for the squadron's profile on INARA.</summary>
+        </member>
+        <member name="T:EDlib.INARA.CommanderWing">
+            <summary>Information about a Commander's wing returned by the INARA API.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderWing.Id">
+            <summary>The wing's ID on INARA.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderWing.Name">
+            <summary>The wing's name.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderWing.MembersCount">
+            <summary>The number of Commanders in the wing.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderWing.Rank">
+            <summary>The Commander's rank in the wing.</summary>
+        </member>
+        <member name="P:EDlib.INARA.CommanderWing.InaraUrl">
+            <summary>URL for the wing's profile on INARA.</summary>
         </member>
         <member name="T:EDlib.INARA.CommunityGoal">
             <summary>
@@ -1085,6 +1190,27 @@
         <member name="M:EDlib.INARA.CommunityGoal.ToString">
             <summary>Returns the Name, System and Objective for a Community Goal as a string.</summary>
         </member>
+        <member name="T:EDlib.INARA.CommanderProfileService">
+            <summary>
+              <para>Gets basic information about a Commander from the INARA API like ranks, squadron and allegiance.</para>
+              <para>See INARA documentation for <a href="https://inara.cz/inara-api-docs/#event-2">getCommanderProfile</a>.</para>
+              <para>Note: The information returned will be determined by the Commander's privacy settings on INARA.</para>
+            </summary>
+        </member>
+        <member name="M:EDlib.INARA.CommanderProfileService.Instance(EDlib.Network.IDownloadService)">
+            <summary>Instantiates the CommanderProfileService class.</summary>
+            <param name="downloadService">IDownloadService instance used to download data.</param>
+            <returns>CommanderProfileService</returns>
+        </member>
+        <member name="M:EDlib.INARA.CommanderProfileService.GetData(System.String,System.Int32,EDlib.INARA.InaraIdentity,System.Threading.CancellationTokenSource,System.Boolean)">
+            <summary>Gets basic information about a Commander from the INARA API.</summary>
+            <param name="searchName">The Comander's name to search for. If an exact match is not found a number of partial matches may be returned.</param>
+            <param name="cacheMinutes">How long to cache the data in minutes, minimum 5 minutes.</param>
+            <param name="identity">The credentials required to access the INARA API.</param>
+            <param name="cancelToken">A cancellation token.</param>
+            <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
+            <returns>Task&lt;CommanderProfile&gt;</returns>
+        </member>
         <member name="T:EDlib.INARA.CommunityGoalsService">
             <summary>
               <para>Gets details of ongoing and recently completed Community Goals from the INARA API.</para>
@@ -1104,7 +1230,7 @@
             <param name="cancelToken">A cancellation token.</param>
             <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
-            <returns>Task&lt;(List&lt;CommunityGoal&gt;, DateTime)&gt;<br /></returns>
+            <returns>Task&lt;(List&lt;CommunityGoal&gt;, DateTime)&gt;</returns>
         </member>
         <member name="M:EDlib.INARA.CommunityGoalsService.GetData(System.Int32,EDlib.INARA.InaraIdentity,System.Threading.CancellationTokenSource,System.String,System.Boolean)">
             <summary>Gets all the recent Community Goals from INARA; usually 15.</summary>
@@ -1113,7 +1239,7 @@
             <param name="cancelToken">A cancellation token.</param>
             <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
-            <returns>Task&lt;(List&lt;CommunityGoal&gt;, DateTime)&gt;<br /></returns>
+            <returns>Task&lt;(List&lt;CommunityGoal&gt;, DateTime)&gt;</returns>
         </member>
         <member name="M:EDlib.INARA.CommunityGoalsService.GetDataByTime(System.Int32,System.Int32,EDlib.INARA.InaraIdentity,System.Threading.CancellationTokenSource,System.String,System.Boolean)">
             <summary>Gets recent Community Goals from INARA over a specified number of days.</summary>
@@ -1123,7 +1249,7 @@
             <param name="cancelToken">A cancellation token.</param>
             <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
-            <returns>Task&lt;(List&lt;CommunityGoal&gt;, DateTime)&gt;<br /></returns>
+            <returns>Task&lt;(List&lt;CommunityGoal&gt;, DateTime)&gt;</returns>
         </member>
         <member name="T:EDlib.Network.HttpHelper">
             <summary>A helper class for reading an http response that can decompress data in gzip or deflate streams.</summary>
