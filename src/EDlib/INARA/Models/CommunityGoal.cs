@@ -139,7 +139,7 @@ namespace EDlib.INARA
 
         #endregion
 
-        public void ClassifyCG(List<Topic> topics)
+        internal void ClassifyCG(List<Topic> topics)
         {
             // analyse CG using Bag of Words technique
             AnalyseSentences(SplitSentences(), topics);
