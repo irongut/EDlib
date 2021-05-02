@@ -11,7 +11,7 @@ namespace UnitTests
         [TestMethod]
         public void TopicTest()
         {
-            Topic topic = new("test", new List<string> { "test", "demo", "sample", "trial"});
+            Topic topic = new Topic("test", new List<string> { "test", "demo", "sample", "trial"});
             Assert.IsTrue(topic.Name.Equals("test", StringComparison.OrdinalIgnoreCase));
             Assert.IsTrue(topic.Terms.Contains("test"));
             Assert.IsTrue(topic.Terms.Contains("demo"));

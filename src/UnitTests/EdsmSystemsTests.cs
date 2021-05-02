@@ -441,7 +441,7 @@ namespace UnitTests
         [TestMethod]
         public void OptionsTest()
         {
-            SystemsOptions allOptions = new()
+            SystemsOptions allOptions = new SystemsOptions()
             {
                 ShowId = true,
                 ShowCoordinates = true,
@@ -456,7 +456,7 @@ namespace UnitTests
             Assert.IsTrue(allOptions.ShowInformation);
             Assert.IsTrue(allOptions.ShowPrimaryStar);
 
-            SystemsOptions idOptions = new()
+            SystemsOptions idOptions = new SystemsOptions()
             {
                 ShowId = true
             };

@@ -14,7 +14,7 @@ namespace UnitTests
         [TestMethod]
         public void NewPowerCommsTest()
         {
-            PowerComms comms = new(3, "ALD", "reddit/ald", "discord/ald");
+            PowerComms comms = new PowerComms(3, "ALD", "reddit/ald", "discord/ald");
             Assert.AreEqual(3, comms.Id);
             Assert.AreEqual("ALD", comms.ShortName);
             Assert.AreEqual("reddit/ald", comms.Reddit);
@@ -66,7 +66,7 @@ namespace UnitTests
         public void NewPowerStandingTest()
         {
             DateTime date = DateTime.Now;
-            PowerStanding power = new(3, "Arissa", 1, StandingChange.up, false, "Empire", "ALD", date);
+            PowerStanding power = new PowerStanding(3, "Arissa", 1, StandingChange.up, false, "Empire", "ALD", date);
             Assert.AreEqual(3, power.Id);
             Assert.AreEqual("Arissa", power.Name);
             Assert.AreEqual(1, power.Position);
@@ -83,7 +83,7 @@ namespace UnitTests
         public void NewPowerStandingTestToo()
         {
             DateTime date = DateTime.Now;
-            PowerStanding power = new(1, "Arissa Lavigny-Duval (+1)", 260, date);
+            PowerStanding power = new PowerStanding(1, "Arissa Lavigny-Duval (+1)", 260, date);
             Assert.AreEqual(3, power.Id);
             Assert.AreEqual("Arissa Lavigny-Duval", power.Name);
             Assert.AreEqual(1, power.Position);

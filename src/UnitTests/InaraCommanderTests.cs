@@ -21,7 +21,7 @@ namespace UnitTests
         public void EmptyProfileTest()
         {
             DateTime beforeTime = DateTime.Now;
-            CommanderProfile cmdr = new();
+            CommanderProfile cmdr = new CommanderProfile();
 
             Assert.IsTrue(cmdr.LastUpdated > beforeTime);
             Assert.IsTrue(cmdr.LastUpdated < DateTime.Now);

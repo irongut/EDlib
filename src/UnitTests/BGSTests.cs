@@ -14,7 +14,7 @@ namespace UnitTests
         [TestMethod]
         public void UnknownTickTest()
         {
-            BgsTick tick = new();
+            BgsTick tick = new BgsTick();
             Assert.AreEqual("Unknown", tick.TimeString);
         }
 
@@ -22,7 +22,7 @@ namespace UnitTests
         public void NewTickTest()
         {
             DateTime date = DateTime.Now;
-            BgsTick tick = new(date);
+            BgsTick tick = new BgsTick(date);
             Assert.AreEqual(date.ToString("g"), tick.TimeString);
         }
 
