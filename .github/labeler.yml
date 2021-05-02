@@ -14,6 +14,13 @@ BGS:
 
 CGs:
   - src/EDlib/Common/Models/Topic*
+  - src/EDlib/INARA/Models/Community*
+  - src/EDlib/INARA/Resources/CG*
+  - src/EDlib/INARA/Services/Community*
+
+Cmdr-Profile: 
+  - src/EDlib/INARA/Models/Commander*
+  - src/EDlib/INARA/Services/Commander*
 
 Demo:
   - src/EDlibDemo/**/*
@@ -26,6 +33,7 @@ documentation:
 
 ED Status:
   - src/EDlib/EDSM/Models/EliteStatus*
+  - src/EDlib/EDSM/Services/EliteStatus*
 
 EDSM:
   - src/EDlib/EDSM/**/*
