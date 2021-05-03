@@ -1400,19 +1400,6 @@
             <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
             <exception cref="T:EDlib.APIException">Http errors from the API called.</exception>
         </member>
-        <member name="M:EDlib.Network.CachedDownloadService.GetData(System.String,System.String,System.String,EDlib.Network.DownloadOptions)">
-            <summary>
-            Gets data from an API, caches the data and when it was last updated with the option to cancel the request.
-            If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.
-            </summary>
-            <param name="url">The URL for downloading the data.</param>
-            <param name="dataKey">The key for cached data.</param>
-            <param name="updatedKey">The key for caching when the data was the last updated.</param>
-            <param name="options">Options structure for download.</param>
-            <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
-            <exception cref="T:EDlib.NoNetworkNoCacheException">No Internet available and no data cached.</exception>
-            <exception cref="T:EDlib.APIException">Http errors from the API called.</exception>
-        </member>
         <member name="M:EDlib.Network.CachedDownloadService.PostData(System.String,System.String,EDlib.Network.DownloadOptions)">
             <summary>
             Posts a request to an API, caches the response and when it was last updated with the option to cancel the request.
@@ -1922,11 +1909,10 @@
         <member name="T:EDlib.Powerplay.StandingsService">
             <summary>Gets the current Powerplay Galactic Standings.</summary>
         </member>
-        <member name="M:EDlib.Powerplay.StandingsService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
+        <member name="M:EDlib.Powerplay.StandingsService.Instance(EDlib.Network.IDownloadService,EDlib.Platform.ICacheService)">
             <summary>Instantiates the StandingsService class.</summary>
-            <param name="userAgent">The user agent used for downloads.</param>
+            <param name="downloadService">IDownloadService instance used to download data.</param>
             <param name="cacheService">The platform specific cache for downloaded data.</param>
-            <param name="connectivityService">The platform specific connectivity service.</param>
             <returns>StandingsService</returns>
         </member>
         <member name="M:EDlib.Powerplay.StandingsService.GetData(System.Threading.CancellationTokenSource,System.Boolean)">

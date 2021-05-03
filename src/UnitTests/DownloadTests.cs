@@ -67,16 +67,5 @@ namespace UnitTests
             Assert.IsTrue(data.Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
             Assert.IsTrue(lastUpdated > DateTime.MinValue);
         }
-
-        [TestMethod]
-        public async Task CachedDownloadServiceTwoTest()
-        {
-            CachedDownloadService dService = CachedDownloadService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
-            (string data, DateTime lastUpdated) = await dService.GetData(url, "testData", "testUpdated", new DownloadOptions(TimeSpan.FromHours(1))).ConfigureAwait(false);
-
-            Assert.IsFalse(string.IsNullOrWhiteSpace(data));
-            Assert.IsTrue(data.Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
-            Assert.IsTrue(lastUpdated > DateTime.MinValue);
-        }
     }
 }

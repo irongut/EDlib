@@ -12,11 +12,8 @@ namespace EDlib.Powerplay
     {
         private static readonly StandingsService instance = new StandingsService();
 
-        private static string agent;
-
         private static ICacheService cache;
-
-        private static IConnectivityService connectivity;
+        private static IDownloadService dService;
 
         private const string URL = "https://api.taranissoftware.com/elite-dangerous/galactic-standings.json";
         private const string dataKey = "Standings";
@@ -31,15 +28,13 @@ namespace EDlib.Powerplay
         }
 
         /// <summary>Instantiates the StandingsService class.</summary>
-        /// <param name="userAgent">The user agent used for downloads.</param>
+        /// <param name="downloadService">IDownloadService instance used to download data.</param>
         /// <param name="cacheService">The platform specific cache for downloaded data.</param>
-        /// <param name="connectivityService">The platform specific connectivity service.</param>
         /// <returns>StandingsService</returns>
-        public static StandingsService Instance(string userAgent, ICacheService cacheService, IConnectivityService connectivityService)
+        public static StandingsService Instance(IDownloadService downloadService, ICacheService cacheService)
         {
-            agent = userAgent;
+            dService = downloadService;
             cache = cacheService;
-            connectivity = connectivityService;
             return instance;
         }
 
@@ -52,11 +47,28 @@ namespace EDlib.Powerplay
             TimeSpan expiry = TimeSpan.FromMinutes(15);
             if ((galacticStandings == null) || (galacticStandings.Cycle != CycleService.CurrentCycle() && (lastUpdated + expiry < DateTime.Now)))
             {
-                // download the standings
                 string json;
-                CachedDownloadService downloadService = CachedDownloadService.Instance(agent, cache, connectivity);
-                DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
-                (json, lastUpdated) = await downloadService.GetData(URL, dataKey, updatedKey, options).ConfigureAwait(false);
+                if (!ignoreCache && cache.Exists(dataKey) && !cache.IsExpired(dataKey))
+                {
+                    // use cached data
+                    json = cache.Get(dataKey);
+                    lastUpdated = DateTime.Parse(cache.Get(updatedKey));
+                }
+                else
+                {
+                    try
+                    {
+                        // download the standings
+                        DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
+                        (json, lastUpdated) = await dService.GetData(URL, options).ConfigureAwait(false);
+                    }
+                    catch (NoNetworkNoCacheException) when (cache.Exists(dataKey))
+                    {
+                        // use cached data
+                        json = cache.Get(dataKey);
+                        lastUpdated = DateTime.Parse(cache.Get(updatedKey));
+                    }
+                }
 
                 // parse the standings
                 galacticStandings = JsonConvert.DeserializeObject<GalacticStandings>(json);

@@ -3,7 +3,6 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace EDlib.Network
@@ -57,22 +56,7 @@ namespace EDlib.Network
             string urlHash = Sha256Helper.GenerateHash(url);
             string dataKey = $"{urlHash}-Data";
             string updatedKey = $"{urlHash}-Updated";
-            return await GetData(url, dataKey, updatedKey, options).ConfigureAwait(false);
-        }
 
-        /// <summary>
-        /// Gets data from an API, caches the data and when it was last updated with the option to cancel the request.
-        /// If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.
-        /// </summary>
-        /// <param name="url">The URL for downloading the data.</param>
-        /// <param name="dataKey">The key for cached data.</param>
-        /// <param name="updatedKey">The key for caching when the data was the last updated.</param>
-        /// <param name="options">Options structure for download.</param>
-        /// <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
-        /// <exception cref="NoNetworkNoCacheException">No Internet available and no data cached.</exception>
-        /// <exception cref="APIException">Http errors from the API called.</exception>
-        public async Task<(string data, DateTime updated)> GetData(string url, string dataKey, string updatedKey, DownloadOptions options)
-        {
             string data;
             DateTime lastUpdated;
 
@@ -99,7 +83,25 @@ namespace EDlib.Network
             else
             {
                 // download data
-                (data, lastUpdated) = await Download(url, options.CancelToken).ConfigureAwait(false);
+                HttpResponseMessage response;
+                if (options.CancelToken == null)
+                {
+                    response = await client.GetAsync(new Uri(url)).ConfigureAwait(false);
+                }
+                else
+                {
+                    response = await client.GetAsync(new Uri(url), options.CancelToken.Token).ConfigureAwait(false);
+                }
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new APIException($"{response.StatusCode} - {response.ReasonPhrase}", (int)response.StatusCode);
+                }
+                else
+                {
+                    data = await HttpHelper.ReadContentAsync(response).ConfigureAwait(false);
+                    lastUpdated = DateTime.Now;
+                }
 
                 // cache data
                 cache.Add(dataKey, data, options.Expiry);
@@ -175,29 +177,6 @@ namespace EDlib.Network
                 cache.Add(updatedKey, lastUpdated.ToString(), options.Expiry);
             }
             return (data, lastUpdated);
-        }
-
-        private async Task<(string data, DateTime updated)> Download(string url, CancellationTokenSource cancelToken)
-        {
-            HttpResponseMessage response;
-            if (cancelToken == null)
-            {
-                response = await client.GetAsync(new Uri(url)).ConfigureAwait(false);
-            }
-            else
-            {
-                response = await client.GetAsync(new Uri(url), cancelToken.Token).ConfigureAwait(false);
-            }
-
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new APIException($"{response.StatusCode} - {response.ReasonPhrase}", (int)response.StatusCode);
-            }
-            else
-            {
-                string data = await HttpHelper.ReadContentAsync(response).ConfigureAwait(false);
-                return (data, DateTime.Now);
-            }
         }
     }
 }

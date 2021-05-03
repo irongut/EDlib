@@ -3,7 +3,6 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace EDlib.Network
@@ -58,7 +57,25 @@ namespace EDlib.Network
             else
             {
                 // download data
-                (data, lastUpdated) = await Download(url, options.CancelToken).ConfigureAwait(false);
+                HttpResponseMessage response;
+                if (options.CancelToken == null)
+                {
+                    response = await client.GetAsync(new Uri(url)).ConfigureAwait(false);
+                }
+                else
+                {
+                    response = await client.GetAsync(new Uri(url), options.CancelToken.Token).ConfigureAwait(false);
+                }
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new APIException($"{response.StatusCode} - {response.ReasonPhrase}", (int)response.StatusCode);
+                }
+                else
+                {
+                    data = await HttpHelper.ReadContentAsync(response).ConfigureAwait(false);
+                    lastUpdated = DateTime.Now;
+                }
             }
             return (data, lastUpdated);
         }
@@ -100,29 +117,6 @@ namespace EDlib.Network
                     string data = await HttpHelper.ReadContentAsync(response).ConfigureAwait(false);
                     return (data, DateTime.Now);
                 }
-            }
-        }
-
-        private async Task<(string data, DateTime updated)> Download(string url, CancellationTokenSource cancelToken)
-        {
-            HttpResponseMessage response;
-            if (cancelToken == null)
-            {
-                response = await client.GetAsync(new Uri(url)).ConfigureAwait(false);
-            }
-            else
-            {
-                response = await client.GetAsync(new Uri(url), cancelToken.Token).ConfigureAwait(false);
-            }
-
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new APIException($"{response.StatusCode} - {response.ReasonPhrase}", (int)response.StatusCode);
-            }
-            else
-            {
-                string data = await HttpHelper.ReadContentAsync(response).ConfigureAwait(false);
-                return (data, DateTime.Now);
             }
         }
     }
