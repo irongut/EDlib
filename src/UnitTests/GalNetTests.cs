@@ -27,7 +27,7 @@ namespace UnitTests
             Assert.IsTrue(article.PublishDateTime > DateTime.MinValue);
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.PublishDate));
             Assert.IsTrue(article.Id > 0);
-            Assert.IsFalse(string.IsNullOrWhiteSpace(article.FDImageName));
+            //Assert.IsFalse(string.IsNullOrWhiteSpace(article.FDImageName)); not guaranteed to be present :(
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Slug));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Topic));
             Assert.IsTrue(article.Tags.Count > 0);
@@ -49,7 +49,7 @@ namespace UnitTests
             Assert.IsTrue(article.PublishDateTime > DateTime.MinValue);
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.PublishDate));
             Assert.IsTrue(article.Id > 0);
-            Assert.IsFalse(string.IsNullOrWhiteSpace(article.FDImageName));
+            //Assert.IsFalse(string.IsNullOrWhiteSpace(article.FDImageName)); not guaranteed to be present :(
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Slug));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Topic));
             Assert.IsTrue(article.Tags.Count > 0);
@@ -73,7 +73,7 @@ namespace UnitTests
             Assert.IsTrue(article.PublishDateTime > DateTime.MinValue);
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.PublishDate));
             Assert.IsTrue(article.Id > 0);
-            Assert.IsFalse(string.IsNullOrWhiteSpace(article.FDImageName));
+            //Assert.IsFalse(string.IsNullOrWhiteSpace(article.FDImageName)); not guaranteed to be present :(
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Slug));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Topic));
             Assert.IsTrue(article.Tags.Count > 0);
