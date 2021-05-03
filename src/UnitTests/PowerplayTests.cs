@@ -99,7 +99,7 @@ namespace UnitTests
         [TestMethod]
         public async Task StandingsTest()
         {
-            StandingsService service = StandingsService.Instance("EDlib UnitTests", new EmptyCache(), new UnmeteredConnection());
+            StandingsService service = StandingsService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()), new EmptyCache());
             GalacticStandings standings = await service.GetData(new CancellationTokenSource()).ConfigureAwait(false);
             Assert.IsTrue(standings.Cycle > 250);
             Assert.IsTrue(standings.LastUpdated > DateTime.MinValue);

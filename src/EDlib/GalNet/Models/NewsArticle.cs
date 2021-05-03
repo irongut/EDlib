@@ -60,7 +60,7 @@ namespace EDlib.GalNet
         /// <summary>
         ///   <para>
         ///  A value used by Frontier Developments to display an image with each News article.
-        ///  Note: This is not a url or filename.
+        ///  Note: This is not a url or filename and is not guaranteed to contain a value.
         ///   </para>
         /// </summary>
         /// <value>Article image name.</value>

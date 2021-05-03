@@ -6,10 +6,10 @@ using EDlib.Mock.Platform;
 using EDlib.Network;
 using EDlib.Powerplay;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EDlibDemo
@@ -35,8 +35,8 @@ namespace EDlibDemo
                 Console.WriteLine();
 
                 Console.WriteLine("### Galactic Standings ###");
-                string json = await GetDataAsync().ConfigureAwait(false);
-                GalacticStandings galacticStandings = JsonConvert.DeserializeObject<GalacticStandings>(json);
+                StandingsService standingsService = StandingsService.Instance(DownloadService.Instance(userAgent, new UnmeteredConnection()), new EmptyCache());
+                GalacticStandings galacticStandings = await standingsService.GetData(new CancellationTokenSource()).ConfigureAwait(false);
                 Console.WriteLine(galacticStandings.ToString());
 
                 Random rand = new();
@@ -111,20 +111,6 @@ namespace EDlibDemo
                                config["Inara-AppVersion"],
                                config["Inara-ApiKey"],
                                bool.Parse(config["Inara-IsDeveloped"]));
-            }
-        }
-
-        private static async Task<string> GetDataAsync()
-        {
-            var uri = new Uri("https://api.taranissoftware.com/elite-dangerous/galactic-standings.json");
-            HttpResponseMessage response = await client.GetAsync(uri).ConfigureAwait(false);
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new Exception($"{response.StatusCode} - {response.ReasonPhrase}");
-            }
-            else
-            {
-                return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             }
         }
     }
