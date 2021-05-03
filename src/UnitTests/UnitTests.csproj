@@ -24,19 +24,24 @@
     <RepositoryType>git</RepositoryType>
 
     <PackageIcon></PackageIcon>
+
+    <UserSecretsId>fa6693bc-7a2e-4d0a-8e5e-9b516df38a97</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\CGBoW.json" />
     <None Remove="Resources\NewsBoW.json" />
     <None Remove="Resources\NewsFalseBoW.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\CGBoW.json" />
     <EmbeddedResource Include="Resources\NewsBoW.json" />
     <EmbeddedResource Include="Resources\NewsFalseBoW.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.3" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.3" />
@@ -49,6 +54,12 @@
   <ItemGroup>
     <ProjectReference Include="..\EDlib.Mock\EDlib.Mock.csproj" />
     <ProjectReference Include="..\EDlib\EDlib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

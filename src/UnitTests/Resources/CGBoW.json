@@ -1,0 +1,37 @@
+[
+    {
+        "Name": "Combat",
+        "Terms": [ "combat", "fight", "protect", "support", "defend", "defence", "bonds", "bounty vouchers", "pirate", "wanted ships", "security" ],
+        "Count": 0
+    },
+    {
+        "Name": "Trade",
+        "Terms": [ "trade", "deliver", "aid appeal", "supplies", "commodities", "consumables", "rare goods", "rarities", "superconductors", "computer components", "insulating membranes", "battle weapons", "reactive armour", "fabrics", "auto-fabricators", "hardware diagnostic sensors", "advanced medicines", "basic medicines", "water purifiers", "evacuation shelters", "landmines", "performance enhancers", "imperial slaves", "consumer technology", "robotics", "microcontrollers", "polymers", "cmm composites" ],
+        "Count": 0
+    },
+    {
+        "Name": "Explore",
+        "Terms": [ "exploration", "cartographic" ],
+        "Count": 0
+    },
+    {
+        "Name": "Mining",
+        "Terms": [ "mining", "mined", "resources", "jewels", "opals", "osmium", "samarium", "coltan", "gold", "silver", "painite", "palladium", "platinum", "gallite", "praseodymium", "rhodsplumite", "serendibite", "mote", "musgravite", "benitoite", "grandidierite", "bromellite", "alexandrite", "monohydrate", "hydroxide" ],
+        "Count": 0
+    },
+    {
+        "Name": "Salvage",
+        "Terms": [ "salvage", "recover", "rescue", "escape pod", "black box", "personal effects", "wreckage components" ],
+        "Count": 0
+    },
+    {
+        "Name": "Science",
+        "Terms": [ "science", "thargoid", "guardian", "palin", "ram tah", "bio-mechanical conduits", "propulsion elements", "weapon parts", "biological matter", "unknown", "scan data", "wake echoes", "emission data", "encrypt", "tissue", "mesoglea", "lifeform" ],
+        "Count": 0
+    },
+    {
+        "Name": "Smuggle",
+        "Terms": [ "smuggl", "onion head", "aganippe rush", "toxandji virocide", "bast snake gin", "kongga ale", "lavian brandy", "wuthielo ku froth", "orrerian vicious brew", "battle weapons", "personal weapons", "explosives", "reactive armour", "landmines" ],
+        "Count": 0
+    }
+]

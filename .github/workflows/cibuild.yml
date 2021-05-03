@@ -22,6 +22,17 @@ jobs:
     - name: Restore Dependencies
       run: dotnet restore src/EDlib.sln
 
+    - name: Add User Secrets
+      uses: microsoft/variable-substitution@v1
+      with:
+        files: 'src/UnitTests/appsettings.json, src/EDlibDemo/appsettings.json'
+      env:
+        Inara-AppName:  ${{ secrets.INARA_APPNAME }}
+        Inara-AppVersion: ${{ secrets.INARA_APPVERSION }}
+        Inara-ApiKey:  ${{ secrets.INARA_APIKEY }}
+        Inara-UserApiKey: ${{ secrets.INARA_USERAPIKEY }}
+        Inara-IsDeveloped: ${{ secrets.INARA_ISDEVELOPED }}
+
     - name: Build EDlib
       run: dotnet build src/EDlib.sln --configuration Release --no-restore
 

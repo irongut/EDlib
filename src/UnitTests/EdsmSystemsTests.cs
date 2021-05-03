@@ -16,7 +16,7 @@ namespace UnitTests
         [TestMethod]
         public async Task SolSystemTest()
         {
-            SystemsOptions options = new SystemsOptions
+            SystemsOptions options = new()
             {
                 ShowId = true,
                 ShowCoordinates = true,
@@ -37,8 +37,8 @@ namespace UnitTests
             }
 
             Assert.IsNotNull(solSystem);
-            Assert.AreEqual(solSystem.Name, "Sol");
-            Assert.AreEqual(solSystem.Distance, 0);
+            Assert.AreEqual("Sol", solSystem.Name);
+            Assert.AreEqual(0, solSystem.Distance);
             Assert.IsTrue(solSystem.Id > 0);
             Assert.IsTrue(solSystem.Id64 > 0);
             Assert.AreEqual(solSystem.Coords.X, 0);
@@ -46,7 +46,7 @@ namespace UnitTests
             Assert.AreEqual(solSystem.Coords.Z, 0);
             Assert.IsTrue(solSystem.CoordsLocked);
             Assert.IsTrue(solSystem.RequiresPermit);
-            Assert.AreEqual(solSystem.PermitName, "Sol");
+            Assert.AreEqual("Sol", solSystem.PermitName);
             Assert.IsFalse(string.IsNullOrWhiteSpace(solSystem.Information.Allegiance));
             Assert.IsFalse(string.IsNullOrWhiteSpace(solSystem.Information.Government));
             Assert.IsFalse(string.IsNullOrWhiteSpace(solSystem.Information.Faction));
@@ -65,7 +65,7 @@ namespace UnitTests
         [TestMethod]
         public async Task SolSystemWithCancelTest()
         {
-            SystemsOptions options = new SystemsOptions
+            SystemsOptions options = new()
             {
                 ShowId = true,
                 ShowCoordinates = true,
@@ -86,8 +86,8 @@ namespace UnitTests
             }
 
             Assert.IsNotNull(solSystem);
-            Assert.AreEqual(solSystem.Name, "Sol");
-            Assert.AreEqual(solSystem.Distance, 0);
+            Assert.AreEqual("Sol", solSystem.Name);
+            Assert.AreEqual(0, solSystem.Distance);
             Assert.IsTrue(solSystem.Id > 0);
             Assert.IsTrue(solSystem.Id64 > 0);
             Assert.AreEqual(solSystem.Coords.X, 0);
@@ -95,7 +95,7 @@ namespace UnitTests
             Assert.AreEqual(solSystem.Coords.Z, 0);
             Assert.IsTrue(solSystem.CoordsLocked);
             Assert.IsTrue(solSystem.RequiresPermit);
-            Assert.AreEqual(solSystem.PermitName, "Sol");
+            Assert.AreEqual("Sol", solSystem.PermitName);
             Assert.IsFalse(string.IsNullOrWhiteSpace(solSystem.Information.Allegiance));
             Assert.IsFalse(string.IsNullOrWhiteSpace(solSystem.Information.Government));
             Assert.IsFalse(string.IsNullOrWhiteSpace(solSystem.Information.Faction));
@@ -114,7 +114,7 @@ namespace UnitTests
         [TestMethod]
         public async Task NgaraweSystemTest()
         {
-            SystemsOptions options = new SystemsOptions
+            SystemsOptions options = new()
             {
                 ShowPermit = true
             };
@@ -131,8 +131,8 @@ namespace UnitTests
             }
 
             Assert.IsNotNull(ngSystem);
-            Assert.AreEqual(ngSystem.Name, "Ngarawe");
-            Assert.AreEqual(ngSystem.Distance, 0);
+            Assert.AreEqual("Ngarawe", ngSystem.Name);
+            Assert.AreEqual(0, ngSystem.Distance);
             Assert.IsTrue(ngSystem.Id == 0);
             Assert.IsTrue(ngSystem.Id64 == 0);
             Assert.IsNull(ngSystem.Coords);
@@ -147,7 +147,7 @@ namespace UnitTests
         [TestMethod]
         public async Task SystemsTest()
         {
-            SystemsOptions options = new SystemsOptions
+            SystemsOptions options = new()
             {
                 ShowId = true,
                 ShowCoordinates = true
@@ -170,8 +170,8 @@ namespace UnitTests
 
             SolarSystem solSystem = systems.Find(x => x.Name == "Sol");
             Assert.IsNotNull(solSystem);
-            Assert.AreEqual(solSystem.Name, "Sol");
-            Assert.AreEqual(solSystem.Distance, 0);
+            Assert.AreEqual("Sol", solSystem.Name);
+            Assert.AreEqual(0, solSystem.Distance);
             Assert.IsTrue(solSystem.Id > 0);
             Assert.IsTrue(solSystem.Id64 > 0);
             Assert.AreEqual(solSystem.Coords.X, 0);
@@ -181,8 +181,8 @@ namespace UnitTests
 
             SolarSystem acSystem = systems.Find(x => x.Name == "Achenar");
             Assert.IsNotNull(acSystem);
-            Assert.AreEqual(acSystem.Name, "Achenar");
-            Assert.AreEqual(solSystem.Distance, 0);
+            Assert.AreEqual("Achenar", acSystem.Name);
+            Assert.AreEqual(0, solSystem.Distance);
             Assert.IsTrue(acSystem.Id > 0);
             Assert.IsTrue(acSystem.Id64 > 0);
             Assert.IsTrue(acSystem.Coords.X != 0);
@@ -197,7 +197,7 @@ namespace UnitTests
         [TestMethod]
         public async Task SystemsWithCancelTest()
         {
-            SystemsOptions options = new SystemsOptions
+            SystemsOptions options = new()
             {
                 ShowId = true,
                 ShowCoordinates = true
@@ -220,8 +220,8 @@ namespace UnitTests
 
             SolarSystem solSystem = systems.Find(x => x.Name == "Sol");
             Assert.IsNotNull(solSystem);
-            Assert.AreEqual(solSystem.Name, "Sol");
-            Assert.AreEqual(solSystem.Distance, 0);
+            Assert.AreEqual("Sol", solSystem.Name);
+            Assert.AreEqual(0, solSystem.Distance);
             Assert.IsTrue(solSystem.Id > 0);
             Assert.IsTrue(solSystem.Id64 > 0);
             Assert.AreEqual(solSystem.Coords.X, 0);
@@ -231,8 +231,8 @@ namespace UnitTests
 
             SolarSystem acSystem = systems.Find(x => x.Name == "Achenar");
             Assert.IsNotNull(acSystem);
-            Assert.AreEqual(acSystem.Name, "Achenar");
-            Assert.AreEqual(solSystem.Distance, 0);
+            Assert.AreEqual("Achenar", acSystem.Name);
+            Assert.AreEqual(0, solSystem.Distance);
             Assert.IsTrue(acSystem.Id > 0);
             Assert.IsTrue(acSystem.Id64 > 0);
             Assert.IsTrue(acSystem.Coords.X != 0);
@@ -247,7 +247,7 @@ namespace UnitTests
         [TestMethod]
         public async Task SolCubeTest()
         {
-            SystemsOptions options = new SystemsOptions
+            SystemsOptions options = new()
             {
                 ShowId = true,
                 ShowCoordinates = true
@@ -263,14 +263,14 @@ namespace UnitTests
                 Assert.Inconclusive("Skipping test due to issue with EDSM API.");
                 return;
             }
-            
+
             Assert.IsNotNull(solCube);
             Assert.IsTrue(solCube.Count > 0);
 
             SolarSystem solSystem = solCube.Find(x => x.Name == "Sol");
             Assert.IsNotNull(solSystem);
-            Assert.AreEqual(solSystem.Name, "Sol");
-            Assert.AreEqual(solSystem.Distance, 0);
+            Assert.AreEqual("Sol", solSystem.Name);
+            Assert.AreEqual(0, solSystem.Distance);
             Assert.IsTrue(solSystem.Id > 0);
             Assert.IsTrue(solSystem.Id64 > 0);
             Assert.AreEqual(solSystem.Coords.X, 0);
@@ -280,7 +280,7 @@ namespace UnitTests
 
             SolarSystem acSystem = solCube.Find(x => x.Name == "Alpha Centauri");
             Assert.IsNotNull(acSystem);
-            Assert.AreEqual(acSystem.Name, "Alpha Centauri");
+            Assert.AreEqual("Alpha Centauri", acSystem.Name);
             Assert.IsTrue(acSystem.Distance > 0);
             Assert.IsTrue(acSystem.Id > 0);
             Assert.IsTrue(acSystem.Id64 > 0);
@@ -296,7 +296,7 @@ namespace UnitTests
         [TestMethod]
         public async Task SolCubeWithCancelTest()
         {
-            SystemsOptions options = new SystemsOptions
+            SystemsOptions options = new()
             {
                 ShowId = true,
                 ShowCoordinates = true
@@ -318,8 +318,8 @@ namespace UnitTests
 
             SolarSystem solSystem = solCube.Find(x => x.Name == "Sol");
             Assert.IsNotNull(solSystem);
-            Assert.AreEqual(solSystem.Name, "Sol");
-            Assert.AreEqual(solSystem.Distance, 0);
+            Assert.AreEqual("Sol", solSystem.Name);
+            Assert.AreEqual(0, solSystem.Distance);
             Assert.IsTrue(solSystem.Id > 0);
             Assert.IsTrue(solSystem.Id64 > 0);
             Assert.AreEqual(solSystem.Coords.X, 0);
@@ -329,7 +329,7 @@ namespace UnitTests
 
             SolarSystem acSystem = solCube.Find(x => x.Name == "Alpha Centauri");
             Assert.IsNotNull(acSystem);
-            Assert.AreEqual(acSystem.Name, "Alpha Centauri");
+            Assert.AreEqual("Alpha Centauri", acSystem.Name);
             Assert.IsTrue(acSystem.Distance > 0);
             Assert.IsTrue(acSystem.Id > 0);
             Assert.IsTrue(acSystem.Id64 > 0);
@@ -345,7 +345,7 @@ namespace UnitTests
         [TestMethod]
         public async Task SolSphereTest()
         {
-            SystemsOptions options = new SystemsOptions
+            SystemsOptions options = new()
             {
                 ShowId = true,
                 ShowCoordinates = true
@@ -370,7 +370,7 @@ namespace UnitTests
 
             SolarSystem acSystem = solSphere.Find(x => x.Name == "Alpha Centauri");
             Assert.IsNotNull(acSystem);
-            Assert.AreEqual(acSystem.Name, "Alpha Centauri");
+            Assert.AreEqual("Alpha Centauri", acSystem.Name);
             Assert.IsTrue(acSystem.Distance > 0);
             Assert.IsTrue(acSystem.Id > 0);
             Assert.IsTrue(acSystem.Id64 > 0);
@@ -393,7 +393,7 @@ namespace UnitTests
         [TestMethod]
         public async Task SolSphereWithCancelTest()
         {
-            SystemsOptions options = new SystemsOptions
+            SystemsOptions options = new()
             {
                 ShowId = true,
                 ShowCoordinates = true
@@ -418,7 +418,7 @@ namespace UnitTests
 
             SolarSystem acSystem = solSphere.Find(x => x.Name == "Alpha Centauri");
             Assert.IsNotNull(acSystem);
-            Assert.AreEqual(acSystem.Name, "Alpha Centauri");
+            Assert.AreEqual("Alpha Centauri", acSystem.Name);
             Assert.IsTrue(acSystem.Distance > 0);
             Assert.IsTrue(acSystem.Id > 0);
             Assert.IsTrue(acSystem.Id64 > 0);
