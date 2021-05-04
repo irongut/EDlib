@@ -122,7 +122,7 @@ namespace EDlib.INARA
         public TimeSpan TimeRemaining
         {
             get { return _timeRemaining; }
-            internal set
+            set
             {
                 if (_timeRemaining != value)
                 {
@@ -144,22 +144,10 @@ namespace EDlib.INARA
         public double Progress { get; private set; }
 
         /// <summary>The progress of the Community Goal. (Progress x/y Tiers)</summary>
-        public string ProgressText { get; internal set; }
+        public string ProgressText { get; private set; }
 
-        private string _topic;
         /// <summary>The topic for this Community Goal, generated using a Bag of Words technique.</summary>
-        public string Topic
-        {
-            get { return _topic; }
-            private set
-            {
-                if (_topic != value)
-                {
-                    _topic = value;
-                    OnPropertyChanged(nameof(Topic));
-                }
-            }
-        }
+        public string Topic { get; private set; }
 
         #endregion
 
@@ -207,8 +195,8 @@ namespace EDlib.INARA
         }
 
         /// <summary>
-        ///   <para>Raised when some properties change to handle System.ComponentModel.INotifyPropertyChanged.PropertyChanged.</para>
-        ///   <para>Can be used to update properties that change with time, e.g. GoalExpiry and IsCompleted.</para>
+        ///   <para>Raised when TimeRemaining or IsCompleted properties change to handle System.ComponentModel.INotifyPropertyChanged.PropertyChanged.</para>
+        ///   <para>Note: TimeRemaining is a public property, use a timer to update TimeRemaining and IsCompleted will update automatically.</para>
         /// </summary>
         /// <param name="propertyName">Name of the property that changed.</param>
         protected virtual void OnPropertyChanged(string propertyName)
