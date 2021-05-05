@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EDlib.Platform;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace EDlib.INARA
@@ -10,10 +11,12 @@ namespace EDlib.INARA
     public struct InaraRequest
     {
         /// <summary>The header block in an INARA API request and response.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("header")]
         public InaraHeader Header;
 
         /// <summary>The data block in an INARA API request and response.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("events")]
         public IList<InaraEvent> Events;
     }

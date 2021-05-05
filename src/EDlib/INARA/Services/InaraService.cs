@@ -48,7 +48,7 @@ namespace EDlib.INARA
             InaraRequest outputData = JsonConvert.DeserializeObject<InaraRequest>(data);
 
             // check for request errors
-            if (outputData.Header.EventStatus != 200)
+            if (outputData.Header.EventStatus > 203)
             {
                 throw new APIException($"{outputData.Header.EventStatus} - {outputData.Header.EventStatusText}", outputData.Header.EventStatus);
             }

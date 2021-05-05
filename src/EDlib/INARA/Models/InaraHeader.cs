@@ -12,18 +12,22 @@ namespace EDlib.INARA
         #region input fields
 
         /// <summary>The name of the application.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("appName")]
         public string AppName { get; }
 
         /// <summary>The version of the application.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("appVersion")]
         public string AppVersion { get; }
 
         /// <summary>A user's personal API key or a generic application API key (for read-only events).</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("APIkey")]
         public string ApiKey { get; }
 
         /// <summary>Set to <c>true</c> to indicate this version is in development.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("isDeveloped")]
         public bool IsDeveloped { get; }
 
@@ -32,10 +36,12 @@ namespace EDlib.INARA
         #region output fields
 
         /// <summary>Event status code, see <a href="https://inara.cz/inara-api-docs/#eventdatacodes">INARA eventStatus codes</a>.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("eventStatus")]
         public int? EventStatus { get; internal set; }
 
         /// <summary>Explanation of the status code, only returned on errors and warnings.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty("eventStatusText")]
         public string EventStatusText { get; internal set; }
 
