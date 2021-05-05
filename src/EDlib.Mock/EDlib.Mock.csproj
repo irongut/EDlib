@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Taranis.EDlib.Mock</AssemblyName>
-    <Version>0.5-alpha</Version>
+    <Version>0.6-alpha</Version>
     <Authors>Irongut</Authors>
     <Product>EDlib.Mock</Product>
     <Description>A .Net Standard library for creating companion apps for the game Elite Dangerous by Frontier Developments.</Description>
