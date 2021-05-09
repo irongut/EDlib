@@ -64,7 +64,7 @@ jobs:
     - name: Code Coverage Summary Report
       uses:  irongut/CodeCoverageSummary@master
       with:
-        filename: ${{ GITHUB.WORKSPACE }}/coverage/coverage.cobertura.xml
+        filename: coverage/coverage.cobertura.xml
         badge: 'true'
 
     - name: Run EDlib Demo
