@@ -63,7 +63,7 @@ jobs:
       run: cp coverage/**/coverage.cobertura.xml coverage/coverage.cobertura.xml
 
     - name: Code Coverage Summary Report
-      uses:  irongut/CodeCoverageSummary@master
+      uses:  irongut/CodeCoverageSummary@v1
       with:
         filename: coverage/coverage.cobertura.xml
         badge: true
