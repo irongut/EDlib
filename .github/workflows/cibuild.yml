@@ -67,6 +67,14 @@ jobs:
       with:
         filename: coverage/coverage.cobertura.xml
         badge: 'true'
+        output: 'both'
 
     - name: Run EDlib Demo
       run: dotnet src/EDlibDemo/bin/Release/net5.0/EDlibDemo.dll
+
+    - name: Add Coverage PR Comment
+      uses: marocchino/sticky-pull-request-comment@v2
+      if: github.event_name == 'pull_request'
+      with:
+        recreate: true
+        path: code-coverage-results.txt
