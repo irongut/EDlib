@@ -12,8 +12,6 @@ A .Net Standard library for creating companion tools for the game Elite Dangerou
 [![GitHub](https://img.shields.io/badge/GitHub-irongut/EDlib-informational?style=flat&logo=github)](https://github.com/irongut/EDlib)
 &nbsp;
 [![CI Build Status](https://github.com/irongut/EDlib/actions/workflows/cibuild.yml/badge.svg)](https://github.com/irongut/EDlib/actions/workflows/cibuild.yml)
-&nbsp;
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=irongut/EDlib&identifier=258617844)](https://dependabot.com)
 
 </div>
 
