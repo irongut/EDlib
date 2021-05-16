@@ -2,7 +2,7 @@
 uid: EDlib.EDSM
 summary: *content
 ---
-The EDlib.EDSM namespace contains classes and resources for interacting with the [EDSM API](https://www.edsm.net/).
+The `EDlib.EDSM` namespace contains classes for interacting with the [EDSM API](https://www.edsm.net/).
 
 ## EliteStatusService
 Gets the status of the Elite: Dangerous game servers. 

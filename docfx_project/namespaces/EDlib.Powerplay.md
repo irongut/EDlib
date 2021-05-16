@@ -2,7 +2,7 @@
 uid: EDlib.Powerplay
 summary: *content
 ---
-The EDlib.Powerplay namespace contains classes and resources that get Powerplay data from an API provided by Taranis Software.
+The `EDlib.Powerplay` namespace contains classes and resources that get Powerplay data from an API provided by Taranis Software.
 
 ## CycleService
 This service does not request data from an online API but calculates the current Powerplay cycle and when it changes (ticks).

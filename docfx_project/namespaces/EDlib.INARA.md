@@ -2,11 +2,12 @@
 uid: EDlib.INARA
 summary: *content
 ---
-The EDlib.INARA namespace contains classes and resources for interacting with the [INARA API](https://inara.cz/inara-api-devguide/).
+The `EDlib.INARA` namespace contains classes and resources for interacting with the [INARA API](https://inara.cz/inara-api-devguide/).
 
 **NOTE: Before using the INARA API you must contact [Artie](https://inara.cz/cmdr/1/), owner of INARA to have your app whitelisted.**
 
 All requests to the INARA API require an `InaraIdentity` object which encapsulates authentication data for the INARA API with the properties:
+
 * AppName - The name of the application, must match the name whitelisted by INARA.
 * AppVersion - The version of the application.
 * ApiKey - A user's personal API key or a generic application API key (for read-only events).
