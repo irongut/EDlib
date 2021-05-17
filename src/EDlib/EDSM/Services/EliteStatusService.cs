@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace EDlib.EDSM
 {
-    /// <summary>Gets Elite: Dangerous server status.</summary>
+    /// <summary>
+    ///   <para>Gets the status of the Elite: Dangerous game servers.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-status-v1">Status v1</a>.</para>
+    /// </summary>
     public sealed class EliteStatusService
     {
         private static readonly EliteStatusService instance = new EliteStatusService();

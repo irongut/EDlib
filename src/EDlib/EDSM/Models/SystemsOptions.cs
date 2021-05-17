@@ -2,7 +2,10 @@
 
 namespace EDlib.EDSM
 {
-    /// <summary>EDSM Systems API request options.</summary>
+    /// <summary>
+    ///   <para>Request options for EDSM Systems API methods.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-v1">Systems v1</a>.</para>
+    /// </summary>
     public class SystemsOptions : IEquatable<SystemsOptions>
     {
         /// <summary>Include the EDSM system ID in the results.</summary>

@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace EDlib.EDSM
 {
-    /// <summary>Gets data from the EDSM Systems API.</summary>
+    /// <summary>
+    ///   <para>Gets data from the EDSM Systems API including allegiance, government, controlling faction, population, security and economic information.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-v1">Systems v1</a>.</para>
+    /// </summary>
     public sealed class SystemsService
     {
         private static readonly SystemsService instance = new SystemsService();

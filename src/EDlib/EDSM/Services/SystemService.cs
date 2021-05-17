@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace EDlib.EDSM
 {
-    /// <summary>Gets data from the EDSM System API.</summary>
+    /// <summary>
+    ///   <para>Gets data from the EDSM System API including stations, markets, shipyards, outfitting and factions.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+    /// </summary>
     public sealed class SystemService
     {
         private static readonly SystemService instance = new SystemService();
@@ -22,7 +25,7 @@ namespace EDlib.EDSM
         private const string factionsMethod = "api-system-v1/factions";
 
         private SystemStations stations;
-        
+
         private Market market;
         private Dictionary<string, string> marketParams;
 

@@ -4,7 +4,10 @@ using System;
 
 namespace EDlib.EDSM
 {
-    /// <summary>Represents a solar system returned by EDSM Systems API methods.</summary>
+    /// <summary>
+    ///   <para>Represents a solar system returned by EDSM Systems API methods.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-v1">Systems v1</a>.</para>
+    /// </summary>
     public class SolarSystem
     {
         /// <summary>The name of the system.</summary>
@@ -84,7 +87,10 @@ namespace EDlib.EDSM
         }
     }
 
-    /// <summary>Galactic coordinates for the system.</summary>
+    /// <summary>
+    ///   <para>Represents galactic coordinates for a solar system returned by EDSM Systems API methods.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-v1">Systems v1</a>.</para>
+    /// </summary>
     public class Coords
     {
         /// <summary>X coordinate.</summary>
@@ -103,7 +109,10 @@ namespace EDlib.EDSM
         public double Z { get; set; }
     }
 
-    /// <summary>A summary of information about a system.</summary>
+    /// <summary>
+    ///   <para>A summary of information about a solar system returned by EDSM Systems API methods.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-v1">Systems v1</a>.</para>
+    /// </summary>
     public class SystemInfo
     {
         /// <summary>The current superpower allegiance of the system.</summary>
@@ -152,7 +161,10 @@ namespace EDlib.EDSM
         public string Reserve { get; set; }
     }
 
-    /// <summary>Details of the primary star in a system.</summary>
+    /// <summary>
+    ///   <para>Represents the primary star in a solar system returned by EDSM Systems API methods.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-v1">Systems v1</a>.</para>
+    /// </summary>
     public class PrimaryStar
     {
         /// <summary>The type of the primary star. See the EDSM Celestial Bodies FAQ for more info.</summary>

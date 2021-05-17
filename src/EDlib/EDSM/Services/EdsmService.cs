@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace EDlib.EDSM
 {
-    /// <summary>Utility service used by other services to get data from EDSM APIs.</summary>
+    /// <summary>
+    ///   <para>Utility service used by other services to get data from EDSM APIs.</para>
+    ///   <para>See EDSM <a href="https://www.edsm.net/">API documentation.</a>.</para>
+    /// </summary>
     public sealed class EdsmService
     {
         private static readonly EdsmService instance = new EdsmService();
