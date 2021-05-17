@@ -41,6 +41,10 @@ To install EDlib from GitHub you will need to set up a [local Nuget package feed
 3. Copy the package to your local Nuget feed.
 4. Install `Taranis.Software.EDlib` from your local Nuget feed using your preferred tools.
 
+### Source Link
+
+EDlib is built with Source Link enabled. Source Link enables source code debugging of .NET assemblies from NuGet by embedding source control metadata inside assemblies and the package. If you have Source Link enabled in Visual Studio you can step into the EDlib source code for a great debugging experience. To enable Source Link in Visual Studio please see [this excellent guide by Aaron Stannard](https://aaronstannard.com/visual-studio-sourcelink-setup/).
+
 ## Please Contribute!
 
 This is an open source project that welcomes contributions, suggestions and bug reports from those who use it. If you have any ideas on how to improve the library, please read the [How to Contribute](/articles/how-to-contribute.html) article and [create an issue](https://github.com/irongut/EDlib/issues) on GitHub.
