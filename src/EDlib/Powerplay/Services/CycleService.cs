@@ -3,11 +3,13 @@ using System.Globalization;
 
 namespace EDlib.Powerplay
 {
-    /// <summary>A static class that deals with the Powerplay cycle and when it changes (ticks).</summary>
+    /// <summary>A static class that represents the Powerplay cycle and when it changes (ticks).</summary>
     public static class CycleService
     {
-        /// <summary>Gets the time remaining till the end of the current Powerplay cycle.</summary>
-        /// <returns>Days and hours until the last 24 hours, then hours and minutes.</returns>
+        /// <summary>
+        ///   <para>The time remaining till the end of the current Powerplay cycle.</para>
+        ///   <para>Days and hours until the last 24 hours, then hours and minutes.</para>
+        /// </summary>
         public static string TimeRemaining()
         {
             TimeSpan time = TimeTillTick();
@@ -45,8 +47,7 @@ namespace EDlib.Powerplay
             }
         }
 
-        /// <summary>Determines if the end of the current Powerplay cycle is imminent - less than 12 hours remaining.</summary>
-        /// <returns><c>true</c> if imminent, else <c>false</c>.</returns>
+        /// <summary><c>true</c> if the end of the current Powerplay cycle is imminent - less than 12 hours remaining.</summary>
         public static bool CycleImminent()
         {
             // last 12 hours
@@ -56,8 +57,7 @@ namespace EDlib.Powerplay
             return (day == 3 && hour >= 19) || (day == 4 && hour < 7);
         }
 
-        /// <summary>Determines if the current Powerplay cycle ends within 24 hours.</summary>
-        /// <returns><c>true</c> if it is the final 24 hours of the cycle, else <c>false</c>.</returns>
+        /// <summary><c>true</c> if the current Powerplay cycle ends within 24 hours.</summary>
         public static bool FinalDay()
         {
             // last 24 hours
@@ -67,8 +67,7 @@ namespace EDlib.Powerplay
             return (day == 3 && hour >= 7) || (day == 4 && hour < 7);
         }
 
-        /// <summary>Gets the time remaining till the end of the current Powerplay cycle.</summary>
-        /// <returns>The time till the end of the cycle.</returns>
+        /// <summary>The time remaining till the end of the current Powerplay cycle.</summary>
         public static TimeSpan TimeTillTick()
         {
             DateTime currentUTC = DateTime.UtcNow;
@@ -102,8 +101,7 @@ namespace EDlib.Powerplay
             }
         }
 
-        /// <summary>Gets the current Powerplay cycle number.</summary>
-        /// <returns>The current Powerplay cycle number.</returns>
+        /// <summary>The current Powerplay cycle number.</summary>
         public static int CurrentCycle()
         {
             DateTime ppStart = DateTime.Parse("04-06-2015 07:00:00", new CultureInfo("en-GB"));

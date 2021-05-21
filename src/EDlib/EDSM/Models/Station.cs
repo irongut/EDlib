@@ -4,7 +4,10 @@ using System;
 
 namespace EDlib.EDSM
 {
-    /// <summary>Represents a station returned by EDSM System API methods.</summary>
+    /// <summary>
+    ///   <para>Represents a station returned by EDSM System API methods.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+    /// </summary>
     public class Station
     {
         /// <summary>The EDSM internal ID of the station.</summary>
@@ -12,7 +15,7 @@ namespace EDlib.EDSM
         [JsonProperty("id")]
         public long Id { get; set; }
 
-        /// <summary>The market ID (use this ID for EDSM queries).</summary>
+        /// <summary>The market ID of the station (use this ID for EDSM queries).</summary>
         [Preserve(Conditional = true)]
         [JsonProperty("marketId")]
         public long MarketId { get; set; }
@@ -88,7 +91,10 @@ namespace EDlib.EDSM
         public Body Body { get; set; }
     }
 
-    /// <summary>Represents when the station details were last updated on ESDM.</summary>
+    /// <summary>
+    ///   <para>Represents when the station details were last updated on ESDM.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+    /// </summary>
     public class UpdateTime
     {
         /// <summary>The date and time when the station data was last updated on EDSM.</summary>
@@ -112,7 +118,10 @@ namespace EDlib.EDSM
         public DateTime? Outfitting { get; set; }
     }
 
-    /// <summary>Represents the location of a planetary outpost returned by EDSM System API methods.</summary>
+    /// <summary>
+    ///   <para>Represents the location of a planetary outpost returned by EDSM System API methods.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+    /// </summary>
     public class Body
     {
         /// <summary>The ID of the body.</summary>

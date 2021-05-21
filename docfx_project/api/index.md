@@ -10,33 +10,30 @@ EDlib: A .Net Standard library for creating companion tools for the game Elite D
 EDlib provides classes that enable your .Net apps to easily consume information about the Elite Dangerous universe from several APIs. Information available includes:
 
 * The time that the Background Simulation (BGS) updates, known as the BGS tick.
-* News articles from GalNet, classified by topic and content.
-* The current Powerplay Galactic Standings.
-* Detailed information about each Power in Powerplay and communications links for their player groups.
-* The current Powerplay cycle and the time until it ends.
+* News articles from GalNet, classified by topic and content tags.
+* The Powerplay cycle and Galactic Standings.
+* Detailed information about each Power and communications links for their player groups.
+* Data from [EDSM](https://www.edsm.net/) including game server status and information on systems, markets, shipyards and more.
+* Data from [INARA](https://inara.cz/) including Community Goals and Commander profiles.
+
+EDlib conforms to .Net Standard 2.0 making it compatible with .Net Framework, .Net Core and .Net 5 and has been used for CLI, desktop, Xamarin Forms and Azure Functions projects.
 
 ## Installation
 
-In the future EDlib will be available as a Nuget but for now you have two choices:
+EDlib is currently available as a Nuget package from GitHub, in future it will also be available on Nuget.org.
 
-* Clone the EDlib repository, build the solution and include the dlls in your project.
-* Use Git submodules to include EDlib in your solution and reference it from your code.
+### Installation from GitHub
 
-### Installation using Git Submodules
+To install EDlib from GitHub you will need to set up a [local Nuget package feed](https://docs.microsoft.com/en-us/nuget/hosting-packages/local-feeds) in a folder on your computer or network. This folder can be used as a package source for all Nuget operations by adding it to the list of sources using the [Package Manager UI](https://docs.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio#package-sources) or the [Nuget CLI](https://docs.microsoft.com/en-us/nuget/reference/cli-reference/cli-ref-sources).
 
-Git submodules is currently the preferred method of installation. To add EDlib to your repository as a submodule:
+1. Setup a local Nuget feed using your preferred tools.
+2. Download the latest `Taranis.Software.EDlib.*.nupkg` package from [GitHub Releases](https://github.com/irongut/EDlib/releases).
+3. Copy the package to your local Nuget feed.
+4. Install `Taranis.Software.EDlib` from your local Nuget feed using your preferred tools.
 
-```
-git submodule add https://github.com/irongut/EDlib EDlib
-```
+### Source Link
 
-At this point you'll have an `EDlib` folder inside your project, but depending on your Git version it might be empty. Older versions of Git will require you to explicitly download the EDlib code:
-
-```
-git submodule update --init --recursive
-```
-
-If everything looks good, you can commit this change and you'll have an `EDlib` folder in your repository with all the content from the EDlib repository. On GitHub, the `EDlib` folder icon will have a little indicator showing that it is a submodule and clicking on it will take you over to the EDlib repository. Avoid making any changes to the files in the `EDlib` folder or running Git commands from that folder, if you want to contribute improvements please see the [section below](#please-contribute). For more information see the [Git submodules documentation](https://github.blog/2016-02-01-working-with-submodules/) on Github.
+EDlib is built with Source Link enabled. Source Link enables source code debugging of .NET assemblies from NuGet by embedding source control metadata inside assemblies and the package. If you have Source Link enabled in Visual Studio you can step into the EDlib source code for a great debugging experience. To enable Source Link in Visual Studio please see [this excellent guide by Aaron Stannard](https://aaronstannard.com/visual-studio-sourcelink-setup/).
 
 ## Please Contribute!
 

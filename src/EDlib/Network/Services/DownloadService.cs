@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EDlib.Network
 {
-    /// <summary>Class used to download without caching.</summary>
+    /// <summary>Service used to download data with no cache.</summary>
     public sealed class DownloadService : IDownloadService
     {
         private static readonly DownloadService instance = new DownloadService();

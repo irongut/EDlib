@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EDlib.Platform
 {
-    /// <summary>Current state of the item in the cache.</summary>
+    /// <summary>Represents the current state of an item in the cache.</summary>
     [Flags]
     public enum CacheState
     {

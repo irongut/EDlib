@@ -5,7 +5,10 @@ using System.Collections.Generic;
 
 namespace EDlib.EDSM
 {
-    /// <summary>Represents an outfitting service returned by EDSM System API methods.</summary>
+    /// <summary>
+    ///   <para>Represents an outfitting service returned by EDSM System API methods.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+    /// </summary>
     public class StationOutfitting
     {
         /// <summary>The EDSM internal ID of the outfitting service.</summary>
@@ -67,7 +70,10 @@ namespace EDlib.EDSM
         }
     }
 
-    /// <summary>Represents a ship module returned by EDSM System API methods.</summary>
+    /// <summary>
+    ///   <para>Represents a ship module returned by EDSM System API methods.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+    /// </summary>
     public class ShipModule
     {
         /// <summary>The module ID.</summary>

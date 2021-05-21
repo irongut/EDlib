@@ -5,7 +5,10 @@ using System.Collections.Generic;
 
 namespace EDlib.EDSM
 {
-    /// <summary>Lists the factions in a system returned by EDSM System API methods.</summary>
+    /// <summary>
+    ///   <para>Lists the factions in a system returned by EDSM System API methods.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+    /// </summary>
     public class SystemFactions
     {
         /// <summary>The EDSM internal ID of the system.</summary>

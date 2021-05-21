@@ -3,7 +3,10 @@ using Newtonsoft.Json;
 
 namespace EDlib.EDSM
 {
-    /// <summary>Represents a BGS faction returned by EDSM System API methods.</summary>
+    /// <summary>
+    ///   <para>Represents a BGS faction returned by EDSM System API methods.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+    /// </summary>
     public class Faction
     {
         /// <summary>The ID of the faction.</summary>
@@ -67,7 +70,10 @@ namespace EDlib.EDSM
         public long LastUpdate { get; set; }
     }
 
-    /// <summary>Represents a faction's BGS state returned by EDSM System API methods.</summary>
+    /// <summary>
+    ///   <para>Represents a faction's BGS state returned by EDSM System API methods.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+    /// </summary>
     public class FactionState
     {
         /// <summary>The BGS state.</summary>

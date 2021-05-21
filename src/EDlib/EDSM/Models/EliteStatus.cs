@@ -4,7 +4,10 @@ using System;
 
 namespace EDlib.EDSM
 {
-    /// <summary>Elite: Dangerous server status.</summary>
+    /// <summary>
+    ///   <para>Represents the Elite: Dangerous server status.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-status-v1">Status v1</a>.</para>
+    /// </summary>
     public class EliteStatus
     {
         /// <summary>The status code returned by the Elite: Dangerous server.</summary>

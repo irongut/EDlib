@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace EDlib.Network
 {
-    /// <summary>Interface for services used to download data.</summary>
+    /// <summary>Interface for the services used to download data.</summary>
     public interface IDownloadService
     {
         /// <summary>Gets data from an API and returns the response with the option to cancel the request.</summary>

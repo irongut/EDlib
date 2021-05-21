@@ -4,12 +4,11 @@ using System;
 
 namespace EDlib.BGS
 {
-    /// <summary>Data for the BGS Tick.</summary>
+    /// <summary>Represents the BGS Tick.</summary>
     public class BgsTick
     {
         private DateTime _time;
         /// <summary>Returns the date and time of the BGS tick.</summary>
-        /// <value>Date and time of the BGS Tick.</value>
         [Preserve (Conditional=true)]
         [JsonProperty(PropertyName = "TIME")]
         public DateTime Time
@@ -26,7 +25,6 @@ namespace EDlib.BGS
         }
 
         /// <summary>Returns the date and time of the BGS tick as a string.</summary>
-        /// <value>Date and time of the BGS Tick.</value>
         [Preserve(Conditional = true)]
         public string TimeString { get; internal set; }
 

@@ -10,14 +10,13 @@ using System.Threading.Tasks;
 
 namespace EDlib.GalNet
 {
-    /// <summary>A GalNet News article.</summary>
+    /// <summary>Represents a GalNet News article.</summary>
     public class NewsArticle
     {
         #region Properties
 
         private string _title;
         /// <summary>The title of the News article.</summary>
-        /// <value>The article title.</value>
         [JsonProperty(PropertyName = "title")]
         public string Title
         {
@@ -33,7 +32,6 @@ namespace EDlib.GalNet
 
         private string _body;
         /// <summary>The content of the News article.</summary>
-        /// <value>The article content.</value>
         [JsonProperty(PropertyName = "body")]
         public string Body
         {
@@ -47,13 +45,11 @@ namespace EDlib.GalNet
             }
         }
 
-        /// <summary>The publish date and time of the News article.</summary>
-        /// <value>When the article was published.</value>
+        /// <summary>The date and time when the article was published.</summary>
         [JsonProperty(PropertyName = "date")]
         public DateTime PublishDateTime { get; internal set; }
 
-        /// <summary>Frontier Development's Id for the News article.</summary>
-        /// <value>Article ID.</value>
+        /// <summary>Frontier Developments Id for the News article.</summary>
         [JsonProperty(PropertyName = "nid")]
         public int Id { get; internal set; }
 
@@ -63,25 +59,20 @@ namespace EDlib.GalNet
         ///  Note: This is not a url or filename and is not guaranteed to contain a value.
         ///   </para>
         /// </summary>
-        /// <value>Article image name.</value>
         [JsonProperty(PropertyName = "image")]
         public string FDImageName { get; internal set; }
 
-        /// <summary>A normalised version of the article title used as a unique identifier.</summary>
-        /// <value>The article slug.</value>
+        /// <summary>A normalised version of the article title used as a unique identifier by Frontier Developments.</summary>
         [JsonProperty(PropertyName = "slug")]
         public string Slug { get; internal set; }
 
         /// <summary>The topic of the News article, generated using a Bag of Words technique.</summary>
-        /// <value>The article topic.</value>
         public string Topic { get; private set; }
 
         /// <summary>Content tags for the News article, generated using a Bag of Words technique.</summary>
-        /// <value>Content tags for the article.</value>
         public List<string> Tags { get; private set; }
 
-        /// <summary>The publish date and time of the News article as a string.</summary>
-        /// <value>When the article was published.</value>
+        /// <summary>The date when the article was published as a string.</summary>
         [Preserve(Conditional = true)]
         public string PublishDate
         {

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace EDlib.GalNet
 {
-    /// <summary>Gets the GalNet News.</summary>
+    /// <summary>Gets the GalNet News and uses a Bag of Words technique to determine a Topic and content Tags for each article.</summary>
     public sealed class GalNetService
     {
         private static readonly GalNetService instance = new GalNetService();

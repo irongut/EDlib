@@ -10,7 +10,7 @@ namespace EDlib.Network
     {
         /// <summary>Gets the content of an http response which may be compressed.</summary>
         /// <param name="response">The http response.</param>
-        /// <returns>The content of the http response.</returns>
+        /// <returns>Task&lt;string&gt;</returns>
         public static async Task<string> ReadContentAsync(HttpResponseMessage response)
         {
             string content;

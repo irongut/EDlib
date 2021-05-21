@@ -9,7 +9,11 @@ using System.Threading.Tasks;
 
 namespace EDlib.Powerplay
 {
-    /// <summary>Gets a Power's statistics, ethos, benefits and comms data.</summary>
+    /// <summary>
+    ///   <para>Provides data about every Power including statistics, ethos and benefits.</para>
+    ///   <para>Also gets every Powerplay player group's communications data from an API provided by Taranis Software.<br/>
+    ///         This data changes rarely so please cache for 1 week minimum.</para>
+    /// </summary>
     public sealed class PowerDetailsService
     {
         private static readonly PowerDetailsService instance = new PowerDetailsService();

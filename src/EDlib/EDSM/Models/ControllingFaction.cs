@@ -3,7 +3,10 @@ using Newtonsoft.Json;
 
 namespace EDlib.EDSM
 {
-    /// <summary>Represents the BGS faction that controls a system or station returned by EDSM API methods.</summary>
+    /// <summary>
+    ///   <para>Represents the BGS faction that controls a system or station returned by EDSM System API methods.</para>
+    ///   <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+    /// </summary>
     public class ControllingFaction
     {
         /// <summary>

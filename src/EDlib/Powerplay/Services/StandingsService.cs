@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace EDlib.Powerplay
 {
-    /// <summary>Gets the current Powerplay Galactic Standings.</summary>
+    /// <summary>
+    ///   <para>Gets the current Powerplay Galactic Standings from an API provided by Taranis Software.</para>
+    ///   <para>The standings update weekly on a Thursday between 08:00 - 10:00 UTC, the data is cached till 08:00 UTC Thursday.</para>
+    /// </summary>
     public sealed class StandingsService
     {
         private static readonly StandingsService instance = new StandingsService();
@@ -76,7 +79,7 @@ namespace EDlib.Powerplay
                 // cache till next cycle if updated
                 if (galacticStandings.Cycle == CycleService.CurrentCycle())
                 {
-                    expiry = CycleService.TimeTillTick();
+                    expiry = CycleService.TimeTillTick() + TimeSpan.FromHours(1);
                     cache.Add(dataKey, json, expiry);
                     cache.Add(updatedKey, lastUpdated.ToString(), expiry);
                 }
