@@ -13,10 +13,7 @@ namespace EDlib.GalNet
 
         private static readonly Type NewsArticleType = typeof(ICollection<NewsArticle>);
 
-        private NewsArticleConverter()
-        {
-            // no creation tasks
-        }
+        private NewsArticleConverter() { }
 
         public static NewsArticleConverter Instance()
         {
