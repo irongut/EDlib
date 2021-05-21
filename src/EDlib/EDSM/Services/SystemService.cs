@@ -53,6 +53,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;SystemStations&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<SystemStations> GetStations(string systemName, int cacheMinutes = 5, bool ignoreCache = false)
         {
             return await GetStations(systemName, null, cacheMinutes, ignoreCache).ConfigureAwait(false);
@@ -64,6 +66,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;SystemStations&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<SystemStations> GetStations(string systemName, CancellationTokenSource cancelToken, int cacheMinutes = 5, bool ignoreCache = false)
         {
             if (string.IsNullOrWhiteSpace(systemName))
@@ -100,6 +104,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;Market&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<Market> GetMarket(long marketId, int cacheMinutes = 5, bool ignoreCache = false)
         {
             return await GetMarket(marketId, null, cacheMinutes, ignoreCache).ConfigureAwait(false);
@@ -111,6 +117,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;Market&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<Market> GetMarket(long marketId, CancellationTokenSource cancelToken, int cacheMinutes = 5, bool ignoreCache = false)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>
@@ -126,6 +134,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;Market&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<Market> GetMarket(string systemName, string stationName, int cacheMinutes = 5, bool ignoreCache = false)
         {
             return await GetMarket(systemName, stationName, null, cacheMinutes, ignoreCache).ConfigureAwait(false);
@@ -138,6 +148,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;Market&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<Market> GetMarket(string systemName, string stationName, CancellationTokenSource cancelToken, int cacheMinutes = 5, bool ignoreCache = false)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>
@@ -180,6 +192,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;Shipyard&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<Shipyard> GetShipyard(long marketId, int cacheMinutes = 5, bool ignoreCache = false)
         {
             return await GetShipyard(marketId, null, cacheMinutes, ignoreCache).ConfigureAwait(false);
@@ -191,6 +205,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;Shipyard&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<Shipyard> GetShipyard(long marketId, CancellationTokenSource cancelToken, int cacheMinutes = 5, bool ignoreCache = false)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>
@@ -206,6 +222,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;Shipyard&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<Shipyard> GetShipyard(string systemName, string stationName, int cacheMinutes = 5, bool ignoreCache = false)
         {
             return await GetShipyard(systemName, stationName, null, cacheMinutes, ignoreCache).ConfigureAwait(false);
@@ -218,6 +236,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;Shipyard&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<Shipyard> GetShipyard(string systemName, string stationName, CancellationTokenSource cancelToken, int cacheMinutes = 5, bool ignoreCache = false)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>
@@ -260,6 +280,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;StationOutfitting&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<StationOutfitting> GetOutfitting(long marketId, int cacheMinutes = 5, bool ignoreCache = false)
         {
             return await GetOutfitting(marketId, null, cacheMinutes, ignoreCache).ConfigureAwait(false);
@@ -271,6 +293,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;StationOutfitting&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<StationOutfitting> GetOutfitting(long marketId, CancellationTokenSource cancelToken, int cacheMinutes = 5, bool ignoreCache = false)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>
@@ -286,6 +310,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;StationOutfitting&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<StationOutfitting> GetOutfitting(string systemName, string stationName, int cacheMinutes = 5, bool ignoreCache = false)
         {
             return await GetOutfitting(systemName, stationName, null, cacheMinutes, ignoreCache).ConfigureAwait(false);
@@ -298,6 +324,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;StationOutfitting&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<StationOutfitting> GetOutfitting(string systemName, string stationName, CancellationTokenSource cancelToken, int cacheMinutes = 5, bool ignoreCache = false)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>
@@ -340,6 +368,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;SystemFactions&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<SystemFactions> GetFactions(string systemName, int cacheMinutes = 5, bool ignoreCache = false)
         {
             return await GetFactions(systemName, null, cacheMinutes, ignoreCache).ConfigureAwait(false);
@@ -351,6 +381,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;SystemFactions&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<SystemFactions> GetFactions(string systemName, CancellationTokenSource cancelToken, int cacheMinutes = 5, bool ignoreCache = false)
         {
             if (string.IsNullOrWhiteSpace(systemName))

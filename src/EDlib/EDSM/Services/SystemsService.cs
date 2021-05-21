@@ -61,6 +61,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;SolarSystem&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<SolarSystem> GetSystem(string systemName, SystemsOptions options, int cacheMinutes = 5, bool ignoreCache = false)
         {
             return await GetSystem(systemName, options, null, cacheMinutes, ignoreCache).ConfigureAwait(false);
@@ -73,6 +75,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;SolarSystem&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<SolarSystem> GetSystem(string systemName, SystemsOptions options, CancellationTokenSource cancelToken, int cacheMinutes = 5, bool ignoreCache = false)
         {
             if (string.IsNullOrWhiteSpace(systemName))
@@ -112,6 +116,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystems(string[] systemNames, SystemsOptions options, int cacheMinutes = 5, bool ignoreCache = false)
         {
             return await GetSystems(systemNames, options, null, cacheMinutes, ignoreCache).ConfigureAwait(false);
@@ -124,6 +130,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystems(string[] systemNames, SystemsOptions options, CancellationTokenSource cancelToken, int cacheMinutes = 5, bool ignoreCache = false)
         {
             if (systemNames?.Any() == false)
@@ -169,6 +177,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystemsInCube(string systemName, int size, SystemsOptions options, int cacheMinutes = 5, bool ignoreCache = false)
         {
             return await GetSystemsInCube(systemName, size, options, null, cacheMinutes, ignoreCache).ConfigureAwait(false);
@@ -182,6 +192,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystemsInCube(string systemName, int size, SystemsOptions options, CancellationTokenSource cancelToken, int cacheMinutes = 5, bool ignoreCache = false)
         {
             if (string.IsNullOrWhiteSpace(systemName))
@@ -228,6 +240,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystemsInSphere(string systemName, int radius, int minRadius, SystemsOptions options, int cacheMinutes = 5, bool ignoreCache = false)
         {
             return await GetSystemsInSphere(systemName, radius, minRadius, options, null, cacheMinutes, ignoreCache).ConfigureAwait(false);
@@ -242,6 +256,8 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
+        /// <exception cref="ArgumentNullException">Required argument is missing.</exception>
         public async Task<(List<SolarSystem> systems, DateTime updated)> GetSystemsInSphere(string systemName, int radius, int minRadius, SystemsOptions options, CancellationTokenSource cancelToken, int cacheMinutes = 5, bool ignoreCache = false)
         {
             if (string.IsNullOrWhiteSpace(systemName))

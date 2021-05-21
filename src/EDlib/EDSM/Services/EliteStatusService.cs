@@ -36,6 +36,7 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
         public async Task<(EliteStatus status, DateTime updated)> GetData(int cacheMinutes = 5, bool ignoreCache = false)
         {
             return await GetData(null, cacheMinutes, ignoreCache).ConfigureAwait(false);
@@ -46,6 +47,7 @@ namespace EDlib.EDSM
         /// <param name="cacheMinutes">The number of minutes to cache the data.</param>
         /// <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
         /// <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
         public async Task<(EliteStatus status, DateTime updated)> GetData(CancellationTokenSource cancelToken, int cacheMinutes = 5, bool ignoreCache = false)
         {
             if (cacheMinutes < 5) cacheMinutes = 5;

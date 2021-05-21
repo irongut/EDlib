@@ -34,6 +34,7 @@ namespace EDlib.INARA
         /// <param name="input">The data for an INARA API request.</param>
         /// <param name="options">Options for download.</param>
         /// <returns>Task&lt;(string, DateTime)&gt;<br /></returns>
+        /// <exception cref="APIException">Errors from the API called.</exception>
         public async Task<(string data, DateTime updated)> GetData(InaraHeader header, IList<InaraEvent> input, DownloadOptions options)
         {
             // download data
