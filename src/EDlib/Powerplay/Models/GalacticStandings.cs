@@ -11,15 +11,12 @@ namespace EDlib.Powerplay
     public class GalacticStandings
     {
         /// <summary>Gets the Powerplay cycle number.</summary>
-        /// <value>The Powerplay cycle.</value>
         public int Cycle { get; }
 
         /// <summary>Gets the date and time the Galactic Standings were last updated.</summary>
-        /// <value>When the Standings were last updated.</value>
         public DateTime LastUpdated { get; }
 
-        /// <summary>Gets the Galactic Standings.</summary>
-        /// <value>A list of PowerStanding objects.</value>
+        /// <summary>The Galactic Standings - a list of PowerStanding objects.</summary>
         public List<PowerStanding> Standings { get; }
 
         /// <summary>Initializes a new instance of the <see cref="GalacticStandings" /> class.</summary>

@@ -2,111 +2,85 @@
 
 namespace EDlib.Powerplay
 {
-    /// <summary>Contains a Power's statistics, ethos and benefits data.</summary>
+    /// <summary>Represents a Power's statistics, ethos and benefits data.</summary>
     public class PowerDetails
     {
-        /// <summary>Gets or sets a unique identifier for the Power.</summary>
-        /// <value>The unique identifier for the Power.</value>
+        /// <summary>The unique identifier for the Power.</summary>
         public int Id { get; }
 
-        /// <summary>Gets or sets a short name for the Power.</summary>
-        /// <value>The Power's short name.</value>
+        /// <summary>The short name for the Power.</summary>
         public string ShortName { get; }
 
-        /// <summary>Gets the name of the Power's headquarters system.</summary>
-        /// <value>The name of the Power's headquarters.</value>
+        /// <summary>The name of the Power's headquarters system.</summary>
         public string HQ { get; }
 
-        /// <summary>Gets the year the Power was born.</summary>
-        /// <value>The year the Power was born..</value>
+        /// <summary>The year the Power was born.</summary>
         public int YearOfBirth { get; }
 
-        /// <summary>Gets the Power's allegiance.</summary>
-        /// <value>The Power's allegiance.</value>
+        /// <summary>The Power's allegiance.</summary>
         public string Allegiance { get; }
 
-        /// <summary>Gets the Power's preparation ethos.</summary>
-        /// <value>The Power's preparation ethos.</value>
+        /// <summary>The Power's preparation ethos.</summary>
         public string PreparationEthos { get; }
 
-        /// <summary>Gets the description of the Power's preparation ethos.</summary>
-        /// <value>The description of the preparation ethos.</value>
+        /// <summary>Description of the Power's preparation ethos.</summary>
         public string PreparationText { get; }
 
-        /// <summary>Gets the Power's expansion ethos.</summary>
-        /// <value>The Power's expansion ethos.</value>
+        /// <summary>The Power's expansion ethos.</summary>
         public string ExpansionEthos { get; }
 
-        /// <summary>Gets the description of the Power's expansion ethos.</summary>
-        /// <value>The description of the expansion ethos.</value>
+        /// <summary>Description of the Power's expansion ethos.</summary>
         public string ExpansionText { get; }
 
-        /// <summary>Gets the government types that help the Power's expansion.</summary>
-        /// <value>The government types that help expansion.</value>
+        /// <summary>The government types that help the Power's expansion.</summary>
         public string ExpansionStrongGovernment { get; }
 
-        /// <summary>Gets the government types that hinder the Power's expansion.</summary>
-        /// <value>The government types that hinder expansion.</value>
+        /// <summary>The government types that hinder the Power's expansion.</summary>
         public string ExpansionWeakGovernment { get; }
 
-        /// <summary>Gets the Power's control ethos.</summary>
-        /// <value>The Power's control ethos.</value>
+        /// <summary>The Power's control ethos.</summary>
         public string ControlEthos { get; }
 
-        /// <summary>Gets the description of the Power's control ethos.</summary>
-        /// <value>The description of the control ethos.</value>
+        /// <summary>Description of the Power's control ethos.</summary>
         public string ControlText { get; }
 
-        /// <summary>Gets the government types that help the Power control their domain.</summary>
-        /// <value>The government types that help with control.</value>
+        /// <summary>The government types that help the Power control their domain.</summary>
         public string ControlStrongGovernment { get; }
 
-        /// <summary>Gets the government types that hinder the Power control their domain.</summary>
-        /// <value>The government types that hinder with control.</value>
+        /// <summary>The government types that hinder the Power controlling their domain.</summary>
         public string ControlWeakGovernment { get; }
 
-        /// <summary>Gets a description of any effects in the Power's headquarters system.</summary>
-        /// <value>A description of any effects in the Power's headquarters.</value>
+        /// <summary>Any effects the Power has on their headquarters system.</summary>
         public string HQSystemEffect { get; }
 
-        /// <summary>Gets a description of the effects a Power has on systems they control.</summary>
-        /// <value>A description of the effects on systems the Power controls.</value>
+        /// <summary>The effects a Power has on systems they control.</summary>
         public string ControlSystemEffect { get; }
 
-        /// <summary>Gets a description of the effects a Power has on Alliance systems they exploit.</summary>
-        /// <value>A description of the effects on Alliance systems the Power exploits.</value>
+        /// <summary>The effects a Power has on Alliance systems they exploit.</summary>
         public string AllianceExploitedEffect { get; }
 
-        /// <summary>Gets a description of the effects a Power has on Empire systems they exploit.</summary>
-        /// <value>A description of the effects on Empire systems the Power exploits.</value>
+        /// <summary>The effects a Power has on Empire systems they exploit.</summary>
         public string EmpireExploitedEffect { get; }
 
-        /// <summary>Gets a description of the effects a Power has on Federation systems they exploit.</summary>
-        /// <value>A description of the effects on Federation systems the Power exploits.</value>
+        /// <summary>The effects a Power has on Federation systems they exploit.</summary>
         public string FederationExploitedEffect { get; }
 
-        /// <summary>Gets a description of the effects a Power has on Independent systems they exploit.</summary>
-        /// <value>A description of the effects on Independent systems the Power exploits.</value>
+        /// <summary>The effects a Power has on Independent systems they exploit.</summary>
         public string IndependentExploitedEffect { get; }
 
-        /// <summary>Gets a description of the benefits to a Commander at rank 1.</summary>
-        /// <value>A description of the rank 1 benefits.</value>
+        /// <summary>The benefits of pledging for a Commander at rank 1.</summary>
         public string Rating1 { get; }
 
-        /// <summary>Gets a description of the benefits to a Commander at rank 2.</summary>
-        /// <value>A description of the rank 2 benefits.</value>
+        /// <summary>The benefits of pledging for a Commander at rank 2.</summary>
         public string Rating2 { get; }
 
-        /// <summary>Gets a description of the benefits to a Commander at rank 3.</summary>
-        /// <value>A description of the rank 3 benefits.</value>
+        /// <summary>The benefits of pledging for a Commander at rank 3.</summary>
         public string Rating3 { get; }
 
-        /// <summary>Gets a description of the benefits to a Commander at rank 4.</summary>
-        /// <value>A description of the rank 4 benefits.</value>
+        /// <summary>The benefits of pledging for a Commander at rank 4.</summary>
         public string Rating4 { get; }
 
-        /// <summary>Gets a description of the benefits to a Commander at rank 5.</summary>
-        /// <value>A description of the rank 5 benefits.</value>
+        /// <summary>The benefits of pledging for a Commander at rank 5.</summary>
         public string Rating5 { get; }
 
         /// <summary>Initializes a new instance of the <see cref="PowerDetails" /> class.</summary>

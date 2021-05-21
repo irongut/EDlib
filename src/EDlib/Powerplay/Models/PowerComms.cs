@@ -2,23 +2,19 @@
 
 namespace EDlib.Powerplay
 {
-    /// <summary>Contains the comms data for a Power - Reddit Sub and Discord / Slack servers.</summary>
+    /// <summary>Contains the comms data for a Power - Reddit Sub and Discord / Slack server.</summary>
     public class PowerComms
     {
-        /// <summary>Gets or sets a unique identifier for the Power.</summary>
-        /// <value>The unique identifier for the Power.</value>
+        /// <summary>The unique identifier for the Power.</summary>
         public int Id { get; set; }
 
-        /// <summary>Gets or sets a short name for the Power.</summary>
-        /// <value>The Power's short name.</value>
+        /// <summary>The short name for the Power.</summary>
         public string ShortName { get; set; }
 
-        /// <summary>Gets or sets the URL for the Power's subreddit.</summary>
-        /// <value>The Power's subreddit URL.</value>
+        /// <summary>The URL for the Power's subreddit.</summary>
         public string Reddit { get; set; }
 
-        /// <summary>Gets or sets the join link for the Power's Discord or Slack server.</summary>
-        /// <value>The Power's Discord or Slack server join link.</value>
+        /// <summary>The join link for the Power's Discord or Slack server.</summary>
         public string Comms { get; set; }
 
         /// <summary>Initializes a new instance of the <see cref="PowerComms" /> class.</summary>

@@ -14,47 +14,37 @@ namespace EDlib.Powerplay
         none
     }
 
-    /// <summary>Contains the Galactic Standings data for a Power.</summary>
+    /// <summary>Represents the Galactic Standings data for a Power.</summary>
     public class PowerStanding
     {
-        /// <summary>Gets or sets a unique identifier for the Power.</summary>
-        /// <value>The unique identifier for the Power.</value>
+        /// <summary>The unique identifier for the Power.</summary>
         public int Id { get; set; }
 
-        /// <summary>Gets or sets the Power's name.</summary>
-        /// <value>The Power's name.</value>
+        /// <summary>The Power's name.</summary>
         public string Name { get; set; }
 
-        /// <summary>Gets or sets the Power's position in the Galactic Standings.</summary>
-        /// <value>The Power's position in the Galactic Standings.</value>
+        /// <summary>The Power's position in the Galactic Standings.</summary>
         public int Position { get; set; }
 
-        /// <summary>Gets or sets the Power's change in the Galactic Standings since the previous cycle.</summary>
-        /// <value>The Power's change in the standings since the previous cycle.</value>
+        /// <summary>The Power's change in the Galactic Standings since the previous cycle.</summary>
         public StandingChange Change { get; set; }
 
-        /// <summary>Gets or sets a value indicating whether this Power is turmoil.</summary>
-        /// <value><c>true</c> if turmoil; otherwise, <c>false</c>.</value>
+        /// <summary>Indicates whether this Power is turmoil.</summary>
         public bool Turmoil { get; set; }
 
-        /// <summary>Gets or sets the Power's allegiance - Alliance, Empire, Federation or Independent.</summary>
-        /// <value>The Power's allegiance.</value>
+        /// <summary>The Power's allegiance - Alliance, Empire, Federation or Independent.</summary>
         public string Allegiance { get; set; }
 
-        /// <summary>Gets or sets a short name for the Power.</summary>
-        /// <value>The Power's short name.</value>
+        /// <summary>The short name for the Power.</summary>
         public string ShortName { get; set; }
 
-        /// <summary>Gets or sets the Powerplay cycle.</summary>
-        /// <value>The Powerplay cycle.</value>
+        /// <summary>The Powerplay cycle.</summary>
         public string Cycle { get; set; }
 
-        /// <summary>Gets the date and time the Power's standing was last updated.</summary>
-        /// <value>When the Power's standing was last updated.</value>
+        /// <summary>The date and time the Power's standing was last updated.</summary>
         public DateTime LastUpdated { get; set; }
 
-        /// <summary>Gets the Power's change in the Galactic Standings since the previous cycle as a string.</summary>
-        /// <value>The Power's change in the standings since the previous cycle.</value>
+        /// <summary>The Power's change in the Galactic Standings since the previous cycle as a string.</summary>
         public string ChangeString
         {
             get
