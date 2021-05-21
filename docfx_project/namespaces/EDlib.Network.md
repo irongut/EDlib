@@ -5,7 +5,7 @@ summary: *content
 The `EDlib.Network` namespace contains classes and interfaces used to get data from the Internet.
 
 ## DownloadOptions
-Options structure used when calling the download services.
+Options structure for download services.
 
 ## IDownloadService
 Interface for the services used to download data.

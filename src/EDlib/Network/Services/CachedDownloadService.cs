@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EDlib.Network
 {
-    /// <summary>Class used to download and cache data.</summary>
+    /// <summary>Service used to download and cache data.</summary>
     public sealed class CachedDownloadService : IDownloadService
     {
         private static readonly CachedDownloadService instance = new CachedDownloadService();
@@ -43,7 +43,7 @@ namespace EDlib.Network
         }
 
         /// <summary>
-        /// Gets data from an API, caches the data and when it was last updated with the option to cancel the request.
+        /// Gets data from an API, caches the data and when it was last updated with the option to cancel the request.<br/>
         /// If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.
         /// </summary>
         /// <param name="url">The URL for downloading the data.</param>
@@ -111,7 +111,7 @@ namespace EDlib.Network
         }
 
         /// <summary>
-        /// Posts a request to an API, caches the response and when it was last updated with the option to cancel the request.
+        /// Posts a request to an API, caches the response and when it was last updated with the option to cancel the request.<br/>
         /// If a copy of the response exists in the cache and has not expired it will be returned, otherwise the API will be queried.
         /// </summary>
         /// <param name="url">The URL of the API.</param>

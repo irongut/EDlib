@@ -4,11 +4,11 @@ using System.Text;
 
 namespace EDlib.Network
 {
-    /// <summary>Helper class for generating an SHA256 hash.</summary>
+    /// <summary>A helper class for generating an SHA256 hash.</summary>
     public static class Sha256Helper
     {
         /// <summary>Generates the SHA256 hash of a string.</summary>
-        /// <param name="input">The string that will be hashed.</param>
+        /// <param name="input">The string to be hashed.</param>
         /// <returns>string</returns>
         public static string GenerateHash(string input)
         {
