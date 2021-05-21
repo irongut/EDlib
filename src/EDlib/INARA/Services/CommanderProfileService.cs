@@ -46,7 +46,7 @@ namespace EDlib.INARA
         }
 
         /// <summary>Gets basic information about a Commander from the INARA API.</summary>
-        /// <param name="searchName">The Comander's name to search for. If an exact match is not found a number of partial matches may be returned.</param>
+        /// <param name="searchName">The Commander's name to search for. If an exact match is not found a number of partial matches may be returned.</param>
         /// <param name="cacheMinutes">How long to cache the data in minutes, minimum 5 minutes.</param>
         /// <param name="identity">The <see cref="InaraIdentity" /> credentials required to access the INARA API.</param>
         /// <param name="cancelToken">A cancellation token.</param>
