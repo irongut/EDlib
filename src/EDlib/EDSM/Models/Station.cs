@@ -15,7 +15,7 @@ namespace EDlib.EDSM
         [JsonProperty("id")]
         public long Id { get; set; }
 
-        /// <summary>The market ID (use this ID for EDSM queries).</summary>
+        /// <summary>The market ID of the station (use this ID for EDSM queries).</summary>
         [Preserve(Conditional = true)]
         [JsonProperty("marketId")]
         public long MarketId { get; set; }
