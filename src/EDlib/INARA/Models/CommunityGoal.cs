@@ -1,4 +1,5 @@
 ﻿using EDlib.Common;
+using EDlib.Platform;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -150,6 +151,10 @@ namespace EDlib.INARA
         public string Topic { get; private set; }
 
         #endregion
+
+        /// <summary>Initializes a new empty instance of the <see cref="CommunityGoal" /> class.</summary>
+        [Preserve(Conditional = true)]
+        public CommunityGoal() { }
 
         /// <summary>Determines the Topic for a Community Goal by analysing it using a Bag of Words technique.</summary>
         /// <param name="topics">List of <see cref="Topic" /> to use when classifying article.</param>
