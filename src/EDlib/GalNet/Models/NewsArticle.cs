@@ -15,6 +15,10 @@ namespace EDlib.GalNet
     {
         #region Properties
 
+        /// <summary>Frontier Developments Id for the News article.</summary>
+        [JsonProperty(PropertyName = "uid")]
+        public string Id { get; set; }
+
         private string _title;
         /// <summary>The title of the News article.</summary>
         [JsonProperty(PropertyName = "title")]
@@ -36,7 +40,7 @@ namespace EDlib.GalNet
         public string Body
         {
             get { return _body; }
-            internal set
+            set
             {
                 if (_body != value)
                 {
@@ -45,26 +49,16 @@ namespace EDlib.GalNet
             }
         }
 
-        /// <summary>The date and time when the article was published.</summary>
+        /// <summary>The date when the article was published.</summary>
         [JsonProperty(PropertyName = "date")]
-        public DateTime PublishDateTime { get; internal set; }
-
-        /// <summary>Frontier Developments Id for the News article.</summary>
-        [JsonProperty(PropertyName = "nid")]
-        public int Id { get; internal set; }
+        public DateTime PublishDateTime { get; set; }
 
         /// <summary>
-        ///   <para>
-        ///  A value used by Frontier Developments to display an image with each News article.
-        ///  Note: This is not a url or filename and is not guaranteed to contain a value.
-        ///   </para>
+        ///   Link to the Galnet article on community.elitedangerous.com.<br/>
+        ///   Does not include the server part of the URL.
         /// </summary>
-        [JsonProperty(PropertyName = "image")]
-        public string FDImageName { get; internal set; }
-
-        /// <summary>A normalised version of the article title used as a unique identifier by Frontier Developments.</summary>
-        [JsonProperty(PropertyName = "slug")]
-        public string Slug { get; internal set; }
+        [JsonProperty(PropertyName = "link")]
+        public string Link { get; set; }
 
         /// <summary>The topic of the News article, generated using a Bag of Words technique.</summary>
         public string Topic { get; private set; }
@@ -140,7 +134,7 @@ namespace EDlib.GalNet
             List<string> sentences = new List<string>
             {
                 Title.Trim().ToLower(),
-                Slug.Replace("-", " ").Trim().ToLower()
+                Title.Trim().ToLower()
             };
             foreach (string sentence in Regex.Split(Body, @"(?<=[\w\s](?:[\.\!\? ]+[\x20]*[\x22\xBB]*))(?:\s+(?![\x22\xBB](?!\w)))"))
             {
