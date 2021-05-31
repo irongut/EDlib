@@ -22,13 +22,13 @@ namespace UnitTests
             Assert.AreEqual(1, newsList.Count);
             Assert.IsTrue(updated > DateTime.MinValue);
             NewsArticle article = newsList[0];
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Id));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Title));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Body));
             Assert.IsTrue(article.PublishDateTime > DateTime.MinValue);
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.PublishDate));
-            Assert.IsTrue(article.Id > 0);
-            //Assert.IsFalse(string.IsNullOrWhiteSpace(article.FDImageName)); not guaranteed to be present :(
-            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Slug));
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Link));
+            Assert.IsTrue(article.Link.Contains(article.Id, StringComparison.OrdinalIgnoreCase));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Topic));
             Assert.IsTrue(article.Tags.Count > 0);
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Tags[0]));
@@ -44,13 +44,13 @@ namespace UnitTests
             Assert.IsTrue(newsList.Count > 1);
             Assert.IsTrue(updated > DateTime.MinValue);
             NewsArticle article = newsList[0];
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Id));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Title));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Body));
             Assert.IsTrue(article.PublishDateTime > DateTime.MinValue);
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.PublishDate));
-            Assert.IsTrue(article.Id > 0);
-            //Assert.IsFalse(string.IsNullOrWhiteSpace(article.FDImageName)); not guaranteed to be present :(
-            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Slug));
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Link));
+            Assert.IsTrue(article.Link.Contains(article.Id, StringComparison.OrdinalIgnoreCase));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Topic));
             Assert.IsTrue(article.Tags.Count > 0);
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Tags[0]));
@@ -68,13 +68,13 @@ namespace UnitTests
             Assert.AreEqual(1, newsList.Count);
             Assert.IsTrue(updated > DateTime.MinValue);
             NewsArticle article = newsList[0];
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Id));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Title));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Body));
             Assert.IsTrue(article.PublishDateTime > DateTime.MinValue);
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.PublishDate));
-            Assert.IsTrue(article.Id > 0);
-            //Assert.IsFalse(string.IsNullOrWhiteSpace(article.FDImageName)); not guaranteed to be present :(
-            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Slug));
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Link));
+            Assert.IsTrue(article.Link.Contains(article.Id, StringComparison.OrdinalIgnoreCase));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Topic));
             Assert.IsTrue(article.Tags.Count > 0);
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Tags[0]));
