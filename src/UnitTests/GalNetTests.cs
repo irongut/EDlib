@@ -17,6 +17,13 @@ namespace UnitTests
         [TestMethod]
         public async Task GalNetSingleArticleTest()
         {
+            // tests disabled until new GalNet feed is ready
+            if (true)
+            {
+                Assert.Inconclusive("Skipping test because new GalNet feed is not ready yet.");
+                return;
+            }
+
             GalNetService gnService = GalNetService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             (List<NewsArticle> newsList, DateTime updated) = await gnService.GetData(1, 1, new CancellationTokenSource()).ConfigureAwait(false);
             Assert.AreEqual(1, newsList.Count);
@@ -39,6 +46,13 @@ namespace UnitTests
         [TestMethod]
         public async Task GalNetNewsTest()
         {
+            // tests disabled until new GalNet feed is ready
+            if (true)
+            {
+                Assert.Inconclusive("Skipping test because new GalNet feed is not ready yet.");
+                return;
+            }
+
             GalNetService gnService = GalNetService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             (List<NewsArticle> newsList, DateTime updated) = await gnService.GetData(1, new CancellationTokenSource()).ConfigureAwait(false);
             Assert.IsTrue(newsList.Count > 1);
@@ -61,6 +75,13 @@ namespace UnitTests
         [TestMethod]
         public async Task AlternateBoWTest()
         {
+            // tests disabled until new GalNet feed is ready
+            if (true)
+            {
+                Assert.Inconclusive("Skipping test because new GalNet feed is not ready yet.");
+                return;
+            }
+
             GalNetService gnService = GalNetService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             string BoW = LoadBoW("UnitTests.Resources.NewsBoW.json");
             string ignoreBoW = LoadBoW("UnitTests.Resources.NewsFalseBoW.json");
