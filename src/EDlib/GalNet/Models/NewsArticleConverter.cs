@@ -61,6 +61,9 @@ namespace EDlib.GalNet
             reader.Read();
             switch (name)
             {
+                case "uid":
+                    item.Id = (string)reader.Value;
+                    break;
                 case "title":
                     item.Title = (string)reader.Value;
                     break;
@@ -70,14 +73,8 @@ namespace EDlib.GalNet
                 case "date":
                     item.PublishDateTime = Convert.ToDateTime(reader.Value, new CultureInfo("en-GB"));
                     break;
-                case "nid":
-                    item.Id = Convert.ToInt32(reader.Value);
-                    break;
-                case "image":
-                    item.FDImageName = (string)reader.Value;
-                    break;
-                case "slug":
-                    item.Slug = (string)reader.Value;
+                case "link":
+                    item.Link = (string)reader.Value;
                     break;
             }
         }

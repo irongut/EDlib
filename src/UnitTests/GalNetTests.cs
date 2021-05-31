@@ -17,18 +17,25 @@ namespace UnitTests
         [TestMethod]
         public async Task GalNetSingleArticleTest()
         {
+            // tests disabled until new GalNet feed is ready
+            if (true)
+            {
+                Assert.Inconclusive("Skipping test because new GalNet feed is not ready yet.");
+                return;
+            }
+
             GalNetService gnService = GalNetService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             (List<NewsArticle> newsList, DateTime updated) = await gnService.GetData(1, 1, new CancellationTokenSource()).ConfigureAwait(false);
             Assert.AreEqual(1, newsList.Count);
             Assert.IsTrue(updated > DateTime.MinValue);
             NewsArticle article = newsList[0];
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Id));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Title));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Body));
             Assert.IsTrue(article.PublishDateTime > DateTime.MinValue);
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.PublishDate));
-            Assert.IsTrue(article.Id > 0);
-            //Assert.IsFalse(string.IsNullOrWhiteSpace(article.FDImageName)); not guaranteed to be present :(
-            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Slug));
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Link));
+            Assert.IsTrue(article.Link.Contains(article.Id, StringComparison.OrdinalIgnoreCase));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Topic));
             Assert.IsTrue(article.Tags.Count > 0);
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Tags[0]));
@@ -39,18 +46,25 @@ namespace UnitTests
         [TestMethod]
         public async Task GalNetNewsTest()
         {
+            // tests disabled until new GalNet feed is ready
+            if (true)
+            {
+                Assert.Inconclusive("Skipping test because new GalNet feed is not ready yet.");
+                return;
+            }
+
             GalNetService gnService = GalNetService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             (List<NewsArticle> newsList, DateTime updated) = await gnService.GetData(1, new CancellationTokenSource()).ConfigureAwait(false);
             Assert.IsTrue(newsList.Count > 1);
             Assert.IsTrue(updated > DateTime.MinValue);
             NewsArticle article = newsList[0];
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Id));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Title));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Body));
             Assert.IsTrue(article.PublishDateTime > DateTime.MinValue);
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.PublishDate));
-            Assert.IsTrue(article.Id > 0);
-            //Assert.IsFalse(string.IsNullOrWhiteSpace(article.FDImageName)); not guaranteed to be present :(
-            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Slug));
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Link));
+            Assert.IsTrue(article.Link.Contains(article.Id, StringComparison.OrdinalIgnoreCase));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Topic));
             Assert.IsTrue(article.Tags.Count > 0);
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Tags[0]));
@@ -61,6 +75,13 @@ namespace UnitTests
         [TestMethod]
         public async Task AlternateBoWTest()
         {
+            // tests disabled until new GalNet feed is ready
+            if (true)
+            {
+                Assert.Inconclusive("Skipping test because new GalNet feed is not ready yet.");
+                return;
+            }
+
             GalNetService gnService = GalNetService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
             string BoW = LoadBoW("UnitTests.Resources.NewsBoW.json");
             string ignoreBoW = LoadBoW("UnitTests.Resources.NewsFalseBoW.json");
@@ -68,13 +89,13 @@ namespace UnitTests
             Assert.AreEqual(1, newsList.Count);
             Assert.IsTrue(updated > DateTime.MinValue);
             NewsArticle article = newsList[0];
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Id));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Title));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Body));
             Assert.IsTrue(article.PublishDateTime > DateTime.MinValue);
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.PublishDate));
-            Assert.IsTrue(article.Id > 0);
-            //Assert.IsFalse(string.IsNullOrWhiteSpace(article.FDImageName)); not guaranteed to be present :(
-            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Slug));
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Link));
+            Assert.IsTrue(article.Link.Contains(article.Id, StringComparison.OrdinalIgnoreCase));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Topic));
             Assert.IsTrue(article.Tags.Count > 0);
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Tags[0]));

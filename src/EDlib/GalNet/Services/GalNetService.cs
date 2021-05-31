@@ -11,14 +11,20 @@ using System.Threading.Tasks;
 
 namespace EDlib.GalNet
 {
-    /// <summary>Gets the GalNet News and uses a Bag of Words technique to determine a Topic and content Tags for each article.</summary>
+    /// <summary>
+    ///   <para>
+    ///     Gets the latest GalNet News from an API provided by Taranis Software.<br/>
+    ///     Uses a Bag of Words technique to determine a Topic and content Tags for each article.
+    ///   </para>
+    ///   <para>Please cache for a minimum of 3 hours.</para>
+    /// </summary>
     public sealed class GalNetService
     {
         private static readonly GalNetService instance = new GalNetService();
 
         private static IDownloadService dService;
 
-        private const string GalNetURL = "https://elitedangerous-website-backend-production.elitedangerous.com/api/galnet?_format=json";
+        private const string GalNetURL = "https://api.taranissoftware.com/elite-dangerous/galnet-latest.json";
 
         private readonly List<NewsArticle> galnetNews;
         private DateTime lastUpdated;
@@ -39,7 +45,7 @@ namespace EDlib.GalNet
         }
 
         /// <summary>Gets the 20 most recent GalNet News articles.</summary>
-        /// <param name="expiryHours">The number of hours to cache the data.</param>
+        /// <param name="expiryHours">The number of hours to cache the data, minimum 3 hours.</param>
         /// <param name="cancelToken">A cancellation token.</param>
         /// <param name="BoW">An optional alternative Bag of Words to use when classifying articles as a json string.</param>
         /// <param name="ignoreBoW">An optional alternative Bag of Words to ignore when classifying articles as a json string.</param>
@@ -57,7 +63,7 @@ namespace EDlib.GalNet
 
         /// <summary>Gets the most recent GalNet News articles.</summary>
         /// <param name="articleCount">The number of articles to return.</param>
-        /// <param name="expiryHours">The number of hours to cache the data.</param>
+        /// <param name="expiryHours">The number of hours to cache the data, minimum 3 hours.</param>
         /// <param name="cancelToken">A cancellation token.</param>
         /// <param name="BoW">An optional alternative Bag of Words to use when classifying articles as a json string.</param>
         /// <param name="ignoreBoW">An optional alternative Bag of Words to ignore when classifying articles as a json string.</param>
@@ -70,6 +76,8 @@ namespace EDlib.GalNet
                                                                               string ignoreBoW = null,
                                                                               bool ignoreCache = false)
         {
+            if (expiryHours < 3) expiryHours = 3;
+
             TimeSpan expiry = TimeSpan.FromHours(expiryHours);
             if (galnetNews?.Any() == false || galnetNews.Count < articleCount || lastUpdated + expiry < DateTime.Now)
             {
