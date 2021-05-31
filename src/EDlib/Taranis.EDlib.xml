@@ -1283,6 +1283,9 @@
         <member name="P:EDlib.INARA.CommunityGoal.Topic">
             <summary>The topic for this Community Goal, generated using a Bag of Words technique.</summary>
         </member>
+        <member name="M:EDlib.INARA.CommunityGoal.#ctor">
+            <summary>Initializes a new empty instance of the <see cref="T:EDlib.INARA.CommunityGoal" /> class.</summary>
+        </member>
         <member name="M:EDlib.INARA.CommunityGoal.ClassifyCG(System.Collections.Generic.List{EDlib.Common.Topic})">
             <summary>Determines the Topic for a Community Goal by analysing it using a Bag of Words technique.</summary>
             <param name="topics">List of <see cref="P:EDlib.INARA.CommunityGoal.Topic" /> to use when classifying article.</param>
