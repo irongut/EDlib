@@ -1,4 +1,5 @@
 ﻿using EDlib.Common;
+using EDlib.Platform;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -21,23 +22,28 @@ namespace EDlib.INARA
         #region Properties
 
         /// <summary>The name of the Community goal.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "communitygoalName")]
         public string CommunityGoalName { get; internal set; }
 
         /// <summary>The ID of the community goal.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "communitygoalGameID")]
         public int CommunityGoalGameID { get; internal set; }
 
         /// <summary>The name of the system where the Community Goal taking place.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "starsystemName")]
         public string StarsystemName { get; internal set; }
 
         /// <summary>The name of the station where the Community Goal taking place.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "stationName")]
         public string StationName { get; internal set; }
 
         private DateTime _goalExpiry;
         /// <summary>The date and time when the Community Goal ends.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "goalExpiry")]
         public DateTime GoalExpiry
         {
@@ -53,11 +59,13 @@ namespace EDlib.INARA
         }
 
         /// <summary>The current tier reached.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "tierReached")]
         public int TierReached { get; internal set; }
 
         private int _tierMax;
         /// <summary>The maximum number of tiers. If reached, the Community Goal ends.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "tierMax")]
         public int TierMax
         {
@@ -74,15 +82,18 @@ namespace EDlib.INARA
         }
 
         /// <summary>The number of contributors to the Community Goal.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "contributorsNum")]
         public int ContributorsNum { get; internal set; }
 
         /// <summary>The total contributions to the Community Goal.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "contributionsTotal")]
         public long ContributionsTotal { get; internal set; }
 
         private bool _isCompleted;
         /// <summary>Whether the Community Goal has ended.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "isCompleted")]
         public bool IsCompleted
         {
@@ -98,27 +109,33 @@ namespace EDlib.INARA
         }
 
         /// <summary>The date and time when INARA last updated this information.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "lastUpdate")]
         public DateTime LastUpdate { get; internal set; }
 
         /// <summary>The objective for the Community Goal.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "goalObjectiveText")]
         public string GoalObjectiveText { get; internal set; }
 
         /// <summary>The reward for the Community Goal.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "goalRewardText")]
         public string GoalRewardText { get; internal set; }
 
         /// <summary>The full description of the Community Goal.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "goalDescriptionText")]
         public string GoalDescriptionText { get; internal set; }
 
         /// <summary>The INARA URL for this Community Goal.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "inaraURL")]
         public string InaraURL { get; internal set; }
 
         private TimeSpan _timeRemaining;
         /// <summary>The time remaining until this Community Goal expires.</summary>
+        [Preserve(Conditional = true)]
         public TimeSpan TimeRemaining
         {
             get { return _timeRemaining; }
@@ -141,15 +158,22 @@ namespace EDlib.INARA
         }
 
         /// <summary>The date and time when the Community Goal ends.</summary>
+        [Preserve(Conditional = true)]
         public double Progress { get; private set; }
 
         /// <summary>The progress of the Community Goal. (Progress x/y Tiers)</summary>
+        [Preserve(Conditional = true)]
         public string ProgressText { get; private set; }
 
         /// <summary>The topic for this Community Goal, generated using a Bag of Words technique.</summary>
+        [Preserve(Conditional = true)]
         public string Topic { get; private set; }
 
         #endregion
+
+        /// <summary>Initializes a new empty instance of the <see cref="CommunityGoal" /> class.</summary>
+        [Preserve(Conditional = true)]
+        public CommunityGoal() { }
 
         /// <summary>Determines the Topic for a Community Goal by analysing it using a Bag of Words technique.</summary>
         /// <param name="topics">List of <see cref="Topic" /> to use when classifying article.</param>
@@ -199,6 +223,7 @@ namespace EDlib.INARA
         ///   <para>Note: TimeRemaining is a public property, use a timer to update TimeRemaining and IsCompleted will update automatically.</para>
         /// </summary>
         /// <param name="propertyName">Name of the property that changed.</param>
+        [Preserve(Conditional = true)]
         protected virtual void OnPropertyChanged(string propertyName)
         {
             var changed = PropertyChanged;
@@ -209,6 +234,7 @@ namespace EDlib.INARA
         }
 
         /// <summary>Returns the Name, System and Objective for a Community Goal as a string.</summary>
+        [Preserve(Conditional = true)]
         public override string ToString()
         {
             return $"{CommunityGoalName} ({StarsystemName}): {GoalObjectiveText}";

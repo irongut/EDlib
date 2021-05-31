@@ -10,15 +10,13 @@
             </summary>
         </member>
         <member name="T:EDlib.BGS.BgsTick">
-            <summary>Data for the BGS Tick.</summary>
+            <summary>Represents the BGS Tick.</summary>
         </member>
         <member name="P:EDlib.BGS.BgsTick.Time">
             <summary>Returns the date and time of the BGS tick.</summary>
-            <value>Date and time of the BGS Tick.</value>
         </member>
         <member name="P:EDlib.BGS.BgsTick.TimeString">
             <summary>Returns the date and time of the BGS tick as a string.</summary>
-            <value>Date and time of the BGS Tick.</value>
         </member>
         <member name="M:EDlib.BGS.BgsTick.#ctor">
             <summary>Initializes a new instance of the <see cref="T:EDlib.BGS.BgsTick" /> class, with the value Unknown for the time string.</summary>
@@ -51,15 +49,12 @@
         </member>
         <member name="P:EDlib.Common.Topic.Name">
             <summary>The topic name.</summary>
-            <value>The topic name.</value>
         </member>
         <member name="P:EDlib.Common.Topic.Terms">
             <summary>The words used to determine if the topic is relevant to the content.</summary>
-            <value>The list of words.</value>
         </member>
         <member name="P:EDlib.Common.Topic.Count">
             <summary>The number of times the terms were found in the content.</summary>
-            <value>The number of times the terms were found.</value>
         </member>
         <member name="M:EDlib.Common.Topic.#ctor(System.String,System.Collections.Generic.List{System.String})">
             <summary>Initializes a new instance of the <see cref="T:EDlib.Common.Topic" /> class.</summary>
@@ -67,7 +62,10 @@
             <param name="terms">The words used to determine if the topic is relevant to the content.</param>
         </member>
         <member name="T:EDlib.EDSM.ControllingFaction">
-            <summary>Represents the BGS faction that controls a system or station returned by EDSM API methods.</summary>
+            <summary>
+              <para>Represents the BGS faction that controls a system or station returned by EDSM System API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.ControllingFaction.Id">
             <summary>
@@ -85,7 +83,10 @@
             <summary>The government type of the faction when returned by the EDSM method.</summary>
         </member>
         <member name="T:EDlib.EDSM.EliteStatus">
-            <summary>Elite: Dangerous server status.</summary>
+            <summary>
+              <para>Represents the Elite: Dangerous server status.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-status-v1">Status v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.EliteStatus.Status">
             <summary>The status code returned by the Elite: Dangerous server.</summary>
@@ -114,7 +115,10 @@
             <returns>A <see cref="T:System.String" /> that represents the server status.</returns>
         </member>
         <member name="T:EDlib.EDSM.Faction">
-            <summary>Represents a BGS faction returned by EDSM System API methods.</summary>
+            <summary>
+              <para>Represents a BGS faction returned by EDSM System API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.Faction.Id">
             <summary>The ID of the faction.</summary>
@@ -153,7 +157,10 @@
             <summary>The date and time when the information was requested.</summary>
         </member>
         <member name="T:EDlib.EDSM.FactionState">
-            <summary>Represents a faction's BGS state returned by EDSM System API methods.</summary>
+            <summary>
+              <para>Represents a faction's BGS state returned by EDSM System API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.FactionState.State">
             <summary>The BGS state.</summary>
@@ -162,7 +169,10 @@
             <summary>The BGS state trend.</summary>
         </member>
         <member name="T:EDlib.EDSM.Market">
-            <summary>Represents a station market returned by EDSM System API methods.</summary>
+            <summary>
+              <para>Represents a station market returned by EDSM System API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.Market.Id">
             <summary>The EDSM internal ID of the market.</summary>
@@ -203,7 +213,10 @@
             <param name="commodities">List of <see cref="T:EDlib.EDSM.Commodity" /> available from this market.</param>
         </member>
         <member name="T:EDlib.EDSM.Commodity">
-            <summary>Represents a market commodity returned by EDSM System API methods.</summary>
+            <summary>
+              <para>Represents a market commodity returned by EDSM System API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.Commodity.Id">
             <summary>The ID of the commodity.</summary>
@@ -227,7 +240,10 @@
             <summary>Stock bracket for the commodity.</summary>
         </member>
         <member name="T:EDlib.EDSM.Shipyard">
-            <summary>Represents a station shipyard returned by EDSM System API methods.</summary>
+            <summary>
+              <para>Represents a station shipyard returned by EDSM System API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.Shipyard.Id">
             <summary>The EDSM internal ID of the shipyard.</summary>
@@ -268,7 +284,10 @@
             <param name="ships">List of <see cref="T:EDlib.EDSM.Ship" /> available from this shipyard.</param>
         </member>
         <member name="T:EDlib.EDSM.Ship">
-            <summary>Represents a ship returned by EDSM System API methods.</summary>
+            <summary>
+              <para>Represents a ship returned by EDSM System API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.Ship.Id">
             <summary>The ship ID.</summary>
@@ -277,7 +296,10 @@
             <summary>The name of the ship.</summary>
         </member>
         <member name="T:EDlib.EDSM.SolarSystem">
-            <summary>Represents a solar system returned by EDSM Systems API methods.</summary>
+            <summary>
+              <para>Represents a solar system returned by EDSM Systems API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-v1">Systems v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.SolarSystem.Name">
             <summary>The name of the system.</summary>
@@ -332,7 +354,10 @@
             <param name="primaryStar">The primary star information.</param>
         </member>
         <member name="T:EDlib.EDSM.Coords">
-            <summary>Galactic coordinates for the system.</summary>
+            <summary>
+              <para>Represents galactic coordinates for a solar system returned by EDSM Systems API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-v1">Systems v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.Coords.X">
             <summary>X coordinate.</summary>
@@ -344,7 +369,10 @@
             <summary>Z coordinate.</summary>
         </member>
         <member name="T:EDlib.EDSM.SystemInfo">
-            <summary>A summary of information about a system.</summary>
+            <summary>
+              <para>A summary of information about a solar system returned by EDSM Systems API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-v1">Systems v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.SystemInfo.Allegiance">
             <summary>The current superpower allegiance of the system.</summary>
@@ -374,7 +402,10 @@
             <summary>The mining reserves present in system.</summary>
         </member>
         <member name="T:EDlib.EDSM.PrimaryStar">
-            <summary>Details of the primary star in a system.</summary>
+            <summary>
+              <para>Represents the primary star in a solar system returned by EDSM Systems API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-v1">Systems v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.PrimaryStar.Type">
             <summary>The type of the primary star. See the EDSM Celestial Bodies FAQ for more info.</summary>
@@ -386,13 +417,16 @@
             <summary>Whether the primary star can be scooped for fuel.</summary>
         </member>
         <member name="T:EDlib.EDSM.Station">
-            <summary>Represents a station returned by EDSM System API methods.</summary>
+            <summary>
+              <para>Represents a station returned by EDSM System API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.Station.Id">
             <summary>The EDSM internal ID of the station.</summary>
         </member>
         <member name="P:EDlib.EDSM.Station.MarketId">
-            <summary>The market ID (use this ID for EDSM queries).</summary>
+            <summary>The market ID of the station (use this ID for EDSM queries).</summary>
         </member>
         <member name="P:EDlib.EDSM.Station.Type">
             <summary>The type of station.</summary>
@@ -437,7 +471,10 @@
             <summary>Location of a planetary outpost.</summary>
         </member>
         <member name="T:EDlib.EDSM.UpdateTime">
-            <summary>Represents when the station details were last updated on ESDM.</summary>
+            <summary>
+              <para>Represents when the station details were last updated on ESDM.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.UpdateTime.Information">
             <summary>The date and time when the station data was last updated on EDSM.</summary>
@@ -452,7 +489,10 @@
             <summary>The date and time when the outfitting data was last updated on EDSM.</summary>
         </member>
         <member name="T:EDlib.EDSM.Body">
-            <summary>Represents the location of a planetary outpost returned by EDSM System API methods.</summary>
+            <summary>
+              <para>Represents the location of a planetary outpost returned by EDSM System API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.Body.Id">
             <summary>The ID of the body.</summary>
@@ -467,7 +507,10 @@
             <summary>The longitude of the planetary outpost if known.</summary>
         </member>
         <member name="T:EDlib.EDSM.StationOutfitting">
-            <summary>Represents an outfitting service returned by EDSM System API methods.</summary>
+            <summary>
+              <para>Represents an outfitting service returned by EDSM System API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.StationOutfitting.Id">
             <summary>The EDSM internal ID of the outfitting service.</summary>
@@ -508,7 +551,10 @@
             <param name="outfitting">List of <see cref="P:EDlib.EDSM.StationOutfitting.Outfitting" /> available from this outfitting service.</param>
         </member>
         <member name="T:EDlib.EDSM.ShipModule">
-            <summary>Represents a ship module returned by EDSM System API methods.</summary>
+            <summary>
+              <para>Represents a ship module returned by EDSM System API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.ShipModule.Id">
             <summary>The module ID.</summary>
@@ -517,7 +563,10 @@
             <summary>The name of the module.</summary>
         </member>
         <member name="T:EDlib.EDSM.SystemFactions">
-            <summary>Lists the factions in a system returned by EDSM System API methods.</summary>
+            <summary>
+              <para>Lists the factions in a system returned by EDSM System API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.SystemFactions.Id">
             <summary>The EDSM internal ID of the system.</summary>
@@ -550,7 +599,10 @@
             <param name="factions">Array of <see cref="T:EDlib.EDSM.Faction" /> in the system.</param>
         </member>
         <member name="T:EDlib.EDSM.SystemsOptions">
-            <summary>EDSM Systems API request options.</summary>
+            <summary>
+              <para>Request options for EDSM Systems API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-v1">Systems v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.SystemsOptions.ShowId">
             <summary>Include the EDSM system ID in the results.</summary>
@@ -582,7 +634,10 @@
             <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
         </member>
         <member name="T:EDlib.EDSM.SystemStations">
-            <summary>Lists the stations in a system returned by EDSM System API methods.</summary>
+            <summary>
+              <para>Lists the stations in a system returned by EDSM System API methods.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+            </summary>
         </member>
         <member name="P:EDlib.EDSM.SystemStations.Id">
             <summary>The EDSM internal ID of the system.</summary>
@@ -611,7 +666,10 @@
             <param name="stations">Array of <see cref="T:EDlib.EDSM.Station" /> in the system.</param>
         </member>
         <member name="T:EDlib.EDSM.EdsmService">
-            <summary>Utility service used by other services to get data from EDSM APIs.</summary>
+            <summary>
+              <para>Utility service used by other services to get data from EDSM APIs.</para>
+              <para>See EDSM <a href="https://www.edsm.net/">API documentation.</a>.</para>
+            </summary>
         </member>
         <member name="M:EDlib.EDSM.EdsmService.Instance(EDlib.Network.IDownloadService)">
             <summary>Instantiates the EdsmService class.</summary>
@@ -626,7 +684,10 @@
             <returns>Task&lt;(string, DateTime)&gt;<br /></returns>
         </member>
         <member name="T:EDlib.EDSM.EliteStatusService">
-            <summary>Gets Elite: Dangerous server status.</summary>
+            <summary>
+              <para>Gets the status of the Elite: Dangerous game servers.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-status-v1">Status v1</a>.</para>
+            </summary>
         </member>
         <member name="M:EDlib.EDSM.EliteStatusService.Instance(EDlib.Network.IDownloadService)">
             <summary>Instantiates the EliteStatusService class.</summary>
@@ -638,6 +699,7 @@
             <param name="cacheMinutes">The number of minutes to cache the data.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
         </member>
         <member name="M:EDlib.EDSM.EliteStatusService.GetData(System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
             <summary>Gets the status of the Elite: Dangerous server.</summary>
@@ -645,9 +707,13 @@
             <param name="cacheMinutes">The number of minutes to cache the data.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
         </member>
         <member name="T:EDlib.EDSM.SystemService">
-            <summary>Gets data from the EDSM System API.</summary>
+            <summary>
+              <para>Gets data from the EDSM System API including stations, markets, shipyards, outfitting and factions.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
+            </summary>
         </member>
         <member name="M:EDlib.EDSM.SystemService.Instance(EDlib.Network.IDownloadService)">
             <summary>Instantiates the SystemService class.</summary>
@@ -660,6 +726,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;SystemStations&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetStations(System.String,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
             <summary>Gets information about stations in a system.</summary>
@@ -668,6 +736,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;SystemStations&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetMarket(System.Int64,System.Int32,System.Boolean)">
             <summary>Gets information about a market in a station.</summary>
@@ -675,6 +745,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;Market&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetMarket(System.Int64,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
             <summary>Gets information about a market in a station.</summary>
@@ -683,6 +755,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;Market&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetMarket(System.String,System.String,System.Int32,System.Boolean)">
             <summary>Gets information about a market in a station.</summary>
@@ -691,6 +765,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;Market&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetMarket(System.String,System.String,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
             <summary>Gets information about a market in a station.</summary>
@@ -700,6 +776,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;Market&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetShipyard(System.Int64,System.Int32,System.Boolean)">
             <summary>Gets information about a shipyard in a station.</summary>
@@ -707,6 +785,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;Shipyard&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetShipyard(System.Int64,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
             <summary>Gets information about a shipyard in a station.</summary>
@@ -715,6 +795,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;Shipyard&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetShipyard(System.String,System.String,System.Int32,System.Boolean)">
             <summary>Gets information about a shipyard in a station.</summary>
@@ -723,6 +805,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;Shipyard&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetShipyard(System.String,System.String,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
             <summary>Gets information about a shipyard in a station.</summary>
@@ -732,6 +816,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;Shipyard&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetOutfitting(System.Int64,System.Int32,System.Boolean)">
             <summary>Gets information about a outfitting in a station.</summary>
@@ -739,6 +825,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;StationOutfitting&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetOutfitting(System.Int64,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
             <summary>Gets information about a outfitting in a station.</summary>
@@ -747,6 +835,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;StationOutfitting&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetOutfitting(System.String,System.String,System.Int32,System.Boolean)">
             <summary>Gets information about a outfitting in a station.</summary>
@@ -755,6 +845,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;StationOutfitting&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetOutfitting(System.String,System.String,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
             <summary>Gets information about a outfitting in a station.</summary>
@@ -764,6 +856,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;StationOutfitting&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetFactions(System.String,System.Int32,System.Boolean)">
             <summary>Gets information about factions in a system.</summary>
@@ -771,6 +865,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;SystemFactions&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetFactions(System.String,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
             <summary>Gets information about factions in a system.</summary>
@@ -779,9 +875,14 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;SystemFactions&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="T:EDlib.EDSM.SystemsService">
-            <summary>Gets data from the EDSM Systems API.</summary>
+            <summary>
+              <para>Gets data from the EDSM Systems API including allegiance, government, controlling faction, population, security and economic information.</para>
+              <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-v1">Systems v1</a>.</para>
+            </summary>
         </member>
         <member name="M:EDlib.EDSM.SystemsService.Instance(EDlib.Network.IDownloadService)">
             <summary>Instantiates the SystemsService class.</summary>
@@ -795,6 +896,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;SolarSystem&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemsService.GetSystem(System.String,EDlib.EDSM.SystemsOptions,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
             <summary>Gets information about a solar system.</summary>
@@ -804,6 +907,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;SolarSystem&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemsService.GetSystems(System.String[],EDlib.EDSM.SystemsOptions,System.Int32,System.Boolean)">
             <summary>Gets information about an array of solar systems.</summary>
@@ -812,6 +917,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemsService.GetSystems(System.String[],EDlib.EDSM.SystemsOptions,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
             <summary>Gets information about an array of solar systems.</summary>
@@ -821,6 +928,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemsService.GetSystemsInCube(System.String,System.Int32,EDlib.EDSM.SystemsOptions,System.Int32,System.Boolean)">
             <summary>Gets information about systems within a cube.</summary>
@@ -830,6 +939,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemsService.GetSystemsInCube(System.String,System.Int32,EDlib.EDSM.SystemsOptions,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
             <summary>Gets information about systems within a cube.</summary>
@@ -840,6 +951,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemsService.GetSystemsInSphere(System.String,System.Int32,System.Int32,EDlib.EDSM.SystemsOptions,System.Int32,System.Boolean)">
             <summary>Gets information about systems within a sphere.</summary>
@@ -850,6 +963,8 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="M:EDlib.EDSM.SystemsService.GetSystemsInSphere(System.String,System.Int32,System.Int32,EDlib.EDSM.SystemsOptions,System.Threading.CancellationTokenSource,System.Int32,System.Boolean)">
             <summary>Gets information about systems within a sphere.</summary>
@@ -861,13 +976,14 @@
             <param name="cacheMinutes">The number of minutes to cache the data, minimum 5 minutes.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;SolarSystem&gt;, DateTime)&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
+            <exception cref="T:System.ArgumentNullException">Required argument is missing.</exception>
         </member>
         <member name="T:EDlib.APIException">
             <summary>Represents errors from an API.</summary>
         </member>
         <member name="P:EDlib.APIException.StatusCode">
-            <summary>Gets the error code from the API.</summary>
-            <value>The error code.</value>
+            <summary>The error code from the API if available.</summary>
         </member>
         <member name="M:EDlib.APIException.#ctor">
             <summary>Initializes a new instance of the <see cref="T:EDlib.APIException" /> class.</summary>
@@ -918,23 +1034,19 @@
             <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext">StreamingContext</see> that contains contextual information about the source or destination.</param>
         </member>
         <member name="T:EDlib.GalNet.NewsArticle">
-            <summary>A GalNet News article.</summary>
+            <summary>Represents a GalNet News article.</summary>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.Title">
             <summary>The title of the News article.</summary>
-            <value>The article title.</value>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.Body">
             <summary>The content of the News article.</summary>
-            <value>The article content.</value>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.PublishDateTime">
-            <summary>The publish date and time of the News article.</summary>
-            <value>When the article was published.</value>
+            <summary>The date and time when the article was published.</summary>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.Id">
-            <summary>Frontier Development's Id for the News article.</summary>
-            <value>Article ID.</value>
+            <summary>Frontier Developments Id for the News article.</summary>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.FDImageName">
             <summary>
@@ -943,23 +1055,18 @@
              Note: This is not a url or filename and is not guaranteed to contain a value.
               </para>
             </summary>
-            <value>Article image name.</value>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.Slug">
-            <summary>A normalised version of the article title used as a unique identifier.</summary>
-            <value>The article slug.</value>
+            <summary>A normalised version of the article title used as a unique identifier by Frontier Developments.</summary>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.Topic">
             <summary>The topic of the News article, generated using a Bag of Words technique.</summary>
-            <value>The article topic.</value>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.Tags">
             <summary>Content tags for the News article, generated using a Bag of Words technique.</summary>
-            <value>Content tags for the article.</value>
         </member>
         <member name="P:EDlib.GalNet.NewsArticle.PublishDate">
-            <summary>The publish date and time of the News article as a string.</summary>
-            <value>When the article was published.</value>
+            <summary>The date when the article was published as a string.</summary>
         </member>
         <member name="M:EDlib.GalNet.NewsArticle.ClassifyArticle(System.Collections.Generic.List{EDlib.Common.Topic},System.Collections.Generic.List{EDlib.Common.Topic})">
             <summary>Determines the Topic and content Tags for an article by analysing it using a Bag of Words technique.</summary>
@@ -973,7 +1080,7 @@
             <summary>For internal use only. JsonConverter for GalNet News articles.</summary>
         </member>
         <member name="T:EDlib.GalNet.GalNetService">
-            <summary>Gets the GalNet News.</summary>
+            <summary>Gets the GalNet News and uses a Bag of Words technique to determine a Topic and content Tags for each article.</summary>
         </member>
         <member name="M:EDlib.GalNet.GalNetService.Instance(EDlib.Network.IDownloadService)">
             <summary>Instantiates the GalNetService class.</summary>
@@ -1176,14 +1283,17 @@
         <member name="P:EDlib.INARA.CommunityGoal.Topic">
             <summary>The topic for this Community Goal, generated using a Bag of Words technique.</summary>
         </member>
+        <member name="M:EDlib.INARA.CommunityGoal.#ctor">
+            <summary>Initializes a new empty instance of the <see cref="T:EDlib.INARA.CommunityGoal" /> class.</summary>
+        </member>
         <member name="M:EDlib.INARA.CommunityGoal.ClassifyCG(System.Collections.Generic.List{EDlib.Common.Topic})">
             <summary>Determines the Topic for a Community Goal by analysing it using a Bag of Words technique.</summary>
             <param name="topics">List of <see cref="P:EDlib.INARA.CommunityGoal.Topic" /> to use when classifying article.</param>
         </member>
         <member name="M:EDlib.INARA.CommunityGoal.OnPropertyChanged(System.String)">
             <summary>
-              <para>Raised when some properties change to handle System.ComponentModel.INotifyPropertyChanged.PropertyChanged.</para>
-              <para>Can be used to update properties that change with time, e.g. GoalExpiry and IsCompleted.</para>
+              <para>Raised when TimeRemaining or IsCompleted properties change to handle System.ComponentModel.INotifyPropertyChanged.PropertyChanged.</para>
+              <para>Note: TimeRemaining is a public property, use a timer to update TimeRemaining and IsCompleted will update automatically.</para>
             </summary>
             <param name="propertyName">Name of the property that changed.</param>
         </member>
@@ -1298,7 +1408,7 @@
         </member>
         <member name="M:EDlib.INARA.CommanderProfileService.GetData(System.String,System.Int32,EDlib.INARA.InaraIdentity,System.Threading.CancellationTokenSource,System.Boolean)">
             <summary>Gets basic information about a Commander from the INARA API.</summary>
-            <param name="searchName">The Comander's name to search for. If an exact match is not found a number of partial matches may be returned.</param>
+            <param name="searchName">The Commander's name to search for. If an exact match is not found a number of partial matches may be returned.</param>
             <param name="cacheMinutes">How long to cache the data in minutes, minimum 5 minutes.</param>
             <param name="identity">The <see cref="T:EDlib.INARA.InaraIdentity" /> credentials required to access the INARA API.</param>
             <param name="cancelToken">A cancellation token.</param>
@@ -1362,6 +1472,7 @@
             <param name="input">The data for an INARA API request.</param>
             <param name="options">Options for download.</param>
             <returns>Task&lt;(string, DateTime)&gt;<br /></returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
         </member>
         <member name="T:EDlib.Network.HttpHelper">
             <summary>A helper class for reading an http response that can decompress data in gzip or deflate streams.</summary>
@@ -1369,18 +1480,18 @@
         <member name="M:EDlib.Network.HttpHelper.ReadContentAsync(System.Net.Http.HttpResponseMessage)">
             <summary>Gets the content of an http response which may be compressed.</summary>
             <param name="response">The http response.</param>
-            <returns>The content of the http response.</returns>
+            <returns>Task&lt;string&gt;</returns>
         </member>
         <member name="T:EDlib.Network.Sha256Helper">
-            <summary>Helper class for generating an SHA256 hash.</summary>
+            <summary>A helper class for generating an SHA256 hash.</summary>
         </member>
         <member name="M:EDlib.Network.Sha256Helper.GenerateHash(System.String)">
             <summary>Generates the SHA256 hash of a string.</summary>
-            <param name="input">The string that will be hashed.</param>
+            <param name="input">The string to be hashed.</param>
             <returns>string</returns>
         </member>
         <member name="T:EDlib.Network.CachedDownloadService">
-            <summary>Class used to download and cache data.</summary>
+            <summary>Service used to download and cache data.</summary>
         </member>
         <member name="M:EDlib.Network.CachedDownloadService.Instance(System.String,EDlib.Platform.ICacheService,EDlib.Platform.IConnectivityService)">
             <summary>Instantiates the CachedDownloadService class.</summary>
@@ -1391,7 +1502,7 @@
         </member>
         <member name="M:EDlib.Network.CachedDownloadService.GetData(System.String,EDlib.Network.DownloadOptions)">
             <summary>
-            Gets data from an API, caches the data and when it was last updated with the option to cancel the request.
+            Gets data from an API, caches the data and when it was last updated with the option to cancel the request.<br/>
             If a copy of the data exists in the cache and has not expired it will be returned, otherwise the data will be downloaded.
             </summary>
             <param name="url">The URL for downloading the data.</param>
@@ -1402,7 +1513,7 @@
         </member>
         <member name="M:EDlib.Network.CachedDownloadService.PostData(System.String,System.String,EDlib.Network.DownloadOptions)">
             <summary>
-            Posts a request to an API, caches the response and when it was last updated with the option to cancel the request.
+            Posts a request to an API, caches the response and when it was last updated with the option to cancel the request.<br/>
             If a copy of the response exists in the cache and has not expired it will be returned, otherwise the API will be queried.
             </summary>
             <param name="url">The URL of the API.</param>
@@ -1449,7 +1560,7 @@
             <param name="ignoreCache">Ignore any cached data if set to <c>true</c>.</param>
         </member>
         <member name="T:EDlib.Network.DownloadService">
-            <summary>Class used to download without caching.</summary>
+            <summary>Service used to download data with no cache.</summary>
         </member>
         <member name="M:EDlib.Network.DownloadService.Instance(System.String,EDlib.Platform.IConnectivityService)">
             <summary>Instantiates the DownloadService class.</summary>
@@ -1475,7 +1586,7 @@
             <exception cref="T:EDlib.APIException">Http errors from the API called.</exception>
         </member>
         <member name="T:EDlib.Network.IDownloadService">
-            <summary>Interface for services used to download data.</summary>
+            <summary>Interface for the services used to download data.</summary>
         </member>
         <member name="M:EDlib.Network.IDownloadService.GetData(System.String,EDlib.Network.DownloadOptions)">
             <summary>Gets data from an API and returns the response with the option to cancel the request.</summary>
@@ -1491,7 +1602,7 @@
             <returns>Task&lt;(string data, DateTime updated)&gt;</returns>
         </member>
         <member name="T:EDlib.Platform.CacheState">
-            <summary>Current state of the item in the cache.</summary>
+            <summary>Represents the current state of an item in the cache.</summary>
         </member>
         <member name="F:EDlib.Platform.CacheState.None">
             <summary>An unknown state for the cache item.</summary>
@@ -1560,8 +1671,8 @@
         <member name="T:EDlib.Platform.PreserveAttribute">
             <summary>
               <para>Linker control attribute.</para>
-              <para>To preserve the whole type, use the syntax <c>[Preserve (AllMembers = true)]</c> on the type.
-            To preserve a member if the containing type was preserved, use <c>[Preserve (Conditional=true)]</c> on the member.</para>
+              <para>To preserve the whole type, use the syntax <c>[Preserve (AllMembers = true)]</c> on the type.<br/>
+            		To preserve a member if the containing type was preserved, use <c>[Preserve (Conditional=true)]</c> on the member.</para>
               <para>See: https://docs.microsoft.com/en-gb/xamarin/ios/deploy-test/linker </para>
             </summary>
         </member>
@@ -1573,8 +1684,8 @@
         </member>
         <member name="M:EDlib.Platform.PreserveAttribute.#ctor(System.Boolean,System.Boolean)">
             <summary>Preserve attribute constructor.</summary>
-            <param name="allMembers">Set <c>true</c> when preserving the whole type.</param>
-            <param name="conditional">Set <c>true</c> when preserving an individual type member.</param>
+            <param name="allMembers">Set <c>true</c> to preserve the whole type.</param>
+            <param name="conditional">Set <c>true</c> to preserve an individual type member.</param>
         </member>
         <member name="M:EDlib.Platform.PreserveAttribute.#ctor">
             <summary>Preserve attribute default constructor.</summary>
@@ -1584,15 +1695,12 @@
         </member>
         <member name="P:EDlib.Powerplay.GalacticStandings.Cycle">
             <summary>Gets the Powerplay cycle number.</summary>
-            <value>The Powerplay cycle.</value>
         </member>
         <member name="P:EDlib.Powerplay.GalacticStandings.LastUpdated">
             <summary>Gets the date and time the Galactic Standings were last updated.</summary>
-            <value>When the Standings were last updated.</value>
         </member>
         <member name="P:EDlib.Powerplay.GalacticStandings.Standings">
-            <summary>Gets the Galactic Standings.</summary>
-            <value>A list of PowerStanding objects.</value>
+            <summary>The Galactic Standings - a list of PowerStanding objects.</summary>
         </member>
         <member name="M:EDlib.Powerplay.GalacticStandings.#ctor(System.Int32,System.DateTime)">
             <summary>Initializes a new instance of the <see cref="T:EDlib.Powerplay.GalacticStandings" /> class.</summary>
@@ -1612,23 +1720,19 @@
             <returns>A <see cref="T:System.String" /> in JSON format that represents the Galactic Standings.</returns>
         </member>
         <member name="T:EDlib.Powerplay.PowerComms">
-            <summary>Contains the comms data for a Power - Reddit Sub and Discord / Slack servers.</summary>
+            <summary>Contains the comms data for a Power - Reddit Sub and Discord / Slack server.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerComms.Id">
-            <summary>Gets or sets a unique identifier for the Power.</summary>
-            <value>The unique identifier for the Power.</value>
+            <summary>The unique identifier for the Power.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerComms.ShortName">
-            <summary>Gets or sets a short name for the Power.</summary>
-            <value>The Power's short name.</value>
+            <summary>The short name for the Power.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerComms.Reddit">
-            <summary>Gets or sets the URL for the Power's subreddit.</summary>
-            <value>The Power's subreddit URL.</value>
+            <summary>The URL for the Power's subreddit.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerComms.Comms">
-            <summary>Gets or sets the join link for the Power's Discord or Slack server.</summary>
-            <value>The Power's Discord or Slack server join link.</value>
+            <summary>The join link for the Power's Discord or Slack server.</summary>
         </member>
         <member name="M:EDlib.Powerplay.PowerComms.#ctor(System.Int32,System.String,System.String,System.String)">
             <summary>Initializes a new instance of the <see cref="T:EDlib.Powerplay.PowerComms" /> class.</summary>
@@ -1642,111 +1746,85 @@
             <returns>A <see cref="T:System.String" /> that represents the Power's comms details.</returns>
         </member>
         <member name="T:EDlib.Powerplay.PowerDetails">
-            <summary>Contains a Power's statistics, ethos and benefits data.</summary>
+            <summary>Represents a Power's statistics, ethos and benefits data.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.Id">
-            <summary>Gets or sets a unique identifier for the Power.</summary>
-            <value>The unique identifier for the Power.</value>
+            <summary>The unique identifier for the Power.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.ShortName">
-            <summary>Gets or sets a short name for the Power.</summary>
-            <value>The Power's short name.</value>
+            <summary>The short name for the Power.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.HQ">
-            <summary>Gets the name of the Power's headquarters system.</summary>
-            <value>The name of the Power's headquarters.</value>
+            <summary>The name of the Power's headquarters system.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.YearOfBirth">
-            <summary>Gets the year the Power was born.</summary>
-            <value>The year the Power was born..</value>
+            <summary>The year the Power was born.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.Allegiance">
-            <summary>Gets the Power's allegiance.</summary>
-            <value>The Power's allegiance.</value>
+            <summary>The Power's allegiance.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.PreparationEthos">
-            <summary>Gets the Power's preparation ethos.</summary>
-            <value>The Power's preparation ethos.</value>
+            <summary>The Power's preparation ethos.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.PreparationText">
-            <summary>Gets the description of the Power's preparation ethos.</summary>
-            <value>The description of the preparation ethos.</value>
+            <summary>Description of the Power's preparation ethos.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.ExpansionEthos">
-            <summary>Gets the Power's expansion ethos.</summary>
-            <value>The Power's expansion ethos.</value>
+            <summary>The Power's expansion ethos.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.ExpansionText">
-            <summary>Gets the description of the Power's expansion ethos.</summary>
-            <value>The description of the expansion ethos.</value>
+            <summary>Description of the Power's expansion ethos.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.ExpansionStrongGovernment">
-            <summary>Gets the government types that help the Power's expansion.</summary>
-            <value>The government types that help expansion.</value>
+            <summary>The government types that help the Power's expansion.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.ExpansionWeakGovernment">
-            <summary>Gets the government types that hinder the Power's expansion.</summary>
-            <value>The government types that hinder expansion.</value>
+            <summary>The government types that hinder the Power's expansion.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.ControlEthos">
-            <summary>Gets the Power's control ethos.</summary>
-            <value>The Power's control ethos.</value>
+            <summary>The Power's control ethos.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.ControlText">
-            <summary>Gets the description of the Power's control ethos.</summary>
-            <value>The description of the control ethos.</value>
+            <summary>Description of the Power's control ethos.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.ControlStrongGovernment">
-            <summary>Gets the government types that help the Power control their domain.</summary>
-            <value>The government types that help with control.</value>
+            <summary>The government types that help the Power control their domain.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.ControlWeakGovernment">
-            <summary>Gets the government types that hinder the Power control their domain.</summary>
-            <value>The government types that hinder with control.</value>
+            <summary>The government types that hinder the Power controlling their domain.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.HQSystemEffect">
-            <summary>Gets a description of any effects in the Power's headquarters system.</summary>
-            <value>A description of any effects in the Power's headquarters.</value>
+            <summary>Any effects the Power has on their headquarters system.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.ControlSystemEffect">
-            <summary>Gets a description of the effects a Power has on systems they control.</summary>
-            <value>A description of the effects on systems the Power controls.</value>
+            <summary>The effects a Power has on systems they control.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.AllianceExploitedEffect">
-            <summary>Gets a description of the effects a Power has on Alliance systems they exploit.</summary>
-            <value>A description of the effects on Alliance systems the Power exploits.</value>
+            <summary>The effects a Power has on Alliance systems they exploit.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.EmpireExploitedEffect">
-            <summary>Gets a description of the effects a Power has on Empire systems they exploit.</summary>
-            <value>A description of the effects on Empire systems the Power exploits.</value>
+            <summary>The effects a Power has on Empire systems they exploit.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.FederationExploitedEffect">
-            <summary>Gets a description of the effects a Power has on Federation systems they exploit.</summary>
-            <value>A description of the effects on Federation systems the Power exploits.</value>
+            <summary>The effects a Power has on Federation systems they exploit.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.IndependentExploitedEffect">
-            <summary>Gets a description of the effects a Power has on Independent systems they exploit.</summary>
-            <value>A description of the effects on Independent systems the Power exploits.</value>
+            <summary>The effects a Power has on Independent systems they exploit.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.Rating1">
-            <summary>Gets a description of the benefits to a Commander at rank 1.</summary>
-            <value>A description of the rank 1 benefits.</value>
+            <summary>The benefits of pledging for a Commander at rank 1.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.Rating2">
-            <summary>Gets a description of the benefits to a Commander at rank 2.</summary>
-            <value>A description of the rank 2 benefits.</value>
+            <summary>The benefits of pledging for a Commander at rank 2.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.Rating3">
-            <summary>Gets a description of the benefits to a Commander at rank 3.</summary>
-            <value>A description of the rank 3 benefits.</value>
+            <summary>The benefits of pledging for a Commander at rank 3.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.Rating4">
-            <summary>Gets a description of the benefits to a Commander at rank 4.</summary>
-            <value>A description of the rank 4 benefits.</value>
+            <summary>The benefits of pledging for a Commander at rank 4.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerDetails.Rating5">
-            <summary>Gets a description of the benefits to a Commander at rank 5.</summary>
-            <value>A description of the rank 5 benefits.</value>
+            <summary>The benefits of pledging for a Commander at rank 5.</summary>
         </member>
         <member name="M:EDlib.Powerplay.PowerDetails.#ctor(System.Int32,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>Initializes a new instance of the <see cref="T:EDlib.Powerplay.PowerDetails" /> class.</summary>
@@ -1794,47 +1872,37 @@
             <summary>The Power's standing has not changed.</summary>
         </member>
         <member name="T:EDlib.Powerplay.PowerStanding">
-            <summary>Contains the Galactic Standings data for a Power.</summary>
+            <summary>Represents the Galactic Standings data for a Power.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerStanding.Id">
-            <summary>Gets or sets a unique identifier for the Power.</summary>
-            <value>The unique identifier for the Power.</value>
+            <summary>The unique identifier for the Power.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerStanding.Name">
-            <summary>Gets or sets the Power's name.</summary>
-            <value>The Power's name.</value>
+            <summary>The Power's name.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerStanding.Position">
-            <summary>Gets or sets the Power's position in the Galactic Standings.</summary>
-            <value>The Power's position in the Galactic Standings.</value>
+            <summary>The Power's position in the Galactic Standings.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerStanding.Change">
-            <summary>Gets or sets the Power's change in the Galactic Standings since the previous cycle.</summary>
-            <value>The Power's change in the standings since the previous cycle.</value>
+            <summary>The Power's change in the Galactic Standings since the previous cycle.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerStanding.Turmoil">
-            <summary>Gets or sets a value indicating whether this Power is turmoil.</summary>
-            <value><c>true</c> if turmoil; otherwise, <c>false</c>.</value>
+            <summary>Indicates whether this Power is turmoil.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerStanding.Allegiance">
-            <summary>Gets or sets the Power's allegiance - Alliance, Empire, Federation or Independent.</summary>
-            <value>The Power's allegiance.</value>
+            <summary>The Power's allegiance - Alliance, Empire, Federation or Independent.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerStanding.ShortName">
-            <summary>Gets or sets a short name for the Power.</summary>
-            <value>The Power's short name.</value>
+            <summary>The short name for the Power.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerStanding.Cycle">
-            <summary>Gets or sets the Powerplay cycle.</summary>
-            <value>The Powerplay cycle.</value>
+            <summary>The Powerplay cycle.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerStanding.LastUpdated">
-            <summary>Gets the date and time the Power's standing was last updated.</summary>
-            <value>When the Power's standing was last updated.</value>
+            <summary>The date and time the Power's standing was last updated.</summary>
         </member>
         <member name="P:EDlib.Powerplay.PowerStanding.ChangeString">
-            <summary>Gets the Power's change in the Galactic Standings since the previous cycle as a string.</summary>
-            <value>The Power's change in the standings since the previous cycle.</value>
+            <summary>The Power's change in the Galactic Standings since the previous cycle as a string.</summary>
         </member>
         <member name="M:EDlib.Powerplay.PowerStanding.#ctor">
             <summary>Initializes a new instance of the <see cref="T:EDlib.Powerplay.PowerStanding" /> class with no data.</summary>
@@ -1865,30 +1933,32 @@
             <returns>A <see cref="T:System.String" /> that represents the Power's standing.</returns>
         </member>
         <member name="T:EDlib.Powerplay.CycleService">
-            <summary>A static class that deals with the Powerplay cycle and when it changes (ticks).</summary>
+            <summary>A static class that represents the Powerplay cycle and when it changes (ticks).</summary>
         </member>
         <member name="M:EDlib.Powerplay.CycleService.TimeRemaining">
-            <summary>Gets the time remaining till the end of the current Powerplay cycle.</summary>
-            <returns>Days and hours until the last 24 hours, then hours and minutes.</returns>
+            <summary>
+              <para>The time remaining till the end of the current Powerplay cycle.</para>
+              <para>Days and hours until the last 24 hours, then hours and minutes.</para>
+            </summary>
         </member>
         <member name="M:EDlib.Powerplay.CycleService.CycleImminent">
-            <summary>Determines if the end of the current Powerplay cycle is imminent - less than 12 hours remaining.</summary>
-            <returns><c>true</c> if imminent, else <c>false</c>.</returns>
+            <summary><c>true</c> if the end of the current Powerplay cycle is imminent - less than 12 hours remaining.</summary>
         </member>
         <member name="M:EDlib.Powerplay.CycleService.FinalDay">
-            <summary>Determines if the current Powerplay cycle ends within 24 hours.</summary>
-            <returns><c>true</c> if it is the final 24 hours of the cycle, else <c>false</c>.</returns>
+            <summary><c>true</c> if the current Powerplay cycle ends within 24 hours.</summary>
         </member>
         <member name="M:EDlib.Powerplay.CycleService.TimeTillTick">
-            <summary>Gets the time remaining till the end of the current Powerplay cycle.</summary>
-            <returns>The time till the end of the cycle.</returns>
+            <summary>The time remaining till the end of the current Powerplay cycle.</summary>
         </member>
         <member name="M:EDlib.Powerplay.CycleService.CurrentCycle">
-            <summary>Gets the current Powerplay cycle number.</summary>
-            <returns>The current Powerplay cycle number.</returns>
+            <summary>The current Powerplay cycle number.</summary>
         </member>
         <member name="T:EDlib.Powerplay.PowerDetailsService">
-            <summary>Gets a Power's statistics, ethos, benefits and comms data.</summary>
+            <summary>
+              <para>Provides data about every Power including statistics, ethos and benefits.</para>
+              <para>Also gets every Powerplay player group's communications data from an API provided by Taranis Software.<br/>
+                    This data changes rarely so please cache for 1 week minimum.</para>
+            </summary>
         </member>
         <member name="M:EDlib.Powerplay.PowerDetailsService.Instance(EDlib.Network.IDownloadService)">
             <summary>Instantiates the PowerDetailsService class.</summary>
@@ -1907,7 +1977,10 @@
             <returns>Task&lt;PowerComms&gt;</returns>
         </member>
         <member name="T:EDlib.Powerplay.StandingsService">
-            <summary>Gets the current Powerplay Galactic Standings.</summary>
+            <summary>
+              <para>Gets the current Powerplay Galactic Standings from an API provided by Taranis Software.</para>
+              <para>The standings update weekly on a Thursday between 08:00 - 10:00 UTC, the data is cached till 08:00 UTC Thursday.</para>
+            </summary>
         </member>
         <member name="M:EDlib.Powerplay.StandingsService.Instance(EDlib.Network.IDownloadService,EDlib.Platform.ICacheService)">
             <summary>Instantiates the StandingsService class.</summary>

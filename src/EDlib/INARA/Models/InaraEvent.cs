@@ -11,14 +11,17 @@ namespace EDlib.INARA
     public class InaraEvent
     {
         /// <summary>The name of the event / method.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "eventName")]
         public string EventName { get; }
 
         /// <summary>Date and time in ISO 8601 format (like: 2017-05-02T17:30:49Z)</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "eventTimestamp")]
         public DateTime EventTimestamp { get; }
 
         /// <summary>Required properties for a request / data returned by the API. Individual event properties are detailed in the event's documentation.</summary>
+        [Preserve(Conditional = true)]
         [JsonProperty(PropertyName = "eventData")]
         public dynamic EventData { get; internal set; }
 
