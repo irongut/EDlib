@@ -25,7 +25,7 @@ namespace EDlib.GalNet
         public string Title
         {
             get { return _title; }
-            internal set
+            set
             {
                 if (_title != value)
                 {
