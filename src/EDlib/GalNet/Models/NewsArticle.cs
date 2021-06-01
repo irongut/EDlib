@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace EDlib.GalNet
 {
     /// <summary>Represents a GalNet News article.</summary>
+    [JsonObject(MemberSerialization.OptIn)]
     public class NewsArticle
     {
         #region Properties
