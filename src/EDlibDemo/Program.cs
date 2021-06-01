@@ -49,20 +49,19 @@ namespace EDlibDemo
                 Console.WriteLine($"Comms: {powerCommms}");
                 Console.WriteLine();
 
-                // GalNet disabled until new feed is ready
-                //Console.WriteLine("### GalNet News ###");
-                //GalNetService gnService = GalNetService.Instance(DownloadService.Instance(userAgent, new UnmeteredConnection()));
-                //(List<NewsArticle> newsList, DateTime _) = await gnService.GetData(5, 1, null).ConfigureAwait(false);
-                //foreach (NewsArticle article in newsList)
-                //{
-                //    Console.WriteLine($"{article.Topic}: {article.Title}");
-                //    foreach (string tag in article.Tags)
-                //    {
-                //        Console.Write($"{tag} ");
-                //    }
-                //    Console.Write(Environment.NewLine);
-                //    Console.WriteLine();
-                //}
+                Console.WriteLine("### GalNet News ###");
+                GalNetService gnService = GalNetService.Instance(DownloadService.Instance(userAgent, new UnmeteredConnection()));
+                (List<NewsArticle> newsList, DateTime _) = await gnService.GetData(5, 1, null).ConfigureAwait(false);
+                foreach (NewsArticle article in newsList)
+                {
+                    Console.WriteLine($"{article.Topic}: {article.Title}");
+                    foreach (string tag in article.Tags)
+                    {
+                        Console.Write($"{tag} ");
+                    }
+                    Console.Write(Environment.NewLine);
+                    Console.WriteLine();
+                }
 
                 Console.WriteLine("### Community Goals ###");
                 InitialiseInara();
