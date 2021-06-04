@@ -1905,6 +1905,12 @@
         <member name="P:EDlib.Powerplay.PowerStanding.ChangeString">
             <summary>The Power's change in the Galactic Standings since the previous cycle as a string.</summary>
         </member>
+        <member name="P:EDlib.Powerplay.PowerStanding.CyclesSinceTurmoil">
+            <summary>
+              The number of cycles since the Power was last in Turmoil.<br/>
+              A value of -1 indicates the number of cycles since Turmoil is unknown.
+            </summary>
+        </member>
         <member name="M:EDlib.Powerplay.PowerStanding.#ctor">
             <summary>Initializes a new instance of the <see cref="T:EDlib.Powerplay.PowerStanding" /> class with no data.</summary>
         </member>
@@ -1918,6 +1924,18 @@
             <param name="allegiance">The Power's allegiance.</param>
             <param name="shortname">The Power's short name.</param>
             <param name="updated">When the Power's standing was last updated.</param>
+        </member>
+        <member name="M:EDlib.Powerplay.PowerStanding.#ctor(System.Int32,System.String,System.Int32,EDlib.Powerplay.StandingChange,System.Boolean,System.String,System.String,System.DateTime,System.Int32)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.Powerplay.PowerStanding" /> class with the given data.</summary>
+            <param name="id">The Power's unique identifier.</param>
+            <param name="name">The Power's name.</param>
+            <param name="position">The Power's position in the Galactic Standings.</param>
+            <param name="change">The Power's change in the Galactic Standings.</param>
+            <param name="turmoil">Whether the Power is in Turmoil.</param>
+            <param name="allegiance">The Power's allegiance.</param>
+            <param name="shortname">The Power's short name.</param>
+            <param name="updated">When the Power's standing was last updated.</param>
+            <param name="cyclesSinceTurmoil">The number of cycles since the Power was last in Turmoil.</param>
         </member>
         <member name="M:EDlib.Powerplay.PowerStanding.#ctor(System.Int32,System.String,System.Int32,System.DateTime)">
             <summary>
@@ -1936,20 +1954,21 @@
         <member name="T:EDlib.Powerplay.CycleService">
             <summary>A static class that represents the Powerplay cycle and when it changes (ticks).</summary>
         </member>
-        <member name="M:EDlib.Powerplay.CycleService.TimeRemaining">
-            <summary>
-              <para>The time remaining till the end of the current Powerplay cycle.</para>
-              <para>Days and hours until the last 24 hours, then hours and minutes.</para>
-            </summary>
-        </member>
-        <member name="M:EDlib.Powerplay.CycleService.CycleImminent">
-            <summary><c>true</c> if the end of the current Powerplay cycle is imminent - less than 12 hours remaining.</summary>
-        </member>
-        <member name="M:EDlib.Powerplay.CycleService.FinalDay">
-            <summary><c>true</c> if the current Powerplay cycle ends within 24 hours.</summary>
-        </member>
         <member name="M:EDlib.Powerplay.CycleService.TimeTillTick">
             <summary>The time remaining till the end of the current Powerplay cycle.</summary>
+        </member>
+        <member name="M:EDlib.Powerplay.CycleService.TimeRemaining">
+            <summary>
+              The time remaining till the end of the current Powerplay cycle.<br/>
+              Days and hours until the last 24 hours, then hours and minutes.
+            </summary>
+        </member>
+        <member name="M:EDlib.Powerplay.CycleService.CycleImminent(System.Int32)">
+            <summary>Returns <c>true</c> if the end of the current Powerplay cycle is imminent - less than <c>imminentHours</c> hours remaining.</summary>
+            <param name="imminentHours">The number of hours during which the end of the cycle is imminent (1 - 24).</param>
+        </member>
+        <member name="M:EDlib.Powerplay.CycleService.FinalDay">
+            <summary>Returns <c>true</c> if the current Powerplay cycle ends within 24 hours.</summary>
         </member>
         <member name="M:EDlib.Powerplay.CycleService.CurrentCycle">
             <summary>The current Powerplay cycle number.</summary>

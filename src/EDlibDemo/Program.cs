@@ -34,6 +34,14 @@ namespace EDlibDemo
                 Console.WriteLine(eliteStatus.ToString());
                 Console.WriteLine();
 
+                Console.WriteLine("### Powerplay Cycle ###");
+                Console.WriteLine($"Current Cycle: {CycleService.CurrentCycle()}");
+                Console.WriteLine($"Time Remaining: {CycleService.TimeRemaining()}");
+                Console.WriteLine($"Timespan Remaining: {CycleService.TimeTillTick()}");
+                Console.WriteLine($"Final Day: {CycleService.FinalDay()}");
+                Console.WriteLine($"Cycle End Imminent: {CycleService.CycleImminent()}");
+                Console.WriteLine();
+
                 Console.WriteLine("### Galactic Standings ###");
                 StandingsService standingsService = StandingsService.Instance(DownloadService.Instance(userAgent, new UnmeteredConnection()), new EmptyCache());
                 GalacticStandings galacticStandings = await standingsService.GetData(new CancellationTokenSource()).ConfigureAwait(false);
