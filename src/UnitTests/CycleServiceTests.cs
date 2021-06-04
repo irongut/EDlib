@@ -8,6 +8,15 @@ namespace UnitTests
     public class CycleServiceTests
     {
         [TestMethod]
+        public void TimeTillTickTest()
+        {
+            TimeSpan time = CycleService.TimeTillTick();
+            Assert.IsTrue(time < TimeSpan.MaxValue);
+            Assert.IsTrue(time > TimeSpan.Zero);
+            Assert.IsTrue(time.Days < 7);
+        }
+
+        [TestMethod]
         public void TimeRemainingTest()
         {
             string timeRemaining = CycleService.TimeRemaining();
@@ -84,21 +93,12 @@ namespace UnitTests
             }
         }
 
-    [TestMethod]
-        public void TimeTillTickTest()
-        {
-            TimeSpan time = CycleService.TimeTillTick();
-            Assert.IsTrue(time != TimeSpan.MaxValue);
-            Assert.IsTrue(time > TimeSpan.Zero);
-            Assert.IsTrue(time.Days < 7);
-        }
-
         [TestMethod]
         public void CurrentCycleTest()
         {
             int cycle = CycleService.CurrentCycle();
-            Assert.IsTrue(cycle > 200);
-            Assert.IsTrue(cycle < 500);
+            Assert.IsTrue(cycle > 300);
+            Assert.IsTrue(cycle < 600);
         }
     }
 }

@@ -6,9 +6,41 @@ namespace EDlib.Powerplay
     /// <summary>A static class that represents the Powerplay cycle and when it changes (ticks).</summary>
     public static class CycleService
     {
+        /// <summary>The time remaining till the end of the current Powerplay cycle.</summary>
+        public static TimeSpan TimeTillTick()
+        {
+            TimeSpan timeDiff = TimeSpan.FromHours(7) - DateTime.UtcNow.TimeOfDay;
+            switch ((int)DateTime.UtcNow.DayOfWeek)
+            {
+                case 0: // Sunday
+                    return TimeSpan.FromDays(4) + timeDiff;
+                case 1:
+                    return TimeSpan.FromDays(3) + timeDiff;
+                case 2:
+                    return TimeSpan.FromDays(2) + timeDiff;
+                case 3:
+                    return TimeSpan.FromDays(1) + timeDiff;
+                case 4:
+                    if (DateTime.UtcNow.Hour < 7)
+                    {
+                        return TimeSpan.FromDays(0) + timeDiff;
+                    }
+                    else
+                    {
+                        return TimeSpan.FromDays(7) + timeDiff;
+                    }
+                case 5:
+                    return TimeSpan.FromDays(6) + timeDiff;
+                case 6:
+                    return TimeSpan.FromDays(5) + timeDiff;
+                default:
+                    return TimeSpan.MaxValue;
+            }
+        }
+
         /// <summary>
-        ///   <para>The time remaining till the end of the current Powerplay cycle.</para>
-        ///   <para>Days and hours until the last 24 hours, then hours and minutes.</para>
+        ///   The time remaining till the end of the current Powerplay cycle.<br/>
+        ///   Days and hours until the last 24 hours, then hours and minutes.
         /// </summary>
         public static string TimeRemaining()
         {
@@ -21,7 +53,7 @@ namespace EDlib.Powerplay
             }
             else
             {
-                hours = String.Format("{0} hours", time.Hours);
+                hours = $"{time.Hours} hours";
             }
 
             if (time.Days == 0)
@@ -33,17 +65,17 @@ namespace EDlib.Powerplay
                 }
                 else
                 {
-                    minutes = String.Format("{0} minutes", time.Minutes);
+                    minutes = $"{time.Minutes} minutes";
                 }
-                return String.Format("{0} {1}", hours, minutes);
+                return $"{hours} {minutes}";
             }
             else if (time.Days == 1)
             {
-                return String.Format("1 day {0}", hours);
+                return $"1 day {hours}";
             }
             else
             {
-                return String.Format("{0} days {1}", time.Days, hours);
+                return $"{time.Days} days {hours}";
             }
         }
 
@@ -82,40 +114,6 @@ namespace EDlib.Powerplay
         public static bool FinalDay()
         {
             return CycleImminent(24);
-        }
-
-        /// <summary>The time remaining till the end of the current Powerplay cycle.</summary>
-        public static TimeSpan TimeTillTick()
-        {
-            DateTime currentUTC = DateTime.UtcNow;
-            int day = (int)currentUTC.DayOfWeek;
-            TimeSpan timeDiff = TimeSpan.FromHours(7) - currentUTC.TimeOfDay;
-            switch (day)
-            {
-                case 0: // Sunday
-                    return TimeSpan.FromDays(4) + timeDiff;
-                case 1:
-                    return TimeSpan.FromDays(3) + timeDiff;
-                case 2:
-                    return TimeSpan.FromDays(2) + timeDiff;
-                case 3:
-                    return TimeSpan.FromDays(1) + timeDiff;
-                case 4:
-                    if (currentUTC.Hour < 7)
-                    {
-                        return TimeSpan.FromDays(0) + timeDiff;
-                    }
-                    else
-                    {
-                        return TimeSpan.FromDays(7) + timeDiff;
-                    }
-                case 5:
-                    return TimeSpan.FromDays(6) + timeDiff;
-                case 6:
-                    return TimeSpan.FromDays(5) + timeDiff;
-                default:
-                    return TimeSpan.MaxValue;
-            }
         }
 
         /// <summary>The current Powerplay cycle number.</summary>

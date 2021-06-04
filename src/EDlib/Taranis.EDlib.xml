@@ -1954,10 +1954,13 @@
         <member name="T:EDlib.Powerplay.CycleService">
             <summary>A static class that represents the Powerplay cycle and when it changes (ticks).</summary>
         </member>
+        <member name="M:EDlib.Powerplay.CycleService.TimeTillTick">
+            <summary>The time remaining till the end of the current Powerplay cycle.</summary>
+        </member>
         <member name="M:EDlib.Powerplay.CycleService.TimeRemaining">
             <summary>
-              <para>The time remaining till the end of the current Powerplay cycle.</para>
-              <para>Days and hours until the last 24 hours, then hours and minutes.</para>
+              The time remaining till the end of the current Powerplay cycle.<br/>
+              Days and hours until the last 24 hours, then hours and minutes.
             </summary>
         </member>
         <member name="M:EDlib.Powerplay.CycleService.CycleImminent(System.Int32)">
@@ -1966,9 +1969,6 @@
         </member>
         <member name="M:EDlib.Powerplay.CycleService.FinalDay">
             <summary>Returns <c>true</c> if the current Powerplay cycle ends within 24 hours.</summary>
-        </member>
-        <member name="M:EDlib.Powerplay.CycleService.TimeTillTick">
-            <summary>The time remaining till the end of the current Powerplay cycle.</summary>
         </member>
         <member name="M:EDlib.Powerplay.CycleService.CurrentCycle">
             <summary>The current Powerplay cycle number.</summary>
