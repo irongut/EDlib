@@ -1905,6 +1905,12 @@
         <member name="P:EDlib.Powerplay.PowerStanding.ChangeString">
             <summary>The Power's change in the Galactic Standings since the previous cycle as a string.</summary>
         </member>
+        <member name="P:EDlib.Powerplay.PowerStanding.CyclesSinceTurmoil">
+            <summary>
+              The number of cycles since the Power was last in Turmoil.<br/>
+              A value of -1 indicates the number of cycles since Turmoil is unknown.
+            </summary>
+        </member>
         <member name="M:EDlib.Powerplay.PowerStanding.#ctor">
             <summary>Initializes a new instance of the <see cref="T:EDlib.Powerplay.PowerStanding" /> class with no data.</summary>
         </member>
@@ -1918,6 +1924,18 @@
             <param name="allegiance">The Power's allegiance.</param>
             <param name="shortname">The Power's short name.</param>
             <param name="updated">When the Power's standing was last updated.</param>
+        </member>
+        <member name="M:EDlib.Powerplay.PowerStanding.#ctor(System.Int32,System.String,System.Int32,EDlib.Powerplay.StandingChange,System.Boolean,System.String,System.String,System.DateTime,System.Int32)">
+            <summary>Initializes a new instance of the <see cref="T:EDlib.Powerplay.PowerStanding" /> class with the given data.</summary>
+            <param name="id">The Power's unique identifier.</param>
+            <param name="name">The Power's name.</param>
+            <param name="position">The Power's position in the Galactic Standings.</param>
+            <param name="change">The Power's change in the Galactic Standings.</param>
+            <param name="turmoil">Whether the Power is in Turmoil.</param>
+            <param name="allegiance">The Power's allegiance.</param>
+            <param name="shortname">The Power's short name.</param>
+            <param name="updated">When the Power's standing was last updated.</param>
+            <param name="cyclesSinceTurmoil">The number of cycles since the Power was last in Turmoil.</param>
         </member>
         <member name="M:EDlib.Powerplay.PowerStanding.#ctor(System.Int32,System.String,System.Int32,System.DateTime)">
             <summary>

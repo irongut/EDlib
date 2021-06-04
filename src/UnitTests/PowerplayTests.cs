@@ -76,11 +76,30 @@ namespace UnitTests
             Assert.AreEqual("Empire", power.Allegiance);
             Assert.AreEqual("ALD", power.ShortName);
             Assert.AreEqual(date, power.LastUpdated);
+            Assert.AreEqual(-1, power.CyclesSinceTurmoil);
             Assert.IsTrue(power.ToString().Contains("Arissa", StringComparison.OrdinalIgnoreCase));
         }
 
         [TestMethod]
-        public void NewPowerStandingTestToo()
+        public void NewPowerStandingSinceTurmoilTest()
+        {
+            DateTime date = DateTime.Now;
+            PowerStanding power = new PowerStanding(3, "Arissa", 1, StandingChange.up, false, "Empire", "ALD", date, 46);
+            Assert.AreEqual(3, power.Id);
+            Assert.AreEqual("Arissa", power.Name);
+            Assert.AreEqual(1, power.Position);
+            Assert.AreEqual(StandingChange.up, power.Change);
+            Assert.AreEqual("Up", power.ChangeString);
+            Assert.IsFalse(power.Turmoil);
+            Assert.AreEqual("Empire", power.Allegiance);
+            Assert.AreEqual("ALD", power.ShortName);
+            Assert.AreEqual(date, power.LastUpdated);
+            Assert.AreEqual(46, power.CyclesSinceTurmoil);
+            Assert.IsTrue(power.ToString().Contains("Arissa", StringComparison.OrdinalIgnoreCase));
+        }
+
+        [TestMethod]
+        public void NewPowerStandingBackendTest()
         {
             DateTime date = DateTime.Now;
             PowerStanding power = new PowerStanding(1, "Arissa Lavigny-Duval (+1)", 260, date);
@@ -93,6 +112,7 @@ namespace UnitTests
             Assert.AreEqual("Empire", power.Allegiance);
             Assert.AreEqual("ALD", power.ShortName);
             Assert.AreEqual(date, power.LastUpdated);
+            Assert.AreEqual(-1, power.CyclesSinceTurmoil);
             Assert.IsTrue(power.ToString().Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
         }
 
@@ -113,6 +133,7 @@ namespace UnitTests
             Assert.AreEqual("Empire", ald.Allegiance);
             Assert.AreEqual(standings.LastUpdated, ald.LastUpdated);
             Assert.AreEqual($"Cycle {standings.Cycle}", ald.Cycle);
+            Assert.AreEqual(-1, ald.CyclesSinceTurmoil); // will need to change once backend includes the data
         }
     }
 }

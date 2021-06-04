@@ -17,5 +17,6 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Code coverage doesn't see new()", Scope = "member", Target = "~M:UnitTests.InaraServiceTests.InaraRequestTest")]
 [assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Code coverage doesn't see new()", Scope = "member", Target = "~M:UnitTests.PowerplayTests.NewPowerCommsTest")]
 [assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Code coverage doesn't see new()", Scope = "member", Target = "~M:UnitTests.PowerplayTests.NewPowerStandingTest")]
-[assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Code coverage doesn't see new()", Scope = "member", Target = "~M:UnitTests.PowerplayTests.NewPowerStandingTestToo")]
+[assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Code coverage doesn't see new()", Scope = "member", Target = "~M:UnitTests.PowerplayTests.NewPowerStandingBackendTest")]
+[assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Code coverage doesn't see new()", Scope = "member", Target = "~M:UnitTests.PowerplayTests.NewPowerStandingSinceTurmoilTest")]
 [assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Code coverage doesn't see new()", Scope = "member", Target = "~M:UnitTests.TopicTests.TopicTest")]

@@ -63,11 +63,17 @@ namespace EDlib.Powerplay
             }
         }
 
+        /// <summary>
+        ///   The number of cycles since the Power was last in Turmoil.<br/>
+        ///   A value of -1 indicates the number of cycles since Turmoil is unknown.
+        /// </summary>
+        public int CyclesSinceTurmoil { get; set; }
+
         /// <summary>Initializes a new instance of the <see cref="PowerStanding" /> class with no data.</summary>
         [Preserve(Conditional = true)]
         public PowerStanding()
         {
-            // required for NewtonsoftJson
+            CyclesSinceTurmoil = -1;
         }
 
         /// <summary>Initializes a new instance of the <see cref="PowerStanding" /> class with the given data.</summary>
@@ -90,6 +96,31 @@ namespace EDlib.Powerplay
             Allegiance = allegiance;
             ShortName = shortname;
             LastUpdated = updated;
+            CyclesSinceTurmoil = -1;
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="PowerStanding" /> class with the given data.</summary>
+        /// <param name="id">The Power's unique identifier.</param>
+        /// <param name="name">The Power's name.</param>
+        /// <param name="position">The Power's position in the Galactic Standings.</param>
+        /// <param name="change">The Power's change in the Galactic Standings.</param>
+        /// <param name="turmoil">Whether the Power is in Turmoil.</param>
+        /// <param name="allegiance">The Power's allegiance.</param>
+        /// <param name="shortname">The Power's short name.</param>
+        /// <param name="updated">When the Power's standing was last updated.</param>
+        /// <param name="cyclesSinceTurmoil">The number of cycles since the Power was last in Turmoil.</param>
+        [Preserve(Conditional = true)]
+        public PowerStanding(int id, string name, int position, StandingChange change, bool turmoil, string allegiance, string shortname, DateTime updated, int cyclesSinceTurmoil)
+        {
+            Id = id;
+            Name = name;
+            Position = position;
+            Change = change;
+            Turmoil = turmoil;
+            Allegiance = allegiance;
+            ShortName = shortname;
+            LastUpdated = updated;
+            CyclesSinceTurmoil = cyclesSinceTurmoil;
         }
 
         /// <summary>
@@ -204,6 +235,7 @@ namespace EDlib.Powerplay
             Turmoil = standing.IndexOf("Turmoil", StringComparison.OrdinalIgnoreCase) >= 0;
             Cycle = $"Cycle {cycle}";
             LastUpdated = updated;
+            CyclesSinceTurmoil = -1;
         }
 
         /// <summary>Returns the Power's standing as a string: position + change - Power name (Power allegiance)</summary>
