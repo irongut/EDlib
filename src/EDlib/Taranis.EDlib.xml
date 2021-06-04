@@ -1960,8 +1960,9 @@
               <para>Days and hours until the last 24 hours, then hours and minutes.</para>
             </summary>
         </member>
-        <member name="M:EDlib.Powerplay.CycleService.CycleImminent">
-            <summary><c>true</c> if the end of the current Powerplay cycle is imminent - less than 12 hours remaining.</summary>
+        <member name="M:EDlib.Powerplay.CycleService.CycleImminent(System.Int32)">
+            <summary>Returns <c>true</c> if the end of the current Powerplay cycle is imminent - less than <c>imminentHours</c> hours remaining.</summary>
+            <param name="imminentHours">The number of hours during which the end of the cycle is imminent.</param>
         </member>
         <member name="M:EDlib.Powerplay.CycleService.FinalDay">
             <summary><c>true</c> if the current Powerplay cycle ends within 24 hours.</summary>

@@ -47,14 +47,35 @@ namespace EDlib.Powerplay
             }
         }
 
-        /// <summary><c>true</c> if the end of the current Powerplay cycle is imminent - less than 12 hours remaining.</summary>
-        public static bool CycleImminent()
+        /// <summary>Returns <c>true</c> if the end of the current Powerplay cycle is imminent - less than <c>imminentHours</c> hours remaining.</summary>
+        /// <param name="imminentHours">The number of hours during which the end of the cycle is imminent.</param>
+        public static bool CycleImminent(int imminentHours = 12)
         {
-            // last 12 hours
+            if (imminentHours < 1)
+            {
+                imminentHours = 1;
+            }
+            else if (imminentHours > 24)
+            {
+                imminentHours = 24;
+            }
+
             DateTime currentUTC = DateTime.UtcNow;
             int day = (int)currentUTC.DayOfWeek;
             int hour = currentUTC.Hour;
-            return (day == 3 && hour >= 19) || (day == 4 && hour < 7);
+
+            if (imminentHours > 7)
+            {
+                return (day == 3 && hour > 30 - imminentHours) || (day == 4 && hour < 7);
+            }
+            else if (imminentHours < 7)
+            {
+                return day == 4 && hour > 6 - imminentHours && hour < 7;
+            }
+            else
+            {
+                return day == 4 && hour < 7;
+            }
         }
 
         /// <summary><c>true</c> if the current Powerplay cycle ends within 24 hours.</summary>
