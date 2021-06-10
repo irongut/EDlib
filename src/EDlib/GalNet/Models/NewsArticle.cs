@@ -83,7 +83,7 @@ namespace EDlib.GalNet
         /// <summary>Determines the Topic and content Tags for an article by analysing it using a Bag of Words technique.</summary>
         /// <param name="topics">List of <see cref="Topic" /> to use when classifying article.</param>
         /// <param name="ignoreTopics">List of <see cref="Topic" /> to ignore when classifying article.</param>
-        internal void ClassifyArticle(List<Topic> topics, List<Topic> ignoreTopics)
+        protected internal void ClassifyArticle(List<Topic> topics, List<Topic> ignoreTopics)
         {
             Tags = new List<string>();
             List<string> sentences = SplitSentences();
