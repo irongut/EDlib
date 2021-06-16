@@ -1,12 +1,52 @@
 [
     {
+        "Name": "Aliens",
+        "Terms": [ "expansion list" ],
+        "Count": 0
+    },
+    {
+        "Name": "Combat",
+        "Terms": [ "expansion list", "racing", "racers", "jaques station" ],
+        "Count": 0
+    },
+    {
+        "Name": "Crime",
+        "Terms": [ "expansion list", "starport status update", "thargoid", "cerberus plague" ],
+        "Count": 0
+    },
+    {
         "Name": "Culture",
         "Terms": [ "authorit", "authoris" ],
         "Count": 0
     },
     {
+        "Name": "Economy",
+        "Terms": [ "powers update", "racing", "racers", "cerberus plague" ],
+        "Count": 0
+    },
+    {
+        "Name": "Exploration",
+        "Terms": [ "racing", "racers" ],
+        "Count": 0
+    },
+    {
+        "Name": "Health",
+        "Terms": [ "alexandria" ],
+        "Count": 0
+    },
+    {
         "Name": "Mining",
-        "Terms": [ "asteroid base" ],
+        "Terms": [ "asteroid base", "adamastor", "hesperus" ],
+        "Count": 0
+    },
+    {
+        "Name": "Mystery",
+        "Terms": [ "racing", "racers" ],
+        "Count": 0
+    },
+    {
+        "Name": "Politics",
+        "Terms": [ "entertainment", "jaques station" ],
         "Count": 0
     },
     {
@@ -16,12 +56,22 @@
     },
     {
         "Name": "Science",
-        "Terms": [ "science fiction" ],
+        "Terms": [ "science fiction", "starport status update", "racing", "racers" ],
+        "Count": 0
+    },
+    {
+        "Name": "Alliance",
+        "Terms": [ "expansion list", "racing", "racers", "starport status update" ],
+        "Count": 0
+    },
+    {
+        "Name": "Empire",
+        "Terms": [ "expansion list", "racing", "racers", "starport status update", "electoral reform" ],
         "Count": 0
     },
     {
         "Name": "Federation",
-        "Terms": [ "pilots federation", "pilot's federation" ],
+        "Terms": [ "pilots federation", "pilot's federation", "expansion list", "racing", "racers", "starport status update" ],
         "Count": 0
     }
 ]
