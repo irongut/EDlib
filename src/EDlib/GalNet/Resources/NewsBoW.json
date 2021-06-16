@@ -1,47 +1,47 @@
 [
     {
         "Name": "Aliens",
-        "Terms": [ "alien", "thargoid", "guardian", "aegis", "meta-alloy", "incursion", "xeno" ],
+        "Terms": [ "alien", "thargoid", "guardian", "aegis", "meta-alloy", "incursion", "xeno", "unknown-artefact", "unknown artefact" ],
         "Count": 0
     },
     {
         "Name": "Crime",
-        "Terms": [ "crime", "criminal", "illegal", "theft", "steal", "stole", "murder", "homicide", "assassin", "arrest", "hijack", "blackmail", "hack", "kidnap", "corrupt", "prosecution", "guilt", "unlicensed", "police", "cartel", "narcotic", "autopsy", "black market", "terrorism", "terrorist", "sabotage", "anti-capitalist", "extremism", "extremist", "militant", "untrustworthy", "marooned", "prison" ],
+        "Terms": [ "crime", "criminal", "illegal", "theft", "steal", "stole", "murder", "homicide", "assassin", "arrest", "hijack", "blackmail", "hack", "kidnap", "corrupt", "prosecution", "guilt", "unlicensed", "police", "cartel", "narcotic", "autopsy", "black market", "terrorism", "terrorist", "sabotage", "anti-capitalist", "extremism", "extremist", "militant", "untrustworthy", "marooned", "prison", "prohibition", "concealed", "onionhead" ],
         "Count": 0
     },
     {
         "Name": "Combat",
-        "Terms": [ "combat", "conflict", "battle", "navy", "naval", "armada", "military", "bounty", "bounties", "insurrection", "kill order", "hostilities", "mercenar", "violent", "raid", "attack", "defence", "security", "wanted ships", "peace" ],
+        "Terms": [ "combat", "conflict", "battle", "navy", "naval", "armada", "military", "bounty", "bounties", "insurrection", "kill order", "hostilities", "mercenar", "violent", "raid", "attack", "defence", "security", "wanted ships", "peace", "agitators", "firing range", "melee masters arena competition" ],
         "Count": 0
     },
     {
         "Name": "Culture",
-        "Terms": [ "fine art", "artwork", "sculpture", "painting", "literature", "masterpiece", "artist", "theatre", "theatrical", "festival", "exhibition", "culinary", "cuisine", "delicacy", "delicacies", "connoisseur", "orchestra", "author", "luxurious", "rarities" ],
+        "Terms": [ "cultural", "fine art", "artwork", "sculpture", "painting", "literature", "masterpiece", "artist", "theatre", "theatrical", "festiv", "exhibition", "culinary", "cuisine", "delicacy", "delicacies", "connoisseur", "orchestra", "author", "luxurious", "rarities", "revellers", "colonia citizens network", "racing", "racers", "tourism hotspots", "base-jump", "historic", "libations", "celebrations", "regatta", "memorial", "remembrance week", "kessel run", "entertainment", "clauss incorporated" ],
         "Count": 0
     },
     {
         "Name": "Economy",
-        "Terms": [ "economy", "economic", "trade", "deliver", "construct", "investor", "supplier", "logistics", "merger", "conglomerate", "commodities", "consumer", "consumable", "business analyst", "investment", "wealth", "fortune", "ambrose foundation", "industry", "industrial", "manufactur", "engineering", "bank of zaonce", "megaship", "resources", "homeless", "immigra", "agricultur", "harvest", "shareholder", "taxes", "discount", "sales", "board of directors", "cuisine", "luxurious", "shipment", "shipped", "rare goods", "rarities" ],
+        "Terms": [ "economy", "economic", "trade", "deliver", "construct", "investor", "supplier", "logistics", "merger", "conglomerate", "commodities", "consumer", "consumable", "business analyst", "investment", "wealth", "prosperity", "fortune", "ambrose foundation", "industry", "industrial", "manufactur", "engineering", "bank of zaonce", "megaship", "resources", "homeless", "immigra", "agricultur", "harvest", "shareholder", "taxes", "discount", "sales", "board of directors", "cuisine", "luxurious", "shipment", "shipped", "rare goods", "rarities", "ultratech expo", "herculean machines", "supratech", "galactic mechanics union", "consortium", "anti-competitive", "price fixing", "pricing strategy", "terraforming", "land-enrichment", "insurance", "macrosphere", "commercially", "zorgon peterson", "faulcon delacy", "achilles corporation" ],
         "Count": 0
     },
     {
         "Name": "Exploration",
-        "Terms": [ "exploration", "explorers", "distant worlds", "mapping", "cartographics", "unexplored", "sagittarius", "a*", "beagle point", "galactic core", "codex" ],
+        "Terms": [ "exploration", "explorer", "distant worlds", "expedition", "mapping", "cartographics", "unexplored", "sagittarius", "a*", "beagle point", "galactic core", "codex", "solar storms", "black hole", "universal cartography", "colonia", "jaques station" ],
         "Count": 0
     },
     {
         "Name": "Health",
-        "Terms": [ "health", "medical", "medicine", "meds", "pharmaceutical", "outbreak", "disease", "pathogen", "illness", "injury", "injuries", "clinic", "immune", "patient", "addict", "narcotic", "fertility", "pescatarian", "food shortage", "starvation", "nutrition" ],
+        "Terms": [ "health", "medical", "medicine", "meds", "pharmaceutical", "outbreak", "disease", "pathogen", "illness", "injury", "injuries", "plague", "cure", "clinic", "immune", "patient", "addict", "narcotic", "fertility", "pescatarian", "food shortage", "starvation", "nutrition" ],
         "Count": 0
     },
     {
         "Name": "Mining",
-        "Terms": [ "mining", "miner", "mineral", "prospector", "asteroid" ],
+        "Terms": [ "mining", "miner", "mined", "mineral", "prospector", "asteroid" ],
         "Count": 0
     },
     {
         "Name": "Mystery",
-        "Terms": [ "mystery", "mysteri", "vanish", "phenomenon", "missing", "disappear", "anomaly", "inexplicabl", "dream journal", "visions", "gan romero", "halsey", "starship one", "raxxla", "dark wheel", "omphalos rift", "salomé", "salome", "metadrive", "generation ship", "ancient", "faint transmission", "unexplored", "triangulate" ],
+        "Terms": [ "mystery", "mysteri", "unknown-artefact", "unknown artefact", "thargoid sensor", "vanish", "phenomenon", "missing", "disappear", "anomaly", "inexplicabl", "dream journal", "visions", "gan romero", "halsey", "starship one", "highliner antares", "raxxla", "formidine rift", "dark wheel", "omphalos rift", "salomé", "salome", "metadrive", "generation ship", "derelict megaship", "ancient", "faint transmission", "unexplored", "triangulate", "technical issues", "technical problems", "mystifying", "intermittent problems", "fragmentary signal", "degraded", "intriguing message", "unusual designation", "adamastor", "hesperus", "ghost ships" ],
         "Count": 0
     },
     {
@@ -56,12 +56,12 @@
     },
     {
         "Name": "Science",
-        "Terms": [ "science", "scientific", "technolog", "professor", "engineer", "hyperspace", "research", "canonn", "anomaly", "codex", "synthetic treatment", "synthetically enhanced", "synthetic composition", "fertility", "sustainability", "biological", "genetic", "pathogen", "macronutrients", "agronomist", "ex7 fertiliser", "enrich soil", "interstellar association for agriculture", "agronomic treatment", "biocides", "anthropology", "molecular diagnostics", "mutation", "unexplored", "triangulate", "encrypt", "xenological" ],
+        "Terms": [ "science", "scientific", "technolog", "professor", "engineer", "hyperspace", "research", "canonn", "anomaly", "codex", "synthetic treatment", "synthetically enhanced", "synthetic composition", "fertility", "sustainability", "biological", "genetic", "pathogen", "macronutrients", "agronomist", "ex7 fertiliser", "enrich soil", "interstellar association for agriculture", "agronomic treatment", "biocides", "anthropology", "molecular diagnostics", "mutation", "unexplored", "triangulate", "encrypt", "xenological", "terraforming", "mycologist", "geysers", "solar storms", "black hole", "ultratech expo" ],
         "Count": 0
     },
     {
         "Name": "Alliance",
-        "Terms": [ "alliance", "mahon", "yamamoto", "kincaid", "interpol", "bank of zaonce", "lakon", "alioth", "galactic summit" ],
+        "Terms": [ "alliance", "mahon", "yamamoto", "kincaid", "interpol", "bank of zaonce", "lakon", "alioth", "galactic summit", "nakato kaine", "councillor kaine" ],
         "Count": 0
     },
     {
@@ -96,7 +96,7 @@
     },
     {
         "Name": "Mahon",
-        "Terms": [ "edmund mahon", "prime minister mahon" ],
+        "Terms": [ "mahon" ],
         "Count": 0
     },
     {
@@ -106,7 +106,7 @@
     },
     {
         "Name": "LYR",
-        "Terms": [ "li yong-rui", "yong-rui", "sirius corp" ],
+        "Terms": [ "li yong-rui", "yong-rui", "sirius corp", "sirius system", "sirius subsidiaries", "sirius atmospherics", "fourth superpower" ],
         "Count": 0
     },
     {
