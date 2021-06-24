@@ -123,7 +123,7 @@ namespace UnitTests
             GalacticStandings standings = await service.GetData(new CancellationTokenSource()).ConfigureAwait(false);
             Assert.IsTrue(standings.Cycle > 250);
             Assert.IsTrue(standings.LastUpdated > DateTime.MinValue);
-            Assert.IsTrue(standings.Standings.Count == 11);
+            Assert.AreEqual(11, standings.Standings.Count);
             Assert.IsTrue(standings.ToString().Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
             Assert.IsTrue(standings.ToJson().Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
             Assert.IsTrue(standings.ToCSV().Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
@@ -133,7 +133,7 @@ namespace UnitTests
             Assert.AreEqual("Empire", ald.Allegiance);
             Assert.AreEqual(standings.LastUpdated, ald.LastUpdated);
             Assert.AreEqual($"Cycle {standings.Cycle}", ald.Cycle);
-            Assert.AreEqual(-1, ald.CyclesSinceTurmoil); // will need to change once backend includes the data
+            Assert.AreNotEqual(-1, ald.CyclesSinceTurmoil);
         }
     }
 }
