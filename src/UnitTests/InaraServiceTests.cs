@@ -105,49 +105,52 @@ namespace UnitTests
             Assert.IsTrue(string.IsNullOrWhiteSpace(request.Events[0].EventStatusText));
         }
 
-        [TestMethod]
-        public async Task GetDataTest()
-        {
-            InitialiseInaraTests();
-            DownloadOptions options = new();
-            InaraService inaraService = InaraService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
-            List<InaraEvent> input = new()
-            {
-                new InaraEvent("getCommunityGoalsRecent", new List<object>())
-            };
+        // Disabled GetDataTest() to prevent INARA throttling CG data - DM 29082021
+        // Replace with a different api?
 
-            string json;
-            DateTime lastUpdated;
-            try
-            {
-                (json, lastUpdated) = await inaraService.GetData(new InaraHeader(identity), input, options).ConfigureAwait(false);
-            }
-            catch (APIException ex)
-            {
-                Assert.Inconclusive($"Skipping test due to INARA API issue: {ex.Message}");
-                return;
-            }
+        //[TestMethod]
+        //public async Task GetDataTest()
+        //{
+        //    InitialiseInaraTests();
+        //    DownloadOptions options = new();
+        //    InaraService inaraService = InaraService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
+        //    List<InaraEvent> input = new()
+        //    {
+        //        new InaraEvent("getCommunityGoalsRecent", new List<object>())
+        //    };
 
-            Assert.IsFalse(string.IsNullOrWhiteSpace(json));
-            Assert.IsTrue(lastUpdated > DateTime.MinValue);
-        }
+        //    string json;
+        //    DateTime lastUpdated;
+        //    try
+        //    {
+        //        (json, lastUpdated) = await inaraService.GetData(new InaraHeader(identity), input, options).ConfigureAwait(false);
+        //    }
+        //    catch (APIException ex)
+        //    {
+        //        Assert.Inconclusive($"Skipping test due to INARA API issue: {ex.Message}");
+        //        return;
+        //    }
 
-        private void InitialiseInaraTests()
-        {
-            if (config == null)
-            {
-                config = new ConfigurationBuilder()
-                             .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                             .AddJsonFile("appsettings.json")
-                             .AddUserSecrets<InaraCGTests>()
-                             .Build();
+        //    Assert.IsFalse(string.IsNullOrWhiteSpace(json));
+        //    Assert.IsTrue(lastUpdated > DateTime.MinValue);
+        //}
 
-                appName = config["Inara-AppName"];
-                identity = new(appName,
-                               config["Inara-AppVersion"],
-                               config["Inara-ApiKey"],
-                               bool.Parse(config["Inara-IsDeveloped"]));
-            }
-        }
+        //private void InitialiseInaraTests()
+        //{
+        //    if (config == null)
+        //    {
+        //        config = new ConfigurationBuilder()
+        //                     .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+        //                     .AddJsonFile("appsettings.json")
+        //                     .AddUserSecrets<InaraCGTests>()
+        //                     .Build();
+
+        //        appName = config["Inara-AppName"];
+        //        identity = new(appName,
+        //                       config["Inara-AppVersion"],
+        //                       config["Inara-ApiKey"],
+        //                       bool.Parse(config["Inara-IsDeveloped"]));
+        //    }
+        //}
     }
 }
