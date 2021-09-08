@@ -3,8 +3,10 @@ name: CI Build
 on:
   push:
     branches: [ master ]
-  pull_request:
+  pull_request_target:
     branches: [ master ]
+permissions:
+  pull-requests: write
 
 jobs:
   build:
@@ -45,7 +47,7 @@ jobs:
       run: cp coverage/**/coverage.cobertura.xml coverage/coverage.cobertura.xml
 
     - name: Code Coverage Summary Report
-      uses:  irongut/CodeCoverageSummary@v1.0.1
+      uses:  irongut/CodeCoverageSummary@v1.0.2
       with:
         filename: coverage/coverage.cobertura.xml
         badge: true
