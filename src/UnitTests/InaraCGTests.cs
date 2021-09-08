@@ -16,11 +16,11 @@ namespace UnitTests
     [TestClass]
     public class InaraCGTests
     {
-        private IConfigurationRoot config;
-        private string appName;
-        private InaraIdentity identity;
+        //private IConfigurationRoot config;
+        //private string appName;
+        //private InaraIdentity identity;
 
-        // Disabled all but one test to prevent INARA throttling - DM 29082021
+        // Disabled all test that require downloads to prevent INARA throttling - DM 08092021
 
         //[TestMethod]
         //public async Task CommunityGoalTest()
@@ -123,59 +123,59 @@ namespace UnitTests
         //    Assert.IsFalse(string.IsNullOrWhiteSpace(cg.Topic));
         //}
 
-        [TestMethod]
-        public async Task CommunityGoalsTest()
-        {
-            InitialiseInaraTests();
+        //[TestMethod]
+        //public async Task CommunityGoalsTest()
+        //{
+        //    InitialiseInaraTests();
 
-            CommunityGoalsService cgService = CommunityGoalsService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
-            List<CommunityGoal> cgList;
-            DateTime updated;
-            try
-            {
-                (cgList, updated) = await cgService.GetData(60, identity, new CancellationTokenSource()).ConfigureAwait(false);
-            }
-            catch (APIException ex)
-            {
-                Assert.Inconclusive($"Skipping test due to INARA API issue: {ex.Message}");
-                return;
-            }
+        //    CommunityGoalsService cgService = CommunityGoalsService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
+        //    List<CommunityGoal> cgList;
+        //    DateTime updated;
+        //    try
+        //    {
+        //        (cgList, updated) = await cgService.GetData(60, identity, new CancellationTokenSource()).ConfigureAwait(false);
+        //    }
+        //    catch (APIException ex)
+        //    {
+        //        Assert.Inconclusive($"Skipping test due to INARA API issue: {ex.Message}");
+        //        return;
+        //    }
 
-            Assert.IsTrue(cgList.Count > 1);
-            Assert.IsTrue(updated > DateTime.MinValue);
+        //    Assert.IsTrue(cgList.Count > 1);
+        //    Assert.IsTrue(updated > DateTime.MinValue);
 
-            int max = cgList.Count > 4 ? 4 : cgList.Count;
-            for (int i = 0; i < max; i++)
-            {
-                CommunityGoal cg = cgList[i];
-                Assert.IsFalse(string.IsNullOrWhiteSpace(cg.CommunityGoalName));
-                Assert.IsTrue(cg.CommunityGoalGameID > 0);
-                Assert.IsFalse(string.IsNullOrWhiteSpace(cg.StarsystemName));
-                Assert.IsFalse(string.IsNullOrWhiteSpace(cg.StationName));
-                Assert.IsTrue(cg.GoalExpiry > DateTime.MinValue);
-                Assert.IsTrue(cg.TierReached >= 0);
-                Assert.IsTrue(cg.TierMax > 0);
-                Assert.IsTrue(cg.ContributorsNum >= 0);
-                Assert.IsTrue(cg.ContributionsTotal >= 0);
-                if (cg.TierReached == cg.TierMax || cg.TimeRemaining == TimeSpan.Zero)
-                {
-                    Assert.IsTrue(cg.IsCompleted);
-                }
-                else
-                {
-                    Assert.IsFalse(cg.IsCompleted);
-                }
-                Assert.IsTrue(cg.LastUpdate > DateTime.MinValue);
-                Assert.IsFalse(string.IsNullOrWhiteSpace(cg.GoalObjectiveText));
-                Assert.IsNotNull(cg.GoalRewardText); // can be empty
-                Assert.IsFalse(string.IsNullOrWhiteSpace(cg.GoalDescriptionText));
-                Assert.IsFalse(string.IsNullOrWhiteSpace(cg.InaraURL));
-                Assert.IsTrue(cg.TimeRemaining >= TimeSpan.Zero);
-                Assert.IsTrue(cg.Progress >= 0.0);
-                Assert.IsFalse(string.IsNullOrWhiteSpace(cg.ProgressText));
-                Assert.IsFalse(string.IsNullOrWhiteSpace(cg.Topic));
-            }
-        }
+        //    int max = cgList.Count > 4 ? 4 : cgList.Count;
+        //    for (int i = 0; i < max; i++)
+        //    {
+        //        CommunityGoal cg = cgList[i];
+        //        Assert.IsFalse(string.IsNullOrWhiteSpace(cg.CommunityGoalName));
+        //        Assert.IsTrue(cg.CommunityGoalGameID > 0);
+        //        Assert.IsFalse(string.IsNullOrWhiteSpace(cg.StarsystemName));
+        //        Assert.IsFalse(string.IsNullOrWhiteSpace(cg.StationName));
+        //        Assert.IsTrue(cg.GoalExpiry > DateTime.MinValue);
+        //        Assert.IsTrue(cg.TierReached >= 0);
+        //        Assert.IsTrue(cg.TierMax > 0);
+        //        Assert.IsTrue(cg.ContributorsNum >= 0);
+        //        Assert.IsTrue(cg.ContributionsTotal >= 0);
+        //        if (cg.TierReached == cg.TierMax || cg.TimeRemaining == TimeSpan.Zero)
+        //        {
+        //            Assert.IsTrue(cg.IsCompleted);
+        //        }
+        //        else
+        //        {
+        //            Assert.IsFalse(cg.IsCompleted);
+        //        }
+        //        Assert.IsTrue(cg.LastUpdate > DateTime.MinValue);
+        //        Assert.IsFalse(string.IsNullOrWhiteSpace(cg.GoalObjectiveText));
+        //        Assert.IsNotNull(cg.GoalRewardText); // can be empty
+        //        Assert.IsFalse(string.IsNullOrWhiteSpace(cg.GoalDescriptionText));
+        //        Assert.IsFalse(string.IsNullOrWhiteSpace(cg.InaraURL));
+        //        Assert.IsTrue(cg.TimeRemaining >= TimeSpan.Zero);
+        //        Assert.IsTrue(cg.Progress >= 0.0);
+        //        Assert.IsFalse(string.IsNullOrWhiteSpace(cg.ProgressText));
+        //        Assert.IsFalse(string.IsNullOrWhiteSpace(cg.Topic));
+        //    }
+        //}
 
         //[TestMethod]
         //public async Task CommunityGoalsByTimeTest()
@@ -231,23 +231,23 @@ namespace UnitTests
         //    }
         //}
 
-        private void InitialiseInaraTests()
-        {
-            if (config == null)
-            {
-                config = new ConfigurationBuilder()
-                             .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                             .AddJsonFile("appsettings.json")
-                             .AddUserSecrets<InaraCGTests>()
-                             .Build();
+        //private void InitialiseInaraTests()
+        //{
+        //    if (config == null)
+        //    {
+        //        config = new ConfigurationBuilder()
+        //                     .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+        //                     .AddJsonFile("appsettings.json")
+        //                     .AddUserSecrets<InaraCGTests>()
+        //                     .Build();
 
-                appName = config["Inara-AppName"];
-                identity = new(appName,
-                               config["Inara-AppVersion"],
-                               config["Inara-ApiKey"],
-                               bool.Parse(config["Inara-IsDeveloped"]));
-            }
-        }
+        //        appName = config["Inara-AppName"];
+        //        identity = new(appName,
+        //                       config["Inara-AppVersion"],
+        //                       config["Inara-ApiKey"],
+        //                       bool.Parse(config["Inara-IsDeveloped"]));
+        //    }
+        //}
 
         //private string LoadBoW(string filename)
         //{

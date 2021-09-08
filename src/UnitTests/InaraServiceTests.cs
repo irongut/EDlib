@@ -13,9 +13,9 @@ namespace UnitTests
     [TestClass]
     public class InaraServiceTests
     {
-        private IConfigurationRoot config;
-        private string appName;
-        private InaraIdentity identity;
+        //private IConfigurationRoot config;
+        //private string appName;
+        //private InaraIdentity identity;
 
         [TestMethod]
         public void InaraEventTest()
