@@ -1,0 +1,99 @@
+name: Build + Deploy
+
+on:
+  release:
+    types: [published]
+
+env:
+  DOTNET_NOLOGO: true                     # Disable the .NET logo in the console output
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true # Disable the .NET first time experience to skip caching NuGet packages and speed up the build
+  DOTNET_CLI_TELEMETRY_OPTOUT: true       # Disable sending .NET CLI telemetry to Microsoft
+  GITHUB_PACKAGE_URL: 'https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Test Build
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+
+    - name: Restore Dependencies
+      run: dotnet restore src/EDlib.sln
+
+    - name: Add User Secrets
+      uses: microsoft/variable-substitution@v1
+      with:
+        files: 'src/UnitTests/appsettings.json, src/EDlibDemo/appsettings.json'
+      env:
+        Inara-AppName:  ${{ secrets.INARA_APPNAME }}
+        Inara-AppVersion: ${{ secrets.INARA_APPVERSION }}
+        Inara-ApiKey:  ${{ secrets.INARA_APIKEY }}
+        Inara-UserApiKey: ${{ secrets.INARA_USERAPIKEY }}
+        Inara-IsDeveloped: ${{ secrets.INARA_ISDEVELOPED }}
+
+    - name: Build EDlib
+      run: dotnet build src/EDlib.sln --configuration Release --no-restore
+
+    - name: Test EDlib
+      run: dotnet test src/EDlib.sln --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage
+
+    - name: Copy Coverage To Predictable Location
+      run: cp coverage/**/coverage.cobertura.xml coverage/coverage.cobertura.xml
+
+    - name: Code Coverage Summary Report
+      uses: irongut/CodeCoverageSummary@v1.0.2
+      with:
+        filename: coverage/coverage.cobertura.xml
+        badge: true
+        format: 'md'
+        output: 'both'
+
+    - name: Upload EDlib Artifact
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: release-nugets
+        path: src/EDlib/bin/Release/Taranis.Software.EDlib*.nupkg
+
+    - name: Upload EDlib.Mock Artifact
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: release-nugets
+        path: src/EDlib.Mock/bin/Release/Taranis.Software.EDlib*.nupkg
+
+    - name: Upload Coverage Summary Artifact
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: release-nugets
+        path: code-coverage-results.md
+
+  deploy-gh:
+    name: Deploy to Github Packages
+    needs: [build]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - name: Download Artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: release-nugets
+
+    - name: Setup Nuget
+      uses: NuGet/setup-nuget@v1.0.2
+      with:
+        nuget-version: latest
+
+    - name: Add GitHub package source
+      run: nuget sources Add -Name "github" -Source ${{env.GITHUB_PACKAGE_URL}} -UserName ${{ github.repository_owner }} -Password ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Push to GitHub Packages
+      run: nuget push **/*.nupkg -source "github" -SkipDuplicate
