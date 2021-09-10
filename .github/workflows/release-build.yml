@@ -93,7 +93,7 @@ jobs:
         nuget-version: latest
 
     - name: Add GitHub package source
-      run: nuget sources Add -Name "github" -Source ${{env.GITHUB_PACKAGE_URL}} -UserName ${{ github.repository_owner }} -Password ${{ secrets.GITHUB_TOKEN }}
+      run: nuget sources Add -Name GitHub -Source ${{env.GITHUB_PACKAGE_URL}} -UserName ${{ github.repository_owner }} -Password ${{ secrets.GITHUB_TOKEN }}
 
     - name: Push to GitHub Packages
-      run: nuget push **/*.nupkg -source "github" -SkipDuplicate
+      run: nuget push **/*.nupkg -source GitHub --api-key ${{ secrets.GITHUB_TOKEN }} -SkipDuplicate
