@@ -3,6 +3,7 @@ name: Build + Deploy
 on:
   release:
     types: [published]
+    branches: [master]
 
 env:
   DOTNET_NOLOGO: true                     # Disable the .NET logo in the console output
@@ -75,7 +76,7 @@ jobs:
         path: code-coverage-results.md
 
   deploy-gh:
-    name: Deploy to Github Packages
+    name: Deploy to GitHub Packages
     needs: [build]
     runs-on: ubuntu-latest
     permissions:
@@ -97,3 +98,31 @@ jobs:
 
     - name: Push to GitHub Packages
       run: nuget push **/*.nupkg -source GitHub --api-key ${{ secrets.GITHUB_TOKEN }} -SkipDuplicate
+
+  deploy-docs:
+    name: Deploy Docs
+    needs: [build, deploy-gh]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Build Documentation
+      uses: nikeee/docfx-action@v1.0.0
+      with:
+        args: docfx_project/docfx.json
+
+    - name: Get Tag
+      id: get_tag
+      if: startsWith(github.ref, 'refs/tags/')
+      run: |
+        TAG_NAME="${GITHUB_REF##refs/tags/}"
+        echo "::set-output name=tag_name::${TAG_NAME}"
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs
+        tag_name: ${{ steps.get_tag.outputs.tag_name }}
+        tag_message: 'Documentation update ${{ steps.get_tag.outputs.tag_name }}'
