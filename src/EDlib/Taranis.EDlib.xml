@@ -1960,7 +1960,7 @@
         <member name="M:EDlib.Powerplay.CycleService.TimeRemaining">
             <summary>
               The time remaining till the end of the current Powerplay cycle.<br/>
-              Days and hours until the last 24 hours, then hours and minutes.
+              Days, hours and minutes.
             </summary>
         </member>
         <member name="M:EDlib.Powerplay.CycleService.CycleImminent(System.Int32)">

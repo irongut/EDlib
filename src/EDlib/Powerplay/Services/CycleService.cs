@@ -40,7 +40,7 @@ namespace EDlib.Powerplay
 
         /// <summary>
         ///   The time remaining till the end of the current Powerplay cycle.<br/>
-        ///   Days and hours until the last 24 hours, then hours and minutes.
+        ///   Days, hours and minutes.
         /// </summary>
         public static string TimeRemaining()
         {
@@ -56,26 +56,27 @@ namespace EDlib.Powerplay
                 hours = $"{time.Hours} hours";
             }
 
+            string minutes;
+            if (time.Minutes == 1)
+            {
+                minutes = "1 minute";
+            }
+            else
+            {
+                minutes = $"{time.Minutes} minutes";
+            }
+
             if (time.Days == 0)
             {
-                string minutes;
-                if (time.Minutes == 1)
-                {
-                    minutes = "1 minute";
-                }
-                else
-                {
-                    minutes = $"{time.Minutes} minutes";
-                }
                 return $"{hours} {minutes}";
             }
             else if (time.Days == 1)
             {
-                return $"1 day {hours}";
+                return $"1 day {hours} {minutes}";
             }
             else
             {
-                return $"{time.Days} days {hours}";
+                return $"{time.Days} days {hours} {minutes}";
             }
         }
 

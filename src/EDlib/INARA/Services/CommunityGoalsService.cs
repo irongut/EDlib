@@ -62,7 +62,7 @@ namespace EDlib.INARA
 
             if (communityGoals?.Any() == false || communityGoals.Count < goalCount || lastUpdated + TimeSpan.FromMinutes(cacheMinutes) < DateTime.Now)
             {
-                await GetData(cacheMinutes, identity, cancelToken, BoW, ignoreCache).ConfigureAwait(false);
+                _ = await GetData(cacheMinutes, identity, cancelToken, BoW, ignoreCache).ConfigureAwait(false);
             }
             return (communityGoals.Take(goalCount).ToList(), lastUpdated);
         }
@@ -97,25 +97,22 @@ namespace EDlib.INARA
 
                 // parse community goals
                 communityGoals.Clear();
-                await Task.Run(() =>
+                InaraRequest outputData = JsonConvert.DeserializeObject<InaraRequest>(json);
+                List<Topic> topics = GetTopics(BoW);
+                foreach (InaraEvent item in outputData.Events)
                 {
-                    InaraRequest outputData = JsonConvert.DeserializeObject<InaraRequest>(json);
-                    List<Topic> topics = GetTopics(BoW);
-                    foreach (InaraEvent item in outputData.Events)
+                    if (item.EventData != null)
                     {
-                        if (item.EventData != null)
+                        foreach (JObject cg in item.EventData)
                         {
-                            foreach (JObject cg in item.EventData)
-                            {
-                                CommunityGoal goal = cg.ToObject<CommunityGoal>();
-                                goal.ClassifyCG(topics);
-                                communityGoals.Add(goal);
-                                foreach (Topic topic in topics)
-                                    topic.Count = 0;
-                            }
+                            CommunityGoal goal = cg.ToObject<CommunityGoal>();
+                            goal.ClassifyCG(topics);
+                            communityGoals.Add(goal);
+                            foreach (Topic topic in topics)
+                                topic.Count = 0;
                         }
                     }
-                }).ConfigureAwait(false);
+                }
             }
             return (communityGoals, lastUpdated);
         }
@@ -140,19 +137,13 @@ namespace EDlib.INARA
 
             if (communityGoals?.Any() == false || lastDays != requestDays || lastUpdated + TimeSpan.FromMinutes(cacheMinutes) < DateTime.Now)
             {
-                await GetData(cacheMinutes, identity, cancelToken, BoW, ignoreCache).ConfigureAwait(false);
+                _ = await GetData(cacheMinutes, identity, cancelToken, BoW, ignoreCache).ConfigureAwait(false);
             }
 
             lastDays = requestDays;
-            List<CommunityGoal> goals = new List<CommunityGoal>();
-            foreach (CommunityGoal goal in communityGoals)
-            {
-                if (goal.GoalExpiry > DateTime.Today.AddDays(0 - requestDays))
-                {
-                    goals.Add(goal);
-                }
-            }
-            return (goals, lastUpdated);
+            DateTime requestDate = DateTime.Today.AddDays(0 - requestDays);
+
+            return (communityGoals.Where(x => x.GoalExpiry > requestDate).ToList(), lastUpdated);
         }
 
         private List<Topic> GetTopics(string BoW)
