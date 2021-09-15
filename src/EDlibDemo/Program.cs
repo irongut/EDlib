@@ -76,7 +76,7 @@ namespace EDlibDemo
                 CommunityGoalsService cgService = CommunityGoalsService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
                 try
                 {
-                    (List<CommunityGoal> cgList, DateTime _) = await cgService.GetData(2, 60, identity, null).ConfigureAwait(false);
+                    (List<CommunityGoal> cgList, DateTime _) = await cgService.GetDataByTime(14, 60, identity, null).ConfigureAwait(false);
                     foreach (CommunityGoal goal in cgList)
                     {
                         Console.WriteLine($"{goal.CommunityGoalName}");
