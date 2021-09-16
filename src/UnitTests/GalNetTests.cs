@@ -23,6 +23,7 @@ namespace UnitTests
             Assert.IsTrue(updated > DateTime.MinValue);
             NewsArticle article = newsList[0];
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Id));
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Hid));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Title));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Body));
             Assert.IsTrue(article.PublishDateTime > DateTime.MinValue);
@@ -45,6 +46,7 @@ namespace UnitTests
             Assert.IsTrue(updated > DateTime.MinValue);
             NewsArticle article = newsList[0];
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Id));
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Hid));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Title));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Body));
             Assert.IsTrue(article.PublishDateTime > DateTime.MinValue);
@@ -69,6 +71,7 @@ namespace UnitTests
             Assert.IsTrue(updated > DateTime.MinValue);
             NewsArticle article = newsList[0];
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Id));
+            Assert.IsFalse(string.IsNullOrWhiteSpace(article.Hid));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Title));
             Assert.IsFalse(string.IsNullOrWhiteSpace(article.Body));
             Assert.IsTrue(article.PublishDateTime > DateTime.MinValue);

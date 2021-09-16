@@ -1039,6 +1039,9 @@
         <member name="P:EDlib.GalNet.NewsArticle.Id">
             <summary>Frontier Developments Id for the News article.</summary>
         </member>
+        <member name="P:EDlib.GalNet.NewsArticle.Hid">
+            <summary>A unique identifier generated from a hash of the PublishDate and Title properties, useful when comparing datasets from different sources.</summary>
+        </member>
         <member name="P:EDlib.GalNet.NewsArticle.Title">
             <summary>The title of the News article.</summary>
         </member>
