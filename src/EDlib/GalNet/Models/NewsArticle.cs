@@ -1,4 +1,5 @@
 ﻿using EDlib.Common;
+using EDlib.Network;
 using EDlib.Platform;
 using Newtonsoft.Json;
 using System;
@@ -19,6 +20,20 @@ namespace EDlib.GalNet
         /// <summary>Frontier Developments Id for the News article.</summary>
         [JsonProperty(PropertyName = "uid")]
         public string Id { get; set; }
+
+        private string _hid;
+        /// <summary>A unique identifier generated from a hash of the PublishDate and Title properties, useful when comparing datasets from different sources.</summary>
+        public string Hid
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_hid) && !string.IsNullOrWhiteSpace(_title) && PublishDateTime != DateTime.MinValue)
+                {
+                    _hid = Sha256Helper.GenerateHash($"{PublishDate}-{_title}");
+                }
+                return _hid;
+            }
+        }
 
         private string _title;
         /// <summary>The title of the News article.</summary>
