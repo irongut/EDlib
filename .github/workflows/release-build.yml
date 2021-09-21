@@ -6,15 +6,15 @@ on:
     branches: [master]
 
 env:
-  DOTNET_NOLOGO: true                     # Disable the .NET logo in the console output
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true # Disable the .NET first time experience to skip caching NuGet packages and speed up the build
-  DOTNET_CLI_TELEMETRY_OPTOUT: true       # Disable sending .NET CLI telemetry to Microsoft
+  DOTNET_NOLOGO: true                     # Disable the .NET logo
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true # Disable the .NET first time experience to speed up the build
+  DOTNET_CLI_TELEMETRY_OPTOUT: true       # Disable sending .NET CLI telemetry
   GITHUB_PACKAGE_URL: 'https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Test Build
+    name: Release Build
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -46,10 +46,10 @@ jobs:
     - name: Test EDlib
       run: dotnet test src/EDlib.sln --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage
 
-    - name: Copy Coverage To Predictable Location
+    - name: Copy Test Coverage
       run: cp coverage/**/coverage.cobertura.xml coverage/coverage.cobertura.xml
 
-    - name: Code Coverage Summary Report
+    - name: Generate Test Report
       uses: irongut/CodeCoverageSummary@v1.0.2
       with:
         filename: coverage/coverage.cobertura.xml
@@ -69,7 +69,7 @@ jobs:
         name: release-nugets
         path: src/EDlib.Mock/bin/Release/Taranis.Software.EDlib*.nupkg
 
-    - name: Upload Coverage Summary Artifact
+    - name: Upload Test Report Artifact
       uses: actions/upload-artifact@v2.2.4
       with:
         name: release-nugets
@@ -98,6 +98,14 @@ jobs:
 
     - name: Push to GitHub Packages
       run: nuget push **/*.nupkg -source GitHub --api-key ${{ secrets.GITHUB_TOKEN }} -SkipDuplicate
+
+    - name: Add Test Report to Release
+      uses: irongut/EditRelease@master
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        id: ${{ github.event.release.id }}
+        body: "Released to GitHub Packages."
+        files: "**/code-coverage-results.md"
 
   deploy-docs:
     name: Deploy Docs
