@@ -105,7 +105,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         id: ${{ github.event.release.id }}
         body: "Released to GitHub Packages."
-        files: "**/code-coverage-results.md"
+        files: "code-coverage-results.md"
 
   deploy-docs:
     name: Deploy Docs
