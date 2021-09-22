@@ -97,7 +97,7 @@ jobs:
       run: nuget push **/*.nupkg -source GitHub -SkipDuplicate
 
     - name: Add Test Report to Release
-      uses: irongut/EditRelease@master
+      uses: irongut/EditRelease@v1.0.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         id: ${{ github.event.release.id }}
@@ -129,5 +129,4 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./docs
-        tag_name: ${{ steps.get_tag.outputs.tag_name }}
         tag_message: 'Documentation update ${{ steps.get_tag.outputs.tag_name }}'
