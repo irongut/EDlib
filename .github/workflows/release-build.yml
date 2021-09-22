@@ -97,7 +97,7 @@ jobs:
       run: nuget sources Add -Name GitHub -Source ${{env.GITHUB_PACKAGE_URL}} -UserName ${{ github.repository_owner }} -Password ${{ secrets.GITHUB_TOKEN }}
 
     - name: Push to GitHub Packages
-      run: nuget push **/*.nupkg -source GitHub --api-key ${{ secrets.GITHUB_TOKEN }} -SkipDuplicate
+      run: nuget push **/*.nupkg -source GitHub -SkipDuplicate
 
     - name: Add Test Report to Release
       uses: irongut/EditRelease@master
