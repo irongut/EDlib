@@ -1,0 +1,1005 @@
+{
+  "homepages": [],
+  "source_base_path": "/github/workspace/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.APIException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.APIException.html",
+          "hash": "yD6ej8PwaqZtSUoqBVu/Mg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.BGS.BgsTick.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.BGS.BgsTick.html",
+          "hash": "EShlPFvc+e8Pacdwf/tyuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.BGS.BgsTickService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.BGS.BgsTickService.html",
+          "hash": "UT2Xq8tZmWI9+QKPH5YrtQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.BGS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.BGS.html",
+          "hash": "qTSXDPIyeNNVlTdavZMk5A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Common.Topic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Common.Topic.html",
+          "hash": "bvOJs6ez/NEbbRis/5r54w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Common.html",
+          "hash": "IZPGEdmvFiypxNlmxz0Kew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.Body.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.Body.html",
+          "hash": "IE5g/GMSOH6cQSVF4Xmj0A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.Commodity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.Commodity.html",
+          "hash": "hAmKfpgOqsVpjnJVCZvfbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.ControllingFaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.ControllingFaction.html",
+          "hash": "8rppkjKrk1HcyvGdzXG4WA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.Coords.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.Coords.html",
+          "hash": "mYUeJ6IjWWjcYzyHBUL2Jg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.EdsmService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.EdsmService.html",
+          "hash": "k6ouHSZg5qAjmxdDFS1j/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.EliteStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.EliteStatus.html",
+          "hash": "59RxCb/hx9XMAIsIYBXxQA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.EliteStatusService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.EliteStatusService.html",
+          "hash": "KsIrkxMpnJz2w+IsB6jDkg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.Faction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.Faction.html",
+          "hash": "xWRByG3OA9ofDMxucAlFeQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.FactionState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.FactionState.html",
+          "hash": "+4idT7epBBddmoD3dtMfUg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.Market.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.Market.html",
+          "hash": "Q9USvS3hEb9HGNgn+uzGXQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.PrimaryStar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.PrimaryStar.html",
+          "hash": "AaCD8S7tqF5BCdobvm/7QQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.Ship.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.Ship.html",
+          "hash": "aSewsBNQGDoLeO4wvoSC2Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.ShipModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.ShipModule.html",
+          "hash": "GdFzbfzZbGHEJXAA/P2Prw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.Shipyard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.Shipyard.html",
+          "hash": "+uccsNxL/I3zhW9kk0nxZg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.SolarSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.SolarSystem.html",
+          "hash": "8pb3zAScxNwuBGurePPkKg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.Station.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.Station.html",
+          "hash": "x/2Xqf7n9kcFKeVbmODpVA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.StationOutfitting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.StationOutfitting.html",
+          "hash": "NOZr4w6a0B+SORiYZjUOLw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.SystemFactions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.SystemFactions.html",
+          "hash": "MAXeGjg9W7w44P9msJI+GA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.SystemInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.SystemInfo.html",
+          "hash": "odpEzYVk8zeoOPmqYDGcDQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.SystemService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.SystemService.html",
+          "hash": "wfDtbx/abBwn0ZIVAnHUQg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.SystemStations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.SystemStations.html",
+          "hash": "pNe4ISLiDRsszEd1BJ5pKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.SystemsOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.SystemsOptions.html",
+          "hash": "37NQXtbiweKStmTbCCzF8g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.SystemsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.SystemsService.html",
+          "hash": "PkRxTC4tVzT5rS0Yd9WLMA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.UpdateTime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.UpdateTime.html",
+          "hash": "VX7nehcl76voW2hgd8BulA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.html",
+          "hash": "WTXubGvJ6ivnJ3MWEcyMoQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.GalNet.GalNetService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.GalNet.GalNetService.html",
+          "hash": "somUdRh49mGNvHwMUrWEOg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.GalNet.NewsArticle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.GalNet.NewsArticle.html",
+          "hash": "pTTANaw6gOZTKn+44M5a1g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.GalNet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.GalNet.html",
+          "hash": "hpSR6HeC6xvIZTzX6uDdTA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.INARA.CommanderProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.INARA.CommanderProfile.html",
+          "hash": "IIwiJmijwYD8bQ1XPiNxig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.INARA.CommanderProfileService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.INARA.CommanderProfileService.html",
+          "hash": "O5IKjtCfU3XwurBbrOw0WA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.INARA.CommanderRank.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.INARA.CommanderRank.html",
+          "hash": "Kvxv+OKhzll2TwpWKTc66w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.INARA.CommanderShip.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.INARA.CommanderShip.html",
+          "hash": "z80o3FADxX9ruAZiGMUbvA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.INARA.CommanderSquadron.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.INARA.CommanderSquadron.html",
+          "hash": "A6Ou4kSKOCdYaTn1BcyKdQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.INARA.CommanderWing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.INARA.CommanderWing.html",
+          "hash": "ONTFgSvP4HhFnq6HBoFvEw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.INARA.CommunityGoal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.INARA.CommunityGoal.html",
+          "hash": "rNe+jjlYTqQzUhmRrSDa7A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.INARA.CommunityGoalsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.INARA.CommunityGoalsService.html",
+          "hash": "8P8+FS/sh/BmcsJe+IzruA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.INARA.InaraEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.INARA.InaraEvent.html",
+          "hash": "SGbmMb65JFooSvlcpT4LqA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.INARA.InaraHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.INARA.InaraHeader.html",
+          "hash": "mYCeaEab7fhRmXZkYY0uXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.INARA.InaraIdentity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.INARA.InaraIdentity.html",
+          "hash": "KAimotYi/l7u5d6Xgv+miQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.INARA.InaraRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.INARA.InaraRequest.html",
+          "hash": "Jgbknyj2IvZBkr5BCd5z4w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.INARA.InaraService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.INARA.InaraService.html",
+          "hash": "oUaHmEe2SuJCnOgwmbxD8Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.INARA.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.INARA.html",
+          "hash": "dcqtdF5nV7KJh1dZnrukXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.LinkerSafeAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.LinkerSafeAttribute.html",
+          "hash": "c6+JwP+bZcV1fX1mvI6usg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Network.CachedDownloadService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Network.CachedDownloadService.html",
+          "hash": "sFtR1pSjzEU4MeC0d8jiRw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Network.DownloadOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Network.DownloadOptions.html",
+          "hash": "pMqZHWg4+GQqGAB1ejLBuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Network.DownloadService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Network.DownloadService.html",
+          "hash": "Q1APC18S0iM9pH4zJKzqog=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Network.HttpHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Network.HttpHelper.html",
+          "hash": "WhXFO9YXfOWYQaMd/CXvLQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Network.IDownloadService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Network.IDownloadService.html",
+          "hash": "srQiWvTn9Owd351CjmWLmg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Network.Sha256Helper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Network.Sha256Helper.html",
+          "hash": "bXoB3lbJrSkidilgpvaY+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Network.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Network.html",
+          "hash": "QW33nSB7koTPes5wF7WL9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.NoNetworkNoCacheException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.NoNetworkNoCacheException.html",
+          "hash": "Ew95kE5mr0Q79T/HAQMihA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Platform.CacheState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Platform.CacheState.html",
+          "hash": "qQX11OvEncWTfBDxvXQ4aQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Platform.ICacheService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Platform.ICacheService.html",
+          "hash": "1wyYQBG9GJmRdx9J7upb+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Platform.IConnectivityService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Platform.IConnectivityService.html",
+          "hash": "aMpXgJUI9CXXPasJHR334A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Platform.PreserveAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Platform.PreserveAttribute.html",
+          "hash": "68fQfRtW4i5eLdhIjcRZTw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Platform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Platform.html",
+          "hash": "i/CCCZH96FxF9p1RVdmCUQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Powerplay.CycleService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Powerplay.CycleService.html",
+          "hash": "h835i5Z3wRHuI+h7HuBF4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Powerplay.GalacticStandings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Powerplay.GalacticStandings.html",
+          "hash": "bFMsAeB/CDITzPY4ZkmX4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Powerplay.PowerComms.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Powerplay.PowerComms.html",
+          "hash": "iNdF7KePNvAim6HN0+C8cQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Powerplay.PowerDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Powerplay.PowerDetails.html",
+          "hash": "6isNR7GWSMFYGQmr2T4WbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Powerplay.PowerDetailsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Powerplay.PowerDetailsService.html",
+          "hash": "PgprvJHWUIAsRJFXcoUwDQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Powerplay.PowerStanding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Powerplay.PowerStanding.html",
+          "hash": "izUNJtXa/gcUrnhTJdfTUA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Powerplay.StandingChange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Powerplay.StandingChange.html",
+          "hash": "/rUr12eVThQZa08UJOf09Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Powerplay.StandingsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Powerplay.StandingsService.html",
+          "hash": "lsyTVfMtAE+5n0cQuGJLsA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.Powerplay.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.Powerplay.html",
+          "hash": "q3yqNmgTSjwCtmsKOFkoEA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.html",
+          "hash": "yCw3F0QqsVWRVTbQPTDL7Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "ZPSG5x0tj6ZspiCw2k0jlA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/how-to-contribute.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/how-to-contribute.html",
+          "hash": "M2rp20WFxvU4iVxWyEWSZQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/edlib-logo-128.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/edlib-logo-128.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/edlib-logo-50.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/edlib-logo-50.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "images/favicon.ico"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "XqfTl93+FOjUeBioeD7Ocw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 80,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

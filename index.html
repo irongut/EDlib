@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title> EDlib | EDlib </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content=" EDlib | EDlib ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    <meta property="docfx:rel" content="">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="images/edlib-logo-50.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="/" title="Home">Home</a>
+                      </li>
+                      <li>
+                          <a href="articles/how-to-contribute.html" title="Articles">Articles</a>
+                      </li>
+                      <li>
+                          <a href="api/index.html" title="Api Documentation">Api Documentation</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="edlib-edlib"><img src="/images/edlib-logo-50.png" alt="EDlib"> EDlib</h1>
+
+<p>A .Net Standard library for creating companion tools for the game Elite Dangerous by Frontier Developments.</p>
+<p><img src="https://img.shields.io/badge/.Net-Standard%202.0-informational?style=flat&amp;logo=visual-studio" alt=".Net Standard">
+ 
+<a href="https://github.com/irongut/EDlib"><img src="https://img.shields.io/badge/GitHub-irongut/EDlib-informational?style=flat&amp;logo=github" alt="GitHub"></a></p>
+<h2 id="introduction">Introduction</h2>
+<p>EDlib provides classes that enable your .Net apps to easily consume information about the Elite Dangerous universe from several APIs. Information available includes:</p>
+<ul>
+<li>The time that the Background Simulation (BGS) updates, known as the BGS tick.</li>
+<li>News articles from GalNet, classified by topic and content tags.</li>
+<li>The Powerplay cycle and Galactic Standings.</li>
+<li>Detailed information about each Power and communications links for their player groups.</li>
+<li>Data from <a href="https://www.edsm.net/">EDSM</a> including game server status and information on systems, markets, shipyards and more.</li>
+<li>Data from <a href="https://inara.cz/">INARA</a> including Community Goals and Commander profiles.</li>
+</ul>
+<p>EDlib conforms to .Net Standard 2.0 making it compatible with .Net Framework, .Net Core and .Net 5 and has been used for CLI, desktop, Xamarin Forms and Azure Functions projects.</p>
+<h2 id="installation">Installation</h2>
+<p>EDlib is currently available as a Nuget package from GitHub, in future it will also be available on Nuget.org.</p>
+<h3 id="installation-from-github">Installation from GitHub</h3>
+<p>To install EDlib from GitHub you will need to set up a <a href="https://docs.microsoft.com/en-us/nuget/hosting-packages/local-feeds">local Nuget package feed</a> in a folder on your computer or network. This folder can be used as a package source for all Nuget operations by adding it to the list of sources using the <a href="https://docs.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio#package-sources">Package Manager UI</a> or the <a href="https://docs.microsoft.com/en-us/nuget/reference/cli-reference/cli-ref-sources">Nuget CLI</a>.</p>
+<ol>
+<li>Setup a local Nuget feed using your preferred tools.</li>
+<li>Download the latest <code>Taranis.Software.EDlib.*.nupkg</code> package from <a href="https://github.com/irongut/EDlib/releases">GitHub Releases</a>.</li>
+<li>Copy the package to your local Nuget feed.</li>
+<li>Install <code>Taranis.Software.EDlib</code> from your local Nuget feed using your preferred tools.</li>
+</ol>
+<h3 id="source-link">Source Link</h3>
+<p>EDlib is built with Source Link enabled. Source Link enables source code debugging of .NET assemblies from NuGet by embedding source control metadata inside assemblies and the package. If you have Source Link enabled in Visual Studio you can step into the EDlib source code for a great debugging experience. To enable Source Link in Visual Studio please see <a href="https://aaronstannard.com/visual-studio-sourcelink-setup/">this excellent guide by Aaron Stannard</a>.</p>
+<h2 id="please-contribute">Please Contribute!</h2>
+<p>This is an open source project that welcomes contributions, suggestions and bug reports from those who use it. If you have any ideas on how to improve the library, please read the <a href="/articles/how-to-contribute.html">How to Contribute</a> article and <a href="https://github.com/irongut/EDlib/issues">create an issue</a> on GitHub.</p>
+<p> </p>
+<p> </p>
+<p>EDlib icon made by <a href="https://www.flaticon.com/authors/freepik">Freepik</a> from <a href="https://www.flaticon.com/">www.flaticon.com</a>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            <a href='/'><h3><img src='/images/edlib-logo-50.png' alt='EDlib' style='vertical-align:middle'> EDlib</h3></a>
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>
