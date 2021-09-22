@@ -79,9 +79,6 @@ jobs:
     name: Deploy to GitHub Packages
     needs: [build]
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
     - name: Download Artifacts
       uses: actions/download-artifact@v2
