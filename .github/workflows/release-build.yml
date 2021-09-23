@@ -76,9 +76,10 @@ jobs:
         path: code-coverage-results.md
 
     - name: Get Previous Tag
+      id: get_previous_tag
       run: |
         PREV_TAG=$(git describe --abbrev=0 --tags "${{ github.ref }}^")
-        echo "::set-env name=baseRef::$PREV_TAG"
+        echo "::set-output name=baseRef::${PREV_TAG}"
 
     - name: Generate Changelog
       id: generate_changelog
@@ -86,7 +87,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        base-ref: ${{ env.baseRef }}
+        base-ref: ${{ steps.get_previous_tag.outputs.baseRef }}
         head-ref: ${{ github.ref }}
 
     - name: Save Changelog
