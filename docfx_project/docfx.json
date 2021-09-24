@@ -49,7 +49,7 @@
     "globalMetadata": {
       "_appTitle": "EDlib",
       "_appFooter": "<a href='/EDlib'><h3><img src='/EDlib/images/edlib-logo-50.png' alt='EDlib' style='vertical-align:middle' /> EDlib</h3></a>",
-      "_appLogoPath": "/EDlib/images/edlib-logo-50.png",
+      "_appLogoPath": "images/edlib-logo-50.png",
       "_appFaviconPath": "images/favicon.ico",
       "_enableSearch": true,
       "_enableNewTab": true,
