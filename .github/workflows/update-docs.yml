@@ -7,7 +7,6 @@ on:
 jobs:
   deploy-docs:
     name: Deploy Docs
-    needs: [build, deploy-gh]
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
