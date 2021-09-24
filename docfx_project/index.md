@@ -1,4 +1,4 @@
-# ![EDlib](images/edlib-logo-50.png) EDlib
+# ![EDlib](/EDlib/images/edlib-logo-50.png) EDlib
 A .Net Standard library for creating companion tools for the game Elite Dangerous by Frontier Developments.
 
 <div align="center">
@@ -40,7 +40,7 @@ EDlib is built with Source Link enabled. Source Link enables source code debuggi
 
 ## Please Contribute!
 
-This is an open source project that welcomes contributions, suggestions and bug reports from those who use it. If you have any ideas on how to improve the library, please read the [How to Contribute](/articles/how-to-contribute.html) article and [create an issue](https://github.com/irongut/EDlib/issues) on GitHub.
+This is an open source project that welcomes contributions, suggestions and bug reports from those who use it. If you have any ideas on how to improve the library, please read the [How to Contribute](/EDlib/articles/how-to-contribute.html) article and [create an issue](https://github.com/irongut/EDlib/issues) on GitHub.
 
 &nbsp;
 

@@ -1,9 +1,17 @@
-# ![EDlib](/images/edlib-logo-50.png) Api Documentation
+# ![EDlib](/EDlib/images/edlib-logo-50.png) Api Documentation
 EDlib: A .Net Standard library for creating companion tools for the game Elite Dangerous by Frontier Developments.
+
+<div align="center">
 
 ![.Net Standard](https://img.shields.io/badge/.Net-Standard%202.0-informational?style=flat&logo=visual-studio)
 &nbsp;
 [![GitHub](https://img.shields.io/badge/GitHub-irongut/EDlib-informational?style=flat&logo=github)](https://github.com/irongut/EDlib)
+
+[![forthebadge](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](https://forthebadge.com)
+&nbsp;
+[![forthebadge](https://forthebadge.com/images/badges/powered-by-coffee.svg)](https://forthebadge.com)
+
+</div>
 
 ## Introduction
 
@@ -37,7 +45,7 @@ EDlib is built with Source Link enabled. Source Link enables source code debuggi
 
 ## Please Contribute!
 
-This is an open source project that welcomes contributions, suggestions and bug reports from those who use it. If you have any ideas on how to improve the library, please read the [How to Contribute](/articles/how-to-contribute.html) article and [create an issue](https://github.com/irongut/EDlib/issues) on GitHub.
+This is an open source project that welcomes contributions, suggestions and bug reports from those who use it. If you have any ideas on how to improve the library, please read the [How to Contribute](/EDlib/articles/how-to-contribute.html) article and [create an issue](https://github.com/irongut/EDlib/issues) on GitHub.
 
 &nbsp;
 
