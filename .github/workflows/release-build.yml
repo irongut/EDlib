@@ -75,30 +75,6 @@ jobs:
         name: release-nugets
         path: code-coverage-results.md
 
-    - name: Get Previous Tag
-      id: get_previous_tag
-      run: |
-        PREV_TAG=$(git describe --abbrev=0 --tags "${{ github.ref }}^")
-        echo "::set-output name=baseRef::${PREV_TAG}"
-
-    - name: Generate Changelog
-      id: generate_changelog
-      uses: nblagoev/pull-release-notes-action@v1.0.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        base-ref: ${{ steps.get_previous_tag.outputs.baseRef }}
-        head-ref: ${{ github.ref }}
-
-    - name: Save Changelog
-      run: echo ${{steps.generate_changelog.outputs.result}} > changelog.md
-
-    - name: Upload Changelog Artifact
-      uses: actions/upload-artifact@v2.2.4
-      with:
-        name: release-nugets
-        path: changelog.md
-
   deploy-gh:
     name: Deploy to GitHub Packages
     needs: [build]
@@ -120,13 +96,13 @@ jobs:
     - name: Push to GitHub Packages
       run: nuget push **/*.nupkg -source GitHub -SkipDuplicate
 
-    - name: Add Changelog + Test Report to Release
+    - name: Add Test Report to Release
       uses: irongut/EditRelease@v1.0.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         id: ${{ github.event.release.id }}
-        body: "Released to GitHub Packages."
-        files: "changelog.md,code-coverage-results.md"
+        body: 'Released to GitHub Packages.'
+        files: code-coverage-results.md
 
   deploy-docs:
     name: Deploy Docs
