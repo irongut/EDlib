@@ -178,7 +178,7 @@ namespace EDlib.INARA
 
         /// <summary>Determines the Topic for a Community Goal by analysing it using a Bag of Words technique.</summary>
         /// <param name="topics">List of <see cref="Topic" /> to use when classifying article.</param>
-        internal void ClassifyCG(List<Topic> topics)
+        public void ClassifyCG(List<Topic> topics)
         {
             // analyse CG using Bag of Words technique
             AnalyseSentences(SplitSentences(), topics);
