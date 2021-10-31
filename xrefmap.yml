@@ -3194,6 +3194,22 @@ references:
   isSpec: "True"
   fullName: EDlib.INARA.CommunityGoal.CommunityGoal
   nameWithType: CommunityGoal.CommunityGoal
+- uid: EDlib.INARA.CommunityGoal.ClassifyCG(List{EDlib.Common.Topic})
+  name: ClassifyCG(List<Topic>)
+  href: api/EDlib.INARA.CommunityGoal.html#EDlib_INARA_CommunityGoal_ClassifyCG_List_EDlib_Common_Topic__
+  commentId: M:EDlib.INARA.CommunityGoal.ClassifyCG(List{EDlib.Common.Topic})
+  name.vb: ClassifyCG(List(Of Topic))
+  fullName: EDlib.INARA.CommunityGoal.ClassifyCG(List<EDlib.Common.Topic>)
+  fullName.vb: EDlib.INARA.CommunityGoal.ClassifyCG(List(Of EDlib.Common.Topic))
+  nameWithType: CommunityGoal.ClassifyCG(List<Topic>)
+  nameWithType.vb: CommunityGoal.ClassifyCG(List(Of Topic))
+- uid: EDlib.INARA.CommunityGoal.ClassifyCG*
+  name: ClassifyCG
+  href: api/EDlib.INARA.CommunityGoal.html#EDlib_INARA_CommunityGoal_ClassifyCG_
+  commentId: Overload:EDlib.INARA.CommunityGoal.ClassifyCG
+  isSpec: "True"
+  fullName: EDlib.INARA.CommunityGoal.ClassifyCG
+  nameWithType: CommunityGoal.ClassifyCG
 - uid: EDlib.INARA.CommunityGoal.CommunityGoalGameID
   name: CommunityGoalGameID
   href: api/EDlib.INARA.CommunityGoal.html#EDlib_INARA_CommunityGoal_CommunityGoalGameID
