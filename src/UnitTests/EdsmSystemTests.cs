@@ -56,7 +56,7 @@ namespace UnitTests
             Assert.IsTrue(gStation.UpdateTime.Market > DateTime.MinValue);
             Assert.IsTrue(gStation.UpdateTime.Shipyard > DateTime.MinValue);
             Assert.IsTrue(gStation.UpdateTime.Outfitting > DateTime.MinValue);
-            Assert.IsNull(gStation.Body);
+            Assert.IsNotNull(gStation.Body);
 
             Station hStation = stations.Stations.Find(x => x.Name == "Haberlandt Survey");
             Assert.IsNotNull(hStation);
@@ -130,7 +130,7 @@ namespace UnitTests
             Assert.IsTrue(gStation.UpdateTime.Market > DateTime.MinValue);
             Assert.IsTrue(gStation.UpdateTime.Shipyard > DateTime.MinValue);
             Assert.IsTrue(gStation.UpdateTime.Outfitting > DateTime.MinValue);
-            Assert.IsNull(gStation.Body);
+            Assert.IsNotNull(gStation.Body);
 
             Station hStation = stations.Stations.Find(x => x.Name == "Haberlandt Survey");
             Assert.IsNotNull(hStation);
