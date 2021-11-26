@@ -50,7 +50,7 @@ jobs:
       run: cp coverage/**/coverage.cobertura.xml coverage/coverage.cobertura.xml
 
     - name: Generate Test Report
-      uses: irongut/CodeCoverageSummary@v1.1.0
+      uses: irongut/CodeCoverageSummary@v1.2.0
       with:
         filename: coverage/coverage.cobertura.xml
         badge: true
