@@ -68,25 +68,25 @@ jobs:
         path: code-coverage-results.md
 
     - name: Upload Coverage Report Artifact
-      uses: actions/upload-artifact@v2.3.0
+      uses: actions/upload-artifact@v2.3.1
       with:
         name: test-coverage-report
         path: coverage/coverage.cobertura.xml
 
     - name: Upload Coverage Summary Artifact
-      uses: actions/upload-artifact@v2.3.0
+      uses: actions/upload-artifact@v2.3.1
       with:
         name: test-coverage-report
         path: code-coverage-results.md
 
     - name: Upload EDlib Nuget Artifact
-      uses: actions/upload-artifact@v2.3.0
+      uses: actions/upload-artifact@v2.3.1
       with:
         name: ci-nugets
         path: src/EDlib/bin/Release/Taranis.Software.EDlib*.nupkg
 
     - name: Upload EDlib.Mock Nuget Artifact
-      uses: actions/upload-artifact@v2.3.0
+      uses: actions/upload-artifact@v2.3.1
       with:
         name: ci-nugets
         path: src/EDlib.Mock/bin/Release/Taranis.Software.EDlib*.nupkg
