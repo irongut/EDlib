@@ -58,19 +58,19 @@ jobs:
         output: 'both'
 
     - name: Upload EDlib Artifact
-      uses: actions/upload-artifact@v2.3.0
+      uses: actions/upload-artifact@v2.3.1
       with:
         name: release-nugets
         path: src/EDlib/bin/Release/Taranis.Software.EDlib*.nupkg
 
     - name: Upload EDlib.Mock Artifact
-      uses: actions/upload-artifact@v2.3.0
+      uses: actions/upload-artifact@v2.3.1
       with:
         name: release-nugets
         path: src/EDlib.Mock/bin/Release/Taranis.Software.EDlib*.nupkg
 
     - name: Upload Test Report Artifact
-      uses: actions/upload-artifact@v2.3.0
+      uses: actions/upload-artifact@v2.3.1
       with:
         name: release-nugets
         path: code-coverage-results.md
