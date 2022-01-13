@@ -13,14 +13,14 @@ namespace UnitTests
     public class BGSTests
     {
         [TestMethod]
-        public void UnknownTickTest()
+        public void UnknownTick_Test()
         {
             BgsTick tick = new BgsTick();
             Assert.AreEqual("Unknown", tick.TimeString);
         }
 
         [TestMethod]
-        public void NewTickTest()
+        public void NewTick_Test()
         {
             DateTime date = DateTime.Now;
             BgsTick tick = new BgsTick(date);
@@ -28,7 +28,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public async Task LatestTickTest()
+        public async Task LatestTick_Test()
         {
             DateTime timestamp = DateTime.Now - TimeSpan.FromHours(24);
             string tickData = JsonConvert.SerializeObject(new List<BgsTick>() { new BgsTick(timestamp) });
@@ -43,11 +43,29 @@ namespace UnitTests
             Assert.AreEqual(timestamp, tick.Time);
             Assert.AreEqual(timestamp.ToString("g"), tick.TimeString);
             Assert.IsTrue(lastUpdated > DateTime.Now.AddMinutes(-1));
+
             mockDownloadService.Verify(x => x.GetData(It.IsAny<string>(), It.IsAny<DownloadOptions>()), Times.Once());
         }
 
         [TestMethod]
-        public async Task MultipleTickTest()
+        public async Task LatestTick_Unknown_Test()
+        {
+            Mock<IDownloadService> mockDownloadService = new();
+            mockDownloadService.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<DownloadOptions>()).Result).Returns((string.Empty, DateTime.Now));
+
+            BgsTickService bgsService = BgsTickService.Instance(mockDownloadService.Object);
+            (BgsTick tick, DateTime lastUpdated) = await bgsService.GetData().ConfigureAwait(false);
+
+            Assert.IsNotNull(tick);
+            Assert.AreEqual(DateTime.MinValue, tick.Time);
+            Assert.AreEqual("Unknown", tick.TimeString);
+            Assert.IsTrue(lastUpdated > DateTime.Now.AddMinutes(-1));
+
+            mockDownloadService.Verify(x => x.GetData(It.IsAny<string>(), It.IsAny<DownloadOptions>()), Times.Once());
+        }
+
+        [TestMethod]
+        public async Task MultipleTick_Test()
         {
             DateTime timestamp = DateTime.Now - TimeSpan.FromHours(24);
             string tickData = JsonConvert.SerializeObject(new List<BgsTick>()
@@ -70,6 +88,7 @@ namespace UnitTests
             Assert.AreEqual(timestamp, ticks[0].Time);
             Assert.AreEqual(timestamp.ToString("g"), ticks[0].TimeString);
             Assert.IsTrue(lastUpdated > DateTime.Now.AddMinutes(-1));
+
             mockDownloadService.Verify(x => x.GetData(It.IsAny<string>(), It.IsAny<DownloadOptions>()), Times.Once());
         }
     }
