@@ -62,7 +62,7 @@ namespace EDlib.BGS
             {
                 string json;
                 CultureInfo culture = new CultureInfo("en-GB");
-                string queryURL = String.Format(TickURL,
+                string queryURL = string.Format(TickURL,
                                                 DateTime.UtcNow.Date.AddDays(0 - days).ToString("yyyy-MM-dd", culture),
                                                 DateTime.UtcNow.Date.ToString("yyyy-MM-dd", culture));
 
@@ -73,7 +73,7 @@ namespace EDlib.BGS
                 // parse the data
                 bgsTicks = JsonConvert.DeserializeObject<List<BgsTick>>(json);
             }
-            return (bgsTicks.Take(days).ToList(), lastUpdated);
+            return (bgsTicks?.Take(days).ToList(), lastUpdated);
         }
     }
 }
