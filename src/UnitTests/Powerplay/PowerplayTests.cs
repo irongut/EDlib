@@ -115,25 +115,5 @@ namespace UnitTests
             Assert.AreEqual(-1, power.CyclesSinceTurmoil);
             Assert.IsTrue(power.ToString().Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
         }
-
-        [TestMethod]
-        public async Task StandingsTest()
-        {
-            StandingsService service = StandingsService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()), new EmptyCache());
-            GalacticStandings standings = await service.GetData(new CancellationTokenSource()).ConfigureAwait(false);
-            Assert.IsTrue(standings.Cycle > 250);
-            Assert.IsTrue(standings.LastUpdated > DateTime.MinValue);
-            Assert.AreEqual(11, standings.Standings.Count);
-            Assert.IsTrue(standings.ToString().Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
-            Assert.IsTrue(standings.ToJson().Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
-            Assert.IsTrue(standings.ToCSV().Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
-            PowerStanding ald = standings.Standings.Find(x => x.ShortName.Equals("ALD"));
-            Assert.AreEqual(3, ald.Id);
-            Assert.AreEqual("Arissa Lavigny-Duval", ald.Name);
-            Assert.AreEqual("Empire", ald.Allegiance);
-            Assert.AreEqual(standings.LastUpdated, ald.LastUpdated);
-            Assert.AreEqual($"Cycle {standings.Cycle}", ald.Cycle);
-            Assert.AreNotEqual(-1, ald.CyclesSinceTurmoil);
-        }
     }
 }
