@@ -1,10 +1,6 @@
-﻿using EDlib.Mock.Platform;
-using EDlib.Network;
-using EDlib.Powerplay;
+﻿using EDlib.Powerplay;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace UnitTests
 {
@@ -12,58 +8,17 @@ namespace UnitTests
     public class PowerplayTests
     {
         [TestMethod]
-        public void NewPowerCommsTest()
+        public void New_PowerComms_Test()
         {
-            PowerComms comms = new PowerComms(3, "ALD", "reddit/ald", "discord/ald");
+            PowerComms comms = new PowerComms(3, "ALD", "reddit-ALD", "comms-ALD");
             Assert.AreEqual(3, comms.Id);
             Assert.AreEqual("ALD", comms.ShortName);
-            Assert.AreEqual("reddit/ald", comms.Reddit);
-            Assert.AreEqual("discord/ald", comms.Comms);
+            Assert.AreEqual("reddit-ALD", comms.Reddit);
+            Assert.AreEqual("comms-ALD", comms.Comms);
         }
 
         [TestMethod]
-        public async Task PowerCommsTest()
-        {
-            PowerDetailsService pdService = PowerDetailsService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
-            PowerComms comms = await pdService.GetPowerCommsAsync("ALD", 1).ConfigureAwait(false);
-            Assert.AreEqual(3, comms.Id);
-            Assert.AreEqual("ALD", comms.ShortName);
-            Assert.IsTrue(comms.Reddit.Contains("reddit.com", StringComparison.OrdinalIgnoreCase));
-            Assert.IsTrue(comms.Comms.Contains("discord", StringComparison.OrdinalIgnoreCase));
-            Assert.IsTrue(comms.ToString().Contains("ALD", StringComparison.OrdinalIgnoreCase));
-        }
-
-        [TestMethod]
-        public void PowerDetailsTest()
-        {
-            PowerDetailsService pdService = PowerDetailsService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
-            PowerDetails details = pdService.GetPowerDetails("ALD");
-            Assert.AreEqual(3, details.Id);
-            Assert.AreEqual("Kamadhenu", details.HQ);
-            Assert.AreEqual(3243, details.YearOfBirth);
-            Assert.AreEqual("Empire", details.Allegiance);
-            Assert.AreEqual("Social", details.PreparationEthos);
-            Assert.AreEqual("Combat", details.ExpansionEthos);
-            Assert.AreEqual("Feudal & Patronage", details.ExpansionStrongGovernment);
-            Assert.AreEqual("Dictatorship", details.ExpansionWeakGovernment);
-            Assert.AreEqual("Combat", details.ControlEthos);
-            Assert.AreEqual("Feudal & Patronage", details.ControlStrongGovernment);
-            Assert.AreEqual("Dictatorship", details.ControlWeakGovernment);
-            Assert.IsNotNull(details.ControlSystemEffect);
-            Assert.IsNotNull(details.AllianceExploitedEffect);
-            Assert.IsNotNull(details.EmpireExploitedEffect);
-            Assert.IsNotNull(details.FederationExploitedEffect);
-            Assert.IsNotNull(details.IndependentExploitedEffect);
-            Assert.IsNotNull(details.Rating1);
-            Assert.IsNotNull(details.Rating2);
-            Assert.IsNotNull(details.Rating3);
-            Assert.IsNotNull(details.Rating4);
-            Assert.IsNotNull(details.Rating5);
-            Assert.IsTrue(details.ToString().Contains("ALD", StringComparison.OrdinalIgnoreCase));
-        }
-
-        [TestMethod]
-        public void NewPowerStandingTest()
+        public void New_PowerStanding_Test()
         {
             DateTime date = DateTime.Now;
             PowerStanding power = new PowerStanding(3, "Arissa", 1, StandingChange.up, false, "Empire", "ALD", date);
@@ -77,11 +32,10 @@ namespace UnitTests
             Assert.AreEqual("ALD", power.ShortName);
             Assert.AreEqual(date, power.LastUpdated);
             Assert.AreEqual(-1, power.CyclesSinceTurmoil);
-            Assert.IsTrue(power.ToString().Contains("Arissa", StringComparison.OrdinalIgnoreCase));
         }
 
         [TestMethod]
-        public void NewPowerStandingSinceTurmoilTest()
+        public void New_PowerStanding_CyclesSinceTurmoil_Test()
         {
             DateTime date = DateTime.Now;
             PowerStanding power = new PowerStanding(3, "Arissa", 1, StandingChange.up, false, "Empire", "ALD", date, 46);
@@ -95,11 +49,10 @@ namespace UnitTests
             Assert.AreEqual("ALD", power.ShortName);
             Assert.AreEqual(date, power.LastUpdated);
             Assert.AreEqual(46, power.CyclesSinceTurmoil);
-            Assert.IsTrue(power.ToString().Contains("Arissa", StringComparison.OrdinalIgnoreCase));
         }
 
         [TestMethod]
-        public void NewPowerStandingBackendTest()
+        public void New_PowerStanding_Backend_Test()
         {
             DateTime date = DateTime.Now;
             PowerStanding power = new PowerStanding(1, "Arissa Lavigny-Duval (+1)", 260, date);
@@ -113,7 +66,6 @@ namespace UnitTests
             Assert.AreEqual("ALD", power.ShortName);
             Assert.AreEqual(date, power.LastUpdated);
             Assert.AreEqual(-1, power.CyclesSinceTurmoil);
-            Assert.IsTrue(power.ToString().Contains("Arissa Lavigny-Duval", StringComparison.OrdinalIgnoreCase));
         }
     }
 }
