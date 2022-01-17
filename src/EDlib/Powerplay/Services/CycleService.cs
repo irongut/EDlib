@@ -6,6 +6,9 @@ namespace EDlib.Powerplay
     /// <summary>A static class that represents the Powerplay cycle and when it changes (ticks).</summary>
     public static class CycleService
     {
+        /// <summary>The date and time the first Powerplay cycle started.</summary>
+        public static DateTime PowerplayStartDate { get; } = DateTime.Parse("04-06-2015 07:00:00", new CultureInfo("en-GB"));
+
         /// <summary>The time remaining till the end of the current Powerplay cycle.</summary>
         public static TimeSpan TimeTillTick()
         {
@@ -88,16 +91,12 @@ namespace EDlib.Powerplay
         }
 
         /// <summary>Returns <c>true</c> if the current Powerplay cycle ends within 24 hours.</summary>
-        public static bool FinalDay()
-        {
-            return CycleImminent(24);
-        }
+        public static bool FinalDay() => CycleImminent(24);
 
         /// <summary>The current Powerplay cycle number.</summary>
         public static int CurrentCycle()
         {
-            DateTime ppStart = DateTime.Parse("04-06-2015 07:00:00", new CultureInfo("en-GB"));
-            TimeSpan diff = DateTime.UtcNow - ppStart;
+            TimeSpan diff = DateTime.UtcNow - PowerplayStartDate;
             return (diff.Days / 7) + 1;
         }
     }
