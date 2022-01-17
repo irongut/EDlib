@@ -6,14 +6,18 @@ namespace EDlib.Powerplay
     /// <summary>A static class that represents the Powerplay cycle and when it changes (ticks).</summary>
     public static class CycleService
     {
+        /// <summary>If set all methods will use this date instead of the current date.</summary>
+        public static DateTime? FixedDate { get; set; }
+
         /// <summary>The date and time the first Powerplay cycle started.</summary>
         public static DateTime PowerplayStartDate { get; } = DateTime.Parse("04-06-2015 07:00:00", new CultureInfo("en-GB"));
 
         /// <summary>The time remaining till the end of the current Powerplay cycle.</summary>
         public static TimeSpan TimeTillTick()
         {
-            TimeSpan timeDiff = TimeSpan.FromHours(7) - DateTime.UtcNow.TimeOfDay;
-            switch ((int)DateTime.UtcNow.DayOfWeek)
+            DateTime dateTime = FixedDate ?? DateTime.UtcNow;
+            TimeSpan timeDiff = TimeSpan.FromHours(7) - dateTime.TimeOfDay;
+            switch ((int)dateTime.DayOfWeek)
             {
                 case 0: // Sunday
                     return TimeSpan.FromDays(4) + timeDiff;
@@ -24,7 +28,7 @@ namespace EDlib.Powerplay
                 case 3:
                     return TimeSpan.FromDays(1) + timeDiff;
                 case 4:
-                    if (DateTime.UtcNow.Hour < 7)
+                    if (dateTime.Hour < 7)
                     {
                         return TimeSpan.FromDays(0) + timeDiff;
                     }
@@ -96,7 +100,7 @@ namespace EDlib.Powerplay
         /// <summary>The current Powerplay cycle number.</summary>
         public static int CurrentCycle()
         {
-            TimeSpan diff = DateTime.UtcNow - PowerplayStartDate;
+            TimeSpan diff = (FixedDate ?? DateTime.UtcNow) - PowerplayStartDate;
             return (diff.Days / 7) + 1;
         }
     }

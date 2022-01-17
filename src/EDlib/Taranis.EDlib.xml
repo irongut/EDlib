@@ -1957,6 +1957,9 @@
         <member name="T:EDlib.Powerplay.CycleService">
             <summary>A static class that represents the Powerplay cycle and when it changes (ticks).</summary>
         </member>
+        <member name="P:EDlib.Powerplay.CycleService.FixedDate">
+            <summary>If set all methods will use this date instead of the current date.</summary>
+        </member>
         <member name="P:EDlib.Powerplay.CycleService.PowerplayStartDate">
             <summary>The date and time the first Powerplay cycle started.</summary>
         </member>
