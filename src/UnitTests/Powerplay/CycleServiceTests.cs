@@ -64,7 +64,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void TimeTillTick_Thurs_Test()
+        public void TimeTillTick_Thurs_PreTick_Test()
         {
             CycleService.FixedDate = DateTime.Parse("13-01-2022 01:00:00", new CultureInfo("en-GB"));
             TimeSpan time = CycleService.TimeTillTick();
@@ -167,6 +167,7 @@ namespace UnitTests
             string timeRemaining = CycleService.TimeRemaining();
 
             Assert.IsTrue(timeRemaining.IndexOf("1 day") > -1);
+            Assert.IsFalse(timeRemaining.IndexOf("days") > -1);
             Assert.IsTrue(timeRemaining.IndexOf("6 hours") > -1);
             Assert.IsTrue(timeRemaining.IndexOf("0 minutes") > -1);
 
@@ -182,6 +183,7 @@ namespace UnitTests
 
             Assert.IsTrue(timeRemaining.IndexOf("2 days") > -1);
             Assert.IsTrue(timeRemaining.IndexOf("1 hour") > -1);
+            Assert.IsFalse(timeRemaining.IndexOf("hours") > -1);
             Assert.IsTrue(timeRemaining.IndexOf("0 minutes") > -1);
 
             CycleService.FixedDate = null;
@@ -197,6 +199,7 @@ namespace UnitTests
             Assert.IsTrue(timeRemaining.IndexOf("2 days") > -1);
             Assert.IsTrue(timeRemaining.IndexOf("5 hours") > -1);
             Assert.IsTrue(timeRemaining.IndexOf("1 minute") > -1);
+            Assert.IsFalse(timeRemaining.IndexOf("minutes") > -1);
 
             CycleService.FixedDate = null;
         }
