@@ -595,7 +595,7 @@
             <param name="id64">The EDSM 64 bit system ID.</param>
             <param name="name">The system name.</param>
             <param name="url">The EDSM URL for the system.</param>
-            /// <param name="controlFaction">The faction that controls the system.</param>
+            <param name="controlFaction">The faction that controls the system.</param>
             <param name="factions">Array of <see cref="T:EDlib.EDSM.Faction" /> in the system.</param>
         </member>
         <member name="T:EDlib.EDSM.SystemsOptions">

@@ -43,7 +43,7 @@ namespace EDlib.EDSM
         /// <param name="id64">The EDSM 64 bit system ID.</param>
         /// <param name="name">The system name.</param>
         /// <param name="url">The EDSM URL for the system.</param>
-        /// /// <param name="controlFaction">The faction that controls the system.</param>
+        /// <param name="controlFaction">The faction that controls the system.</param>
         /// <param name="factions">Array of <see cref="Faction" /> in the system.</param>
         [Preserve(Conditional = true)]
         public SystemFactions(long id, long id64, string name, string url, ControllingFaction controlFaction, List<Faction> factions)
