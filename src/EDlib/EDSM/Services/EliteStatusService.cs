@@ -14,7 +14,7 @@ namespace EDlib.EDSM
     {
         private static readonly EliteStatusService instance = new EliteStatusService();
 
-        private static IDownloadService dService;
+        private static IEdsmService EdsmService;
 
         private const string edsmMethod = "api-status-v1/elite-server";
 
@@ -24,11 +24,11 @@ namespace EDlib.EDSM
         private EliteStatusService() { }
 
         /// <summary>Instantiates the EliteStatusService class.</summary>
-        /// <param name="downloadService">IDownloadService instance used to download data.</param>
+        /// <param name="edsmService">IEdsmService instance used to download data from EDSM.</param>
         /// <returns>EliteStatusService</returns>
-        public static EliteStatusService Instance(IDownloadService downloadService)
+        public static EliteStatusService Instance(IEdsmService edsmService)
         {
-            dService = downloadService;
+            EdsmService = edsmService;
             return instance;
         }
 
@@ -56,8 +56,7 @@ namespace EDlib.EDSM
             {
                 string json;
                 DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
-                EdsmService edsmService = EdsmService.Instance(dService);
-                (json, lastUpdated) = await edsmService.GetData(edsmMethod, null, options).ConfigureAwait(false);
+                (json, lastUpdated) = await EdsmService.GetData(edsmMethod, null, options).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {

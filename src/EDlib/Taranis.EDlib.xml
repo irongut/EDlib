@@ -689,9 +689,9 @@
               <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-status-v1">Status v1</a>.</para>
             </summary>
         </member>
-        <member name="M:EDlib.EDSM.EliteStatusService.Instance(EDlib.Network.IDownloadService)">
+        <member name="M:EDlib.EDSM.EliteStatusService.Instance(EDlib.EDSM.IEdsmService)">
             <summary>Instantiates the EliteStatusService class.</summary>
-            <param name="downloadService">IDownloadService instance used to download data.</param>
+            <param name="edsmService">IEdsmService instance used to download data from EDSM.</param>
             <returns>EliteStatusService</returns>
         </member>
         <member name="M:EDlib.EDSM.EliteStatusService.GetData(System.Int32,System.Boolean)">
@@ -709,15 +709,27 @@
             <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
             <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
         </member>
+        <member name="T:EDlib.EDSM.IEdsmService">
+            <summary>
+              <para>Interface for EdsmService, a utility service used by other services to get data from EDSM APIs.</para>
+            </summary>
+        </member>
+        <member name="M:EDlib.EDSM.IEdsmService.GetData(System.String,System.Collections.Generic.Dictionary{System.String,System.String},EDlib.Network.DownloadOptions)">
+            <summary>Gets data from an EDSM API.</summary>
+            <param name="method">The EDSM API method.</param>
+            <param name="parameters">The parameters for the API method.</param>
+            <param name="options">Options for download.</param>
+            <returns>Task&lt;(string, DateTime)&gt;<br /></returns>
+        </member>
         <member name="T:EDlib.EDSM.SystemService">
             <summary>
               <para>Gets data from the EDSM System API including stations, markets, shipyards, outfitting and factions.</para>
               <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
             </summary>
         </member>
-        <member name="M:EDlib.EDSM.SystemService.Instance(EDlib.Network.IDownloadService)">
+        <member name="M:EDlib.EDSM.SystemService.Instance(EDlib.EDSM.IEdsmService)">
             <summary>Instantiates the SystemService class.</summary>
-            <param name="downloadService">IDownloadService instance used to download data.</param>
+            <param name="edsmService">IEdsmService instance used to download data from EDSM.</param>
             <returns>SystemService</returns>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetStations(System.String,System.Int32,System.Boolean)">
@@ -884,9 +896,9 @@
               <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-v1">Systems v1</a>.</para>
             </summary>
         </member>
-        <member name="M:EDlib.EDSM.SystemsService.Instance(EDlib.Network.IDownloadService)">
+        <member name="M:EDlib.EDSM.SystemsService.Instance(EDlib.EDSM.IEdsmService)">
             <summary>Instantiates the SystemsService class.</summary>
-            <param name="downloadService">IDownloadService instance used to download data.</param>
+            <param name="edsmService">IEdsmService instance used to download data from EDSM.</param>
             <returns>SystemsService</returns>
         </member>
         <member name="M:EDlib.EDSM.SystemsService.GetSystem(System.String,EDlib.EDSM.SystemsOptions,System.Int32,System.Boolean)">
