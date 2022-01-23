@@ -1417,9 +1417,9 @@
               <para>Note: The information returned will be determined by the Commander's privacy settings on INARA.</para>
             </summary>
         </member>
-        <member name="M:EDlib.INARA.CommanderProfileService.Instance(EDlib.Network.IDownloadService)">
+        <member name="M:EDlib.INARA.CommanderProfileService.Instance(EDlib.INARA.IInaraService)">
             <summary>Instantiates the CommanderProfileService class.</summary>
-            <param name="downloadService">IDownloadService instance used to download data.</param>
+            <param name="inaraService">IInaraService instance used to download data from INARA.</param>
             <returns>CommanderProfileService</returns>
         </member>
         <member name="M:EDlib.INARA.CommanderProfileService.GetData(System.String,System.Int32,EDlib.INARA.InaraIdentity,System.Threading.CancellationTokenSource,System.Boolean)">
@@ -1437,9 +1437,9 @@
               <para>See INARA documentation for <a href="https://inara.cz/inara-api-docs/#event-37">getCommunityGoalsRecent</a>.</para>
             </summary>
         </member>
-        <member name="M:EDlib.INARA.CommunityGoalsService.Instance(EDlib.Network.IDownloadService)">
+        <member name="M:EDlib.INARA.CommunityGoalsService.Instance(EDlib.INARA.IInaraService)">
             <summary>Instantiates the CommunityGoalsService class.</summary>
-            <param name="downloadService">IDownloadService instance used to download data.</param>
+            <param name="inaraService">IInaraService instance used to download data from INARA.</param>
             <returns>CommunityGoalsService</returns>
         </member>
         <member name="M:EDlib.INARA.CommunityGoalsService.GetData(System.Int32,System.Int32,EDlib.INARA.InaraIdentity,System.Threading.CancellationTokenSource,System.String,System.Boolean)">

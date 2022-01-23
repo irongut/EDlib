@@ -10,7 +10,7 @@ namespace EDlib.INARA
     ///   <para>Utility service used by other services to get data from INARA APIs.</para>
     ///   <para>See INARA <a href="https://inara.cz/inara-api-docs/">API documentation.</a>.</para>
     /// </summary>
-    public sealed class InaraService
+    public sealed class InaraService : IInaraService
     {
         private static readonly InaraService instance = new InaraService();
 
