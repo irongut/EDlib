@@ -38,12 +38,12 @@ namespace EDlib.INARA
         /// <summary>Event status code, see <a href="https://inara.cz/inara-api-docs/#eventdatacodes">INARA eventStatus codes</a>.</summary>
         [Preserve(Conditional = true)]
         [JsonProperty("eventStatus")]
-        public int? EventStatus { get; internal set; }
+        public int? EventStatus { get; set; }
 
         /// <summary>Explanation of the status code, only returned on errors and warnings.</summary>
         [Preserve(Conditional = true)]
         [JsonProperty("eventStatusText")]
-        public string EventStatusText { get; internal set; }
+        public string EventStatusText { get; set; }
 
         #endregion
 

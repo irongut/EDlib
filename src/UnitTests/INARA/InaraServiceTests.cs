@@ -1,9 +1,9 @@
 ﻿using EDlib;
 using EDlib.INARA;
-using EDlib.Mock.Platform;
 using EDlib.Network;
-using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,144 +13,75 @@ namespace UnitTests
     [TestClass]
     public class InaraServiceTests
     {
-        //private IConfigurationRoot config;
-        //private string appName;
-        //private InaraIdentity identity;
-
         [TestMethod]
-        public void InaraEventTest()
+        public async Task InaraService_Get_Test()
         {
-            DateTime beforeTime = DateTime.Now;
-            InaraEvent inara = new InaraEvent("event-name", new List<string>()
-            {
-                "result1",
-                "result2",
-                "result3"
-            });
+            DateTime timestamp = DateTime.Now;
+            string inaraData = JsonConvert.SerializeObject(GetInaraRequestData());
 
-            Assert.AreEqual("event-name", inara.EventName);
-            Assert.IsTrue(inara.EventTimestamp > beforeTime);
-            Assert.IsTrue(inara.EventTimestamp < DateTime.Now);
-            Assert.IsNotNull(inara.EventData);
-            foreach (string item in inara.EventData)
-            {
-                Assert.IsTrue(item.Contains("result", StringComparison.OrdinalIgnoreCase));
-            }
-            Assert.IsNull(inara.EventStatus);
-            Assert.IsTrue(string.IsNullOrWhiteSpace(inara.EventStatusText));
-        }
-
-        [TestMethod]
-        public void InaraHeaderTest()
-        {
+            DownloadOptions options = new();
             InaraHeader header = new InaraHeader(new InaraIdentity("name", "version", "key", true));
+            List<InaraEvent> input = new() { new InaraEvent("inaraMethod", new List<object>()) };
 
-            Assert.AreEqual("name", header.AppName);
-            Assert.AreEqual("version", header.AppVersion);
-            Assert.AreEqual("key", header.ApiKey);
-            Assert.IsTrue(header.IsDeveloped);
-            Assert.IsNull(header.EventStatus);
-            Assert.IsTrue(string.IsNullOrWhiteSpace(header.EventStatusText));
+            Mock<IDownloadService> mockDownloadService = new();
+            mockDownloadService.Setup(x => x.PostData(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DownloadOptions>()).Result).Returns((inaraData, timestamp));
+
+            InaraService inaraService = InaraService.Instance(mockDownloadService.Object);
+            (string data, DateTime lastUpdated) = await inaraService.GetData(header, input, options).ConfigureAwait(false);
+
+            Assert.AreEqual(inaraData, data);
+            Assert.AreEqual(timestamp, lastUpdated);
+
+            mockDownloadService.Verify(x => x.PostData(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DownloadOptions>()), Times.Once());
         }
 
         [TestMethod]
-        public void InaraIdentityTest()
+        public void InaraService_Get_HeaderError_Test()
         {
-            InaraIdentity id = new InaraIdentity("name", "version", "key", true);
+            DateTime timestamp = DateTime.Now;
+            string inaraData = JsonConvert.SerializeObject(GetInaraRequestData(headerStatus: 204));
 
-            Assert.AreEqual("name", id.AppName);
-            Assert.AreEqual("version", id.AppVersion);
-            Assert.AreEqual("key", id.ApiKey);
-            Assert.IsTrue(id.IsDeveloped);
+            DownloadOptions options = new();
+            InaraHeader header = new InaraHeader(new InaraIdentity("name", "version", "key", true));
+            List<InaraEvent> input = new() { new InaraEvent("inaraMethod", new List<object>()) };
+
+            Mock<IDownloadService> mockDownloadService = new();
+            mockDownloadService.Setup(x => x.PostData(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DownloadOptions>()).Result).Returns((inaraData, timestamp));
+
+            InaraService inaraService = InaraService.Instance(mockDownloadService.Object);
+            APIException ex = Assert.ThrowsExceptionAsync<APIException>(async () => await inaraService.GetData(header, input, options)).Result;
+
+            Assert.AreEqual(204, ex.StatusCode);
+            Assert.IsTrue(ex.Message.Contains("Error message", StringComparison.OrdinalIgnoreCase));
         }
 
         [TestMethod]
-        public void InaraRequestTest()
+        public void InaraService_Get_EventError_Test()
         {
-            DateTime beforeTime = DateTime.Now;
-            List<InaraEvent> events = new List<InaraEvent>
-            {
-                new InaraEvent("event-name", new List<string>()
-                {
-                    "result1",
-                    "result2",
-                    "result3"
-                })
-            };
+            DateTime timestamp = DateTime.Now;
+            string inaraData = JsonConvert.SerializeObject(GetInaraRequestData(eventStatus: 204));
 
-            InaraRequest request = new InaraRequest
-            {
-                Header = new InaraHeader(new InaraIdentity("name", "version", "key", true)),
-                Events = events
-            };
+            DownloadOptions options = new();
+            InaraHeader header = new InaraHeader(new InaraIdentity("name", "version", "key", true));
+            List<InaraEvent> input = new() { new InaraEvent("inaraMethod", new List<object>()) };
 
-            Assert.IsNotNull(request.Header);
-            Assert.AreEqual("name", request.Header.AppName);
-            Assert.AreEqual("version", request.Header.AppVersion);
-            Assert.AreEqual("key", request.Header.ApiKey);
-            Assert.IsTrue(request.Header.IsDeveloped);
-            Assert.IsNull(request.Header.EventStatus);
-            Assert.IsTrue(string.IsNullOrWhiteSpace(request.Header.EventStatusText));
+            Mock<IDownloadService> mockDownloadService = new();
+            mockDownloadService.Setup(x => x.PostData(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DownloadOptions>()).Result).Returns((inaraData, timestamp));
 
-            Assert.IsNotNull(request.Events);
-            Assert.AreEqual("event-name", request.Events[0].EventName);
-            Assert.IsTrue(request.Events[0].EventTimestamp > beforeTime);
-            Assert.IsTrue(request.Events[0].EventTimestamp < DateTime.Now);
-            Assert.IsNotNull(request.Events[0].EventData);
-            foreach (string item in request.Events[0].EventData)
-            {
-                Assert.IsTrue(item.Contains("result", StringComparison.OrdinalIgnoreCase));
-            }
-            Assert.IsNull(request.Events[0].EventStatus);
-            Assert.IsTrue(string.IsNullOrWhiteSpace(request.Events[0].EventStatusText));
+            InaraService inaraService = InaraService.Instance(mockDownloadService.Object);
+            APIException ex = Assert.ThrowsExceptionAsync<APIException>(async () => await inaraService.GetData(header, input, options)).Result;
+
+            Assert.AreEqual(204, ex.StatusCode);
+            Assert.IsTrue(ex.Message.Contains("Error message", StringComparison.OrdinalIgnoreCase));
         }
 
-        // Disabled GetDataTest() to prevent INARA throttling CG data - DM 29082021
-        // Replace with a different api?
-
-        //[TestMethod]
-        //public async Task GetDataTest()
-        //{
-        //    InitialiseInaraTests();
-        //    DownloadOptions options = new();
-        //    InaraService inaraService = InaraService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
-        //    List<InaraEvent> input = new()
-        //    {
-        //        new InaraEvent("getCommunityGoalsRecent", new List<object>())
-        //    };
-
-        //    string json;
-        //    DateTime lastUpdated;
-        //    try
-        //    {
-        //        (json, lastUpdated) = await inaraService.GetData(new InaraHeader(identity), input, options).ConfigureAwait(false);
-        //    }
-        //    catch (APIException ex)
-        //    {
-        //        Assert.Inconclusive($"Skipping test due to INARA API issue: {ex.Message}");
-        //        return;
-        //    }
-
-        //    Assert.IsFalse(string.IsNullOrWhiteSpace(json));
-        //    Assert.IsTrue(lastUpdated > DateTime.MinValue);
-        //}
-
-        //private void InitialiseInaraTests()
-        //{
-        //    if (config == null)
-        //    {
-        //        config = new ConfigurationBuilder()
-        //                     .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-        //                     .AddJsonFile("appsettings.json")
-        //                     .AddUserSecrets<InaraCGTests>()
-        //                     .Build();
-
-        //        appName = config["Inara-AppName"];
-        //        identity = new(appName,
-        //                       config["Inara-AppVersion"],
-        //                       config["Inara-ApiKey"],
-        //                       bool.Parse(config["Inara-IsDeveloped"]));
-        //    }
-        //}
+        private static InaraRequest GetInaraRequestData(int headerStatus = 200, int eventStatus = 200)
+        {
+            return new()
+            {
+                Header = new InaraHeader { EventStatus = headerStatus, EventStatusText = headerStatus > 203 ? "Error message" : string.Empty },
+                Events = new List<InaraEvent> { new InaraEvent("inaraEvent", new List<object>()) { EventStatus = eventStatus, EventStatusText = eventStatus > 203 ? "Error message" : string.Empty } }
+            };
+        }
     }
 }
