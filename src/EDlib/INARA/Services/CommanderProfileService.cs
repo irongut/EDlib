@@ -61,7 +61,7 @@ namespace EDlib.INARA
             if (cacheMinutes < 5) cacheMinutes = 5;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
 
-            if (commander == null || !searchName.Equals(cachedName, StringComparison.OrdinalIgnoreCase) || commander.LastUpdated + expiry < DateTime.Now)
+            if (commander == null || !searchName.Equals(cachedName, StringComparison.OrdinalIgnoreCase) || commander.LastUpdated + expiry < DateTime.Now || ignoreCache)
             {
                 // request data
                 DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);

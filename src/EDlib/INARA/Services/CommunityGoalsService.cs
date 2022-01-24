@@ -60,7 +60,7 @@ namespace EDlib.INARA
         {
             if (cacheMinutes < 60) cacheMinutes = 60;
 
-            if (communityGoals?.Any() == false || communityGoals.Count < goalCount || lastUpdated + TimeSpan.FromMinutes(cacheMinutes) < DateTime.Now)
+            if (communityGoals?.Any() == false || communityGoals.Count < goalCount || lastUpdated + TimeSpan.FromMinutes(cacheMinutes) < DateTime.Now || ignoreCache)
             {
                 _ = await GetData(cacheMinutes, identity, cancelToken, BoW, ignoreCache).ConfigureAwait(false);
             }
@@ -83,7 +83,7 @@ namespace EDlib.INARA
             if (cacheMinutes < 60) cacheMinutes = 60;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
 
-            if (communityGoals?.Any() == false || lastUpdated + expiry < DateTime.Now)
+            if (communityGoals?.Any() == false || lastUpdated + expiry < DateTime.Now || ignoreCache)
             {
                 // request data
                 string json;
@@ -134,7 +134,7 @@ namespace EDlib.INARA
             if (requestDays < 7) requestDays = 7;
             if (cacheMinutes < 60) cacheMinutes = 60;
 
-            if (communityGoals?.Any() == false || lastDays != requestDays || lastUpdated + TimeSpan.FromMinutes(cacheMinutes) < DateTime.Now)
+            if (communityGoals?.Any() == false || lastDays != requestDays || lastUpdated + TimeSpan.FromMinutes(cacheMinutes) < DateTime.Now || ignoreCache)
             {
                 _ = await GetData(cacheMinutes, identity, cancelToken, BoW, ignoreCache).ConfigureAwait(false);
             }
