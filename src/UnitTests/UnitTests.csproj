@@ -53,7 +53,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EDlib.Mock\EDlib.Mock.csproj" />
     <ProjectReference Include="..\EDlib\EDlib.csproj" />
   </ItemGroup>
 
