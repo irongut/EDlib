@@ -52,7 +52,7 @@ namespace EDlib.EDSM
         {
             if (cacheMinutes < 5) cacheMinutes = 5;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
-            if (eliteStatus == null || (lastUpdated + expiry < DateTime.Now))
+            if (eliteStatus == null || (lastUpdated + expiry < DateTime.Now) || ignoreCache)
             {
                 string json;
                 DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);

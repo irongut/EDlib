@@ -69,7 +69,7 @@ namespace UnitTests
             mockCache.Setup(x => x.Add(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<TimeSpan>()));
 
             StandingsService service = StandingsService.Instance(mockDownloadService.Object, mockCache.Object);
-            GalacticStandings standings = await service.GetData(new CancellationTokenSource()).ConfigureAwait(false);
+            GalacticStandings standings = await service.GetData(new CancellationTokenSource(), true).ConfigureAwait(false);
 
             Assert.AreEqual(CycleService.CurrentCycle(), standings.Cycle);
             Assert.AreEqual(timestamp, standings.LastUpdated);
@@ -86,7 +86,7 @@ namespace UnitTests
             Assert.AreEqual(113, ald.CyclesSinceTurmoil);
 
             mockDownloadService.Verify(x => x.GetData(It.IsAny<string>(), It.IsAny<DownloadOptions>()), Times.Once());
-            mockCache.Verify(x => x.Exists(It.IsAny<string>()), Times.Once);
+            mockCache.Verify(x => x.Exists(It.IsAny<string>()), Times.Never);
             mockCache.Verify(x => x.IsExpired(It.IsAny<string>()), Times.Never);
             mockCache.Verify(x => x.Get(It.IsAny<string>()), Times.Never);
             mockCache.Verify(x => x.Add(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<TimeSpan>()), Times.Exactly(2));
@@ -109,7 +109,7 @@ namespace UnitTests
             mockCache.Setup(x => x.Add(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<TimeSpan>()));
 
             StandingsService service = StandingsService.Instance(mockDownloadService.Object, mockCache.Object);
-            GalacticStandings standings = await service.GetData(new CancellationTokenSource()).ConfigureAwait(false);
+            GalacticStandings standings = await service.GetData(new CancellationTokenSource(), true).ConfigureAwait(false);
 
             Assert.AreEqual(CycleService.CurrentCycle(), standings.Cycle);
             Assert.AreEqual(timestamp, standings.LastUpdated);
@@ -126,8 +126,8 @@ namespace UnitTests
             Assert.AreEqual(113, ald.CyclesSinceTurmoil);
 
             mockDownloadService.Verify(x => x.GetData(It.IsAny<string>(), It.IsAny<DownloadOptions>()), Times.Once());
-            mockCache.Verify(x => x.Exists(It.IsAny<string>()), Times.Exactly(2));
-            mockCache.Verify(x => x.IsExpired(It.IsAny<string>()), Times.Once);
+            mockCache.Verify(x => x.Exists(It.IsAny<string>()), Times.Once);
+            mockCache.Verify(x => x.IsExpired(It.IsAny<string>()), Times.Never);
             mockCache.Verify(x => x.Get(It.IsAny<string>()), Times.Exactly(2));
             mockCache.Verify(x => x.Add(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<TimeSpan>()), Times.Exactly(2));
         }
@@ -147,7 +147,7 @@ namespace UnitTests
             mockCache.Setup(x => x.Add(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<TimeSpan>()));
 
             StandingsService service = StandingsService.Instance(mockDownloadService.Object, mockCache.Object);
-            GalacticStandings standings = await service.GetData(new CancellationTokenSource()).ConfigureAwait(false);
+            GalacticStandings standings = await service.GetData(new CancellationTokenSource(), true).ConfigureAwait(false);
 
             Assert.AreEqual(250, standings.Cycle);
             Assert.AreEqual(timestamp, standings.LastUpdated);
@@ -164,7 +164,7 @@ namespace UnitTests
             Assert.AreEqual(113, ald.CyclesSinceTurmoil);
 
             mockDownloadService.Verify(x => x.GetData(It.IsAny<string>(), It.IsAny<DownloadOptions>()), Times.Once());
-            mockCache.Verify(x => x.Exists(It.IsAny<string>()), Times.Once);
+            mockCache.Verify(x => x.Exists(It.IsAny<string>()), Times.Never);
             mockCache.Verify(x => x.IsExpired(It.IsAny<string>()), Times.Never);
             mockCache.Verify(x => x.Add(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<TimeSpan>()), Times.Never);
         }

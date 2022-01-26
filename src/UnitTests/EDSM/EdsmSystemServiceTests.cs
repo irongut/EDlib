@@ -23,7 +23,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            SystemStations stations = await systemService.GetStations("Sol").ConfigureAwait(false);
+            SystemStations stations = await systemService.GetStations("Sol", ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(stations);
             Assert.AreEqual(27, stations.Id);
@@ -73,7 +73,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            SystemStations stations = await systemService.GetStations("Sol2", new CancellationTokenSource()).ConfigureAwait(false);
+            SystemStations stations = await systemService.GetStations("Sol", new CancellationTokenSource(), ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(stations);
             Assert.AreEqual(27, stations.Id);
@@ -123,7 +123,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            Market gMarket = await systemService.GetMarket(128016640).ConfigureAwait(false);
+            Market gMarket = await systemService.GetMarket(128016640, ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(gMarket);
             Assert.AreEqual(27, gMarket.Id);
@@ -159,7 +159,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            Market gMarket = await systemService.GetMarket(128016640, new CancellationTokenSource()).ConfigureAwait(false);
+            Market gMarket = await systemService.GetMarket(128016640, new CancellationTokenSource(), ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(gMarket);
             Assert.AreEqual(27, gMarket.Id);
@@ -195,7 +195,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            Market gMarket = await systemService.GetMarket("Sol", "Galileo").ConfigureAwait(false);
+            Market gMarket = await systemService.GetMarket("Sol", "Galileo", ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(gMarket);
             Assert.AreEqual(27, gMarket.Id);
@@ -231,7 +231,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            Market gMarket = await systemService.GetMarket("Sol", "Galileo", new CancellationTokenSource()).ConfigureAwait(false);
+            Market gMarket = await systemService.GetMarket("Sol", "Galileo", new CancellationTokenSource(), ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(gMarket);
             Assert.AreEqual(27, gMarket.Id);
@@ -267,7 +267,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            Shipyard gShipyard = await systemService.GetShipyard(128016640).ConfigureAwait(false);
+            Shipyard gShipyard = await systemService.GetShipyard(128016640, ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(gShipyard);
             Assert.AreEqual(27, gShipyard.Id);
@@ -298,7 +298,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            Shipyard gShipyard = await systemService.GetShipyard(128016640, new CancellationTokenSource()).ConfigureAwait(false);
+            Shipyard gShipyard = await systemService.GetShipyard(128016640, new CancellationTokenSource(), ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(gShipyard);
             Assert.AreEqual(27, gShipyard.Id);
@@ -329,7 +329,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            Shipyard gShipyard = await systemService.GetShipyard("Sol", "Galileo").ConfigureAwait(false);
+            Shipyard gShipyard = await systemService.GetShipyard("Sol", "Galileo", ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(gShipyard);
             Assert.AreEqual(27, gShipyard.Id);
@@ -360,7 +360,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            Shipyard gShipyard = await systemService.GetShipyard("Sol", "Galileo", new CancellationTokenSource()).ConfigureAwait(false);
+            Shipyard gShipyard = await systemService.GetShipyard("Sol", "Galileo", new CancellationTokenSource(), ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(gShipyard);
             Assert.AreEqual(27, gShipyard.Id);
@@ -391,7 +391,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            StationOutfitting gOutfit = await systemService.GetOutfitting(128016640).ConfigureAwait(false);
+            StationOutfitting gOutfit = await systemService.GetOutfitting(128016640, ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(gOutfit);
             Assert.AreEqual(27, gOutfit.Id);
@@ -422,7 +422,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            StationOutfitting gOutfit = await systemService.GetOutfitting(128016640, new CancellationTokenSource()).ConfigureAwait(false);
+            StationOutfitting gOutfit = await systemService.GetOutfitting(128016640, new CancellationTokenSource(), ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(gOutfit);
             Assert.AreEqual(27, gOutfit.Id);
@@ -453,7 +453,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            StationOutfitting gOutfit = await systemService.GetOutfitting("Sol", "Galileo").ConfigureAwait(false);
+            StationOutfitting gOutfit = await systemService.GetOutfitting("Sol", "Galileo", ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(gOutfit);
             Assert.AreEqual(27, gOutfit.Id);
@@ -484,7 +484,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            StationOutfitting gOutfit = await systemService.GetOutfitting("Sol", "Galileo", new CancellationTokenSource()).ConfigureAwait(false);
+            StationOutfitting gOutfit = await systemService.GetOutfitting("Sol", "Galileo", new CancellationTokenSource(), ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(gOutfit);
             Assert.AreEqual(27, gOutfit.Id);
@@ -515,7 +515,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            SystemFactions factions = await systemService.GetFactions("Sol").ConfigureAwait(false);
+            SystemFactions factions = await systemService.GetFactions("Sol", ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(factions);
             Assert.AreEqual(27, factions.Id);
@@ -556,7 +556,7 @@ namespace UnitTests
             mockEdsm.Setup(x => x.GetData(It.IsAny<string>(), It.IsAny<Dictionary<string, string>>(), It.IsAny<DownloadOptions>()).Result).Returns((edsmData, timestamp));
 
             SystemService systemService = SystemService.Instance(mockEdsm.Object);
-            SystemFactions factions = await systemService.GetFactions("Sol2", new CancellationTokenSource()).ConfigureAwait(false);
+            SystemFactions factions = await systemService.GetFactions("Sol", new CancellationTokenSource(), ignoreCache: true).ConfigureAwait(false);
 
             Assert.IsNotNull(factions);
             Assert.AreEqual(27, factions.Id);

@@ -58,7 +58,7 @@ namespace EDlib.BGS
         public async Task<(List<BgsTick> ticks, DateTime updated)> GetData(int days, bool ignoreCache = false)
         {
             TimeSpan expiry = TimeSpan.FromHours(1);
-            if (bgsTicks == null || bgsTicks.Count < days || (lastUpdated + expiry < DateTime.Now))
+            if (bgsTicks == null || bgsTicks.Count < days || (lastUpdated + expiry < DateTime.Now) || ignoreCache)
             {
                 string json;
                 CultureInfo culture = new CultureInfo("en-GB");

@@ -77,7 +77,7 @@ namespace EDlib.EDSM
 
             if (cacheMinutes < 5) cacheMinutes = 5;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
-            if (stations == null || stations.Name != systemName || (stations.LastUpdated + expiry < DateTime.Now))
+            if (stations == null || stations.Name != systemName || (stations.LastUpdated + expiry < DateTime.Now) || ignoreCache)
             {
                 Dictionary<string, string> parameters = new Dictionary<string, string>
                 {
@@ -168,7 +168,7 @@ namespace EDlib.EDSM
 
             if (cacheMinutes < 5) cacheMinutes = 5;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
-            if (market == null || (market.LastUpdated + expiry < DateTime.Now) || !marketParams.Equals(parameters))
+            if (market == null || (market.LastUpdated + expiry < DateTime.Now) || !marketParams.Equals(parameters) || ignoreCache)
             {
                 string json;
                 DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
@@ -255,7 +255,7 @@ namespace EDlib.EDSM
 
             if (cacheMinutes < 5) cacheMinutes = 5;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
-            if (shipyard == null || (shipyard.LastUpdated + expiry < DateTime.Now) || !shipyardParams.Equals(parameters))
+            if (shipyard == null || (shipyard.LastUpdated + expiry < DateTime.Now) || !shipyardParams.Equals(parameters) || ignoreCache)
             {
                 string json;
                 DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
@@ -342,7 +342,7 @@ namespace EDlib.EDSM
 
             if (cacheMinutes < 5) cacheMinutes = 5;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
-            if (outfitting == null || (outfitting.LastUpdated + expiry < DateTime.Now) || !outfittingParams.Equals(parameters))
+            if (outfitting == null || (outfitting.LastUpdated + expiry < DateTime.Now) || !outfittingParams.Equals(parameters) || ignoreCache)
             {
                 string json;
                 DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
@@ -388,7 +388,7 @@ namespace EDlib.EDSM
 
             if (cacheMinutes < 5) cacheMinutes = 5;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
-            if (factions == null || factions.Name != systemName || (factions.LastUpdated + expiry < DateTime.Now))
+            if (factions == null || factions.Name != systemName || (factions.LastUpdated + expiry < DateTime.Now) || ignoreCache)
             {
                 Dictionary<string, string> parameters = new Dictionary<string, string>
                 {
