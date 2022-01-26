@@ -710,16 +710,14 @@
             <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
         </member>
         <member name="T:EDlib.EDSM.IEdsmService">
-            <summary>
-              <para>Interface for EdsmService, a utility service used by other services to get data from EDSM APIs.</para>
-            </summary>
+            <summary>Interface for EdsmService, a utility service used by other services to get data from EDSM APIs.</summary>
         </member>
         <member name="M:EDlib.EDSM.IEdsmService.GetData(System.String,System.Collections.Generic.Dictionary{System.String,System.String},EDlib.Network.DownloadOptions)">
             <summary>Gets data from an EDSM API.</summary>
             <param name="method">The EDSM API method.</param>
             <param name="parameters">The parameters for the API method.</param>
             <param name="options">Options for download.</param>
-            <returns>Task&lt;(string, DateTime)&gt;<br /></returns>
+            <returns>Task&lt;(string, DateTime)&gt;</returns>
         </member>
         <member name="T:EDlib.EDSM.SystemService">
             <summary>
@@ -1470,6 +1468,17 @@
             <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;CommunityGoal&gt;, DateTime)&gt;</returns>
+        </member>
+        <member name="T:EDlib.INARA.IInaraService">
+            <summary>Interface for InaraService, a utility service used by other services to get data from INARA APIs.</summary>
+        </member>
+        <member name="M:EDlib.INARA.IInaraService.GetData(EDlib.INARA.InaraHeader,System.Collections.Generic.IList{EDlib.INARA.InaraEvent},EDlib.Network.DownloadOptions)">
+            <summary>Gets data from an INARA API.</summary>
+            <param name="header">The header for an INARA API request.</param>
+            <param name="input">The data for an INARA API request.</param>
+            <param name="options">Options for download.</param>
+            <returns>Task&lt;(string, DateTime)&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
         </member>
         <member name="T:EDlib.INARA.InaraService">
             <summary>
