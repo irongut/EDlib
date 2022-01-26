@@ -2,10 +2,11 @@
 using EDlib.EDSM;
 using EDlib.GalNet;
 using EDlib.INARA;
-using EDlib.Mock.Platform;
 using EDlib.Network;
+using EDlib.Platform;
 using EDlib.Powerplay;
 using Microsoft.Extensions.Configuration;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -28,8 +29,15 @@ namespace EDlibDemo
             {
                 SetupClient();
 
+                Mock<IConnectivityService> mockConnectivity = new();
+                mockConnectivity.Setup(x => x.IsConnected()).Returns(true);
+
+                Mock<ICacheService> mockCache = new();
+                mockCache.Setup(x => x.Exists(It.IsAny<string>())).Returns(false);
+                mockCache.Setup(x => x.IsExpired(It.IsAny<string>())).Returns(true);
+
                 Console.WriteLine("### Server Status ###");
-                EliteStatusService statusService = EliteStatusService.Instance(DownloadService.Instance(userAgent, new UnmeteredConnection()));
+                EliteStatusService statusService = EliteStatusService.Instance(EdsmService.Instance(DownloadService.Instance(userAgent, mockConnectivity.Object)));
                 (EliteStatus eliteStatus, DateTime lastUpdated) = await statusService.GetData().ConfigureAwait(false);
                 Console.WriteLine(eliteStatus.ToString());
                 Console.WriteLine();
@@ -43,13 +51,13 @@ namespace EDlibDemo
                 Console.WriteLine();
 
                 Console.WriteLine("### Galactic Standings ###");
-                StandingsService standingsService = StandingsService.Instance(DownloadService.Instance(userAgent, new UnmeteredConnection()), new EmptyCache());
+                StandingsService standingsService = StandingsService.Instance(DownloadService.Instance(userAgent, mockConnectivity.Object), mockCache.Object);
                 GalacticStandings galacticStandings = await standingsService.GetData(new CancellationTokenSource()).ConfigureAwait(false);
                 Console.WriteLine(galacticStandings.ToString());
 
                 Random rand = new();
                 string shortName = galacticStandings.Standings[rand.Next(10)].ShortName;
-                PowerDetailsService powerService = PowerDetailsService.Instance(DownloadService.Instance(userAgent, new UnmeteredConnection()));
+                PowerDetailsService powerService = PowerDetailsService.Instance(DownloadService.Instance(userAgent, mockConnectivity.Object));
                 PowerDetails powerDetails = powerService.GetPowerDetails(shortName);
                 Console.WriteLine($"Random Power: {powerDetails}");
 
@@ -58,7 +66,7 @@ namespace EDlibDemo
                 Console.WriteLine();
 
                 Console.WriteLine("### GalNet News ###");
-                GalNetService gnService = GalNetService.Instance(DownloadService.Instance(userAgent, new UnmeteredConnection()));
+                GalNetService gnService = GalNetService.Instance(DownloadService.Instance(userAgent, mockConnectivity.Object));
                 (List<NewsArticle> newsList, DateTime _) = await gnService.GetData(5, 1, null).ConfigureAwait(false);
                 foreach (NewsArticle article in newsList)
                 {
@@ -73,7 +81,7 @@ namespace EDlibDemo
 
                 Console.WriteLine("### Community Goals ###");
                 InitialiseInara();
-                CommunityGoalsService cgService = CommunityGoalsService.Instance(DownloadService.Instance(appName, new UnmeteredConnection()));
+                CommunityGoalsService cgService = CommunityGoalsService.Instance(InaraService.Instance(DownloadService.Instance(appName, mockConnectivity.Object)));
                 try
                 {
                     (List<CommunityGoal> cgList, DateTime _) = await cgService.GetDataByTime(14, 60, identity, null).ConfigureAwait(false);
