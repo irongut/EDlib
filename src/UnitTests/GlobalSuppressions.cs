@@ -10,7 +10,7 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Code coverage doesn't see new()", Scope = "type", Target = "~T:UnitTests.DownloadOptionsTests")]
 [assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Code coverage doesn't see new()", Scope = "type", Target = "~T:UnitTests.DownloadServiceTests")]
 [assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Code coverage doesn't see new()", Scope = "type", Target = "~T:UnitTests.EdsmEliteStatusServiceTests")]
-[assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Code coverage doesn't see new()", Scope = "type", Target = "~T:UnitTests.InaraCommanderTests")]
+[assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Code coverage doesn't see new()", Scope = "type", Target = "~T:UnitTests.InaraCommanderProfileServiceTests")]
 [assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Code coverage doesn't see new()", Scope = "type", Target = "~T:UnitTests.InaraServiceTests")]
 [assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Code coverage doesn't see new()", Scope = "type", Target = "~T:UnitTests.PowerplayTests")]
 [assembly: SuppressMessage("Style", "IDE0090:Use 'new(...)'", Justification = "Code coverage doesn't see new()", Scope = "type", Target = "~T:UnitTests.TopicTests")]
