@@ -27,7 +27,7 @@ namespace EDlib.INARA
     {
         private static readonly CommanderProfileService instance = new CommanderProfileService();
 
-        private static IDownloadService dService;
+        private static IInaraService InaraService;
 
         private const string eventName = "getCommanderProfile";
 
@@ -37,11 +37,11 @@ namespace EDlib.INARA
         private CommanderProfileService() { }
 
         /// <summary>Instantiates the CommanderProfileService class.</summary>
-        /// <param name="downloadService">IDownloadService instance used to download data.</param>
+        /// <param name="inaraService">IInaraService instance used to download data from INARA.</param>
         /// <returns>CommanderProfileService</returns>
-        public static CommanderProfileService Instance(IDownloadService downloadService)
+        public static CommanderProfileService Instance(IInaraService inaraService)
         {
-            dService = downloadService;
+            InaraService = inaraService;
             return instance;
         }
 
@@ -61,18 +61,17 @@ namespace EDlib.INARA
             if (cacheMinutes < 5) cacheMinutes = 5;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
 
-            if (commander == null || !searchName.Equals(cachedName, StringComparison.OrdinalIgnoreCase) || commander.LastUpdated + expiry < DateTime.Now)
+            if (commander == null || !searchName.Equals(cachedName, StringComparison.OrdinalIgnoreCase) || commander.LastUpdated + expiry < DateTime.Now || ignoreCache)
             {
                 // request data
                 DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
-                InaraService inaraService = InaraService.Instance(dService);
 
                 List<InaraEvent> input = new List<InaraEvent>
                 {
                     new InaraEvent(eventName, new SearchNameParameter(searchName))
                 };
 
-                (string json, _) = await inaraService.GetData(new InaraHeader(identity), input, options).ConfigureAwait(false);
+                (string json, _) = await InaraService.GetData(new InaraHeader(identity), input, options).ConfigureAwait(false);
 
                 // parse commander profile
                 InaraRequest outputData = JsonConvert.DeserializeObject<InaraRequest>(json);

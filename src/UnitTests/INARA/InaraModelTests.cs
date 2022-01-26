@@ -1,24 +1,15 @@
-﻿using EDlib;
-using EDlib.INARA;
-using EDlib.Mock.Platform;
-using EDlib.Network;
-using Microsoft.Extensions.Configuration;
+﻿using EDlib.INARA;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace UnitTests
 {
     [TestClass]
-    public class InaraServiceTests
+    public class InaraModelTests
     {
-        //private IConfigurationRoot config;
-        //private string appName;
-        //private InaraIdentity identity;
-
         [TestMethod]
-        public void InaraEventTest()
+        public void InaraEvent_Test()
         {
             DateTime beforeTime = DateTime.Now;
             InaraEvent inara = new InaraEvent("event-name", new List<string>()
@@ -41,7 +32,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void InaraHeaderTest()
+        public void InaraHeader_Test()
         {
             InaraHeader header = new InaraHeader(new InaraIdentity("name", "version", "key", true));
 
@@ -54,7 +45,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void InaraIdentityTest()
+        public void InaraIdentity_Test()
         {
             InaraIdentity id = new InaraIdentity("name", "version", "key", true);
 
@@ -65,10 +56,10 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void InaraRequestTest()
+        public void InaraRequest_Test()
         {
             DateTime beforeTime = DateTime.Now;
-            List<InaraEvent> events = new List<InaraEvent>
+            List<InaraEvent> events = new()
             {
                 new InaraEvent("event-name", new List<string>()
                 {
@@ -104,53 +95,5 @@ namespace UnitTests
             Assert.IsNull(request.Events[0].EventStatus);
             Assert.IsTrue(string.IsNullOrWhiteSpace(request.Events[0].EventStatusText));
         }
-
-        // Disabled GetDataTest() to prevent INARA throttling CG data - DM 29082021
-        // Replace with a different api?
-
-        //[TestMethod]
-        //public async Task GetDataTest()
-        //{
-        //    InitialiseInaraTests();
-        //    DownloadOptions options = new();
-        //    InaraService inaraService = InaraService.Instance(DownloadService.Instance("EDlib UnitTests", new UnmeteredConnection()));
-        //    List<InaraEvent> input = new()
-        //    {
-        //        new InaraEvent("getCommunityGoalsRecent", new List<object>())
-        //    };
-
-        //    string json;
-        //    DateTime lastUpdated;
-        //    try
-        //    {
-        //        (json, lastUpdated) = await inaraService.GetData(new InaraHeader(identity), input, options).ConfigureAwait(false);
-        //    }
-        //    catch (APIException ex)
-        //    {
-        //        Assert.Inconclusive($"Skipping test due to INARA API issue: {ex.Message}");
-        //        return;
-        //    }
-
-        //    Assert.IsFalse(string.IsNullOrWhiteSpace(json));
-        //    Assert.IsTrue(lastUpdated > DateTime.MinValue);
-        //}
-
-        //private void InitialiseInaraTests()
-        //{
-        //    if (config == null)
-        //    {
-        //        config = new ConfigurationBuilder()
-        //                     .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-        //                     .AddJsonFile("appsettings.json")
-        //                     .AddUserSecrets<InaraCGTests>()
-        //                     .Build();
-
-        //        appName = config["Inara-AppName"];
-        //        identity = new(appName,
-        //                       config["Inara-AppVersion"],
-        //                       config["Inara-ApiKey"],
-        //                       bool.Parse(config["Inara-IsDeveloped"]));
-        //    }
-        //}
     }
 }

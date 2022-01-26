@@ -16,7 +16,7 @@ namespace EDlib.EDSM
     {
         private static readonly SystemsService instance = new SystemsService();
 
-        private static IDownloadService dService;
+        private static IEdsmService EdsmService;
 
         private const string infoMethod = "api-v1/system";
         private const string systemsMethod = "api-v1/systems?";
@@ -47,11 +47,11 @@ namespace EDlib.EDSM
         private SystemsService() { }
 
         /// <summary>Instantiates the SystemsService class.</summary>
-        /// <param name="downloadService">IDownloadService instance used to download data.</param>
+        /// <param name="edsmService">IEdsmService instance used to download data from EDSM.</param>
         /// <returns>SystemsService</returns>
-        public static SystemsService Instance(IDownloadService downloadService)
+        public static SystemsService Instance(IEdsmService edsmService)
         {
-            dService = downloadService;
+            EdsmService = edsmService;
             return instance;
         }
 
@@ -86,7 +86,7 @@ namespace EDlib.EDSM
 
             if (cacheMinutes < 5) cacheMinutes = 5;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
-            if (solarSystem == null || solarSystem.Name != systemName || (solarSystem.LastUpdated + expiry < DateTime.Now) || !solarSystemOptions.Equals(options))
+            if (solarSystem == null || solarSystem.Name != systemName || (solarSystem.LastUpdated + expiry < DateTime.Now) || !solarSystemOptions.Equals(options) || ignoreCache)
             {
                 Dictionary<string, string> parameters = new Dictionary<string, string>
                 {
@@ -96,8 +96,7 @@ namespace EDlib.EDSM
 
                 string json;
                 DownloadOptions downloadOptions = new DownloadOptions(cancelToken, expiry, ignoreCache);
-                EdsmService edsmService = EdsmService.Instance(dService);
-                (json, _) = await edsmService.GetData(infoMethod, parameters, downloadOptions).ConfigureAwait(false);
+                (json, _) = await EdsmService.GetData(infoMethod, parameters, downloadOptions).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {
@@ -141,7 +140,7 @@ namespace EDlib.EDSM
 
             if (cacheMinutes < 5) cacheMinutes = 5;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
-            if (systems?.Any() == false || (systemsUpdated + expiry < DateTime.Now) || systemsNameList.Equals(systemNames) || !systemsOptions.Equals(options))
+            if (systems?.Any() == false || (systemsUpdated + expiry < DateTime.Now) || systemsNameList.Equals(systemNames) || !systemsOptions.Equals(options) || ignoreCache)
             {
                 // Dictionary doesn't allow multiple identical keys so add system names to method
                 string method = systemsMethod;
@@ -155,8 +154,7 @@ namespace EDlib.EDSM
 
                 string json;
                 DownloadOptions downloadOptions = new DownloadOptions(cancelToken, expiry, ignoreCache);
-                EdsmService edsmService = EdsmService.Instance(dService);
-                (json, systemsUpdated) = await edsmService.GetData(method, parameters, downloadOptions).ConfigureAwait(false);
+                (json, systemsUpdated) = await EdsmService.GetData(method, parameters, downloadOptions).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {
@@ -203,7 +201,7 @@ namespace EDlib.EDSM
 
             if (cacheMinutes < 5) cacheMinutes = 5;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
-            if (cubeSystems?.Any() == false || (cubeUpdated + expiry < DateTime.Now) || cubeSystem != systemName || cubeSize != size || !cubeOptions.Equals(options))
+            if (cubeSystems?.Any() == false || (cubeUpdated + expiry < DateTime.Now) || cubeSystem != systemName || cubeSize != size || !cubeOptions.Equals(options) || ignoreCache)
             {
                 if (size < 1) size = 1;
                 else if (size > 200) size = 200;
@@ -216,8 +214,7 @@ namespace EDlib.EDSM
 
                 string json;
                 DownloadOptions downloadOptions = new DownloadOptions(cancelToken, expiry, ignoreCache);
-                EdsmService edsmService = EdsmService.Instance(dService);
-                (json, cubeUpdated) = await edsmService.GetData(cubeMethod, parameters, downloadOptions).ConfigureAwait(false);
+                (json, cubeUpdated) = await EdsmService.GetData(cubeMethod, parameters, downloadOptions).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {
@@ -267,7 +264,7 @@ namespace EDlib.EDSM
 
             if (cacheMinutes < 5) cacheMinutes = 5;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
-            if (sphereSystems == null || (sphereUpdated + expiry < DateTime.Now) || sphereSystem != systemName || sphereRadius != radius || sphereMinRadius != minRadius || !sphereOptions.Equals(options))
+            if (sphereSystems == null || (sphereUpdated + expiry < DateTime.Now) || sphereSystem != systemName || sphereRadius != radius || sphereMinRadius != minRadius || !sphereOptions.Equals(options) || ignoreCache)
             {
                 if (radius < 1) radius = 1;
                 else if (radius > 100) radius = 100;
@@ -283,8 +280,7 @@ namespace EDlib.EDSM
 
                 string json;
                 DownloadOptions downloadOptions = new DownloadOptions(cancelToken, expiry, ignoreCache);
-                EdsmService edsmService = EdsmService.Instance(dService);
-                (json, sphereUpdated) = await edsmService.GetData(sphereMethod, parameters, downloadOptions).ConfigureAwait(false);
+                (json, sphereUpdated) = await EdsmService.GetData(sphereMethod, parameters, downloadOptions).ConfigureAwait(false);
 
                 if (string.IsNullOrWhiteSpace(json) || json == "{}")
                 {

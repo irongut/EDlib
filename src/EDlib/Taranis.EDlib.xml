@@ -595,7 +595,7 @@
             <param name="id64">The EDSM 64 bit system ID.</param>
             <param name="name">The system name.</param>
             <param name="url">The EDSM URL for the system.</param>
-            /// <param name="controlFaction">The faction that controls the system.</param>
+            <param name="controlFaction">The faction that controls the system.</param>
             <param name="factions">Array of <see cref="T:EDlib.EDSM.Faction" /> in the system.</param>
         </member>
         <member name="T:EDlib.EDSM.SystemsOptions">
@@ -689,9 +689,9 @@
               <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-status-v1">Status v1</a>.</para>
             </summary>
         </member>
-        <member name="M:EDlib.EDSM.EliteStatusService.Instance(EDlib.Network.IDownloadService)">
+        <member name="M:EDlib.EDSM.EliteStatusService.Instance(EDlib.EDSM.IEdsmService)">
             <summary>Instantiates the EliteStatusService class.</summary>
-            <param name="downloadService">IDownloadService instance used to download data.</param>
+            <param name="edsmService">IEdsmService instance used to download data from EDSM.</param>
             <returns>EliteStatusService</returns>
         </member>
         <member name="M:EDlib.EDSM.EliteStatusService.GetData(System.Int32,System.Boolean)">
@@ -709,15 +709,25 @@
             <returns>Task&lt;(List&lt;NewsArticle&gt;, DateTime)&gt;</returns>
             <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
         </member>
+        <member name="T:EDlib.EDSM.IEdsmService">
+            <summary>Interface for EdsmService, a utility service used by other services to get data from EDSM APIs.</summary>
+        </member>
+        <member name="M:EDlib.EDSM.IEdsmService.GetData(System.String,System.Collections.Generic.Dictionary{System.String,System.String},EDlib.Network.DownloadOptions)">
+            <summary>Gets data from an EDSM API.</summary>
+            <param name="method">The EDSM API method.</param>
+            <param name="parameters">The parameters for the API method.</param>
+            <param name="options">Options for download.</param>
+            <returns>Task&lt;(string, DateTime)&gt;</returns>
+        </member>
         <member name="T:EDlib.EDSM.SystemService">
             <summary>
               <para>Gets data from the EDSM System API including stations, markets, shipyards, outfitting and factions.</para>
               <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</para>
             </summary>
         </member>
-        <member name="M:EDlib.EDSM.SystemService.Instance(EDlib.Network.IDownloadService)">
+        <member name="M:EDlib.EDSM.SystemService.Instance(EDlib.EDSM.IEdsmService)">
             <summary>Instantiates the SystemService class.</summary>
-            <param name="downloadService">IDownloadService instance used to download data.</param>
+            <param name="edsmService">IEdsmService instance used to download data from EDSM.</param>
             <returns>SystemService</returns>
         </member>
         <member name="M:EDlib.EDSM.SystemService.GetStations(System.String,System.Int32,System.Boolean)">
@@ -884,9 +894,9 @@
               <para>See EDSM API documentation for <a href="https://www.edsm.net/en/api-v1">Systems v1</a>.</para>
             </summary>
         </member>
-        <member name="M:EDlib.EDSM.SystemsService.Instance(EDlib.Network.IDownloadService)">
+        <member name="M:EDlib.EDSM.SystemsService.Instance(EDlib.EDSM.IEdsmService)">
             <summary>Instantiates the SystemsService class.</summary>
-            <param name="downloadService">IDownloadService instance used to download data.</param>
+            <param name="edsmService">IEdsmService instance used to download data from EDSM.</param>
             <returns>SystemsService</returns>
         </member>
         <member name="M:EDlib.EDSM.SystemsService.GetSystem(System.String,EDlib.EDSM.SystemsOptions,System.Int32,System.Boolean)">
@@ -1405,9 +1415,9 @@
               <para>Note: The information returned will be determined by the Commander's privacy settings on INARA.</para>
             </summary>
         </member>
-        <member name="M:EDlib.INARA.CommanderProfileService.Instance(EDlib.Network.IDownloadService)">
+        <member name="M:EDlib.INARA.CommanderProfileService.Instance(EDlib.INARA.IInaraService)">
             <summary>Instantiates the CommanderProfileService class.</summary>
-            <param name="downloadService">IDownloadService instance used to download data.</param>
+            <param name="inaraService">IInaraService instance used to download data from INARA.</param>
             <returns>CommanderProfileService</returns>
         </member>
         <member name="M:EDlib.INARA.CommanderProfileService.GetData(System.String,System.Int32,EDlib.INARA.InaraIdentity,System.Threading.CancellationTokenSource,System.Boolean)">
@@ -1425,9 +1435,9 @@
               <para>See INARA documentation for <a href="https://inara.cz/inara-api-docs/#event-37">getCommunityGoalsRecent</a>.</para>
             </summary>
         </member>
-        <member name="M:EDlib.INARA.CommunityGoalsService.Instance(EDlib.Network.IDownloadService)">
+        <member name="M:EDlib.INARA.CommunityGoalsService.Instance(EDlib.INARA.IInaraService)">
             <summary>Instantiates the CommunityGoalsService class.</summary>
-            <param name="downloadService">IDownloadService instance used to download data.</param>
+            <param name="inaraService">IInaraService instance used to download data from INARA.</param>
             <returns>CommunityGoalsService</returns>
         </member>
         <member name="M:EDlib.INARA.CommunityGoalsService.GetData(System.Int32,System.Int32,EDlib.INARA.InaraIdentity,System.Threading.CancellationTokenSource,System.String,System.Boolean)">
@@ -1458,6 +1468,17 @@
             <param name="BoW">An optional alternative Bag of Words to use when classifying Community Goals, passed as a json string.</param>
             <param name="ignoreCache">Ignores any cached data if set to <c>true</c>.</param>
             <returns>Task&lt;(List&lt;CommunityGoal&gt;, DateTime)&gt;</returns>
+        </member>
+        <member name="T:EDlib.INARA.IInaraService">
+            <summary>Interface for InaraService, a utility service used by other services to get data from INARA APIs.</summary>
+        </member>
+        <member name="M:EDlib.INARA.IInaraService.GetData(EDlib.INARA.InaraHeader,System.Collections.Generic.IList{EDlib.INARA.InaraEvent},EDlib.Network.DownloadOptions)">
+            <summary>Gets data from an INARA API.</summary>
+            <param name="header">The header for an INARA API request.</param>
+            <param name="input">The data for an INARA API request.</param>
+            <param name="options">Options for download.</param>
+            <returns>Task&lt;(string, DateTime)&gt;</returns>
+            <exception cref="T:EDlib.APIException">Errors from the API called.</exception>
         </member>
         <member name="T:EDlib.INARA.InaraService">
             <summary>
@@ -1956,6 +1977,12 @@
         </member>
         <member name="T:EDlib.Powerplay.CycleService">
             <summary>A static class that represents the Powerplay cycle and when it changes (ticks).</summary>
+        </member>
+        <member name="P:EDlib.Powerplay.CycleService.FixedDate">
+            <summary>If set all methods will use this date instead of the current date.</summary>
+        </member>
+        <member name="P:EDlib.Powerplay.CycleService.PowerplayStartDate">
+            <summary>The date and time the first Powerplay cycle started.</summary>
         </member>
         <member name="M:EDlib.Powerplay.CycleService.TimeTillTick">
             <summary>The time remaining till the end of the current Powerplay cycle.</summary>

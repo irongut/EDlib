@@ -28,10 +28,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Moq" Version="4.16.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EDlib.Mock\EDlib.Mock.csproj" />
     <ProjectReference Include="..\EDlib\EDlib.csproj" />
   </ItemGroup>
 

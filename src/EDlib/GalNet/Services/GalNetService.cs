@@ -79,7 +79,7 @@ namespace EDlib.GalNet
             if (expiryHours < 1) expiryHours = 1;
 
             TimeSpan expiry = TimeSpan.FromHours(expiryHours);
-            if (galnetNews?.Any() == false || galnetNews.Count < articleCount || lastUpdated + expiry < DateTime.Now)
+            if (galnetNews?.Any() == false || galnetNews.Count < articleCount || lastUpdated + expiry < DateTime.Now || ignoreCache)
             {
                 // download the json
                 string json;

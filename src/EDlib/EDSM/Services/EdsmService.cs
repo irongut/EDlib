@@ -10,7 +10,7 @@ namespace EDlib.EDSM
     ///   <para>Utility service used by other services to get data from EDSM APIs.</para>
     ///   <para>See EDSM <a href="https://www.edsm.net/">API documentation.</a>.</para>
     /// </summary>
-    public sealed class EdsmService
+    public sealed class EdsmService : IEdsmService
     {
         private static readonly EdsmService instance = new EdsmService();
 

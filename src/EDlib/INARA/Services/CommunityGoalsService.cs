@@ -20,7 +20,7 @@ namespace EDlib.INARA
     {
         private static readonly CommunityGoalsService instance = new CommunityGoalsService();
 
-        private static IDownloadService dService;
+        private static IInaraService InaraService;
 
         private const string eventName = "getCommunityGoalsRecent";
 
@@ -35,11 +35,11 @@ namespace EDlib.INARA
         }
 
         /// <summary>Instantiates the CommunityGoalsService class.</summary>
-        /// <param name="downloadService">IDownloadService instance used to download data.</param>
+        /// <param name="inaraService">IInaraService instance used to download data from INARA.</param>
         /// <returns>CommunityGoalsService</returns>
-        public static CommunityGoalsService Instance(IDownloadService downloadService)
+        public static CommunityGoalsService Instance(IInaraService inaraService)
         {
-            dService = downloadService;
+            InaraService = inaraService;
             return instance;
         }
 
@@ -60,7 +60,7 @@ namespace EDlib.INARA
         {
             if (cacheMinutes < 60) cacheMinutes = 60;
 
-            if (communityGoals?.Any() == false || communityGoals.Count < goalCount || lastUpdated + TimeSpan.FromMinutes(cacheMinutes) < DateTime.Now)
+            if (communityGoals?.Any() == false || communityGoals.Count < goalCount || lastUpdated + TimeSpan.FromMinutes(cacheMinutes) < DateTime.Now || ignoreCache)
             {
                 _ = await GetData(cacheMinutes, identity, cancelToken, BoW, ignoreCache).ConfigureAwait(false);
             }
@@ -83,17 +83,16 @@ namespace EDlib.INARA
             if (cacheMinutes < 60) cacheMinutes = 60;
             TimeSpan expiry = TimeSpan.FromMinutes(cacheMinutes);
 
-            if (communityGoals?.Any() == false || lastUpdated + expiry < DateTime.Now)
+            if (communityGoals?.Any() == false || lastUpdated + expiry < DateTime.Now || ignoreCache)
             {
                 // request data
                 string json;
                 DownloadOptions options = new DownloadOptions(cancelToken, expiry, ignoreCache);
-                InaraService inaraService = InaraService.Instance(dService);
                 List<InaraEvent> input = new List<InaraEvent>
                 {
                     new InaraEvent(eventName, new List<object>())
                 };
-                (json, lastUpdated) = await inaraService.GetData(new InaraHeader(identity), input, options).ConfigureAwait(false);
+                (json, lastUpdated) = await InaraService.GetData(new InaraHeader(identity), input, options).ConfigureAwait(false);
 
                 // parse community goals
                 communityGoals.Clear();
@@ -135,7 +134,7 @@ namespace EDlib.INARA
             if (requestDays < 7) requestDays = 7;
             if (cacheMinutes < 60) cacheMinutes = 60;
 
-            if (communityGoals?.Any() == false || lastDays != requestDays || lastUpdated + TimeSpan.FromMinutes(cacheMinutes) < DateTime.Now)
+            if (communityGoals?.Any() == false || lastDays != requestDays || lastUpdated + TimeSpan.FromMinutes(cacheMinutes) < DateTime.Now || ignoreCache)
             {
                 _ = await GetData(cacheMinutes, identity, cancelToken, BoW, ignoreCache).ConfigureAwait(false);
             }

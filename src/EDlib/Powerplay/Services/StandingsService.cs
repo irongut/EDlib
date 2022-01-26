@@ -48,7 +48,7 @@ namespace EDlib.Powerplay
         public async Task<GalacticStandings> GetData(CancellationTokenSource cancelToken, bool ignoreCache = false)
         {
             TimeSpan expiry = TimeSpan.FromMinutes(15);
-            if ((galacticStandings == null) || (galacticStandings.Cycle != CycleService.CurrentCycle() && (lastUpdated + expiry < DateTime.Now)))
+            if ((galacticStandings == null) || (galacticStandings.Cycle != CycleService.CurrentCycle() && (lastUpdated + expiry < DateTime.Now)) || ignoreCache)
             {
                 string json;
                 if (!ignoreCache && cache.Exists(dataKey) && !cache.IsExpired(dataKey))
