@@ -15,3 +15,9 @@ See EDSM API documentation for [System v1](https://www.edsm.net/en/api-system-v1
 ## SystemsService
 Gets data from the EDSM Systems API including allegiance, government, controlling faction, population, security and economic information. 
 See EDSM API documentation for [Systems v1](https://www.edsm.net/en/api-v1).
+
+## IEdsmService
+Interface for EdsmService, a utility service used by other services to get data from EDSM APIs.
+
+## EdsmService
+Utility service used by other services to get data from EDSM APIs.

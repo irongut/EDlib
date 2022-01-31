@@ -20,6 +20,11 @@ See INARA documentation for [getCommanderProfile](https://inara.cz/inara-api-doc
 Note: The information returned will be determined by the Commander's privacy settings on INARA.
 
 ## CommunityGoalsService
-
 Gets details of ongoing and recently completed Community Goals from the INARA API. 
 See INARA documentation for [getCommunityGoalsRecent](https://inara.cz/inara-api-docs/#event-37)).
+
+## IInaraService
+Interface for InaraService, a utility service used by other services to get data from INARA APIs.
+
+## InaraService
+Utility service used by other services to get data from INARA APIs.
