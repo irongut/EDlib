@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ShipModule
+    <title>Interface IEdsmService
    | EDlib </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ShipModule
+    <meta name="title" content="Interface IEdsmService
    | EDlib ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -162,8 +162,8 @@
                           <li class="">
                             <a href="EDlib.EDSM.FactionState.html" title="FactionState" class="">FactionState</a>
                           </li>
-                          <li class="">
-                            <a href="EDlib.EDSM.IEdsmService.html" title="IEdsmService" class="">IEdsmService</a>
+                          <li class="active">
+                            <a href="EDlib.EDSM.IEdsmService.html" title="IEdsmService" class="active">IEdsmService</a>
                           </li>
                           <li class="">
                             <a href="EDlib.EDSM.Market.html" title="Market" class="">Market</a>
@@ -174,8 +174,8 @@
                           <li class="">
                             <a href="EDlib.EDSM.Ship.html" title="Ship" class="">Ship</a>
                           </li>
-                          <li class="active">
-                            <a href="EDlib.EDSM.ShipModule.html" title="ShipModule" class="active">ShipModule</a>
+                          <li class="">
+                            <a href="EDlib.EDSM.ShipModule.html" title="ShipModule" class="">ShipModule</a>
                           </li>
                           <li class="">
                             <a href="EDlib.EDSM.Shipyard.html" title="Shipyard" class="">Shipyard</a>
@@ -350,62 +350,62 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="EDlib.EDSM.ShipModule">
+            <article class="content wrap" id="_content" data-uid="EDlib.EDSM.IEdsmService">
   
   
-  <h1 id="EDlib_EDSM_ShipModule" data-uid="EDlib.EDSM.ShipModule" class="text-break">Class ShipModule
+  <h1 id="EDlib_EDSM_IEdsmService" data-uid="EDlib.EDSM.IEdsmService" class="text-break">Interface IEdsmService
   </h1>
-  <div class="markdown level0 summary"><p>Represents a ship module returned by EDSM System API methods.</p>
-<p>See EDSM API documentation for <a href="https://www.edsm.net/en/api-system-v1">System v1</a>.</p>
+  <div class="markdown level0 summary"><p>Interface for EdsmService, a utility service used by other services to get data from EDSM APIs.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">ShipModule</span></div>
-  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EDlib.EDSM.html">EDlib.EDSM</a></h6>
   <h6><strong>Assembly</strong>: Taranis.EDlib.dll</h6>
-  <h5 id="EDlib_EDSM_ShipModule_syntax">Syntax</h5>
+  <h5 id="EDlib_EDSM_IEdsmService_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ShipModule : object</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IEdsmService</code></pre>
   </div>
-  <h3 id="properties">Properties
+  <h3 id="methods">Methods
   </h3>
-  <a id="EDlib_EDSM_ShipModule_Id_" data-uid="EDlib.EDSM.ShipModule.Id*"></a>
-  <h4 id="EDlib_EDSM_ShipModule_Id" data-uid="EDlib.EDSM.ShipModule.Id">Id</h4>
-  <div class="markdown level1 summary"><p>The module ID.</p>
+  <a id="EDlib_EDSM_IEdsmService_GetData_" data-uid="EDlib.EDSM.IEdsmService.GetData*"></a>
+  <h4 id="EDlib_EDSM_IEdsmService_GetData_System_String_Dictionary_System_String_System_String__EDlib_Network_DownloadOptions_" data-uid="EDlib.EDSM.IEdsmService.GetData(System.String,Dictionary{System.String,System.String},EDlib.Network.DownloadOptions)">GetData(String, Dictionary&lt;String, String&gt;, DownloadOptions)</h4>
+  <div class="markdown level1 summary"><p>Gets data from an EDSM API.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Id { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;(string data, DateTime updated)&gt; GetData(string method, Dictionary&lt;string, string&gt; parameters, DownloadOptions options)</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><span class="parametername">method</span></td>
+        <td><p>The EDSM API method.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>The parameters for the API method.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EDlib.Network.DownloadOptions.html">DownloadOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>Options for download.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <a id="EDlib_EDSM_ShipModule_Name_" data-uid="EDlib.EDSM.ShipModule.Name*"></a>
-  <h4 id="EDlib_EDSM_ShipModule_Name" data-uid="EDlib.EDSM.ShipModule.Name">Name</h4>
-  <div class="markdown level1 summary"><p>The name of the module.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -415,8 +415,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><span class="xref">Task</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.String</span>, <span class="xref">DateTime</span>&gt;&gt;</td>
+        <td><p>Task&lt;(string, DateTime)&gt;</p>
+</td>
       </tr>
     </tbody>
   </table>

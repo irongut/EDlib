@@ -651,12 +651,12 @@ references:
   isSpec: "True"
   fullName: EDlib.EDSM.EliteStatusService.GetData
   nameWithType: EliteStatusService.GetData
-- uid: EDlib.EDSM.EliteStatusService.Instance(EDlib.Network.IDownloadService)
-  name: Instance(IDownloadService)
-  href: api/EDlib.EDSM.EliteStatusService.html#EDlib_EDSM_EliteStatusService_Instance_EDlib_Network_IDownloadService_
-  commentId: M:EDlib.EDSM.EliteStatusService.Instance(EDlib.Network.IDownloadService)
-  fullName: EDlib.EDSM.EliteStatusService.Instance(EDlib.Network.IDownloadService)
-  nameWithType: EliteStatusService.Instance(IDownloadService)
+- uid: EDlib.EDSM.EliteStatusService.Instance(EDlib.EDSM.IEdsmService)
+  name: Instance(IEdsmService)
+  href: api/EDlib.EDSM.EliteStatusService.html#EDlib_EDSM_EliteStatusService_Instance_EDlib_EDSM_IEdsmService_
+  commentId: M:EDlib.EDSM.EliteStatusService.Instance(EDlib.EDSM.IEdsmService)
+  fullName: EDlib.EDSM.EliteStatusService.Instance(EDlib.EDSM.IEdsmService)
+  nameWithType: EliteStatusService.Instance(IEdsmService)
 - uid: EDlib.EDSM.EliteStatusService.Instance*
   name: Instance
   href: api/EDlib.EDSM.EliteStatusService.html#EDlib_EDSM_EliteStatusService_Instance_
@@ -858,6 +858,28 @@ references:
   isSpec: "True"
   fullName: EDlib.EDSM.FactionState.Trend
   nameWithType: FactionState.Trend
+- uid: EDlib.EDSM.IEdsmService
+  name: IEdsmService
+  href: api/EDlib.EDSM.IEdsmService.html
+  commentId: T:EDlib.EDSM.IEdsmService
+  fullName: EDlib.EDSM.IEdsmService
+  nameWithType: IEdsmService
+- uid: EDlib.EDSM.IEdsmService.GetData(System.String,Dictionary{System.String,System.String},EDlib.Network.DownloadOptions)
+  name: GetData(String, Dictionary<String, String>, DownloadOptions)
+  href: api/EDlib.EDSM.IEdsmService.html#EDlib_EDSM_IEdsmService_GetData_System_String_Dictionary_System_String_System_String__EDlib_Network_DownloadOptions_
+  commentId: M:EDlib.EDSM.IEdsmService.GetData(System.String,Dictionary{System.String,System.String},EDlib.Network.DownloadOptions)
+  name.vb: GetData(String, Dictionary(Of String, String), DownloadOptions)
+  fullName: EDlib.EDSM.IEdsmService.GetData(System.String, Dictionary<System.String, System.String>, EDlib.Network.DownloadOptions)
+  fullName.vb: EDlib.EDSM.IEdsmService.GetData(System.String, Dictionary(Of System.String, System.String), EDlib.Network.DownloadOptions)
+  nameWithType: IEdsmService.GetData(String, Dictionary<String, String>, DownloadOptions)
+  nameWithType.vb: IEdsmService.GetData(String, Dictionary(Of String, String), DownloadOptions)
+- uid: EDlib.EDSM.IEdsmService.GetData*
+  name: GetData
+  href: api/EDlib.EDSM.IEdsmService.html#EDlib_EDSM_IEdsmService_GetData_
+  commentId: Overload:EDlib.EDSM.IEdsmService.GetData
+  isSpec: "True"
+  fullName: EDlib.EDSM.IEdsmService.GetData
+  nameWithType: IEdsmService.GetData
 - uid: EDlib.EDSM.Market
   name: Market
   href: api/EDlib.EDSM.Market.html
@@ -2133,12 +2155,12 @@ references:
   isSpec: "True"
   fullName: EDlib.EDSM.SystemService.GetStations
   nameWithType: SystemService.GetStations
-- uid: EDlib.EDSM.SystemService.Instance(EDlib.Network.IDownloadService)
-  name: Instance(IDownloadService)
-  href: api/EDlib.EDSM.SystemService.html#EDlib_EDSM_SystemService_Instance_EDlib_Network_IDownloadService_
-  commentId: M:EDlib.EDSM.SystemService.Instance(EDlib.Network.IDownloadService)
-  fullName: EDlib.EDSM.SystemService.Instance(EDlib.Network.IDownloadService)
-  nameWithType: SystemService.Instance(IDownloadService)
+- uid: EDlib.EDSM.SystemService.Instance(EDlib.EDSM.IEdsmService)
+  name: Instance(IEdsmService)
+  href: api/EDlib.EDSM.SystemService.html#EDlib_EDSM_SystemService_Instance_EDlib_EDSM_IEdsmService_
+  commentId: M:EDlib.EDSM.SystemService.Instance(EDlib.EDSM.IEdsmService)
+  fullName: EDlib.EDSM.SystemService.Instance(EDlib.EDSM.IEdsmService)
+  nameWithType: SystemService.Instance(IEdsmService)
 - uid: EDlib.EDSM.SystemService.Instance*
   name: Instance
   href: api/EDlib.EDSM.SystemService.html#EDlib_EDSM_SystemService_Instance_
@@ -2337,12 +2359,12 @@ references:
   isSpec: "True"
   fullName: EDlib.EDSM.SystemsService.GetSystemsInSphere
   nameWithType: SystemsService.GetSystemsInSphere
-- uid: EDlib.EDSM.SystemsService.Instance(EDlib.Network.IDownloadService)
-  name: Instance(IDownloadService)
-  href: api/EDlib.EDSM.SystemsService.html#EDlib_EDSM_SystemsService_Instance_EDlib_Network_IDownloadService_
-  commentId: M:EDlib.EDSM.SystemsService.Instance(EDlib.Network.IDownloadService)
-  fullName: EDlib.EDSM.SystemsService.Instance(EDlib.Network.IDownloadService)
-  nameWithType: SystemsService.Instance(IDownloadService)
+- uid: EDlib.EDSM.SystemsService.Instance(EDlib.EDSM.IEdsmService)
+  name: Instance(IEdsmService)
+  href: api/EDlib.EDSM.SystemsService.html#EDlib_EDSM_SystemsService_Instance_EDlib_EDSM_IEdsmService_
+  commentId: M:EDlib.EDSM.SystemsService.Instance(EDlib.EDSM.IEdsmService)
+  fullName: EDlib.EDSM.SystemsService.Instance(EDlib.EDSM.IEdsmService)
+  nameWithType: SystemsService.Instance(IEdsmService)
 - uid: EDlib.EDSM.SystemsService.Instance*
   name: Instance
   href: api/EDlib.EDSM.SystemsService.html#EDlib_EDSM_SystemsService_Instance_
@@ -2917,12 +2939,12 @@ references:
   isSpec: "True"
   fullName: EDlib.INARA.CommanderProfileService.GetData
   nameWithType: CommanderProfileService.GetData
-- uid: EDlib.INARA.CommanderProfileService.Instance(EDlib.Network.IDownloadService)
-  name: Instance(IDownloadService)
-  href: api/EDlib.INARA.CommanderProfileService.html#EDlib_INARA_CommanderProfileService_Instance_EDlib_Network_IDownloadService_
-  commentId: M:EDlib.INARA.CommanderProfileService.Instance(EDlib.Network.IDownloadService)
-  fullName: EDlib.INARA.CommanderProfileService.Instance(EDlib.Network.IDownloadService)
-  nameWithType: CommanderProfileService.Instance(IDownloadService)
+- uid: EDlib.INARA.CommanderProfileService.Instance(EDlib.INARA.IInaraService)
+  name: Instance(IInaraService)
+  href: api/EDlib.INARA.CommanderProfileService.html#EDlib_INARA_CommanderProfileService_Instance_EDlib_INARA_IInaraService_
+  commentId: M:EDlib.INARA.CommanderProfileService.Instance(EDlib.INARA.IInaraService)
+  fullName: EDlib.INARA.CommanderProfileService.Instance(EDlib.INARA.IInaraService)
+  nameWithType: CommanderProfileService.Instance(IInaraService)
 - uid: EDlib.INARA.CommanderProfileService.Instance*
   name: Instance
   href: api/EDlib.INARA.CommanderProfileService.html#EDlib_INARA_CommanderProfileService_Instance_
@@ -3527,12 +3549,12 @@ references:
   isSpec: "True"
   fullName: EDlib.INARA.CommunityGoalsService.GetDataByTime
   nameWithType: CommunityGoalsService.GetDataByTime
-- uid: EDlib.INARA.CommunityGoalsService.Instance(EDlib.Network.IDownloadService)
-  name: Instance(IDownloadService)
-  href: api/EDlib.INARA.CommunityGoalsService.html#EDlib_INARA_CommunityGoalsService_Instance_EDlib_Network_IDownloadService_
-  commentId: M:EDlib.INARA.CommunityGoalsService.Instance(EDlib.Network.IDownloadService)
-  fullName: EDlib.INARA.CommunityGoalsService.Instance(EDlib.Network.IDownloadService)
-  nameWithType: CommunityGoalsService.Instance(IDownloadService)
+- uid: EDlib.INARA.CommunityGoalsService.Instance(EDlib.INARA.IInaraService)
+  name: Instance(IInaraService)
+  href: api/EDlib.INARA.CommunityGoalsService.html#EDlib_INARA_CommunityGoalsService_Instance_EDlib_INARA_IInaraService_
+  commentId: M:EDlib.INARA.CommunityGoalsService.Instance(EDlib.INARA.IInaraService)
+  fullName: EDlib.INARA.CommunityGoalsService.Instance(EDlib.INARA.IInaraService)
+  nameWithType: CommunityGoalsService.Instance(IInaraService)
 - uid: EDlib.INARA.CommunityGoalsService.Instance*
   name: Instance
   href: api/EDlib.INARA.CommunityGoalsService.html#EDlib_INARA_CommunityGoalsService_Instance_
@@ -3540,6 +3562,28 @@ references:
   isSpec: "True"
   fullName: EDlib.INARA.CommunityGoalsService.Instance
   nameWithType: CommunityGoalsService.Instance
+- uid: EDlib.INARA.IInaraService
+  name: IInaraService
+  href: api/EDlib.INARA.IInaraService.html
+  commentId: T:EDlib.INARA.IInaraService
+  fullName: EDlib.INARA.IInaraService
+  nameWithType: IInaraService
+- uid: EDlib.INARA.IInaraService.GetData(EDlib.INARA.InaraHeader,IList{EDlib.INARA.InaraEvent},EDlib.Network.DownloadOptions)
+  name: GetData(InaraHeader, IList<InaraEvent>, DownloadOptions)
+  href: api/EDlib.INARA.IInaraService.html#EDlib_INARA_IInaraService_GetData_EDlib_INARA_InaraHeader_IList_EDlib_INARA_InaraEvent__EDlib_Network_DownloadOptions_
+  commentId: M:EDlib.INARA.IInaraService.GetData(EDlib.INARA.InaraHeader,IList{EDlib.INARA.InaraEvent},EDlib.Network.DownloadOptions)
+  name.vb: GetData(InaraHeader, IList(Of InaraEvent), DownloadOptions)
+  fullName: EDlib.INARA.IInaraService.GetData(EDlib.INARA.InaraHeader, IList<EDlib.INARA.InaraEvent>, EDlib.Network.DownloadOptions)
+  fullName.vb: EDlib.INARA.IInaraService.GetData(EDlib.INARA.InaraHeader, IList(Of EDlib.INARA.InaraEvent), EDlib.Network.DownloadOptions)
+  nameWithType: IInaraService.GetData(InaraHeader, IList<InaraEvent>, DownloadOptions)
+  nameWithType.vb: IInaraService.GetData(InaraHeader, IList(Of InaraEvent), DownloadOptions)
+- uid: EDlib.INARA.IInaraService.GetData*
+  name: GetData
+  href: api/EDlib.INARA.IInaraService.html#EDlib_INARA_IInaraService_GetData_
+  commentId: Overload:EDlib.INARA.IInaraService.GetData
+  isSpec: "True"
+  fullName: EDlib.INARA.IInaraService.GetData
+  nameWithType: IInaraService.GetData
 - uid: EDlib.INARA.InaraEvent
   name: InaraEvent
   href: api/EDlib.INARA.InaraEvent.html
@@ -4418,6 +4462,32 @@ references:
   isSpec: "True"
   fullName: EDlib.Powerplay.CycleService.FinalDay
   nameWithType: CycleService.FinalDay
+- uid: EDlib.Powerplay.CycleService.FixedDate
+  name: FixedDate
+  href: api/EDlib.Powerplay.CycleService.html#EDlib_Powerplay_CycleService_FixedDate
+  commentId: P:EDlib.Powerplay.CycleService.FixedDate
+  fullName: EDlib.Powerplay.CycleService.FixedDate
+  nameWithType: CycleService.FixedDate
+- uid: EDlib.Powerplay.CycleService.FixedDate*
+  name: FixedDate
+  href: api/EDlib.Powerplay.CycleService.html#EDlib_Powerplay_CycleService_FixedDate_
+  commentId: Overload:EDlib.Powerplay.CycleService.FixedDate
+  isSpec: "True"
+  fullName: EDlib.Powerplay.CycleService.FixedDate
+  nameWithType: CycleService.FixedDate
+- uid: EDlib.Powerplay.CycleService.PowerplayStartDate
+  name: PowerplayStartDate
+  href: api/EDlib.Powerplay.CycleService.html#EDlib_Powerplay_CycleService_PowerplayStartDate
+  commentId: P:EDlib.Powerplay.CycleService.PowerplayStartDate
+  fullName: EDlib.Powerplay.CycleService.PowerplayStartDate
+  nameWithType: CycleService.PowerplayStartDate
+- uid: EDlib.Powerplay.CycleService.PowerplayStartDate*
+  name: PowerplayStartDate
+  href: api/EDlib.Powerplay.CycleService.html#EDlib_Powerplay_CycleService_PowerplayStartDate_
+  commentId: Overload:EDlib.Powerplay.CycleService.PowerplayStartDate
+  isSpec: "True"
+  fullName: EDlib.Powerplay.CycleService.PowerplayStartDate
+  nameWithType: CycleService.PowerplayStartDate
 - uid: EDlib.Powerplay.CycleService.TimeRemaining
   name: TimeRemaining()
   href: api/EDlib.Powerplay.CycleService.html#EDlib_Powerplay_CycleService_TimeRemaining

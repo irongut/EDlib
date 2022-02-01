@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.APIException.html",
-          "hash": "XPW8AAWvtxiSoKpMd6Fwpw=="
+          "hash": "YDB+vYFNmp/LK3peCHibAQ=="
         }
       },
       "is_incremental": false,
@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.BGS.BgsTick.html",
-          "hash": "DRKa+n6qCrP0x7vwgIiWsg=="
+          "hash": "KeIEXNihl1Xh6VqMMKTqvA=="
         }
       },
       "is_incremental": false,
@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.BGS.BgsTickService.html",
-          "hash": "7emQHFi8n/vXcurMTBSLKA=="
+          "hash": "84vPVNictCjqO2PxVMFXKw=="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.BGS.html",
-          "hash": "VmhqFhTdFUAfaMrQgPMW8A=="
+          "hash": "gxkbseXPuAdk+dyv1O2G8w=="
         }
       },
       "is_incremental": false,
@@ -66,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Common.Topic.html",
-          "hash": "rpa4EXRcJSTkE0N11cX67Q=="
+          "hash": "PB9ABC/MB2UNW2XSDTOtMQ=="
         }
       },
       "is_incremental": false,
@@ -78,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Common.html",
-          "hash": "hVSitHc9NpIzydUaVd167w=="
+          "hash": "3eUwp1RJn+BuVtOAsRvv9A=="
         }
       },
       "is_incremental": false,
@@ -90,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.Body.html",
-          "hash": "RPb+fXG+iU4hwvjp3dlbbw=="
+          "hash": "eOnO6L+rEFVv8VzipeSvqA=="
         }
       },
       "is_incremental": false,
@@ -102,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.Commodity.html",
-          "hash": "L/Pziq1Dz9JOK5MM8JGZsQ=="
+          "hash": "psorQUrPlEbdqlMEpjwsoA=="
         }
       },
       "is_incremental": false,
@@ -114,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.ControllingFaction.html",
-          "hash": "gM05ul+uivwG98gzhO67Ag=="
+          "hash": "HejuVuvqj7I9nNzqw6+zSQ=="
         }
       },
       "is_incremental": false,
@@ -126,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.Coords.html",
-          "hash": "zPRJlOhFcACAPRq+jB4Tjg=="
+          "hash": "MENZAbmp6jAWGJ1m+Ybyvg=="
         }
       },
       "is_incremental": false,
@@ -138,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.EdsmService.html",
-          "hash": "GRGfUPy/gH45/047B2m8IQ=="
+          "hash": "VvNaLLGAzbZSKKFGyKTP6Q=="
         }
       },
       "is_incremental": false,
@@ -150,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.EliteStatus.html",
-          "hash": "Bw2NEgHwpBKK3C3Cwch/mQ=="
+          "hash": "mTn/1rPSo+TgmqDJBSZ4iw=="
         }
       },
       "is_incremental": false,
@@ -162,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.EliteStatusService.html",
-          "hash": "oQbHAmtEgAXOan+9CBTsLw=="
+          "hash": "P3m6hEpNF4XGx4lWv7jolw=="
         }
       },
       "is_incremental": false,
@@ -174,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.Faction.html",
-          "hash": "xPvI8xcn4YJCsw3B1zL6jQ=="
+          "hash": "BymAzdBhvnwWODtidlVXtg=="
         }
       },
       "is_incremental": false,
@@ -186,7 +186,19 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.FactionState.html",
-          "hash": "gU1k+pxsXHAt6bFWtmKvxw=="
+          "hash": "ayDoSCELaFGHSSv/RxjJRQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.EDSM.IEdsmService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.EDSM.IEdsmService.html",
+          "hash": "VqthmArixIRM+jdF+GUWmA=="
         }
       },
       "is_incremental": false,
@@ -198,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.Market.html",
-          "hash": "tr124CI6yQzvQHhoUofNjA=="
+          "hash": "YI4Ye4Gg0zrZ6BVWMQlxUA=="
         }
       },
       "is_incremental": false,
@@ -210,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.PrimaryStar.html",
-          "hash": "oU8IYCNqLtqBnQ6otKw8Zw=="
+          "hash": "TZthBK2h51HJ3G3sXcciqQ=="
         }
       },
       "is_incremental": false,
@@ -222,7 +234,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.Ship.html",
-          "hash": "yV1dCrUqfWLTZw2ocwEr4w=="
+          "hash": "LG1na9hl78T5I94zOEUhXw=="
         }
       },
       "is_incremental": false,
@@ -234,7 +246,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.ShipModule.html",
-          "hash": "CwxeNlEdS7JmipOKnugTJw=="
+          "hash": "1f7FwpI/bPIAUsnEQOIpJQ=="
         }
       },
       "is_incremental": false,
@@ -246,7 +258,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.Shipyard.html",
-          "hash": "6KFZOUXC1M1BpnWf581tcQ=="
+          "hash": "Z89EcZKPX7+/98L7/1mxwA=="
         }
       },
       "is_incremental": false,
@@ -258,7 +270,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.SolarSystem.html",
-          "hash": "7I7W2PRXi237FcAXVNWjFQ=="
+          "hash": "xLrCQZa3sMJccVcA91CN6w=="
         }
       },
       "is_incremental": false,
@@ -270,7 +282,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.Station.html",
-          "hash": "BH0S2Y8RpYshqx6kE1n+XQ=="
+          "hash": "v6zvffIHJGvhp/jd4s/FaA=="
         }
       },
       "is_incremental": false,
@@ -282,7 +294,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.StationOutfitting.html",
-          "hash": "QF7fUujbQz1CK4UqXZ19KQ=="
+          "hash": "na60FPgsiEDKk3NSIf7mwQ=="
         }
       },
       "is_incremental": false,
@@ -294,7 +306,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.SystemFactions.html",
-          "hash": "OUof+L0y6jBlyS2gfX7fFw=="
+          "hash": "lmt0zHoFYjGv9smUiMrGGA=="
         }
       },
       "is_incremental": false,
@@ -306,7 +318,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.SystemInfo.html",
-          "hash": "QtGOm1K+rO1X2M3N/hZ2gg=="
+          "hash": "8eg6BzLel9lNLctqhj1muA=="
         }
       },
       "is_incremental": false,
@@ -318,7 +330,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.SystemService.html",
-          "hash": "TcJ7jGUJmVusTbHV0Jfv4w=="
+          "hash": "VwHZSUzwln3RA3LgQzO1WQ=="
         }
       },
       "is_incremental": false,
@@ -330,7 +342,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.SystemStations.html",
-          "hash": "t0PjMXVnjLYjzkJgfXwGVQ=="
+          "hash": "fae4LCGuUqoZ/MklxITP9g=="
         }
       },
       "is_incremental": false,
@@ -342,7 +354,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.SystemsOptions.html",
-          "hash": "5yBvPOK6ZrceuhEdAxsoqQ=="
+          "hash": "1n3jADv1nDPt8UwH2wMVsg=="
         }
       },
       "is_incremental": false,
@@ -354,7 +366,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.SystemsService.html",
-          "hash": "juGqc0Trbr+dPD1E1B3ZyQ=="
+          "hash": "YZVp5qLdzwlAikG/3kAGSA=="
         }
       },
       "is_incremental": false,
@@ -366,7 +378,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.UpdateTime.html",
-          "hash": "4SwecZ6GiTWjsv1Vj7yoIw=="
+          "hash": "p51ay/uW8kcENbLHjmDVDQ=="
         }
       },
       "is_incremental": false,
@@ -378,7 +390,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.EDSM.html",
-          "hash": "hmInkZsdRn2kXlYhsMjOAg=="
+          "hash": "IeKulud2ElAzbPC/5FzUcA=="
         }
       },
       "is_incremental": false,
@@ -390,7 +402,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.GalNet.GalNetService.html",
-          "hash": "slidvHlNeKTdrNtQ665j1Q=="
+          "hash": "Mo6DsPQ6PbYiTvv7m0KSMw=="
         }
       },
       "is_incremental": false,
@@ -402,7 +414,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.GalNet.NewsArticle.html",
-          "hash": "8dX0/1uAhtlKr4+y3gnm5A=="
+          "hash": "48GY6vWGp+KhE8L0OekJBA=="
         }
       },
       "is_incremental": false,
@@ -414,7 +426,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.GalNet.html",
-          "hash": "RDThbRRY2xwMzgJy3r5Zzg=="
+          "hash": "bZJmoQgBe3JRQMG2aSz0gA=="
         }
       },
       "is_incremental": false,
@@ -426,7 +438,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.INARA.CommanderProfile.html",
-          "hash": "qZaayShaTFFOS4fRKEr7pQ=="
+          "hash": "+Fxz7WpG7C5EseFh0FVArg=="
         }
       },
       "is_incremental": false,
@@ -438,7 +450,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.INARA.CommanderProfileService.html",
-          "hash": "jJEoPfn8rnmUYy85rJUZlg=="
+          "hash": "vxCJhgVHs6STG2zzy/prlQ=="
         }
       },
       "is_incremental": false,
@@ -450,7 +462,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.INARA.CommanderRank.html",
-          "hash": "c39SgX3dA1j6pjiO3q8t8A=="
+          "hash": "iZlkuD5d+u+HRhOxUHlA5w=="
         }
       },
       "is_incremental": false,
@@ -462,7 +474,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.INARA.CommanderShip.html",
-          "hash": "tYHWJgWuVSVZ6xdpSks65g=="
+          "hash": "0ieV0WwhTc+P/Q3qdB2/hA=="
         }
       },
       "is_incremental": false,
@@ -474,7 +486,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.INARA.CommanderSquadron.html",
-          "hash": "IAKWC5fV03T6XYfVHpWCDw=="
+          "hash": "nEu+IZD4p6gspOcQxWi7qg=="
         }
       },
       "is_incremental": false,
@@ -486,7 +498,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.INARA.CommanderWing.html",
-          "hash": "xbpCdukxZeXPwnXN9VzlEA=="
+          "hash": "39UZPO1IdEQlvfueRlO5Kg=="
         }
       },
       "is_incremental": false,
@@ -498,7 +510,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.INARA.CommunityGoal.html",
-          "hash": "MFceUqbUz0dNO3XyuFhMfw=="
+          "hash": "zHM6hkkdOkQIW7LE1NeWFg=="
         }
       },
       "is_incremental": false,
@@ -510,7 +522,19 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.INARA.CommunityGoalsService.html",
-          "hash": "S+L69w49HHpo3IrZ9HyNtg=="
+          "hash": "xhKIPIZBKI/hKONWX+cA2Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EDlib.INARA.IInaraService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EDlib.INARA.IInaraService.html",
+          "hash": "JjbmxfhnOupWYT3rwj7V4g=="
         }
       },
       "is_incremental": false,
@@ -522,7 +546,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.INARA.InaraEvent.html",
-          "hash": "i8woB/eyJ8wU8MrqKf8/HQ=="
+          "hash": "Ut5T3ixmcuqlBM/bgjKWPA=="
         }
       },
       "is_incremental": false,
@@ -534,7 +558,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.INARA.InaraHeader.html",
-          "hash": "6bEMWcEEg2bfaNRUKsQFfw=="
+          "hash": "C5S2GHzsqsC4L6OEm+5kvg=="
         }
       },
       "is_incremental": false,
@@ -546,7 +570,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.INARA.InaraIdentity.html",
-          "hash": "srSI3+D3aLK3h/cSlKwelQ=="
+          "hash": "cRVFAky2BBe4+4JXl7+yyQ=="
         }
       },
       "is_incremental": false,
@@ -558,7 +582,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.INARA.InaraRequest.html",
-          "hash": "7Yxk8toOXc10+WeSP2BTYg=="
+          "hash": "8Up8aut5YdAQ7An4/WmjSA=="
         }
       },
       "is_incremental": false,
@@ -570,7 +594,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.INARA.InaraService.html",
-          "hash": "NztoiNoapB+8WJZrFj3S9Q=="
+          "hash": "x6uZVfyBVjv7uXhiOWGWKA=="
         }
       },
       "is_incremental": false,
@@ -582,7 +606,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.INARA.html",
-          "hash": "TXF8mhX7IR4VoXNCkv7A7w=="
+          "hash": "xMIAJ8WCLeM1tAU7csMcWQ=="
         }
       },
       "is_incremental": false,
@@ -594,7 +618,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.LinkerSafeAttribute.html",
-          "hash": "ZgRJkOgB5KlecW1xhZTD0A=="
+          "hash": "LHWnuOkyvnzj7jWki2GJlg=="
         }
       },
       "is_incremental": false,
@@ -606,7 +630,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Network.CachedDownloadService.html",
-          "hash": "adoZCWSW+bQJt99exQpumQ=="
+          "hash": "qOycxNoQKtKRcwpkN7msyA=="
         }
       },
       "is_incremental": false,
@@ -618,7 +642,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Network.DownloadOptions.html",
-          "hash": "irHmaf2puT3MEupX5qF6Ww=="
+          "hash": "h2zW8OsYQgFXPNiVmF4EWw=="
         }
       },
       "is_incremental": false,
@@ -630,7 +654,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Network.DownloadService.html",
-          "hash": "0mkqXT4OHSpBf3jbrFCVQQ=="
+          "hash": "VScgwa9Dg9n9JkGRb4dHrg=="
         }
       },
       "is_incremental": false,
@@ -642,7 +666,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Network.HttpHelper.html",
-          "hash": "E3zqerZQTUmfYUSyaj6f+A=="
+          "hash": "0ivrE0sd9tAu5QaVGdsl4g=="
         }
       },
       "is_incremental": false,
@@ -654,7 +678,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Network.IDownloadService.html",
-          "hash": "zfCAWbSzd+xWvfwl23hQSg=="
+          "hash": "MiH9uERAy29axKOQzkOUnA=="
         }
       },
       "is_incremental": false,
@@ -666,7 +690,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Network.Sha256Helper.html",
-          "hash": "E7SwzlE7HZEuwWAD+B8y+w=="
+          "hash": "yZpNd0f2le+U8U2mxaBTsg=="
         }
       },
       "is_incremental": false,
@@ -678,7 +702,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Network.html",
-          "hash": "PzDRA8tAvXMauSd07wCEmg=="
+          "hash": "P3l18tC9X3L29PzAy/suXA=="
         }
       },
       "is_incremental": false,
@@ -690,7 +714,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.NoNetworkNoCacheException.html",
-          "hash": "cYA0+DeYSTF+5N0QDWzMdQ=="
+          "hash": "/9fgk64S4Q8LBc6AH+AIeQ=="
         }
       },
       "is_incremental": false,
@@ -702,7 +726,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Platform.CacheState.html",
-          "hash": "VoHckMPBxNgr1u3mFF4THQ=="
+          "hash": "W9D6/vPAQmVjIAimHfBpPg=="
         }
       },
       "is_incremental": false,
@@ -714,7 +738,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Platform.ICacheService.html",
-          "hash": "t9SecmmvtQaI9jhcbw6+Ww=="
+          "hash": "cW+IQY+dbiatDIH0iIBW0A=="
         }
       },
       "is_incremental": false,
@@ -726,7 +750,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Platform.IConnectivityService.html",
-          "hash": "DMqjZXYNlV18DNkQC3jGVw=="
+          "hash": "hHlJtINI2lmqZT+cVTDMig=="
         }
       },
       "is_incremental": false,
@@ -738,7 +762,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Platform.PreserveAttribute.html",
-          "hash": "EjqHu4LyYfWqNNj7MLVL+A=="
+          "hash": "pynNXPD2qUCOcaEJvXriAA=="
         }
       },
       "is_incremental": false,
@@ -750,7 +774,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Platform.html",
-          "hash": "U0uoEN6VcUMF+gburkoHjg=="
+          "hash": "iRLDce/7RMOqx3dMRVyW+w=="
         }
       },
       "is_incremental": false,
@@ -762,7 +786,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Powerplay.CycleService.html",
-          "hash": "4ndYqh84BAg46Oz8wbIaGw=="
+          "hash": "PxbNiAdpF6WRtdWBt5iRWg=="
         }
       },
       "is_incremental": false,
@@ -774,7 +798,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Powerplay.GalacticStandings.html",
-          "hash": "qITSM6q87Zh6+nG6Ob4eKg=="
+          "hash": "Zx8+R+cSxcE1VVFJhYGG7Q=="
         }
       },
       "is_incremental": false,
@@ -786,7 +810,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Powerplay.PowerComms.html",
-          "hash": "EM6D3RaafkJjq6OXyM9L3g=="
+          "hash": "4hWs9DgB6XZhTfNkRGk57Q=="
         }
       },
       "is_incremental": false,
@@ -798,7 +822,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Powerplay.PowerDetails.html",
-          "hash": "WhP66spcMpss1llVrS6Kvg=="
+          "hash": "YqANXI/UPfPBfRUacaVI0A=="
         }
       },
       "is_incremental": false,
@@ -810,7 +834,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Powerplay.PowerDetailsService.html",
-          "hash": "fbRPZkl2Pp6pAEYKN371xQ=="
+          "hash": "0O9BNSyPnwHwAhtsJc7Fbg=="
         }
       },
       "is_incremental": false,
@@ -822,7 +846,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Powerplay.PowerStanding.html",
-          "hash": "2arCS1QvvNHYH80abfJTMA=="
+          "hash": "3jQfd80rg6wbHYsmG8e3lA=="
         }
       },
       "is_incremental": false,
@@ -834,7 +858,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Powerplay.StandingChange.html",
-          "hash": "aAZbtL/kVFfdRd+oIOSQIw=="
+          "hash": "3zsbVxsPT0ykUZ6XfBkIyw=="
         }
       },
       "is_incremental": false,
@@ -846,7 +870,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Powerplay.StandingsService.html",
-          "hash": "T818DuwyAx/dq7GjE9LyoA=="
+          "hash": "1KQBQgfaHXbC7J8maJCkMA=="
         }
       },
       "is_incremental": false,
@@ -858,7 +882,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.Powerplay.html",
-          "hash": "PJkp/CGslT4DRHACDIj1Tg=="
+          "hash": "LH2nWtbRw/r2ePHNtrCMbg=="
         }
       },
       "is_incremental": false,
@@ -870,7 +894,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EDlib.html",
-          "hash": "zvuSRqxMmcL2z/LncrO1Kg=="
+          "hash": "RqezhntnhFECVfrg4TCiZA=="
         }
       },
       "is_incremental": false,
@@ -882,7 +906,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "+7DyKjRH3H3x4MUnzPusmg=="
+          "hash": "+RLyAIP/Ts70d6SaR5t6zg=="
         }
       },
       "is_incremental": false,
@@ -966,7 +990,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 80,
+          "total_file_count": 82,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
