@@ -80,7 +80,7 @@ jobs:
         name: release-nuget
 
     - name: Setup Nuget
-      uses: NuGet/setup-nuget@v1.0.5
+      uses: NuGet/setup-nuget@v1.0.6
       with:
         nuget-version: latest
 
