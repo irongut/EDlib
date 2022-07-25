@@ -9,16 +9,22 @@ jobs:
     name: Deploy Docs
     runs-on: ubuntu-latest
     steps:
+    
+    - name: Harden Runner
+      uses: step-security/harden-runner@74b568e8591fbb3115c70f3436a0c6b0909a8504
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
 
     - name: Build Documentation
-      uses: nikeee/docfx-action@v1.0.0
+      uses: nikeee/docfx-action@72f9d1a3f38d9f2696a938f29d09921292bf109c
       with:
         args: docfx_project/docfx.json
 
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@97fb9635096cfc33bfdc8fc32ef02296dce55ab0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./docs
