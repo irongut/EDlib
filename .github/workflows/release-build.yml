@@ -16,13 +16,19 @@ jobs:
     runs-on: ubuntu-latest
     name: Release Build
     steps:
+
+    - name: Harden Runner
+      uses: step-security/harden-runner@74b568e8591fbb3115c70f3436a0c6b0909a8504
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
       with:
         fetch-depth: 0
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@c0d4ad69d8bd405d234f1c9166d383b7a4f69ed8
       with:
         dotnet-version: 5.0.x
 
@@ -30,7 +36,7 @@ jobs:
       run: dotnet restore src/EDlib.sln
 
     - name: Add User Secrets
-      uses: microsoft/variable-substitution@v1
+      uses: microsoft/variable-substitution@b1e0d9ee8c194d95db944d60f5b4821413a039b4
       with:
         files: 'src/EDlibDemo/appsettings.json'
       env:
@@ -50,7 +56,7 @@ jobs:
       run: cp coverage/**/coverage.cobertura.xml coverage/coverage.cobertura.xml
 
     - name: Generate Test Report
-      uses: irongut/CodeCoverageSummary@v1.2.0
+      uses: irongut/CodeCoverageSummary@5088d5eb315a46ff785c607078606c0b9107e0b6
       with:
         filename: coverage/coverage.cobertura.xml
         badge: true
@@ -58,13 +64,13 @@ jobs:
         output: 'both'
 
     - name: Upload EDlib Artifact
-      uses: actions/upload-artifact@v3.1.0
+      uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
       with:
         name: release-nuget
         path: src/EDlib/bin/Release/Taranis.Software.EDlib*.nupkg
 
     - name: Upload Test Report Artifact
-      uses: actions/upload-artifact@v3.1.0
+      uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
       with:
         name: release-nuget
         path: code-coverage-results.md
@@ -74,13 +80,19 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
+
+    - name: Harden Runner
+      uses: step-security/harden-runner@74b568e8591fbb3115c70f3436a0c6b0909a8504
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - name: Download Artifacts
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@fb598a63ae348fa914e94cd0ff38f362e927b741
       with:
         name: release-nuget
 
     - name: Setup Nuget
-      uses: NuGet/setup-nuget@v1.0.6
+      uses: NuGet/setup-nuget@f8d5775c0a2e0c0516e954213a680b0838a945d2
       with:
         nuget-version: latest
 
@@ -91,7 +103,7 @@ jobs:
       run: nuget push **/*.nupkg -source GitHub -SkipDuplicate
 
     - name: Add Test Report to Release
-      uses: irongut/EditRelease@v1.2.0
+      uses: irongut/EditRelease@ccf529ad26dddf9996e7dd0f24ca5da4ea507cc2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         id: ${{ github.event.release.id }}
@@ -103,16 +115,22 @@ jobs:
     needs: [build, deploy-gh]
     runs-on: ubuntu-latest
     steps:
+
+    - name: Harden Runner
+      uses: step-security/harden-runner@74b568e8591fbb3115c70f3436a0c6b0909a8504
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
 
     - name: Build Documentation
-      uses: nikeee/docfx-action@v1.0.0
+      uses: nikeee/docfx-action@72f9d1a3f38d9f2696a938f29d09921292bf109c
       with:
         args: docfx_project/docfx.json
 
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@97fb9635096cfc33bfdc8fc32ef02296dce55ab0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./docs
