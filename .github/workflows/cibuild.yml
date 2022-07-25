@@ -19,13 +19,19 @@ jobs:
     runs-on: ubuntu-latest
     name: CI Build
     steps:
+    
+    - name: Harden Runner
+      uses: step-security/harden-runner@74b568e8591fbb3115c70f3436a0c6b0909a8504
+      with:
+        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
       with:
         fetch-depth: 0
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@c0d4ad69d8bd405d234f1c9166d383b7a4f69ed8
       with:
         dotnet-version: 5.0.x
 
@@ -33,7 +39,7 @@ jobs:
       run: dotnet restore src/EDlib.sln
 
     - name: Add User Secrets
-      uses: microsoft/variable-substitution@v1
+      uses: microsoft/variable-substitution@b1e0d9ee8c194d95db944d60f5b4821413a039b4
       with:
         files: 'src/EDlibDemo/appsettings.json'
       env:
@@ -53,7 +59,7 @@ jobs:
       run: cp coverage/**/coverage.cobertura.xml coverage/coverage.cobertura.xml
 
     - name: Code Coverage Summary Report
-      uses:  irongut/CodeCoverageSummary@v1.2.0
+      uses:  irongut/CodeCoverageSummary@5088d5eb315a46ff785c607078606c0b9107e0b6
       with:
         filename: coverage/coverage.cobertura.xml
         badge: true
@@ -61,26 +67,26 @@ jobs:
         output: 'both'
 
     - name: Add Coverage PR Comment
-      uses: marocchino/sticky-pull-request-comment@v2
+      uses: marocchino/sticky-pull-request-comment@39c5b5dc7717447d0cba270cd115037d32d28443
       if: github.event_name == 'pull_request'
       with:
         recreate: true
         path: code-coverage-results.md
 
     - name: Upload Coverage Report Artifact
-      uses: actions/upload-artifact@v3.1.0
+      uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
       with:
         name: test-coverage-report
         path: coverage/coverage.cobertura.xml
 
     - name: Upload Coverage Summary Artifact
-      uses: actions/upload-artifact@v3.1.0
+      uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
       with:
         name: test-coverage-report
         path: code-coverage-results.md
 
     - name: Upload EDlib Nuget Artifact
-      uses: actions/upload-artifact@v3.1.0
+      uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
       with:
         name: ci-nuget
         path: src/EDlib/bin/Release/Taranis.Software.EDlib*.nupkg
