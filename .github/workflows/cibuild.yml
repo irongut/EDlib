@@ -95,4 +95,4 @@ jobs:
         path: src/EDlib/bin/Release/Taranis.Software.EDlib*.nupkg
 
     - name: Run EDlib Demo
-      run: dotnet src/EDlibDemo/bin/Release/net5.0/EDlibDemo.dll
+      run: dotnet src/EDlibDemo/bin/Release/net6.0/EDlibDemo.dll
