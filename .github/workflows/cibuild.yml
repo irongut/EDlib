@@ -50,7 +50,6 @@ jobs:
         Inara-AppName:  ${{ secrets.INARA_APPNAME }}
         Inara-AppVersion: ${{ secrets.INARA_APPVERSION }}
         Inara-ApiKey:  ${{ secrets.INARA_APIKEY }}
-        Inara-UserApiKey: ${{ secrets.INARA_USERAPIKEY }}
         Inara-IsDeveloped: ${{ secrets.INARA_ISDEVELOPED }}
 
     - name: Build EDlib
