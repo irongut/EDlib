@@ -3,11 +3,13 @@ A .Net Standard library for creating companion tools for the game Elite Dangerou
 
 <div align="center">
   
-![.Net Standard](https://img.shields.io/badge/.Net-Standard%202.0-informational?style=flat&logo=visual-studio)
-&nbsp;
 [![GitHub](https://img.shields.io/badge/GitHub-irongut/EDlib-informational?style=flat&logo=github)](https://github.com/irongut/EDlib)
 &nbsp;
+![.Net Standard](https://img.shields.io/badge/.Net-Standard%202.0-informational?style=flat&logo=visual-studio)
+&nbsp;
 [![CI Build Status](https://github.com/irongut/EDlib/actions/workflows/cibuild.yml/badge.svg)](https://github.com/irongut/EDlib/actions/workflows/cibuild.yml)
+&nbsp;
+[![CodeQL Scan](https://github.com/irongut/EDlib/actions/workflows/codeql-scan.yml/badge.svg)](https://github.com/irongut/EDlib/actions/workflows/codeql-scan.yml)
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-c-sharp.svg)](https://forthebadge.com)
 &nbsp;
