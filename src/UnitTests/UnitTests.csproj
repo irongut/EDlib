@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
 
@@ -13,7 +13,7 @@
 
     <Product>EDlib</Product>
 
-    <Copyright>Copyright © 2020 - 2021 Taranis Software</Copyright>
+    <Copyright>Copyright © 2020 - 2022 Taranis Software</Copyright>
 
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
