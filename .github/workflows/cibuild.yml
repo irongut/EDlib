@@ -37,7 +37,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@c0d4ad69d8bd405d234f1c9166d383b7a4f69ed8
       with:
-        dotnet-version: 5.0.x
+        dotnet-version: 6.0.x
 
     - name: Restore Dependencies
       run: dotnet restore src/EDlib.sln
@@ -50,7 +50,6 @@ jobs:
         Inara-AppName:  ${{ secrets.INARA_APPNAME }}
         Inara-AppVersion: ${{ secrets.INARA_APPVERSION }}
         Inara-ApiKey:  ${{ secrets.INARA_APIKEY }}
-        Inara-UserApiKey: ${{ secrets.INARA_USERAPIKEY }}
         Inara-IsDeveloped: ${{ secrets.INARA_ISDEVELOPED }}
 
     - name: Build EDlib
@@ -96,4 +95,4 @@ jobs:
         path: src/EDlib/bin/Release/Taranis.Software.EDlib*.nupkg
 
     - name: Run EDlib Demo
-      run: dotnet src/EDlibDemo/bin/Release/net5.0/EDlibDemo.dll
+      run: dotnet src/EDlibDemo/bin/Release/net6.0/EDlibDemo.dll
