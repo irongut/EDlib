@@ -54,7 +54,7 @@ jobs:
     - name: Restore Dependencies
       run: dotnet restore src/EDlib.sln
 
-    - name: Add User Secrets
+    - name: Add User Secrets # used by demo app
       uses: microsoft/variable-substitution@b1e0d9ee8c194d95db944d60f5b4821413a039b4
       with:
         files: 'src/EDlibDemo/appsettings.json'
