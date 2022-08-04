@@ -20,7 +20,15 @@ jobs:
     - name: Harden Runner
       uses: step-security/harden-runner@74b568e8591fbb3115c70f3436a0c6b0909a8504
       with:
-        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+        egress-policy: block
+        allowed-endpoints: >
+          api.nuget.org:443
+          dotnetbuilds.azureedge.net:443
+          dotnetcli.azureedge.net:443
+          dotnetcli.blob.core.windows.net:443
+          github.com:443
+          httpbin.org:443
+          pipelines.actions.githubusercontent.com:443
 
     - name: Checkout
       uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
@@ -34,17 +42,6 @@ jobs:
 
     - name: Restore Dependencies
       run: dotnet restore src/EDlib.sln
-
-    - name: Add User Secrets
-      uses: microsoft/variable-substitution@b1e0d9ee8c194d95db944d60f5b4821413a039b4
-      with:
-        files: 'src/EDlibDemo/appsettings.json'
-      env:
-        Inara-AppName:  ${{ secrets.INARA_APPNAME }}
-        Inara-AppVersion: ${{ secrets.INARA_APPVERSION }}
-        Inara-ApiKey:  ${{ secrets.INARA_APIKEY }}
-        Inara-UserApiKey: ${{ secrets.INARA_USERAPIKEY }}
-        Inara-IsDeveloped: ${{ secrets.INARA_ISDEVELOPED }}
 
     - name: Build EDlib
       run: dotnet build src/EDlib.sln --configuration Release --no-restore
@@ -84,7 +81,12 @@ jobs:
     - name: Harden Runner
       uses: step-security/harden-runner@74b568e8591fbb3115c70f3436a0c6b0909a8504
       with:
-        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+        egress-policy: block
+        allowed-endpoints: >
+          api.github.com:443
+          dist.nuget.org:443
+          nuget.pkg.github.com:443
+          pipelines.actions.githubusercontent.com:443
 
     - name: Download Artifacts
       uses: actions/download-artifact@fb598a63ae348fa914e94cd0ff38f362e927b741
@@ -119,7 +121,9 @@ jobs:
     - name: Harden Runner
       uses: step-security/harden-runner@74b568e8591fbb3115c70f3436a0c6b0909a8504
       with:
-        egress-policy: audit # TODO: change to 'egress-policy: block' after couple of runs
+        egress-policy: block
+        allowed-endpoints: >
+          github.com:443
 
     - name: Checkout
       uses: actions/checkout@d0651293c4a5a52e711f25b41b05b2212f385d28
