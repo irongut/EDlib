@@ -70,13 +70,13 @@ jobs:
     - name: Test EDlib
       run: dotnet test src/EDlib.sln --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage
 
-    - name: Copy Coverage To Predictable Location
-      run: cp coverage/**/coverage.cobertura.xml coverage/coverage.cobertura.xml
+#    - name: Copy Coverage To Predictable Location
+#      run: cp coverage/**/coverage.cobertura.xml coverage/coverage.cobertura.xml
 
     - name: Code Coverage Summary Report
       uses:  irongut/CodeCoverageSummary@51cc3a756ddcd398d447c044c02cb6aa83fdae95
       with:
-        filename: coverage/coverage.cobertura.xml
+        filename: coverage/**/coverage.cobertura.xml
         badge: true
         format: 'md'
         output: 'both'
