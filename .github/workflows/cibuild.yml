@@ -70,11 +70,8 @@ jobs:
     - name: Test EDlib
       run: dotnet test src/EDlib.sln --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage
 
-#    - name: Copy Coverage To Predictable Location
-#      run: cp coverage/**/coverage.cobertura.xml coverage/coverage.cobertura.xml
-
     - name: Code Coverage Summary Report
-      uses:  irongut/CodeCoverageSummary@51cc3a756ddcd398d447c044c02cb6aa83fdae95
+      uses: irongut/CodeCoverageSummary@51cc3a756ddcd398d447c044c02cb6aa83fdae95
       with:
         filename: coverage/**/coverage.cobertura.xml
         badge: true
@@ -88,19 +85,13 @@ jobs:
         recreate: true
         path: code-coverage-results.md
 
-    - name: Upload Coverage Report Artifact
-      uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
-      with:
-        name: test-coverage-report
-        path: coverage/coverage.cobertura.xml
-
-    - name: Upload Coverage Summary Artifact
+    - name: Upload Coverage Artifact
       uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
       with:
         name: test-coverage-report
         path: code-coverage-results.md
 
-    - name: Upload EDlib Nuget Artifact
+    - name: Upload EDlib Artifact
       uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
       with:
         name: ci-nuget
