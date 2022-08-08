@@ -4,8 +4,13 @@
 name: AutoAssigner
 on: [pull_request]
 
+permissions:
+  contents: read
+
 jobs:
   assignAuthor:
+    permissions:
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
     
