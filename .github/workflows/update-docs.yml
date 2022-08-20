@@ -21,7 +21,7 @@ jobs:
       uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
 
     - name: Build Documentation
-      uses: nikeee/docfx-action@72f9d1a3f38d9f2696a938f29d09921292bf109c
+      uses: nikeee/docfx-action@b9c2cf92e3b4aa06878a1410833a8828b4bdcd26
       with:
         args: docfx_project/docfx.json
 
