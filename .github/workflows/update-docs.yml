@@ -26,7 +26,7 @@ jobs:
         args: docfx_project/docfx.json
 
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@97fb9635096cfc33bfdc8fc32ef02296dce55ab0
+      uses: peaceiris/actions-gh-pages@068dc23d9710f1ba62e86896f84735d869951305
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./docs
