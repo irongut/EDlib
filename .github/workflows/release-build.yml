@@ -94,7 +94,7 @@ jobs:
         name: release-nuget
 
     - name: Setup Nuget
-      uses: NuGet/setup-nuget@fd9fffd6ca4541cf4152a9565835ca1a88a6eb37
+      uses: NuGet/setup-nuget@a21f25cd3998bf370fde17e3f1b4c12c175172f9
       with:
         nuget-version: latest
 
