@@ -89,7 +89,7 @@ jobs:
           pipelines.actions.githubusercontent.com:443
 
     - name: Download Artifacts
-      uses: actions/download-artifact@9782bd6a9848b53b110e712e20e42d89988822b7
+      uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0
       with:
         name: release-nuget
 
