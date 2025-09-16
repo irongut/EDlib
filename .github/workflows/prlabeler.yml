@@ -28,6 +28,6 @@ jobs:
         allowed-endpoints: >
           api.github.com:443
 
-    - uses: actions/labeler@5c7539237e04b714afd8ad9b4aed733815b9fab4
+    - uses: actions/labeler@634933edcd8ababfe52f92936142cc22ac488b1b
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
