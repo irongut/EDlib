@@ -60,7 +60,7 @@ jobs:
         # queries: security-extended,security-and-quality # https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@607fce577a46308457984d59e4954e075820f10a
+      uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d
       with:
         dotnet-version: 6.0.x
 
