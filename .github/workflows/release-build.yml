@@ -36,7 +36,7 @@ jobs:
         fetch-depth: 0
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@607fce577a46308457984d59e4954e075820f10a
+      uses: actions/setup-dotnet@2016bd2012dba4e32de620c46fe006a3ac9f0602
       with:
         dotnet-version: 6.0.x
 
